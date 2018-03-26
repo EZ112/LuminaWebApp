@@ -1,0 +1,359 @@
+@import 'colors';
+@import 'functions';
+
+//Main CSS
+.page{
+	grid-template-columns: 15vw 83.5vw;
+	grid-template-rows: auto auto;
+	grid-template-areas:
+	"header widget"
+    "header main-content";
+}
+
+.widget{
+    box-shadow: 0px -3px 30px $cDrkBlue;
+	position: fixed;
+	z-index: 99;
+	background-color: white;
+	grid-area: widget;
+	padding: 1.5vw 2vw;
+
+	grid-template-columns: 3fr 2fr 5vw 1fr;
+
+	font-family: "QS_Book";
+}
+
+#widget_search {
+	position: relative;
+	display: inline-block;
+	color: #aaa;
+	font-size: 16px;
+
+	input {
+		width: (85/2)+vw;
+		height: 30px;
+
+		background: #fcfcfc;
+		border: 1px solid #aaa;
+
+		text-indent: 40px;
+
+		font-family: "QS_Book";
+		font-size: 1.2vw;
+	}
+
+	.fa-search { 
+		position: absolute;
+		top: 10px;
+		left: 15px;
+		cursor: pointer;
+		color: $cP;
+	}
+} 
+
+#widget_filter{
+	margin: 0 5%;
+	padding: 2%;
+	cursor: pointer;
+	border: 1px solid #aaa;
+	color: #888;
+	position: relative;
+	display: inline-block;
+}
+#filter{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: $cT;
+	z-index: 101;
+	display: none;
+	@include user-select(none);
+
+	.filter_news{ display: none; }
+
+	#filter_content_wrapper{
+		width: 90%;
+		height: 80%;
+		margin: 2.5% auto;
+		padding: 2%;
+		background-color: white;
+		border-radius: 5px;
+		@include setText(1.75vw, $cText, "QS_Book");
+	}
+	#filter_title{
+		@include setText(3.5vw, $cText, "QS_Book");
+	}
+	#filter_subtitle{
+		@include setText(2.5vw, $cText, "QS_Book");
+		margin: 2% 0;
+	}
+	.filter_content{
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto auto;
+		margin-top: 1%;
+		padding-left: 2.5%;
+
+		#filter_type{
+			width: 80%;
+			margin-top: 2%;
+		}
+		#filter_type > div{
+			text-align: center;
+			display: inline-block;
+			width: 48.5%;
+			padding: 1% 0;
+			@include setText(2vw, $cP, "QS_Book");
+			border: 1px solid $cP;
+			cursor: pointer;
+		}
+		#filter_type > div:first-child{border-radius: 5px 0 0 5px;}
+		#filter_type > div:last-child{border-radius: 0 5px 5px 0;}
+
+		#filter_duration label{ display: inline !important; }
+		#filter_duration label:first-child{
+			margin-right: 10%;
+		}
+		#filter_duration label:last-child{
+			margin-left: 10%;
+		}
+
+	}
+}
+
+#widget_notification{
+	position: relative;
+	.fa-bell{
+		font-size: 2vw;
+		color: $cDrkGrey;
+		cursor: pointer;
+	}
+	.fa-circle{
+		font-size: 0.75vw;
+		color: $cP;
+		position: absolute;
+		top: 0vw;
+	}
+	#isNotif{
+		//display: none;
+	}
+
+	#notification_wrapper{
+		width: 12.5vw;
+		height: (3*5)+3+vw;
+		position: absolute;
+		top: 2.25vw;
+		font-family: "QS_Book";
+		display: none;
+		
+		.notification{
+			display: block;
+			height: 5vw;
+			padding: 0.5vw;
+			background-color: white;
+		}
+
+		.notification:hover{
+			background-color: $cP;
+		}
+	}
+}
+
+#widget_login{
+
+	#notLogged{
+		@include setText(1.5vw, $cText, "QS_Book");
+		cursor: pointer;
+	}
+	#notLogged:hover{
+		//animation: login_animation 2s infinite; 
+	}
+
+	#Logged{
+		display: none;
+	}
+}
+
+%anime_wrapper{
+	border: 1px solid $cS;
+	@include border-radius(15px);
+	margin: auto auto;
+	background-size: cover;
+	cursor: pointer;
+}
+
+.content{
+	grid-template-rows: auto auto auto auto;
+	grid-area: main-content;
+	grid-template-areas:
+	"latest-update"
+	"top-airing"
+	"latest-news"
+	"promotion";
+	grid-row-gap: 2.5vw;
+
+	padding: 7vw 2vw 5vw 2vw;
+
+	.section_title{
+		grid-area: section_title;
+		margin-bottom: 2.5%;
+	}
+	
+	.pagination{
+		position: relative;
+		right: 5%;
+		grid-area: pagination;
+		padding-bottom: 2.5vw;
+	}
+
+	.latest_update{
+		grid-template-row: auto auto;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto auto;
+		grid-area: latest-update;
+		grid-template-areas:
+		"section_title pagination"
+		"latest_update_wrapper latest_update_wrapper";
+
+		.latest_update_wrapper{
+			grid-area: latest_update_wrapper;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+
+			div{
+				@extend %anime_wrapper;
+				width: 80%;
+				height: 20vw;
+			}
+			
+			span{
+				position: relative;
+				top: .5vw;
+				text-align: center;
+				@include setText(1.5vw, $cDrkBlue, "QS_Light");
+			}
+		}
+	}
+
+	.top_airing{
+		grid-area: top-airing;
+
+		.top_airing_wrapper{
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+			div{
+				@extend %anime_wrapper;
+				width: 90%;
+				height: 18vw;
+			}
+
+			button{
+				position: relative;
+				top: .5vw;
+				background-color: $cBlueLt;
+				border: none;
+				margin: .1vw 2vw;
+				@include border-radius(50px);
+				outline: none;
+				cursor: pointer;
+				@include setText(1.5vw, white, "QS_Light");
+			}
+		}
+	}
+
+	.latest_update_wrapper,
+	.top_airing_wrapper{
+		div::before{
+			content:"";
+			height: 100%;
+			display: block;
+			background-color: rgba(92,98,117,.6);
+			@include border-radius(15px);
+			@include setText(3vw, white, "QS_Light");
+			@include transition(all 0.25s ease);
+		}
+
+		div::after{
+			content: attr(title);
+			display: flex;
+			align-items: center;
+			text-align: center;
+			justify-content: center;
+			position: relative;
+			top: -20vw;
+			height: 20vw;
+			width: 100%;
+			@include setText(2.5vw, white, "QS_Light");
+			@include transition(all 0.25s ease);
+		}
+
+		div:hover:after,
+		div:hover:before{
+			opacity: 0;
+		}
+	}
+
+	.latest_news{
+		grid-area: latest-news;
+
+		.latest_news_wrapper{
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+			height: 18vw;
+			margin: 2.5% 0;
+		}
+
+		.latest_news_wrapper > span{
+			@extend %anime_wrapper;
+			width: 90%;
+			height: 100%;
+		}
+
+		.latest_news_wrapper > div{
+			grid-column: 2/6;
+			padding-left: 1%;
+
+
+			.news_title{ 
+				@include setText(2vw, $cP, "QS_Book");
+				cursor: pointer;
+			}
+			.news_content{ 
+				@include setText(1.25vw, $cText, "QS_Book"); 
+				width: 90%;
+				padding: 1% 0;
+				text-align: justify;
+			}
+			a{
+				@include setText(1.25vw, $cP, "QS_Book"); 
+			}
+			a:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.promotion{
+		.promotion_wrapper{
+			background-color: $cP;
+			width: 95 - 2 * 2.5%;
+			height: 30vw;
+			@include setText(2.5vw, white, "QS_Book");
+			padding: 2.5%;
+		}
+
+		button{
+			position: relative;
+			top: 200px;
+			background-color: white;
+			border: none;
+			margin: .1vw 2vw;
+			@include border-radius(50px);
+			width: 15vw;
+			height: 3vw;
+			outline: none;
+			cursor: pointer;
+			@include setText(1.5vw, $cBlueLt, "QS_Light");
+		}
+	}
+}

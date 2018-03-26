@@ -1,0 +1,356 @@
+.page {
+  grid-template-columns: 15vw 83.5vw;
+  grid-template-rows: auto auto;
+  grid-template-areas: "header widget" "header main-content";
+}
+
+.widget {
+  box-shadow: 0px -3px 30px #5c6275;
+  position: fixed;
+  z-index: 99;
+  background-color: white;
+  grid-area: widget;
+  padding: 1.5vw 2vw;
+  grid-template-columns: 3fr 2fr 5vw 1fr;
+  font-family: "QS_Book";
+}
+
+#widget_search {
+  position: relative;
+  display: inline-block;
+  color: #aaa;
+  font-size: 16px;
+}
+#widget_search input {
+  width: 42.5vw;
+  height: 30px;
+  background: #fcfcfc;
+  border: 1px solid #aaa;
+  text-indent: 40px;
+  font-family: "QS_Book";
+  font-size: 1.2vw;
+}
+#widget_search .fa-search {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  cursor: pointer;
+  color: #42beff;
+}
+
+#widget_filter {
+  margin: 0 5%;
+  padding: 2%;
+  cursor: pointer;
+  border: 1px solid #aaa;
+  color: #888;
+  position: relative;
+  display: inline-block;
+}
+
+#filter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #bbcbdb;
+  z-index: 101;
+  display: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#filter .filter_news {
+  display: none;
+}
+#filter #filter_content_wrapper {
+  width: 90%;
+  height: 80%;
+  margin: 2.5% auto;
+  padding: 2%;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 1.75vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#filter #filter_title {
+  font-size: 3.5vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#filter #filter_subtitle {
+  font-size: 2.5vw;
+  color: #888;
+  font-family: "QS_Book";
+  margin: 2% 0;
+}
+#filter .filter_content {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  margin-top: 1%;
+  padding-left: 2.5%;
+}
+#filter .filter_content #filter_type {
+  width: 80%;
+  margin-top: 2%;
+}
+#filter .filter_content #filter_type > div {
+  text-align: center;
+  display: inline-block;
+  width: 48.5%;
+  padding: 1% 0;
+  font-size: 2vw;
+  color: #42beff;
+  font-family: "QS_Book";
+  border: 1px solid #42beff;
+  cursor: pointer;
+}
+#filter .filter_content #filter_type > div:first-child {
+  border-radius: 5px 0 0 5px;
+}
+#filter .filter_content #filter_type > div:last-child {
+  border-radius: 0 5px 5px 0;
+}
+#filter .filter_content #filter_duration label {
+  display: inline !important;
+}
+#filter .filter_content #filter_duration label:first-child {
+  margin-right: 10%;
+}
+#filter .filter_content #filter_duration label:last-child {
+  margin-left: 10%;
+}
+
+#widget_notification {
+  position: relative;
+}
+#widget_notification .fa-bell {
+  font-size: 2vw;
+  color: #aac7dd;
+  cursor: pointer;
+}
+#widget_notification .fa-circle {
+  font-size: 0.75vw;
+  color: #42beff;
+  position: absolute;
+  top: 0vw;
+}
+#widget_notification #notification_wrapper {
+  width: 12.5vw;
+  height: 18vw;
+  position: absolute;
+  top: 2.25vw;
+  font-family: "QS_Book";
+  display: none;
+}
+#widget_notification #notification_wrapper .notification {
+  display: block;
+  height: 5vw;
+  padding: 0.5vw;
+  background-color: white;
+}
+#widget_notification #notification_wrapper .notification:hover {
+  background-color: #42beff;
+}
+
+#widget_login #notLogged {
+  font-size: 1.5vw;
+  color: #888;
+  font-family: "QS_Book";
+  cursor: pointer;
+}
+#widget_login #Logged {
+  display: none;
+}
+
+.content .latest_update .latest_update_wrapper div, .content .top_airing .top_airing_wrapper div, .content .latest_news .latest_news_wrapper > span {
+  border: 1px solid #d5dfe8;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  border-radius: 15px;
+  margin: auto auto;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.content {
+  grid-template-rows: auto auto auto auto;
+  grid-area: main-content;
+  grid-template-areas: "latest-update" "top-airing" "latest-news" "promotion";
+  grid-row-gap: 2.5vw;
+  padding: 7vw 2vw 5vw 2vw;
+}
+.content .section_title {
+  grid-area: section_title;
+  margin-bottom: 2.5%;
+}
+.content .pagination {
+  position: relative;
+  right: 5%;
+  grid-area: pagination;
+  padding-bottom: 2.5vw;
+}
+.content .latest_update {
+  grid-template-row: auto auto;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  grid-area: latest-update;
+  grid-template-areas: "section_title pagination" "latest_update_wrapper latest_update_wrapper";
+}
+.content .latest_update .latest_update_wrapper {
+  grid-area: latest_update_wrapper;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.content .latest_update .latest_update_wrapper div {
+  width: 80%;
+  height: 20vw;
+}
+.content .latest_update .latest_update_wrapper span {
+  position: relative;
+  top: .5vw;
+  text-align: center;
+  font-size: 1.5vw;
+  color: #5c6275;
+  font-family: "QS_Light";
+}
+.content .top_airing {
+  grid-area: top-airing;
+}
+.content .top_airing .top_airing_wrapper {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.content .top_airing .top_airing_wrapper div {
+  width: 90%;
+  height: 18vw;
+}
+.content .top_airing .top_airing_wrapper button {
+  position: relative;
+  top: .5vw;
+  background-color: #42beff;
+  border: none;
+  margin: .1vw 2vw;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  border-radius: 50px;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.5vw;
+  color: white;
+  font-family: "QS_Light";
+}
+.content .latest_update_wrapper div::before,
+.content .top_airing_wrapper div::before {
+  content: "";
+  height: 100%;
+  display: block;
+  background-color: rgba(92, 98, 117, 0.6);
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  border-radius: 15px;
+  font-size: 3vw;
+  color: white;
+  font-family: "QS_Light";
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.content .latest_update_wrapper div::after,
+.content .top_airing_wrapper div::after {
+  content: attr(title);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  top: -20vw;
+  height: 20vw;
+  width: 100%;
+  font-size: 2.5vw;
+  color: white;
+  font-family: "QS_Light";
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.content .latest_update_wrapper div:hover:after,
+.content .latest_update_wrapper div:hover:before,
+.content .top_airing_wrapper div:hover:after,
+.content .top_airing_wrapper div:hover:before {
+  opacity: 0;
+}
+.content .latest_news {
+  grid-area: latest-news;
+}
+.content .latest_news .latest_news_wrapper {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  height: 18vw;
+  margin: 2.5% 0;
+}
+.content .latest_news .latest_news_wrapper > span {
+  width: 90%;
+  height: 100%;
+}
+.content .latest_news .latest_news_wrapper > div {
+  grid-column: 2/6;
+  padding-left: 1%;
+}
+.content .latest_news .latest_news_wrapper > div .news_title {
+  font-size: 2vw;
+  color: #42beff;
+  font-family: "QS_Book";
+  cursor: pointer;
+}
+.content .latest_news .latest_news_wrapper > div .news_content {
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+  width: 90%;
+  padding: 1% 0;
+  text-align: justify;
+}
+.content .latest_news .latest_news_wrapper > div a {
+  font-size: 1.25vw;
+  color: #42beff;
+  font-family: "QS_Book";
+}
+.content .latest_news .latest_news_wrapper > div a:hover {
+  text-decoration: underline;
+}
+.content .promotion .promotion_wrapper {
+  background-color: #42beff;
+  width: 90%;
+  height: 30vw;
+  font-size: 2.5vw;
+  color: white;
+  font-family: "QS_Book";
+  padding: 2.5%;
+}
+.content .promotion button {
+  position: relative;
+  top: 200px;
+  background-color: white;
+  border: none;
+  margin: .1vw 2vw;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  border-radius: 50px;
+  width: 15vw;
+  height: 3vw;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.5vw;
+  color: #42beff;
+  font-family: "QS_Light";
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,208 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.grid-container {
+  display: grid;
+}
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: auto;
+}
+
+.navbar {
+  grid-area: header;
+  grid-template-rows: auto 1fr 3fr;
+  background-color: #d5dfe8;
+  width: 15vw;
+  position: fixed;
+  z-index: 100;
+  font-family: "QS_Book";
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.navbar .grid-container > a:hover {
+  color: white;
+  background-color: #42beff;
+}
+
+.logo {
+  font-size: 2.75vw;
+  text-align: center;
+  padding: 20px 0;
+  color: #5c6275;
+}
+
+.nav {
+  font-size: 1.5vw;
+  padding: 5% 15%;
+  color: #878da0;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.nav .nav_title, .nav .nav_subnav {
+  font-size: 1vw;
+  font-family: "QS_Bold";
+  padding-bottom: 0.5vw;
+  color: #5c6275;
+}
+.nav .nav_subcontent {
+  display: block;
+  font-size: 1.25vw;
+  padding: 0.5vw 1vw;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.nav .nav_subcontent:hover {
+  color: white;
+}
+.nav .nav_subnav {
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  color: #878da0;
+}
+
+.nav > .nav_subnav:hover {
+  color: white;
+}
+
+#nav_3 {
+  background-color: #bbcbdb;
+}
+
+#nav_shop {
+  font-size: 1.25vw;
+  padding-bottom: 1vw;
+  font-family: "QS_Bold";
+  color: #5c6275;
+}
+
+#nav_shop + i {
+  margin: 0 30%;
+}
+
+#active {
+  background-color: #42beff !important;
+  color: white !important;
+}
+
+.custom_input_container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.custom_input_container input[type="radio"],
+.custom_input_container input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.custom_input_container .custom_radio, .custom_input_container .custom_checkbox {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  transition: all 0.25s ease;
+}
+.custom_input_container .custom_radio {
+  border-radius: 50%;
+}
+.custom_input_container .custom_checkbox {
+  border-radius: 2px;
+}
+
+.custom_input_container:hover input[type="radio"] ~ .custom_radio,
+.custom_input_container:hover input[type="checkbox"] ~ .custom_checkbox {
+  background-color: #ccc;
+}
+
+.custom_input_container input[type="radio"]:checked ~ .custom_radio,
+.custom_input_container input[type="checkbox"]:checked ~ .custom_checkbox {
+  background-color: #42beff;
+}
+
+.close_button {
+  position: relative;
+  top: 0;
+  float: right;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.section_title {
+  font-size: 2vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+
+.pagination {
+  display: inline-block;
+}
+.pagination a {
+  font-size: 1.15vw;
+  color: #888;
+  font-family: "QS_Bold";
+  float: left;
+  border: 1px solid #888;
+  padding: 6px 12px;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.pagination a:first-child {
+  border-radius: 5px 0 0 5px;
+}
+.pagination a:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.pagination a:hover {
+  color: white;
+  background-color: #42beff;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #42beff;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #42beff;
+}
+
+/*# sourceMappingURL=style.css.map */

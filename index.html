@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lumina.to</title>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/index.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+	</head>
+	
+	<body>
+		<div class="page grid-container">
+			<div>
+				<!--Navbar-->
+				<div class="navbar grid-container">
+					<div class="logo"><a href="index.html">Lumina</a></div>
+
+					<div class="grid-container">
+						<a class="nav" href="#">Anime List</a>
+						<a class="nav" href="#">News</a>
+						<a class="nav" id="nav_3" href="#">
+							<div id="nav_shop">
+								<u>OFFICIAL SHOP</u>
+							</div>
+							<i class="fas fa-shopping-bag fa-3x"></i>
+						</a>
+						<div class="nav">
+							<div class="nav_title">
+								LIBRARY
+							</div>
+							<a class="nav_subcontent" href="#">History</a>
+							<a class="nav_subcontent" href="#">Watch Later</a>
+						</div>
+						<div class="nav">
+							<div class="nav_title">
+								SUBSCRIPTION
+							</div>
+							<a class="nav_subcontent" href="#">Title 1</a>
+							<a class="nav_subcontent" href="#">Title 2</a>
+						</div>
+						<div class="nav">
+							<a class="nav_subnav" href="#">About</a><br>
+							<a class="nav_subnav" href="#">FAQ</a>
+							<a class="nav_subnav" href="#">Contact Us</a>
+							<br>
+							<a class="nav_subnav" href="#">Term of Services &copy; 2018 Lumina</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<!--Widget-->
+				<div class="widget grid-container">
+					<form id="widget_search" action="">
+						<span onclick="document.getElementById('widget_search').submit();" class="fa fa-search"></span>
+						<input name="search" placeholder="Search">
+					</form>
+					<div>
+						<span onclick="open_navigation('filter');" id="widget_filter">
+							<i class="fas fa-sliders-h"></i>
+							Filter
+						</span>
+					</div>
+					<div id="widget_notification">
+						<i onclick="open_navigation('notification_wrapper');" class="fas fa-bell"></i>
+						<i id="isNotif" class="fas fa-circle"></i>
+
+						<div id="notification_wrapper">
+							<a href="#" class="notification">
+								Lorem Ipsum
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+						</div>
+					</div>
+					<div id="widget_login">
+						<span id="notLogged">Login</span>
+						<span id="Logged">
+							<!--Isi dengan image-->
+						</span>
+					</div>
+				</div>
+			</div>
+	<!-- widget end -->
+			<div class="content grid-container">
+				<div class="latest_update grid-container">
+					<div style="text-align: right;">
+						<div class="pagination">
+							<a href="#"><i class="fas fa-angle-double-left"></i></a>
+							<a href="#"><i class="fas fa-angle-left"></i></a>
+							<a href="#">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#"><i class="fas fa-angle-right"></i></a>
+							<a href="#"><i class="fas fa-angle-double-right"></i></a>
+						</div>
+					</div>
+					<div class="section_title">
+						Latest Update
+					</div>
+					<div class="latest_update_wrapper grid-container">
+						<div onclick="" title="Yuru Camp" style="background-image: url(assets/image/yurucamp.jpg)">
+						</div>
+						<div onclick="" title="Koi wa Ameagari no You ni" style="background-image: url(assets/image/koiwa.jpg)">
+						</div>
+						<div onclick="" title="Violet Evergarden" style="background-image: url(assets/image/violet.jpg)">
+						</div>
+						<div onclick="" title="Karakai Jouzu no Takagi-san" style="background-image: url(assets/image/karakai.jpg)">
+						</div>
+						<span>Episode 4</span>
+						<span>Episode 5</span>
+						<span>Episode 6</span>
+						<span>Episode 7</span>
+					</div>
+				</div>
+				<div class="top_airing">
+					<div class="section_title">
+						Top 5 Airing Anime
+					</div>
+					<div class="top_airing_wrapper grid-container">
+						<div onclick="" title="Yuru Camp" style="background-image: url(assets/image/yurucamp.jpg)">
+						</div>
+						<div onclick="" title="Yuru Camp" style="background-image: url(assets/image/yurucamp.jpg)">
+						</div>
+						<div onclick="" title="Yuru Camp" style="background-image: url(assets/image/yurucamp.jpg)">
+						</div>
+						<div onclick="" title="Yuru Camp" style="background-image: url(assets/image/yurucamp.jpg)">
+						</div>
+						<div onclick="" title="Yuru Camp" style="background-image: url(assets/image/yurucamp.jpg)">
+						</div>
+						<button onclick="">Subscribe</button>
+						<button onclick="">Subscribe</button>
+						<button onclick="">Subscribe</button>
+						<button onclick="">Subscribe</button>
+						<button onclick="">Subscribe</button>
+					</div>
+				</div>
+				<div class="latest_news">
+					<div class="section_title">
+						Latest News
+					</div>
+					<div class="latest_news_wrapper grid-container">
+						<span onclick="" style="background-image: url(assets/image/yurucamp.jpg)"></span>
+						<div>
+							<div onclick="" class="news_title">Pengaruh Indomie pada kesehatan tubuh</div>
+							<div class="news_content">
+								Indomie adalah merek produk mi instan dari Indonesia. Di Indonesia, Indomie diproduksi oleh PT. Indofood CBP Sukses Makmur Tbk. Produk dari perusahaan milik Sudono Salim ini mulai dibuat pertama kali pada pertengahan tahun 1972, dahulu diproduksi oleh PT. Sanmaru Food Manufacturing Co. Ltd., dan pertama kali hadir dengan rasa Ayam dan Udang.
+							</div>
+							<a href="#">Read More &gt;&gt;</a>
+						</div>
+					</div>
+					<div class="latest_news_wrapper grid-container">
+						<span onclick="" style="background-image: url(assets/image/yurucamp.jpg)"></span>
+						<div>
+							<div onclick="" class="news_title">Pengaruh Indomie pada kesehatan tubuh</div>
+							<div class="news_content">
+								Indomie adalah merek produk mi instan dari Indonesia. Di Indonesia, Indomie diproduksi oleh PT. Indofood CBP Sukses Makmur Tbk. Produk dari perusahaan milik Sudono Salim ini mulai dibuat pertama kali pada pertengahan tahun 1972, dahulu diproduksi oleh PT. Sanmaru Food Manufacturing Co. Ltd., dan pertama kali hadir dengan rasa Ayam dan Udang.
+							</div>
+							<a href="#">Read More &gt;&gt;</a>
+						</div>
+					</div>
+				</div>
+				<div class="promotion">
+					<div class="promotion_wrapper">
+						<div>We Have Cool Item in <br>OFFICIAL SHOP</div>
+						<button onclick="">Check Out</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="filter">
+				<form id="filter_content_wrapper"">
+					<span class="close_button" onclick="submit_filter()"> &times; </span>
+					<div id="filter_title">Filter</div>
+					<div class="filter_content grid-container">
+						<div>
+							<div id="filter_subtitle">
+								Type
+							</div>
+							<div id="filter_type">
+								<div id="active" onclick="change_filter(0);">Anime</div><div onclick="change_filter(1);">News</div>
+							</div>
+							<div class="filter_anime" id="filter_duration">
+								<div id="filter_subtitle">
+									Duration
+								</div>
+								<div>
+									<label class="custom_input_container">&le; 4min
+										<input type="radio" checked="checked" name="duration" value="1">
+										<span class="custom_radio"></span>
+									</label>
+									<label class="custom_input_container">23 min
+										<input type="radio" name="duration" value="2">
+										<span class="custom_radio"></span>
+									</label>
+									<label class="custom_input_container">&ge; 23min
+										<input type="radio" name="duration" value="3">
+										<span class="custom_radio"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="filter_news"></div>
+						<div class="filter_anime">
+							<div id="filter_subtitle">
+								Genre
+							</div>
+							<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
+								<div>
+									<label class="custom_input_container">Action
+										<input type="checkbox" name="genre" value="action">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Adventure
+										<input type="checkbox" name="genre" value="adventure">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Comedy
+										<input type="checkbox" name="genre" value="comedy">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Drama
+										<input type="checkbox" name="genre" value="drama">
+										<span class="custom_checkbox"></span>
+									</label>
+								</div>
+								<div>
+									<label class="custom_input_container">Fantasy
+										<input type="checkbox" name="genre" value="fantasy">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Horror
+										<input type="checkbox" name="genre" value="horror">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Magic
+										<input type="checkbox" name="genre" value="magic">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Mystery
+										<input type="checkbox" name="genre" value="mystery">
+										<span class="custom_checkbox"></span>
+									</label>
+								</div>
+								<div>
+									<label class="custom_input_container">Psychological
+										<input type="checkbox" name="genre" value="psychological">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Romance
+										<input type="checkbox" name="genre" value="romance">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Sci-Fi
+										<input type="checkbox" name="genre" value="sci_fi">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Slice of Life
+										<input type="checkbox" name="genre" value="slice_of_life">
+										<span class="custom_checkbox"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="filter_news" style="grid-column: 1/3;">
+							<div id="filter_subtitle">
+								Tags
+							</div>
+							<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
+								<div>
+									<label class="custom_input_container">Anime
+										<input type="checkbox" name="tags" value="anime">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Culinary
+										<input type="checkbox" name="tags" value="culinary">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Events
+										<input type="checkbox" name="tags" value="events">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Hobby
+										<input type="checkbox" name="tags" value="hobby">
+										<span class="custom_checkbox"></span>
+									</label>
+								</div>
+								<div>
+									<label class="custom_input_container">Japanese Culture
+										<input type="checkbox" name="tags" value="japanese_culture">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Light Novel
+										<input type="checkbox" name="tags" value="light_novel">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Manga
+										<input type="checkbox" name="tags" value="manga">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Movie
+										<input type="checkbox" name="tags" value="movie">
+										<span class="custom_checkbox"></span>
+									</label>
+								</div>
+								<div>
+									<label class="custom_input_container">Music
+										<input type="checkbox" name="tags" value="music">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Place & Travel
+										<input type="checkbox" name="tags" value="place_travel">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Vocaloid
+										<input type="checkbox" name="tags" value="vocaloid">
+										<span class="custom_checkbox"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="filter_anime" style="grid-column: 1/3;">
+							<div id="filter_subtitle">
+								Sub Genre
+							</div>
+							<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
+								<div>
+									<label class="custom_input_container">Cyberpunk
+										<input type="checkbox" name="subgenre" value="cyberpunk">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Demon
+										<input type="checkbox" name="subgenre" value="demon">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Ecchi
+										<input type="checkbox" name="subgenre" value="ecchi">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Game
+										<input type="checkbox" name="subgenre" value="game">
+										<span class="custom_checkbox"></span>
+									</label>
+								</div>
+								<div>
+									<label class="custom_input_container">Harem
+										<input type="checkbox" name="subgenre" value="harem">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Historical
+										<input type="checkbox" name="subgenre" value="historical">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Isekai
+										<input type="checkbox" name="subgenre" value="isekai">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Josei
+										<input type="checkbox" name="subgenre" value="josei">
+										<span class="custom_checkbox"></span>
+									</label>
+								</div>
+								<div>
+									<label class="custom_input_container">Martial Arts
+										<input type="checkbox" name="subgenre" value="martial_arts">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Mecha
+										<input type="checkbox" name="subgenre" value="mecha">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Military
+										<input type="checkbox" name="subgenre" value="military">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Music
+										<input type="checkbox" name="subgenre" value="music">
+										<span class="custom_checkbox"></span>
+									</label>
+								</div>
+								<div>
+									<label class="custom_input_container">Parody
+										<input type="checkbox" name="subgenre" value="parody">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Post-Apocalyptic
+										<input type="checkbox" name="subgenre" value="post_apocalyptic">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Reverse Harem
+										<input type="checkbox" name="subgenre" value="reverse_harem">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">School
+										<input type="checkbox" name="subgenre" value="school">
+										<span class="custom_checkbox"></span>
+									</label>
+								</div>
+								<div>
+									<label class="custom_input_container">Seinen
+										<input type="checkbox" name="subgenre" value="seinen">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Shoujo
+										<input type="checkbox" name="subgenre" value="shoujo">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Shounen
+										<input type="checkbox" name="subgenre" value="shounen">
+										<span class="custom_checkbox"></span>
+									</label>
+									<label class="custom_input_container">Super Power
+										<input type="checkbox" name="subgenre" value="super_power">
+										<span class="custom_checkbox"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="assets/js/script.js"></script>
+</html>

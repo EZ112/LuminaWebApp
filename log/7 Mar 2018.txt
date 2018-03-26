@@ -1,0 +1,6 @@
+basic.scss: (panggil pake @import 'basic';)
+- (body) margin 0 sama overflow hidden
+- (a) color inherit sama text-decoration none
+- $pcolor nnti tinggal diganti
+- $scolor diganti juga
+- mixin border-radius sama mixin transition (panggil pake @include transition(.25s ease in) misal)

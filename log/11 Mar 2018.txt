@@ -1,0 +1,23 @@
+- Removed $pcolor, $scolor from _basic.scss
+- Added:
+  _colors.scss
+
+  $cP //Primary Color
+  $cS //Secondary Color
+
+  $cDrkGreyLt: #e3f3fa;
+  $cDrkGrey  : #aac7dd;
+  $cLgtGretLt: #d5dfe8;
+  $cLgtGrey  : #bbcbdb;
+  $cDrkBlueLt: #878da0;
+  $cDrkBlue  : #5c6275;
+  $cBlueLt   : #42beff;
+  $cBlue     : #0babfe;
+  $cAquaLt   : #18cfff;
+  $cAqua     : #0caefe;
+  $cGreenLt  : #c3eee4;
+  $cGreen    : #4bceaf;
+  $cRedLt    : #ffcad4;
+  $cRed      : #f1637e;
+  $cYellowLt : #ffe4b6;
+  $cYellow   : #ffad1e;

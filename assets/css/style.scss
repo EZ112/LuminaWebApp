@@ -1,0 +1,188 @@
+@import 'basic';
+@import 'colors';
+@import 'functions';
+
+body{
+	@include user-select(none);
+	overflow: auto;
+}
+
+.navbar{
+	grid-area: header;
+ 	grid-template-rows: auto 1fr 3fr;
+	background-color: $cS;
+	width: 15vw;
+	position: fixed;
+	z-index: 100;
+	font-family: "QS_Book";
+
+	grid-row-start: 1;
+  	grid-row-end: 3;
+
+	.grid-container > a:hover{
+		color: white;
+		background-color: $cP;
+	}
+}
+
+.logo {
+	font-size: 2.75vw;
+	text-align: center;
+	padding: 20px 0;
+	color: $cDrkBlue;
+}
+
+.nav{
+	font-size: 1.5vw;
+	padding: 5% 15%;
+	color: $cDrkBlueLt;
+	@include transition(all 0.25s ease);
+
+	.nav_title{
+		font-size: 1vw;
+		font-family: "QS_Bold";
+		padding-bottom: 0.5vw;
+		color: $cDrkBlue;
+	}
+
+	.nav_subcontent{
+		display: block;
+		font-size: 1.25vw;
+		padding: 0.5vw 1vw;
+		@include transition(all 0.25s ease);
+	}
+
+	.nav_subcontent:hover{
+		color: white;
+	}
+
+	.nav_subnav{
+		@extend .nav_title;
+		@include transition(all 0.25s ease);
+		color: $cDrkBlueLt;
+	}
+}
+
+.nav > .nav_subnav:hover{
+	color: white;
+}
+
+#nav_3{ background-color: $cT; }
+#nav_shop{
+	font-size: 1.25vw;
+	padding-bottom: 1vw;
+	font-family: "QS_Bold";
+	color: $cDrkBlue;
+}
+#nav_shop + i{ margin: 0 30%; }
+
+#active{
+	background-color: $cP !important;
+	color: white !important;
+}
+
+.custom_input_container{
+	display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+	cursor: pointer;
+	@include user-select(none);
+
+	input[type="radio"],
+	input[type="checkbox"]{
+		position: absolute;
+    	opacity: 0;
+    	cursor: pointer;
+	}
+
+	%custom_input {
+	    position: absolute;
+	    top: 5px;
+	    left: 0;
+	    height: 20px;
+	    width: 20px;
+	    background-color: #eee;
+	    transition: all 0.25s ease;
+	}
+
+	.custom_radio{
+		@extend %custom_input;
+		border-radius: 50%;
+	}
+
+	.custom_checkbox{ 
+		@extend %custom_input; 
+		border-radius: 2px;
+	}
+}
+
+.custom_input_container:hover input[type="radio"] ~ .custom_radio,
+.custom_input_container:hover input[type="checkbox"] ~ .custom_checkbox{
+    background-color: #ccc;
+}
+
+.custom_input_container input[type="radio"]:checked ~ .custom_radio,
+.custom_input_container input[type="checkbox"]:checked ~ .custom_checkbox {
+    background-color: $cP;
+}
+
+.close_button{
+	position: relative;
+	top: 0;
+	float: right;
+	cursor: pointer;
+	@include user-select(none);
+}
+
+.section_title{
+	@include setText(2vw, $cText, "QS_Book");
+}
+
+.pagination{
+	display: inline-block;
+
+	a{
+		@include setText(1.15vw, $cText, "QS_Bold");
+		float: left;
+		border: 1px solid $cText;
+		padding: 6px 12px;
+		@include transition(all 0.25s ease);
+	}
+
+	a:first-child{ border-radius: 5px 0 0 5px; }
+	a:last-child{ border-radius: 0 5px 5px 0; }
+
+	a:hover{
+		color: white;
+		background-color: $cP;
+	}
+}
+
+/* width */
+::-webkit-scrollbar {
+	//type 1
+    width: 8px;
+
+    //type 2
+    //width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	//type 2
+    //box-shadow: inset 0 0 5px $cS; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+	//type 2
+    background: $cP;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    //optional
+    background: $cP; 
+}
