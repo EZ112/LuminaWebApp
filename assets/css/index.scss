@@ -194,7 +194,7 @@
 	"promotion";
 	grid-row-gap: 2.5vw;
 
-	padding: 7vw 2vw 5vw 2vw;
+	padding: 8vw 4vw 5vw 4vw;
 
 	.section_title{
 		grid-area: section_title;
@@ -337,7 +337,7 @@
 		.promotion_wrapper{
 			background-color: $cP;
 			width: 95 - 2 * 2.5%;
-			height: 30vw;
+			height: 25vw;
 			@include setText(2.5vw, white, "QS_Book");
 			padding: 2.5%;
 		}

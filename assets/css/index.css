@@ -183,7 +183,7 @@
   grid-area: main-content;
   grid-template-areas: "latest-update" "top-airing" "latest-news" "promotion";
   grid-row-gap: 2.5vw;
-  padding: 7vw 2vw 5vw 2vw;
+  padding: 8vw 4vw 5vw 4vw;
 }
 .content .section_title {
   grid-area: section_title;
@@ -328,7 +328,7 @@
 .content .promotion .promotion_wrapper {
   background-color: #42beff;
   width: 90%;
-  height: 30vw;
+  height: 25vw;
   font-size: 2.5vw;
   color: white;
   font-family: "QS_Book";
