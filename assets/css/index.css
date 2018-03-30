@@ -93,6 +93,9 @@
   grid-template-rows: auto auto;
   margin-top: 1%;
   padding-left: 2.5%;
+  /* 		#filter_duration label:last-child{
+  			margin-left: 10%;
+  		} */
 }
 #filter .filter_content #filter_type {
   width: 80%;
@@ -117,12 +120,10 @@
 }
 #filter .filter_content #filter_duration label {
   display: inline !important;
+  margin: 2%;
 }
 #filter .filter_content #filter_duration label:first-child {
-  margin-right: 10%;
-}
-#filter .filter_content #filter_duration label:last-child {
-  margin-left: 10%;
+  margin-left: 0%;
 }
 
 #widget_notification {
@@ -227,6 +228,11 @@
 .content .top_airing .top_airing_wrapper div {
   width: 90%;
   height: 18vw;
+  position: relative;
+}
+.content .top_airing .top_airing_wrapper div:first-child .numbering {
+  color: white;
+  background-color: #42beff;
 }
 .content .top_airing .top_airing_wrapper button {
   position: relative;
@@ -243,6 +249,18 @@
   font-size: 1.5vw;
   color: white;
   font-family: "QS_Light";
+}
+.content .top_airing .top_airing_wrapper .numbering {
+  background-color: white;
+  position: absolute;
+  top: 10%;
+  text-align: center;
+  width: 10%;
+  padding: 2%;
+  display: block;
+  font-size: 1.25vw;
+  color: #42beff;
+  font-family: "QS_Book";
 }
 .content .latest_update_wrapper div::before,
 .content .top_airing_wrapper div::before {

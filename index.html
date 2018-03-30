@@ -123,14 +123,19 @@
 					</div>
 					<div class="top_airing_wrapper grid-container">
 						<div onclick="" title="Yuru Camp" style="background-image: url(assets/image/yurucamp.jpg)">
+							<span class="numbering">1</span>
 						</div>
 						<div onclick="" title="Koi wa Ameagari no You ni" style="background-image: url(assets/image/koiwa.jpg)">
+							<span class="numbering">2</span>
 						</div>
 						<div onclick="" title="Violet Evergarden" style="background-image: url(assets/image/violet.jpg)">
+							<span class="numbering">3</span>
 						</div>
 						<div onclick="" title="Overlord" style="background-image: url(assets/image/overlord.png)">
+							<span class="numbering">4</span>
 						</div>
 						<div onclick="" title="Karakai Jouzu no Takagi-san" style="background-image: url(assets/image/karakai.jpg)">
+							<span class="numbering">5</span>
 						</div>
 						<button onclick="">Subscribe</button>
 						<button onclick="">Subscribe</button>
@@ -175,8 +180,8 @@
 				</div>
 			</div>
 
-			<div id="filter">
-				<form id="filter_content_wrapper"">
+			<div id="filter" onclick="submit_filter()">
+				<form id="filter_content_wrapper" onclick="cancel_propagation()">
 					<span class="close_button" onclick="submit_filter()"> &times; </span>
 					<div id="filter_title">Filter</div>
 					<div class="filter_content grid-container">
@@ -191,235 +196,65 @@
 								<div id="filter_subtitle">
 									Duration
 								</div>
-								<div>
-									<label class="custom_input_container">&le; 10min
-										<input type="radio" checked="checked" name="duration" value="1">
-										<span class="custom_radio"></span>
-									</label>
-									<label class="custom_input_container">23 min
-										<input type="radio" name="duration" value="2">
-										<span class="custom_radio"></span>
-									</label>
-									<label class="custom_input_container">&ge; 23min
-										<input type="radio" name="duration" value="3">
-										<span class="custom_radio"></span>
-									</label>
+								<div id="label_container">
+									<!--Duration disini semua liat js-->
 								</div>
 							</div>
 						</div>
-						<div class="filter_news"></div>
-						<div class="filter_anime">
+						<div class="filter_news">
+							<!--Empty Grid-->
+						</div>
+						<div class="filter_anime" id="filter_genre">
 							<div id="filter_subtitle">
 								Genre
 							</div>
 							<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
-								<div>
-									<label class="custom_input_container">Action
-										<input type="checkbox" name="genre" value="action">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Adventure
-										<input type="checkbox" name="genre" value="adventure">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Comedy
-										<input type="checkbox" name="genre" value="comedy">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Drama
-										<input type="checkbox" name="genre" value="drama">
-										<span class="custom_checkbox"></span>
-									</label>
+								<div class="label_container">
+									<!--Baca JS-->
 								</div>
-								<div>
-									<label class="custom_input_container">Fantasy
-										<input type="checkbox" name="genre" value="fantasy">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Horror
-										<input type="checkbox" name="genre" value="horror">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Magic
-										<input type="checkbox" name="genre" value="magic">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Mystery
-										<input type="checkbox" name="genre" value="mystery">
-										<span class="custom_checkbox"></span>
-									</label>
+								<div class="label_container">
+									<!--Baca JS-->
 								</div>
-								<div>
-									<label class="custom_input_container">Psychological
-										<input type="checkbox" name="genre" value="psychological">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Romance
-										<input type="checkbox" name="genre" value="romance">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Sci-Fi
-										<input type="checkbox" name="genre" value="sci_fi">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Slice of Life
-										<input type="checkbox" name="genre" value="slice_of_life">
-										<span class="custom_checkbox"></span>
-									</label>
+								<div class="label_container">
+									<!--Baca JS-->
 								</div>
 							</div>
 						</div>
-						<div class="filter_news" style="grid-column: 1/3;">
+						<div class="filter_news" style="grid-column: 1/3;" id="filter_tag">
 							<div id="filter_subtitle">
 								Tags
 							</div>
 							<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
-								<div>
-									<label class="custom_input_container">Anime
-										<input type="checkbox" name="tags" value="anime">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Culinary
-										<input type="checkbox" name="tags" value="culinary">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Events
-										<input type="checkbox" name="tags" value="events">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Hobby
-										<input type="checkbox" name="tags" value="hobby">
-										<span class="custom_checkbox"></span>
-									</label>
+								<div class="label_container">
+									<!--Baca JS-->
 								</div>
-								<div>
-									<label class="custom_input_container">Japanese Culture
-										<input type="checkbox" name="tags" value="japanese_culture">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Light Novel
-										<input type="checkbox" name="tags" value="light_novel">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Manga
-										<input type="checkbox" name="tags" value="manga">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Movie
-										<input type="checkbox" name="tags" value="movie">
-										<span class="custom_checkbox"></span>
-									</label>
+								<div class="label_container">
+									<!--Baca JS-->
 								</div>
-								<div>
-									<label class="custom_input_container">Music
-										<input type="checkbox" name="tags" value="music">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Place & Travel
-										<input type="checkbox" name="tags" value="place_travel">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Vocaloid
-										<input type="checkbox" name="tags" value="vocaloid">
-										<span class="custom_checkbox"></span>
-									</label>
+								<div class="label_container">
+									<!--Baca JS-->
 								</div>
 							</div>
 						</div>
-						<div class="filter_anime" style="grid-column: 1/3;">
+						<div class="filter_anime" style="grid-column: 1/3;" id="filter_subgenre">
 							<div id="filter_subtitle">
 								Sub Genre
 							</div>
 							<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
-								<div>
-									<label class="custom_input_container">Cyberpunk
-										<input type="checkbox" name="subgenre" value="cyberpunk">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Demon
-										<input type="checkbox" name="subgenre" value="demon">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Ecchi
-										<input type="checkbox" name="subgenre" value="ecchi">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Game
-										<input type="checkbox" name="subgenre" value="game">
-										<span class="custom_checkbox"></span>
-									</label>
+								<div class="label_container">
+									<!--Baca JS-->
 								</div>
-								<div>
-									<label class="custom_input_container">Harem
-										<input type="checkbox" name="subgenre" value="harem">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Historical
-										<input type="checkbox" name="subgenre" value="historical">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Isekai
-										<input type="checkbox" name="subgenre" value="isekai">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Josei
-										<input type="checkbox" name="subgenre" value="josei">
-										<span class="custom_checkbox"></span>
-									</label>
+								<div class="label_container">
+									<!--Baca JS-->
 								</div>
-								<div>
-									<label class="custom_input_container">Martial Arts
-										<input type="checkbox" name="subgenre" value="martial_arts">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Mecha
-										<input type="checkbox" name="subgenre" value="mecha">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Military
-										<input type="checkbox" name="subgenre" value="military">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Music
-										<input type="checkbox" name="subgenre" value="music">
-										<span class="custom_checkbox"></span>
-									</label>
+								<div class="label_container">
+									<!--Baca JS-->
 								</div>
-								<div>
-									<label class="custom_input_container">Parody
-										<input type="checkbox" name="subgenre" value="parody">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Post-Apocalyptic
-										<input type="checkbox" name="subgenre" value="post_apocalyptic">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Reverse Harem
-										<input type="checkbox" name="subgenre" value="reverse_harem">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">School
-										<input type="checkbox" name="subgenre" value="school">
-										<span class="custom_checkbox"></span>
-									</label>
+								<div class="label_container">
+									<!--Baca JS-->
 								</div>
-								<div>
-									<label class="custom_input_container">Seinen
-										<input type="checkbox" name="subgenre" value="seinen">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Shoujo
-										<input type="checkbox" name="subgenre" value="shoujo">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Shounen
-										<input type="checkbox" name="subgenre" value="shounen">
-										<span class="custom_checkbox"></span>
-									</label>
-									<label class="custom_input_container">Super Power
-										<input type="checkbox" name="subgenre" value="super_power">
-										<span class="custom_checkbox"></span>
-									</label>
+								<div class="label_container">
+									<!--Baca JS-->
 								</div>
 							</div>
 						</div>
@@ -429,4 +264,5 @@
 		</div>
 	</body>
 	<script type="text/javascript" src="assets/js/script.js"></script>
+	<script type="text/javascript" src="assets/js/filter.js"></script>
 </html>
