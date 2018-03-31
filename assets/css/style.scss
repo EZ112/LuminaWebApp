@@ -145,7 +145,7 @@ body{
 	a{
 		@include setText(1.15vw, $cText, "QS_Bold");
 		float: left;
-		border: 1px solid $cText;
+		border: .5px solid $cText;
 		padding: 6px 12px;
 		@include transition(all 0.25s ease);
 	}

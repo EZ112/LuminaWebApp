@@ -357,10 +357,11 @@
   color: white;
   font-family: "QS_Book";
   padding: 2.5%;
+  grid-template-columns: 1fr 1fr;
 }
 .content .promotion button {
   position: relative;
-  top: 200px;
+  top: 15vw;
   background-color: white;
   border: none;
   margin: .1vw 2vw;
@@ -375,6 +376,11 @@
   font-size: 1.5vw;
   color: #42beff;
   font-family: "QS_Light";
+}
+.content .promotion .promotion_image {
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /*# sourceMappingURL=index.css.map */
