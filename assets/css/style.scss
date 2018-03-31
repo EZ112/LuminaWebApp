@@ -33,7 +33,7 @@ body{
 }
 
 .nav_wrapper{
-	height: 90vh;
+	max-height: 90vh;
 	overflow: auto;
 }
 
@@ -54,10 +54,16 @@ body{
 		color: $cDrkBlue;
 	}
 
+	.subscription{
+		max-height: 25vh;
+		overflow: hidden;
+		@include transition(all 0.25s ease);
+	}
+
 	.nav_subcontent{
 		display: block;
 		font-size: 1.25vw;
-		padding: 0.5vw 0vw;
+		padding: 0.5vw 1vw;
 		@include transition(all 0.25s ease);
 	}
 
@@ -70,10 +76,14 @@ body{
 		@include transition(all 0.25s ease);
 		color: $cDrkBlueLt;
 	}
+
+	#show_more{
+		@include setText(1vw, $cText, "QS_Book");
+	}
 }
 
 .nav:last-child{
-	padding-bottom: 30%;
+	padding-bottom: 20%;
 }
 
 .nav > .nav_subnav:hover{

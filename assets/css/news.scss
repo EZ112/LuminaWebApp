@@ -2,7 +2,7 @@
 @import 'functions';
 
 .page{
-	grid-template-columns: 15vw 15vw 69.5vw;
+	grid-template-columns: 15vw 15vw 69vw;
 	grid-template-rows: auto auto;
 	grid-template-areas: "header list content";
 }
@@ -13,7 +13,7 @@
 	top: 0;
 	left: 15vw;
 	width: 15vw;
-	height: 100vh;
+	max-height: 100vh;
 	overflow: auto;
 
 	.title{	

@@ -1,3 +1,18 @@
+$(document).ready(function(){
+    $('#show_more').click(function() {
+    	if($(this).attr('class') == ''){
+    		$(this).prev().css("max-height","none");
+    		$(this).attr('class','open');
+    		$(this).html('<i class="fas fa-chevron-up"></i> Show Less');
+    	}
+    	else{
+    		$(this).prev().css("max-height","25vh");
+    		$(this).attr('class','');
+    		$(this).html('<i class="fas fa-chevron-down"></i> Show 10 More');
+    	}
+    });
+});
+
 function open_navigation(x){
 	var obj = document.getElementById(x);
 	//alert(obj.style.display);
@@ -36,4 +51,8 @@ function anime_object(title, filter, img_src){
 		}
 		this.filter.pop();
 	}*/
+}
+
+function show_more(x){
+	x.style.maxHeight = "none";
 }
