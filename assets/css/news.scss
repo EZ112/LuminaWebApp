@@ -1,0 +1,66 @@
+@import 'colors';
+@import 'functions';
+
+.page{
+	grid-template-columns: 15vw 15vw 69.5vw;
+	grid-template-rows: auto auto;
+	grid-template-areas: "header list content";
+}
+
+.news_list{
+	grid-area: list;
+	position: fixed;
+	top: 0;
+	left: 15vw;
+	width: 15vw;
+	overflow-y: scroll;
+
+	.title{	
+		@include setText(calc(5px + 0.75vw), black, "QS_Bold");	
+		text-align: center; 
+		margin: 5% 0;
+	}
+
+	a{
+		display: block;
+		padding: 5% 7.5% 5% 7.5%;
+
+		.date{ @include setText(calc(5px + 0.75vw), black, "QS_Bold"); }
+	}
+
+	.list_content{
+		@include setText(calc(5px + 0.75vw), $cP, "QS_Book");
+		@include transition(background-color 0.25s ease);
+		padding-top: 3%;
+		width: 100%;
+	}
+	a:hover .list_content{ text-decoration: underline; }
+	a:hover, a:active{ background-color: $cP; }
+	a:hover .list_content, a:hover .date { color: white; }
+}
+
+.news_content{
+	grid-area: content;
+
+	.title, .date{
+		text-align: center;
+		margin-top: 5%;
+		@include setText(calc(10px + 1.5vw), $cText, "QS_Light");
+	}
+	.date{
+		text-align: center;
+		margin-top: 0.5%;
+		@include setText(calc(5px + 1vw), $cText, "QS_Light");
+	}
+	.content{
+		padding: 5% 2.5% 2.5% 2.5%;
+		text-align: justify;
+		@include setText(calc(7.5px + 0.75vw), $cText, "QS_Light");
+
+		img{
+			float: right;
+			height: 50vh;
+			padding: 0 0 0 5%;
+		}
+	}
+}

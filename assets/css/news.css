@@ -1,0 +1,82 @@
+.page {
+  grid-template-columns: 15vw 15vw 69.5vw;
+  grid-template-rows: auto auto;
+  grid-template-areas: "header list content";
+}
+
+.news_list {
+  grid-area: list;
+  position: fixed;
+  top: 0;
+  left: 15vw;
+  width: 15vw;
+  overflow-y: scroll;
+}
+.news_list .title {
+  font-size: calc(5px + 0.75vw);
+  color: black;
+  font-family: "QS_Bold";
+  text-align: center;
+  margin: 5% 0;
+}
+.news_list a {
+  display: block;
+  padding: 5% 7.5% 5% 7.5%;
+}
+.news_list a .date {
+  font-size: calc(5px + 0.75vw);
+  color: black;
+  font-family: "QS_Bold";
+}
+.news_list .list_content {
+  font-size: calc(5px + 0.75vw);
+  color: #42beff;
+  font-family: "QS_Book";
+  -webkit-transition: background-color 0.25s ease;
+  -moz-transition: background-color 0.25s ease;
+  -ms-transition: background-color 0.25s ease;
+  transition: background-color 0.25s ease;
+  padding-top: 3%;
+  width: 100%;
+}
+.news_list a:hover .list_content {
+  text-decoration: underline;
+}
+.news_list a:hover, .news_list a:active {
+  background-color: #42beff;
+}
+.news_list a:hover .list_content, .news_list a:hover .date {
+  color: white;
+}
+
+.news_content {
+  grid-area: content;
+}
+.news_content .title, .news_content .date {
+  text-align: center;
+  margin-top: 5%;
+  font-size: calc(10px + 1.5vw);
+  color: #888;
+  font-family: "QS_Light";
+}
+.news_content .date {
+  text-align: center;
+  margin-top: 0.5%;
+  font-size: calc(5px + 1vw);
+  color: #888;
+  font-family: "QS_Light";
+}
+.news_content .content {
+  padding: 5% 2.5% 2.5% 2.5%;
+  text-align: justify;
+  font-size: calc(7.5px + 0.75vw);
+  color: #888;
+  font-family: "QS_Light";
+}
+.news_content .content img {
+  float: right;
+  height: 50vh;
+  padding: 0 0 0 5%;
+}
+
+/*# sourceMappingURL=news.css.map */
