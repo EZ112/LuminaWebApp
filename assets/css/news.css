@@ -10,7 +10,8 @@
   top: 0;
   left: 15vw;
   width: 15vw;
-  overflow-y: scroll;
+  height: 100vh;
+  overflow: auto;
 }
 .news_list .title {
   font-size: calc(5px + 0.75vw);
@@ -47,6 +48,10 @@
 }
 .news_list a:hover .list_content, .news_list a:hover .date {
   color: white;
+}
+
+.news_list::-webkit-scrollbar {
+  display: none !important;
 }
 
 .news_content {

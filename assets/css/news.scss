@@ -13,7 +13,8 @@
 	top: 0;
 	left: 15vw;
 	width: 15vw;
-	overflow-y: scroll;
+	height: 100vh;
+	overflow: auto;
 
 	.title{	
 		@include setText(calc(5px + 0.75vw), black, "QS_Bold");	
@@ -37,6 +38,10 @@
 	a:hover .list_content{ text-decoration: underline; }
 	a:hover, a:active{ background-color: $cP; }
 	a:hover .list_content, a:hover .date { color: white; }
+}
+
+.news_list::-webkit-scrollbar {
+	display: none !important;
 }
 
 .news_content{

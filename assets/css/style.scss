@@ -32,6 +32,15 @@ body{
 	color: $cDrkBlue;
 }
 
+.nav_wrapper{
+	height: 90vh;
+	overflow: auto;
+}
+
+.nav_wrapper::-webkit-scrollbar {
+	display: none !important;
+}
+
 .nav{
 	font-size: 1.5vw;
 	padding: 5% 15%;
@@ -48,7 +57,7 @@ body{
 	.nav_subcontent{
 		display: block;
 		font-size: 1.25vw;
-		padding: 0.5vw 1vw;
+		padding: 0.5vw 0vw;
 		@include transition(all 0.25s ease);
 	}
 
@@ -61,6 +70,10 @@ body{
 		@include transition(all 0.25s ease);
 		color: $cDrkBlueLt;
 	}
+}
+
+.nav:last-child{
+	padding-bottom: 30%;
 }
 
 .nav > .nav_subnav:hover{
