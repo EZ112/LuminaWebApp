@@ -233,6 +233,11 @@
 				text-align: center;
 				@include setText(1.5vw, $cDrkBlue, "QS_Light");
 			}
+
+			div::after{
+				top: -20vw;
+				height: 20vw;
+			}
 		}
 	}
 
@@ -272,9 +277,14 @@
 				top: 10%;
 				text-align: center;
 				width: 10%;
-				padding: 2%;
+				padding: 4%;
 				display: block;
-				@include setText(1.25vw, $cP, "QS_Book");
+				@include setText(1.5vw, $cP, "QS_Book");
+			}
+
+			div::after{
+				top: -18vw;
+				height: 18vw;
 			}
 		}
 	}
@@ -298,10 +308,8 @@
 			text-align: center;
 			justify-content: center;
 			position: relative;
-			top: -20vw;
-			height: 20vw;
 			width: 100%;
-			@include setText(2.5vw, white, "QS_Light");
+			@include setText(2vw, white, "QS_Light");
 			@include transition(all 0.25s ease);
 		}
 

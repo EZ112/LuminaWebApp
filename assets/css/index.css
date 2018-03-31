@@ -219,6 +219,10 @@
   color: #5c6275;
   font-family: "QS_Light";
 }
+.content .latest_update .latest_update_wrapper div::after {
+  top: -20vw;
+  height: 20vw;
+}
 .content .top_airing {
   grid-area: top-airing;
 }
@@ -256,11 +260,15 @@
   top: 10%;
   text-align: center;
   width: 10%;
-  padding: 2%;
+  padding: 4%;
   display: block;
-  font-size: 1.25vw;
+  font-size: 1.5vw;
   color: #42beff;
   font-family: "QS_Book";
+}
+.content .top_airing .top_airing_wrapper div::after {
+  top: -18vw;
+  height: 18vw;
 }
 .content .latest_update_wrapper div::before,
 .content .top_airing_wrapper div::before {
@@ -288,10 +296,8 @@
   text-align: center;
   justify-content: center;
   position: relative;
-  top: -20vw;
-  height: 20vw;
   width: 100%;
-  font-size: 2.5vw;
+  font-size: 2vw;
   color: white;
   font-family: "QS_Light";
   -webkit-transition: all 0.25s ease;
