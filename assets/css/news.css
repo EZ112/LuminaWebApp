@@ -78,10 +78,19 @@
   color: #888;
   font-family: "QS_Light";
 }
-.news_content .content img {
+.news_content .content .img_container {
   float: right;
-  height: 50vh;
-  padding: 0 0 0 5%;
+  padding: 0 0 0 2%;
+  position: relative;
+  width: 30vw;
+  height: 80vh;
+}
+.news_content .content .img_container img {
+  width: 30vw;
+  height: 80vh;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 
 /*# sourceMappingURL=news.css.map */

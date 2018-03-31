@@ -62,10 +62,20 @@
 		text-align: justify;
 		@include setText(calc(7.5px + 0.75vw), $cText, "QS_Light");
 
-		img{
+		.img_container{
 			float: right;
-			height: 50vh;
-			padding: 0 0 0 5%;
+			padding: 0 0 0 2%;
+			position: relative;
+			width: 30vw;
+			height: 80vh;
+
+			img{ 
+				width: 30vw;
+				height: 80vh;
+				position: absolute;
+				top: 0;
+				z-index: -1;
+			}
 		}
 	}
 }
