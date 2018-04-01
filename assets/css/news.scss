@@ -46,6 +46,7 @@
 
 .news_content{
 	grid-area: content;
+	width: 45vw;
 
 	.title, .date{
 		text-align: center;
@@ -58,24 +59,34 @@
 		@include setText(calc(5px + 1vw), $cText, "QS_Light");
 	}
 	.content{
-		padding: 5% 2.5% 2.5% 2.5%;
+		padding: 10% 2.5% 2.5% 2.5%;
 		text-align: justify;
-		@include setText(calc(7.5px + 0.75vw), $cText, "QS_Light");
+		text-shadow: 0 0 10px white, 
+					 0 0 10px white, 
+					 0 0 10px white, 
+					 0 0 10px white, 
+					 0 0 10px white,
+					 0 0 10px white;
+		@include setText(calc(7.5px + 0.75vw), black, "QS_Light");
 
 		.img_container{
 			float: right;
 			padding: 0 0 0 2%;
-			position: relative;
-			width: 30vw;
-			height: 80vh;
+			position: fixed;
+			left: 70vw;
+			z-index: -1;
 
 			img{ 
 				width: 30vw;
-				height: 80vh;
 				position: absolute;
 				top: 0;
-				z-index: -1;
 			}
+		}
+
+		.img_container:after{
+			content: "";
+			display: table;
+			clear: both;
 		}
 	}
 }
