@@ -68,7 +68,7 @@ body {
   color: #5c6275;
 }
 .nav .subscription {
-  max-height: 25vh;
+  max-height: 15vw;
   overflow: hidden;
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
