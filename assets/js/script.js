@@ -6,7 +6,7 @@ $(document).ready(function(){
     		$(this).html('<i class="fas fa-chevron-up"></i> Show Less');
     	}
     	else{
-    		$(this).prev().css("max-height","25vh");
+    		$(this).prev().css("max-height","15vw");
     		$(this).attr('class','');
     		$(this).html('<i class="fas fa-chevron-down"></i> Show 10 More');
     	}
