@@ -56,7 +56,7 @@
 
 .news_content {
   grid-area: content;
-  width: 45vw;
+  width: 50vw;
 }
 .news_content .title, .news_content .date {
   text-align: center;
@@ -84,11 +84,11 @@
   float: right;
   padding: 0 0 0 2%;
   position: fixed;
-  left: 70vw;
+  left: 80vw;
   z-index: -1;
 }
 .news_content .content .img_container img {
-  width: 30vw;
+  width: 20vw;
   position: absolute;
   top: 0;
 }
