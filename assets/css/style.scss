@@ -7,8 +7,11 @@ body{
 	overflow: auto;
 }
 
-.navbar{
+.navbar-area{
 	grid-area: header;
+}
+
+.navbar{
  	grid-template-rows: auto 1fr 3fr;
 	background-color: $cS;
 	width: 15vw;
@@ -28,7 +31,7 @@ body{
 .logo {
 	font-size: 2.5vw;
 	text-align: center;
-	padding: .7vw 0;
+	line-height: 4.5vw;
 	color: $cDrkBlue;
 }
 

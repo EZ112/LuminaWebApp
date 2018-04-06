@@ -1,7 +1,11 @@
 .page {
-  grid-template-columns: 15vw 83.5vw;
-  grid-template-rows: auto auto;
+  grid-template-columns: 15vw auto;
+  grid-template-rows: 4.5vw auto;
   grid-template-areas: "header widget" "header main-content";
+}
+
+.widget-area {
+  grid-area: widget;
 }
 
 .widget {
@@ -9,7 +13,6 @@
   position: fixed;
   z-index: 99;
   background-color: white;
-  grid-area: widget;
   padding: 1vw 2vw;
   grid-template-columns: 3fr 2fr 5vw 1fr;
   font-family: "QS_Book";
@@ -179,12 +182,15 @@
   cursor: pointer;
 }
 
+.content-area {
+  grid-area: main-content;
+}
+
 .content {
   grid-template-rows: auto auto auto auto;
-  grid-area: main-content;
   grid-template-areas: "latest-update" "top-airing" "latest-news" "promotion";
   grid-row-gap: 2.5vw;
-  padding: 8vw 4vw 5vw 4vw;
+  padding: 4vw 4vw 5vw 4vw;
 }
 .content .section_title {
   grid-area: section_title;
