@@ -4,13 +4,15 @@
 .page{
 	grid-template-columns: 15vw 15vw 69vw;
 	grid-template-rows: auto auto;
-	grid-template-areas: "header list content";
+	grid-template-areas: 
+	"header widget widget" 
+	"header list content";
 }
 
 .news_list{
 	grid-area: list;
 	position: fixed;
-	top: 0;
+	top: 5vw;
 	left: 15vw;
 	width: 15vw;
 	max-height: 100vh;
@@ -46,6 +48,7 @@
 
 .news_content_wrapper{
 	grid-area: content;
+	margin-top: 5vw;
 }
 
 .news_content{
@@ -63,7 +66,7 @@
 		@include setText(calc(5px + 1vw), $cText, "QS_Light");
 	}
 	.content{
-		padding: 10% 2.5% 2.5% 2.5%;
+		padding: 5% 2.5% 2.5% 2.5%;
 		text-align: justify;
 		text-shadow: 0 0 10px white, 
 					 0 0 10px white, 

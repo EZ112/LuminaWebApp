@@ -3,7 +3,7 @@
 
 //Main CSS
 .page{
-	grid-template-columns: 15vw 84.5vw;
+	grid-template-columns: 15vw auto;
 	grid-template-rows: 5vw auto;
 	grid-template-areas:
 	"header widget"

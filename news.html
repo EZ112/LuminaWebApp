@@ -11,7 +11,7 @@
 	
 	<body>
 		<div class="page grid-container">
-			<div>
+			<div class="navbar-area">
 				<!--Navbar-->
 				<div class="navbar grid-container">
 					<div class="logo"><a href="index.html">Lumina</a></div>
@@ -60,6 +60,44 @@
 					</div>
 				</div>
 			</div>
+			<div class="widget-area">
+				<!--Widget-->
+				<div class="widget grid-container">
+					<form id="widget_search" action="">
+						<span onclick="document.getElementById('widget_search').submit();" class="fa fa-search"></span>
+						<input name="search" placeholder="Search">
+					</form>
+					<div>
+						<span onclick="open_navigation('filter');" id="widget_filter">
+							<i class="fas fa-sliders-h"></i>
+							Filter
+						</span>
+					</div>
+					<div id="widget_notification">
+						<i onclick="open_navigation('notification_wrapper');" class="fas fa-bell"></i>
+						<i id="isNotif" class="fas fa-circle"></i>
+
+						<div id="notification_wrapper">
+							<a href="#" class="notification">
+								Lorem Ipsum
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+						</div>
+					</div>
+					<div id="widget_login">
+						<span id="notLogged">Login</span>
+						<span id="Logged">
+							<!--Isi dengan image-->
+						</span>
+					</div>
+				</div>
+			</div>
+	<!-- widget end -->
 
 
 
