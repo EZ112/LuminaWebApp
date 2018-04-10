@@ -1,0 +1,37 @@
+/*
+Error: Inconsistent indentation: "\t\t\t\t\t\t\t " was used for indentation, but the rest of the document was indented using 1 tab.
+        on line 145 of C:\Users\Hansen Young\Desktop\Duplicate SE\LuminaWebApp\animepage.html
+
+140: 						<div class="tab tab_inactive">
+141: 							Episodes
+142: 						</div><div class="tab tab_active">
+143: 							Reviews
+144: 						</div><div class="tab tab_inactive" id="dummy">
+145: 							 a
+146: 						</div>
+147: 					</div>
+148: 					<div class="sort episode">
+149: 						<div>
+150: 							<span class="fa fa-caret-up"></span>
+
+Backtrace:
+C:\Users\Hansen Young\Desktop\Duplicate SE\LuminaWebApp\animepage.html:145
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/lib/sass/engine.rb:494:in `block in tabulate'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/lib/sass/engine.rb:452:in `each'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/lib/sass/engine.rb:452:in `each_with_index'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/lib/sass/engine.rb:452:in `tabulate'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/lib/sass/engine.rb:417:in `_to_tree'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/lib/sass/engine.rb:307:in `render_with_sourcemap'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/lib/sass/exec/sass_scss.rb:391:in `run'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/lib/sass/exec/base.rb:52:in `parse'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/lib/sass/exec/base.rb:19:in `parse!'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.5/bin/sass:13:in `<top (required)>'
+C:/Ruby24-x64/bin/sass:23:in `load'
+C:/Ruby24-x64/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Inconsistent indentation: \"\t\t\t\t\t\t\t \" was used for indentation, but the rest of the document was indented using 1 tab.\A         on line 145 of C:\Users\Hansen Young\Desktop\Duplicate SE\LuminaWebApp\animepage.html\A \A 140: 						<div class=\"tab tab_inactive\">\A 141: 							Episodes\A 142: 						</div><div class=\"tab tab_active\">\A 143: 							Reviews\A 144: 						</div><div class=\"tab tab_inactive\" id=\"dummy\">\A 145: 							 a\A 146: 						</div>\A 147: 					</div>\A 148: 					<div class=\"sort episode\">\A 149: 						<div>\A 150: 							<span class=\"fa fa-caret-up\"></span>"; }
