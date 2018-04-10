@@ -389,3 +389,101 @@ input{ padding: 0; } //New
 
 .hide{ display: none; }
 .show{ display: block; }
+
+#manageAccount{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: $cT;
+	z-index: 101;
+	display: none;
+
+	#container{
+		width: 70vw;
+		background-color: #FFF;
+		padding: 2.5% 5%;
+		@include setText(1.5vw, $cP, "QS_Book");
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		grid-template-columns: 60% 40%;
+		grid-template-rows: auto auto;
+		grid-template-areas:
+		"title title"
+		"register login";
+
+		.title{
+			grid-area: title;
+			@include setText(2vw, $cText, "QS_Book");
+			margin-bottom: 1.5%;
+		}
+
+		.subtitle{ @include setText(1.75vw, $cText, "QS_Book"); }
+		.small_comment{
+			@include setText(1.25vw, $cT, "QS_Book");
+			padding: 1% 0;
+		}
+
+		.register{
+			grid-area: register;
+			width: 85%;
+			padding-right: 5.5%;
+			border-right: 2px solid $cS;
+
+			.form{
+				grid-template-columns: 50% 50%;
+				grid-template-rows: auto auto auto;
+			}
+
+			.terms{ @include setText(0.75vw, $cText, "QS_Book"); }
+		}
+
+		.login{
+			grid-area: login;
+
+			.form{
+				grid-template-columns: auto;
+				grid-template-rows: auto auto auto;
+
+				.button{
+					float: right;
+					position: relative;
+					right: 7.5%;
+				}
+			}
+		}
+
+		.form{
+			input[type="text"]{
+				width: 90%;
+				@include setText(1.25vw, $cText, "QS_Book");
+				padding: 1%;
+				border: 1px solid $cText;
+			}
+
+			input, label{ margin: 3.5% 0; }
+			.custom_input_container{
+				display: inline-block;
+				margin-right: 2.5%;
+			}
+		}
+
+		a{ color: $cP; }
+		a:hover{ border-bottom: 1px solid $cP; }
+
+		.button{
+			display: inline-block;
+			border-radius: 50px;
+			border: none;
+			background-color: $cP;
+			@include setText(1.25vw, white, "QS_Book");
+			padding: 1.5% 10%;
+			cursor: pointer;
+		}
+	}
+}

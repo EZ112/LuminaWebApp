@@ -88,7 +88,7 @@
 						</div>
 					</div>
 					<div id="widget_login">
-						<span id="notLogged">Login</span>
+						<span id="notLogged" onclick="open_navigation('manageAccount')">Login</span>
 						<span id="Logged">
 							<!--Isi dengan image-->
 						</span>
@@ -261,6 +261,70 @@
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="manageAccount" onclick="open_navigation('manageAccount')">
+				<div id="container" class="grid-container" onclick="cancel_propagation();">
+					<div class="title">Manage Account</div>
+					<div class="register">
+						<div class="subtitle">Register</div>
+						<div class="small_comment">Join Lumina to stream your favourite anime</div>
+						<form class="form grid-container" method="post">
+							<div>
+								Username<br>
+								<input type="text" name="rname">
+							</div>
+							<div>
+								Password<br>
+								<input type="text" name="rpass">
+							</div>
+							<div>
+								Email<br>
+								<input type="text" name="remail">
+							</div>
+							<div>
+								Comfirm Password<br>
+								<input type="text" name="rcompass">
+							</div>
+							<div>
+								Gender<br>
+								<label class="custom_input_container">
+									Male
+									<input type="radio" name="gender" value="m">
+									<span class="custom_radio"></span>
+								</label>
+								<label class="custom_input_container">
+									Female
+									<input type="radio" name="gender" value="f">
+									<span class="custom_radio"></span>
+								</label>
+							</div>
+							<div>
+								<div class="terms">By clicking "Register", you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</div>
+								<div>
+									<input type="submit" class="button" value="Register">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="login">
+						<div class="subtitle">Login</div>
+						<div class="small_comment">Already have an account? Log in below</div>
+						<form class="form grid-container" method="post">
+							<div>
+								Email<br>
+								<input type="text" name="lemail">
+							</div>
+							<div>
+								Password<br>
+								<input type="text" name="lpass">
+							</div>
+							<div>
+								<input type="submit" class="button" value="Login">
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
