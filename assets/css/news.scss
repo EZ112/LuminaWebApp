@@ -52,8 +52,18 @@
 }
 
 .news_content{
-	
-	width: 50vw;
+
+	width: 90%;
+
+	.img_container{
+		width: 100%;
+		height: 20vw;
+
+		img{
+			width: 100%;
+			height: 100%;
+		}
+	}
 
 	.title, .date{
 		text-align: center;
@@ -75,25 +85,5 @@
 					 0 0 10px white,
 					 0 0 10px white;
 		@include setText(calc(7.5px + 0.75vw), black, "QS_Light");
-
-		.img_container{
-			float: right;
-			padding: 0 0 0 2%;
-			position: fixed;
-			left: 80vw;
-			z-index: -1;
-
-			img{ 
-				width: 20vw;
-				position: absolute;
-				top: 0;
-			}
-		}
-
-		.img_container:after{
-			content: "";
-			display: table;
-			clear: both;
-		}
 	}
 }
