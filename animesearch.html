@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lumina.to | Yuru Camp</title>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/animesearch.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	
+	<body>
+		<div class="page grid-container">
+			<div class="navbar-area">
+				<!--Navbar-->
+				<div class="navbar grid-container">
+					<div class="logo"><a href="index.html">Lumina</a></div>
+
+					<div class="nav_wrapper grid-container">
+						<a class="nav" href="#">Anime List</a>
+						<a class="nav" href="#">News</a>
+						<a class="nav" id="nav_3" href="#">
+							<div id="nav_shop">
+								<u>OFFICIAL SHOP</u>
+							</div>
+							<i class="fas fa-shopping-bag fa-3x"></i>
+						</a>
+						<div class="nav">
+							<div class="nav_title">
+								LIBRARY
+							</div>
+							<a class="nav_subcontent" href="#">History</a>
+							<a class="nav_subcontent" href="#">Watch Later</a>
+						</div>
+						<div class="nav">
+							<div class="nav_title">
+								SUBSCRIPTION
+							</div>
+							<div class="subscription">
+								<a href="#" class="nav_subcontent">Title 1</a>
+								<a href="#" class="nav_subcontent">Title 2</a>
+								<a href="#" class="nav_subcontent">Title 3</a>
+								<a href="#" class="nav_subcontent">Title 4</a>
+								<a href="#" class="nav_subcontent">Title 5</a>
+								<a href="#" class="nav_subcontent">Title 6</a>
+								<a href="#" class="nav_subcontent">Title 7</a>
+								<a href="#" class="nav_subcontent">Title 8</a>
+								<a href="#" class="nav_subcontent">Title 9</a>
+								<a href="#" class="nav_subcontent">Title 10</a>
+							</div>
+							<a id="show_more" class="" href="#"><i class="fas fa-chevron-down"></i> Show 10 More</a>
+						</div>
+						<div class="nav">
+							<a class="nav_subnav" href="#">About</a><br>
+							<a class="nav_subnav" href="#">FAQ</a>
+							<a class="nav_subnav" href="#">Contact Us</a>
+							<br>
+							<a class="nav_subnav" href="#">Term of Services &copy; 2018 Lumina</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="widget-area">
+				<!--Widget-->
+				<div class="widget grid-container">
+					<form id="widget_search" action="">
+						<span onclick="document.getElementById('widget_search').submit();" class="fa fa-search"></span>
+						<input name="search" placeholder="Search">
+					</form>
+					<div>
+						
+					</div>
+					<div id="widget_notification">
+						<i onclick="open_navigation('notification_wrapper');" class="fas fa-bell"></i>
+						<i id="isNotif" class="fas fa-circle"></i>
+
+						<div id="notification_wrapper">
+							<a href="#" class="notification">
+								Lorem Ipsum
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+						</div>
+					</div>
+					<div id="widget_login">
+						<span id="notLogged" onclick="open_navigation('manageAccount')">Login</span>
+						<span id="Logged">
+							<!--Isi dengan image-->
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="content grid-area">
+				<div>About 1000 Results</div>
+				<div class="pointAnime">
+					<div class="animeContainer grid-container">
+						<div class="thumbnail_container"><a href="#"><img src="assets/image/news-img.jpg"></a></div>
+						<div class="info_container">
+							<a href="#" id="title">Yuru Camp</a>
+							<div id="latest">Latest Episode 10</div>
+							<div id="subscriber">Subscriber 300K</div>
+						</div>
+						<div class="button_container"><span class="button">Subscribe</span></div>
+					</div>
+
+					<div class="animeContainer grid-container">
+						<div class="thumbnail_container"><a href="#"><img src="assets/image/news-img.jpg"></a></div>
+						<div class="info_container">
+							<a href="#" id="title">Yuru Camp 2</a>
+							<div id="latest">Latest Episode 10</div>
+							<div id="subscriber">Subscriber 300K</div>
+						</div>
+						<div class="button_container"><span class="button">Subscribe</span></div>
+					</div>
+
+				</div>
+				<div class="pointEpisode">
+					Most Viewed Episode
+
+					<div class="episodeContainer grid-container">
+						<div class="thumbnail_container"><a href="#"><img src="assets/image/news-img.jpg"></a></div>
+						<div class="info_container">
+							<a href="#" id="episode">Episode 1</a>
+							<span id="airDate">Aired 04 Jan 2018</span>
+							<div id="title">Mount Fuji and Curry Noodles</div>
+							<div id="anime">Yuru Camp</div>
+							<div id="views">2,854,176 views</div>
+						</div>
+					</div>
+
+					<div class="episodeContainer grid-container">
+						<div class="thumbnail_container"><a href="#"><img src="assets/image/news-img.jpg"></a></div>
+						<div class="info_container">
+							<a href="#" id="episode">Episode 2</a>
+							<span id="airDate">Aired 04 Jan 2018</span>
+							<div id="title">Welcome to the Outdoor Activities Club</div>
+							<div id="anime">Yuru Camp</div>
+							<div id="views">2,854,176 views</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="manageAccount" onclick="open_navigation('manageAccount')">
+				<div id="container" class="grid-container" onclick="cancel_propagation();">
+					<div class="title">Manage Account</div>
+					<div class="register">
+						<div class="subtitle">Register</div>
+						<div class="small_comment">Join Lumina to stream your favourite anime</div>
+						<form class="form grid-container" method="post">
+							<div>
+								Username<br>
+								<input type="text" name="rname">
+							</div>
+							<div>
+								Password<br>
+								<input type="text" name="rpass">
+							</div>
+							<div>
+								Email<br>
+								<input type="text" name="remail">
+							</div>
+							<div>
+								Comfirm Password<br>
+								<input type="text" name="rcompass">
+							</div>
+							<div>
+								Gender<br>
+								<label class="custom_input_container">
+									Male
+									<input type="radio" name="gender" value="m">
+									<span class="custom_radio"></span>
+								</label>
+								<label class="custom_input_container">
+									Female
+									<input type="radio" name="gender" value="f">
+									<span class="custom_radio"></span>
+								</label>
+							</div>
+							<div>
+								<div class="terms">By clicking "Register", you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</div>
+								<div>
+									<input type="submit" class="button" value="Register">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="login">
+						<div class="subtitle">Login</div>
+						<div class="small_comment">Already have an account? Log in below</div>
+						<form class="form grid-container" method="post">
+							<div>
+								Email<br>
+								<input type="text" name="lemail">
+							</div>
+							<div>
+								Password<br>
+								<input type="text" name="lpass">
+							</div>
+							<div>
+								<input type="submit" class="button" value="Login">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="assets/js/script.js"></script>
+	<script type="text/javascript" src="assets/js/animepage.js"></script>
+</html>
