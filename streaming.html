@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lumina.to</title>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/streaming.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	
+	<body>
+		<div class="page grid-container">
+			<div class="navbar-area">
+				<!--Navbar-->
+				<div class="navbar grid-container">
+					<div class="logo"><a href="index.html">Lumina</a></div>
+
+					<div class="nav_wrapper grid-container">
+						<a class="nav" href="#">Anime List</a>
+						<a class="nav" href="#">News</a>
+						<a class="nav" id="nav_3" href="#">
+							<div id="nav_shop">
+								<u>OFFICIAL SHOP</u>
+							</div>
+							<i class="fas fa-shopping-bag fa-3x"></i>
+						</a>
+						<div class="nav">
+							<div class="nav_title">
+								LIBRARY
+							</div>
+							<a class="nav_subcontent" href="#">History</a>
+							<a class="nav_subcontent" href="#">Watch Later</a>
+						</div>
+						<div class="nav">
+							<div class="nav_title">
+								SUBSCRIPTION
+							</div>
+							<div class="subscription">
+								<a href="#" class="nav_subcontent">Title 1</a>
+								<a href="#" class="nav_subcontent">Title 2</a>
+								<a href="#" class="nav_subcontent">Title 3</a>
+								<a href="#" class="nav_subcontent">Title 4</a>
+								<a href="#" class="nav_subcontent">Title 5</a>
+								<a href="#" class="nav_subcontent">Title 6</a>
+								<a href="#" class="nav_subcontent">Title 7</a>
+								<a href="#" class="nav_subcontent">Title 8</a>
+								<a href="#" class="nav_subcontent">Title 9</a>
+								<a href="#" class="nav_subcontent">Title 10</a>
+							</div>
+							<a id="show_more" class="" href="#"><i class="fas fa-chevron-down"></i> Show 10 More</a>
+						</div>
+						<div class="nav">
+							<a class="nav_subnav" href="#">About</a><br>
+							<a class="nav_subnav" href="#">FAQ</a>
+							<a class="nav_subnav" href="#">Contact Us</a>
+							<br>
+							<a class="nav_subnav" href="#">Term of Services &copy; 2018 Lumina</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="widget-area">
+				<!--Widget-->
+				<div class="widget grid-container">
+					<form id="widget_search" action="">
+						<span onclick="document.getElementById('widget_search').submit();" class="fa fa-search"></span>
+						<input name="search" placeholder="Search">
+					</form>
+					<div>
+						<span onclick="open_navigation('filter');" id="widget_filter">
+							<i class="fas fa-sliders-h"></i>
+							Filter
+						</span>
+					</div>
+					<div id="widget_notification">
+						<i onclick="open_navigation('notification_wrapper');" class="fas fa-bell"></i>
+						<i id="isNotif" class="fas fa-circle"></i>
+
+						<div id="notification_wrapper">
+							<a href="#" class="notification">
+								Lorem Ipsum
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+						</div>
+					</div>
+					<div id="widget_login">
+						<span id="notLogged" onclick="open_navigation('manageAccount');">Login</span>
+						<span id="Logged">
+							<!--Isi dengan image-->
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="content grid-container">
+				<div class="video">
+					<div class="video_container">
+						<!--Isi video-->
+					</div>
+					<span id="episode">Episode 2</span>
+					<span id="airDate">Aired 04 Jan 2018</span>
+					<div id="title">Welcome to the Outdoor Activities Club</div>
+					<div class="stats">
+						<span id="views">7,124,183 views</span><span id="likes">
+							<i class="fas fa-thumbs-up"></i>
+							174K
+						</span><span id="dislikes">
+							<i class="fas fa-thumbs-down"></i>
+							4K
+						</span><span id="share">
+							<i class="fas fa-share-alt"></i>
+							Share
+						</span>
+					</div>
+				</div>
+
+				<div class="comment">
+					<span class="section_title">Comment</span>
+					<div class="section_content">
+						<div class="container">
+							<form id="write">
+								<i class="fas fa-user-circle"></i>
+								<input type="text" name="comment" placeholder="Write a comment">
+							</form>
+						</div>
+						<div class="container">
+							<div class="read">
+								<i class="fas fa-user-circle"></i>
+								<div class="existingComment">
+									<span id="username">Username</span>
+									<span id="date">1 month ago</span>
+									<div id="commentContent">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+									</div>
+									<span id="reply">Reply</span>
+									<span id="likes">
+										<i class="fas fa-thumbs-up"></i>
+										174
+									</span><span id="dislikes">
+										<i class="fas fa-thumbs-down"></i>
+										4
+									</span><br>
+									<span id="showReply">Hide Replies -</span>
+									<div class="replyContainer">
+										<i class="fas fa-user-circle"></i>
+										<div id="replyContent">
+											<span id="rUsername">Username</span>
+											<span id="rDate">1 month ago</span>
+											<div id="rContent">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+											</div>
+										</div>
+									</div>
+									<div class="replyContainer">
+										<i class="fas fa-user-circle"></i>
+										<div id="replyContent">
+											<span id="rUsername">Username</span>
+											<span id="rDate">1 month ago</span>
+											<div id="rContent">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="read">
+								<i class="fas fa-user-circle"></i>
+								<div class="existingComment">
+									<span id="username">Username</span>
+									<span id="date">1 month ago</span>
+									<div id="commentContent">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+									</div>
+									<span id="reply">Reply</span>
+									<span id="likes">
+										<i class="fas fa-thumbs-up"></i>
+										174
+									</span><span id="dislikes">
+										<i class="fas fa-thumbs-down"></i>
+										4
+									</span><br>
+									<span id="showReply">Hide Replies -</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="other">
+					<div class="section">Next Episode</div>
+					
+					<div class="container one grid-container" id="next_episode">
+						<a href="#" class="video_container">
+
+						</a>
+						<div class="info">
+							<a href="#" class="episode">Episode 3</a>
+							<div class="title">Mount Fuji and Relaxed Hot Pot Camp</div>
+						</div>
+					</div>
+					<div class="section">Prev Episode</div>
+					
+					<div class="container one grid-container" id="prev_episode">
+						<a href="#" class="video_container">
+							
+						</a>
+						<div class="info">
+							<a href="#" class="episode">Episode 1</a>
+							<div class="title">Mount Fuji and Curry Noodles</div>
+						</div>
+					</div>
+
+					<div class="section" id="recommend">Recomended Anime</div>
+
+					<div class="container two grid-container">
+						<a href="#" class="video_container">
+							
+						</a>
+						<div class="info">
+							<a href="#" class="title">Yuru Camp Season 2</a>
+							<div class="episode">12 Episodes</div>
+							<div class="views">1 Views</div>
+							<span class="button">Subscribe</span>
+						</div>
+					</div>
+
+					<div class="container two grid-container">
+						<a href="#" class="video_container">
+							
+						</a>
+						<div class="info">
+							<a href="#" class="title">Gabriel Dropout</a>
+							<div class="episode">10 Episodes</div>
+							<div class="views">15M Views</div>
+							<span class="button">Subscribe</span>
+						</div>
+					</div>
+
+					<div class="container two grid-container">
+						<a href="#" class="video_container">
+							
+						</a>
+						<div class="info">
+							<a href="#" class="title">Karakai Jouzu no Takagi-san</a>
+							<div class="episode">10 Episodes</div>
+							<div class="views">7,123,183 Views</div>
+							<span class="button">Subscribe</span>
+						</div>
+					</div>
+
+					<div class="container two grid-container">
+						<a href="#" class="video_container">
+							
+						</a>
+						<div class="info">
+							<a href="#" class="title">Yuru Camp Season 2</a>
+							<div class="episode">12 Episodes</div>
+							<div class="views">7,123,183 Views</div>
+							<span class="button">Subscribe</span>
+						</div>
+					</div>
+
+					<div class="container two grid-container">
+						<a href="#" class="video_container">
+							
+						</a>
+						<div class="info">
+							<a href="#" class="title">Yuru Camp Season 2</a>
+							<div class="episode">12 Episodes</div>
+							<div class="views">7,123,183 Views</div>
+							<span class="button">Subscribe</span>
+						</div>
+					</div>
+
+					<div class="more">
+						<i class="fas fa-chevron-down"></i>
+						Show More
+					</div>
+				</div>
+			</div>
+
+			<div id="manageAccount" onclick="open_navigation('manageAccount')">
+				<div id="container" class="grid-container" onclick="cancel_propagation();">
+					<div class="title">Manage Account</div>
+					<div class="register">
+						<div class="subtitle">Register</div>
+						<div class="small_comment">Join Lumina to stream your favourite anime</div>
+						<form class="form grid-container" method="post">
+							<div>
+								Username<br>
+								<input type="text" name="rname">
+							</div>
+							<div>
+								Password<br>
+								<input type="text" name="rpass">
+							</div>
+							<div>
+								Email<br>
+								<input type="text" name="remail">
+							</div>
+							<div>
+								Comfirm Password<br>
+								<input type="text" name="rcompass">
+							</div>
+							<div>
+								Gender<br>
+								<label class="custom_input_container">
+									Male
+									<input type="radio" name="gender" value="m">
+									<span class="custom_radio"></span>
+								</label>
+								<label class="custom_input_container">
+									Female
+									<input type="radio" name="gender" value="f">
+									<span class="custom_radio"></span>
+								</label>
+							</div>
+							<div>
+								<div class="terms">By clicking "Register", you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</div>
+								<div>
+									<input type="submit" class="button" value="Register">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="login">
+						<div class="subtitle">Login</div>
+						<div class="small_comment">Already have an account? Log in below</div>
+						<form class="form grid-container" method="post">
+							<div>
+								Email<br>
+								<input type="text" name="lemail">
+							</div>
+							<div>
+								Password<br>
+								<input type="text" name="lpass">
+							</div>
+							<div>
+								<input type="submit" class="button" value="Login">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="assets/js/script.js"></script>
+</html>
