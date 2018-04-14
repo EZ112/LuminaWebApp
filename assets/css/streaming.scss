@@ -99,16 +99,17 @@
               padding: 1% 0;
             }
             #reply:hover{ cursor:pointer; border-bottom: 1.25px solid $cText; }
-            #likes, #dislikes{ padding: 1% 2.5%; }
-            #likes:hover, #dislikes:hover{
+            #likes, #dislikes{ padding: 1% 2.5%; cursor: pointer; }
+            /* #likes:hover, #dislikes:hover{
               cursor: pointer;
               border-bottom: 1.25px solid $cText;
-            } 
+            }  */
             .fas{ font-size: 1.25vw; }
-            #showReply{
+            .showReply{
               font-weight: bolder;
               display: inline-block;
               padding: 1% 0;
+              cursor: pointer;
             }
             #showReply:hover{
               cursor: pointer;
@@ -183,6 +184,10 @@
         margin: 2.5% 0;
         padding: 1% 7.5%;
         cursor: pointer;
+      }
+      .subscribed{
+        background-color: $cS;
+        @include setText(1vw, $cText, "QS_Book");
       }
     }
     #prev_episode{ margin-bottom: 5%; }

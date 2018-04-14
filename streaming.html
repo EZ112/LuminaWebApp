@@ -68,10 +68,7 @@
 						<input name="search" placeholder="Search">
 					</form>
 					<div>
-						<span onclick="open_navigation('filter');" id="widget_filter">
-							<i class="fas fa-sliders-h"></i>
-							Filter
-						</span>
+						
 					</div>
 					<div id="widget_notification">
 						<i onclick="open_navigation('notification_wrapper');" class="fas fa-bell"></i>
@@ -106,11 +103,11 @@
 					<span id="episode">Episode 2</span>
 					<span id="airDate">Aired 04 Jan 2018</span>
 					<div id="title">Welcome to the Outdoor Activities Club</div>
-					<div class="stats">
-						<span id="views">7,124,183 views</span><span id="likes">
+					<div class="stats" name="curr">
+						<span id="views">7,124,183 views</span><span id="likes" onclick="activate(this);">
 							<i class="fas fa-thumbs-up"></i>
 							174K
-						</span><span id="dislikes">
+						</span><span id="dislikes" onclick="activate(this);">
 							<i class="fas fa-thumbs-down"></i>
 							4K
 						</span><span id="share">
@@ -139,14 +136,14 @@
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 									</div>
 									<span id="reply">Reply</span>
-									<span id="likes">
+									<span id="likes" onclick="activate(this);">
 										<i class="fas fa-thumbs-up"></i>
 										174
-									</span><span id="dislikes">
+									</span><span id="dislikes" onclick="activate(this);">
 										<i class="fas fa-thumbs-down"></i>
 										4
 									</span><br>
-									<span id="showReply">Hide Replies -</span>
+									<span class="showReply"" onclick="showReply(this);">Hide Replies -</span>
 									<div class="replyContainer">
 										<i class="fas fa-user-circle"></i>
 										<div id="replyContent">
@@ -179,14 +176,14 @@
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 									</div>
 									<span id="reply">Reply</span>
-									<span id="likes">
+									<span id="likes" onclick="activate(this);">
 										<i class="fas fa-thumbs-up"></i>
 										174
-									</span><span id="dislikes">
+									</span><span id="dislikes" onclick="activate(this);">
 										<i class="fas fa-thumbs-down"></i>
 										4
 									</span><br>
-									<span id="showReply">Hide Replies -</span>
+									<span class="showReply"">Hide Replies -</span>
 								</div>
 							</div>
 						</div>
@@ -353,4 +350,5 @@
 		</div>
 	</body>
 	<script type="text/javascript" src="assets/js/script.js"></script>
+	<script type="text/javascript" src="assets/js/streaming.js"></script>
 </html>
