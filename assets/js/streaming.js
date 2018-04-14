@@ -5,6 +5,9 @@ var subCommentsLength = [];
 var subscribeButton = document.getElementsByClassName("button");
 var subscribeButtonLength = subscribeButton.length;
 
+var relatedAnime = document.getElementsByClassName("two");
+var relatedAnimeLength = relatedAnime.length;
+
 for(var i = 0; i < showReplyObjectLength; ++i){
 	subCommentsLength[i] = showReplyObject[i].parentElement.querySelectorAll(".replyContainer").length;
 	if(subCommentsLength[i] == 0){ showReplyObject[i].style.display = "none"; }
@@ -13,6 +16,10 @@ for(var i = 0; i < showReplyObjectLength; ++i){
 
 for(var i = 0; i < subscribeButtonLength; ++i){
 	subscribeButton[i].setAttribute("onclick", "subscribe(this);");
+}
+
+for(var i = 5; i < relatedAnimeLength; ++i){
+	relatedAnime[i].style.display = "none";
 }
 
 function activate(x){
@@ -58,4 +65,40 @@ function subscribe(x){
 	} else{
 		x.setAttribute("class", inactive);
 	}
+}
+
+function showMore(x){
+	var fas = x.querySelector(".fas");
+	var text = x.querySelector("#text");
+
+	if(fas.getAttribute("class") == "fas fa-chevron-down"){
+		fas.setAttribute("class", "fas fa-chevron-up");
+		text.innerHTML = "Show Less";
+
+		for(var i = 5; i < relatedAnimeLength; ++i){
+			relatedAnime[i].style.display = "grid";
+		}
+	} else{
+		fas.setAttribute("class", "fas fa-chevron-down");
+		text.innerHTML = "Show More";
+
+		for(var i = 5; i < relatedAnimeLength; ++i){
+			relatedAnime[i].style.display = "none";
+		}
+	}
+}
+
+function replyComment(x){
+	var form = x.parentElement.querySelector("#replyComment");
+
+	if(form.style.display != "block"){
+		form.style.display = "block";
+	} else{
+		form.style.display = "none"; 
+	}
+}
+
+function checkHeight(x){
+	x.style.cssText = 'height:auto; padding:0';
+    x.style.cssText = 'height:' + x.scrollHeight + 'px';
 }

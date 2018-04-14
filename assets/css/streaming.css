@@ -96,7 +96,7 @@
   top: 50%;
   transform: translateY(-50%);
 }
-.content .comment .section_content .container #write input:focus, .content .comment .section_content .container .read input:focus {
+.content .comment .section_content .container #write input:focus, .content .comment .section_content .container #write textarea:focus, .content .comment .section_content .container .read input:focus, .content .comment .section_content .container .read textarea:focus {
   outline-width: 0;
 }
 .content .comment .section_content .container .read .existingComment {
@@ -107,10 +107,6 @@
   font-size: 1vw;
   color: #888;
   font-family: "QS_Book";
-  /* #likes:hover, #dislikes:hover{
-    cursor: pointer;
-    border-bottom: 1.25px solid $cText;
-  }  */
 }
 .content .comment .section_content .container .read .existingComment #username {
   font-size: 1.33vw;
@@ -138,6 +134,21 @@
 .content .comment .section_content .container .read .existingComment #likes, .content .comment .section_content .container .read .existingComment #dislikes {
   padding: 1% 2.5%;
   cursor: pointer;
+}
+.content .comment .section_content .container .read .existingComment #replyComment {
+  display: none;
+}
+.content .comment .section_content .container .read .existingComment #replyComment textarea {
+  border: none;
+  resize: none;
+  border-bottom: 1.25px solid #bbcbdb;
+  font-size: 1vw;
+  color: #888;
+  font-family: "QS_Book";
+  display: inline-block;
+  width: 100%;
+  padding: 1% 0.5%;
+  cursor: text;
 }
 .content .comment .section_content .container .read .existingComment .fas {
   font-size: 1.25vw;

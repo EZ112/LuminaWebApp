@@ -135,7 +135,7 @@
 									<div id="commentContent">
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 									</div>
-									<span id="reply">Reply</span>
+									<span id="reply" onclick="replyComment(this);">Reply</span>
 									<span id="likes" onclick="activate(this);">
 										<i class="fas fa-thumbs-up"></i>
 										174
@@ -143,7 +143,10 @@
 										<i class="fas fa-thumbs-down"></i>
 										4
 									</span><br>
-									<span class="showReply"" onclick="showReply(this);">Hide Replies -</span>
+									<form id="replyComment">
+										<textarea rows="1" name="comment" placeholder="Write a comment" onkeydown="checkHeight(this);"></textarea>
+									</form>
+									<span class="showReply" onclick="showReply(this);">Hide Replies -</span>
 									<div class="replyContainer">
 										<i class="fas fa-user-circle"></i>
 										<div id="replyContent">
@@ -175,7 +178,7 @@
 									<div id="commentContent">
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 									</div>
-									<span id="reply">Reply</span>
+									<span id="reply" onclick="replyComment(this);">Reply</span>
 									<span id="likes" onclick="activate(this);">
 										<i class="fas fa-thumbs-up"></i>
 										174
@@ -183,7 +186,10 @@
 										<i class="fas fa-thumbs-down"></i>
 										4
 									</span><br>
-									<span class="showReply"">Hide Replies -</span>
+									<form id="replyComment">
+										<textarea rows="1" name="comment" placeholder="Write a comment" onkeydown="checkHeight(this);"></textarea>
+									</form>
+									<span class="showReply">Hide Replies -</span>
 								</div>
 							</div>
 						</div>
@@ -276,9 +282,21 @@
 						</div>
 					</div>
 
-					<div class="more">
+					<div class="container two grid-container">
+						<a href="#" class="video_container">
+							
+						</a>
+						<div class="info">
+							<a href="#" class="title">Yuru Camp Season 2</a>
+							<div class="episode">12 Episodes</div>
+							<div class="views">7,123,183 Views</div>
+							<span class="button">Subscribe</span>
+						</div>
+					</div>
+
+					<div class="more" onclick="showMore(this);">
 						<i class="fas fa-chevron-down"></i>
-						Show More
+						<span id="text">Show More</span>
 					</div>
 				</div>
 			</div>
