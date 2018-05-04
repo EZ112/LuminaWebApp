@@ -72,20 +72,17 @@
   height: 100%;
 }
 .news_content .tags {
-  text-align: justify;
   margin-top: 5%;
   font-size: calc(5px + 1vw);
   color: #0babfe;
   font-family: "QS_Bold";
 }
 .news_content .title {
-  text-align: justify;
   font-size: calc(10px + 1.5vw);
   color: #888;
   font-family: "QS_Book";
 }
 .news_content .date {
-  text-align: justify;
   margin-top: 0.5%;
   font-size: calc(5px + .8vw);
   color: #888;
@@ -93,11 +90,11 @@
 }
 .news_content .content {
   padding: 5% 2.5% 2.5% 0%;
-  text-align: justify;
   text-shadow: 0 0 10px white,  0 0 10px white,  0 0 10px white,  0 0 10px white,  0 0 10px white, 0 0 10px white;
   font-size: calc(7.5px + 0.75vw);
-  color: black;
-  font-family: "QS_Light";
+  color: #888;
+  font-family: "QS_Book";
+  line-height: 1.4em;
 }
 
 /*# sourceMappingURL=news.css.map */

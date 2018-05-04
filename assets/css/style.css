@@ -115,21 +115,6 @@ input {
   color: white;
 }
 
-#nav_3 {
-  background-color: #bbcbdb;
-}
-
-#nav_shop {
-  font-size: 1.25vw;
-  padding-bottom: 1vw;
-  font-family: "QS_Bold";
-  color: #5c6275;
-}
-
-#nav_shop + i {
-  margin: 0 30%;
-}
-
 #active {
   background-color: #42beff !important;
   color: white !important;
@@ -140,7 +125,7 @@ input {
 }
 
 .widget {
-  box-shadow: 0px -3px 30px #5c6275;
+  box-shadow: 0px -5px 20px #5c6275;
   position: fixed;
   z-index: 99;
   background-color: white;

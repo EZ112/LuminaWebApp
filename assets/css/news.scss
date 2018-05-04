@@ -67,29 +67,26 @@
 	}
 
 	.tags{
-		text-align: justify;
 		margin-top: 5%;
 		@include setText(calc(5px + 1vw), $cBlue, "QS_Bold");
 	}
 
 	.title{
-		text-align: justify;
 		@include setText(calc(10px + 1.5vw), $cText, "QS_Book");
 	}
 	.date{
-		text-align: justify;
 		margin-top: 0.5%;
 		@include setText(calc(5px + .8vw), $cText, "QS_Book");
 	}
 	.content{
 		padding: 5% 2.5% 2.5% 0%;
-		text-align: justify;
 		text-shadow: 0 0 10px white, 
 					 0 0 10px white, 
 					 0 0 10px white, 
 					 0 0 10px white, 
 					 0 0 10px white,
 					 0 0 10px white;
-		@include setText(calc(7.5px + 0.75vw), black, "QS_Light");
+		@include setText(calc(7.5px + 0.75vw), $cText, "QS_Book");
+		line-height: 1.4em;
 	}
 }

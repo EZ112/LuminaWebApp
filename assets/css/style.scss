@@ -93,14 +93,14 @@ input{ padding: 0; } //New
 	color: white;
 }
 
-#nav_3{ background-color: $cT; }
-#nav_shop{
-	font-size: 1.25vw;
-	padding-bottom: 1vw;
-	font-family: "QS_Bold";
-	color: $cDrkBlue;
-}
-#nav_shop + i{ margin: 0 30%; }
+// #nav_3{ background-color: $cT; }
+// #nav_shop{
+// 	font-size: 1.25vw;
+// 	padding-bottom: 1vw;
+// 	font-family: "QS_Bold";
+// 	color: $cDrkBlue;
+// }
+// #nav_shop + i{ margin: 0 30%; }
 
 #active{
 	background-color: $cP !important;
@@ -112,7 +112,7 @@ input{ padding: 0; } //New
 }
 
 .widget{
-    box-shadow: 0px -3px 30px $cDrkBlue;
+    box-shadow: 0px -5px 20px $cDrkBlue;
 	position: fixed;
 	z-index: 99;
 	background-color: white;
