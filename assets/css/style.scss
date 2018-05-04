@@ -127,21 +127,16 @@ input{ padding: 0; } //New
 #widget_search {
 	position: relative;
 	display: inline-block;
-	color: #aaa;
-	font-size: 16px;
 	height: 100%;
 
 	input {
 		width: (85/2)+vw;
 		height: 100%;
 
-		background: #fcfcfc;
-		border: 1px solid #aaa;
+		border: 1px solid $cDrkBlueLt;
 
 		text-indent: 40px;
-
-		font-family: "QS_Book";
-		font-size: 1.2vw; 
+		@include setText(1.2vw, $cDrkBlueLt, "QS_Book");
 	}
 
 	.fa-search { 
@@ -156,10 +151,10 @@ input{ padding: 0; } //New
 
 #widget_filter{
 	margin: 0 5%;
-	padding: 2%;
+	padding: 1%;
 	cursor: pointer;
-	border: 1px solid #aaa;
-	color: #888;
+	// border: 1px solid #aaa;
+	@include setText(calc(7px + 1vw), $cDrkBlueLt, "QS_Book");
 	position: relative;
 	display: inline-block;
 }

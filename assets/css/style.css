@@ -153,18 +153,16 @@ input {
 #widget_search {
   position: relative;
   display: inline-block;
-  color: #aaa;
-  font-size: 16px;
   height: 100%;
 }
 #widget_search input {
   width: 42.5vw;
   height: 100%;
-  background: #fcfcfc;
-  border: 1px solid #aaa;
+  border: 1px solid #878da0;
   text-indent: 40px;
-  font-family: "QS_Book";
   font-size: 1.2vw;
+  color: #878da0;
+  font-family: "QS_Book";
 }
 #widget_search .fa-search {
   position: absolute;
@@ -177,10 +175,11 @@ input {
 
 #widget_filter {
   margin: 0 5%;
-  padding: 2%;
+  padding: 1%;
   cursor: pointer;
-  border: 1px solid #aaa;
-  color: #888;
+  font-size: calc(7px + 1vw);
+  color: #878da0;
+  font-family: "QS_Book";
   position: relative;
   display: inline-block;
 }
