@@ -92,7 +92,8 @@ input {
   transition: all 0.25s ease;
 }
 .nav .nav_subcontent:hover {
-  color: white;
+  font-weight: bold;
+  background-color: white;
 }
 .nav .nav_subnav {
   -webkit-transition: all 0.25s ease;
