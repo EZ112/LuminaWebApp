@@ -1,0 +1,70 @@
+@import 'colors';
+@import 'functions';
+
+.page{
+	grid-template-columns: 15vw auto;
+	grid-template-rows: 5vw auto;
+	grid-template-areas:
+	"header widget"
+    "header main-content";
+}
+
+.content{
+	grid-area: main-content;
+	padding: 2% 5%;
+
+	.redify{
+		@include setText(1.5vw, $cRed, "QS_Book");
+		color: $cRed;
+		cursor: pointer;
+		
+		.clearAll{
+			padding-left: 0.5%;
+		}
+	}
+
+	.videoContainer{
+		grid-template-columns: 20% 65% 2.5%;
+		grid-template-rows: 10vw;
+		margin: 2.5% 0;
+
+		.videoThumbnail{
+			background-image: url("../image/news-img.jpg");
+			background-size: cover;
+		}
+
+		.dummyCenter{
+			position: relative;
+
+			.videoDetail{
+				padding: 0 7.5%;
+				position: relative;
+				top: 50%;
+				transform: translateY(-50%);
+
+				.videoEpisode{
+					@include setText(1.5vw, $cP, "QS_Book");
+					display: inline-block;
+					padding-bottom: 0.5%;
+					margin-bottom: 0.5%;
+				}
+				.videoEpisode:hover{ border-bottom: 1.1px solid $cP; }
+				.videoAirDate{
+					@include setText(1.1vw, $cT, "QS_Book");
+					margin-left: 2%;
+				}
+				.videoTitle{
+					@include setText(1.75vw, $cText, "QS_Book");
+					padding: 0.25% 0;
+				}
+				.videoAnime, .videoViews{
+					@include setText(1.1vw, $cT, "QS_Book");
+					padding: 0.25% 0;
+				}
+				.videoViews{
+					padding: 0.5% 0;
+				}
+			}
+		}
+	}
+}

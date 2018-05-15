@@ -11,20 +11,6 @@
 
 pink{ color: $cRed; }
 
-.head_title{
-	grid-area: head_title;
-	background-color: $cP;
-	height: 10vw;
-	position: relative;
-
-	.title{
-		@include setText(2.5vw, white, "QS_Book");
-		position: absolute;
-		bottom: 15%;
-		left: 5%;
-	}
-}
-
 .content{
 	grid-area: content;
 

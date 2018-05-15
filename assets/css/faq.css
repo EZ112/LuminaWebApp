@@ -1,13 +1,14 @@
 .page {
   grid-template-columns: 15vw 85vw;
-  grid-template-rows: auto auto;
-  grid-template-areas: "header faq";
+  grid-template-rows: 10vw auto;
+  grid-template-areas: "header head_title" "header faq";
 }
 
 .faq_container {
   grid-area: faq;
   width: 80%;
   margin-left: 5%;
+  padding-top: 2%;
 }
 .faq_container hr {
   border: none;
