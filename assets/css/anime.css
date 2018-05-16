@@ -60,6 +60,48 @@
   height: 20vw;
   background-color: #2e2f60;
 }
+#curr_anime_general #c {
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+  padding-top: 5%;
+}
+#curr_anime_general #c .detailContainer span:first-child {
+  display: inline-block;
+  font-weight: bold;
+  width: 15%;
+  padding: 1.5%;
+}
+#curr_anime_general #c .detailContainer span:last-child {
+  padding-left: 2.5%;
+}
+#curr_anime_general #d {
+  font-size: 1.5vw;
+  color: #888;
+  font-family: "QS_Bold";
+}
+#curr_anime_general #d .relatedContainer {
+  font-size: 1vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#curr_anime_general #d .relatedContainer span {
+  display: inline-block;
+  padding: 1.25% 5% 0% 0;
+  width: 10%;
+}
+#curr_anime_general #d .relatedContainer a {
+  color: #42beff;
+  margin-right: 2.5%;
+}
+#curr_anime_general #d .relatedContainer a:hover {
+  border-bottom: 1.1px solid #42beff;
+}
+#curr_anime_general #e .button {
+  border-radius: 50px;
+  padding: 1.5% 2%;
+  font-size: 1.25vw;
+}
 
 #curr_anime_synopsis {
   grid-area: anime_synopsis;
@@ -206,6 +248,11 @@
   width: 49%;
   display: inline-block;
 }
+#curr_episode_review .review .rating_section .average_rating .right .button {
+  border-radius: 50px;
+  padding: 1.5% 2%;
+  font-size: 1.25vw;
+}
 #curr_episode_review .review .comment_section {
   margin: 1% 0;
 }
@@ -258,6 +305,21 @@
   color: #42beff;
   font-family: "QS_Book";
   margin-bottom: 1%;
+}
+
+.button {
+  display: inline-block;
+  padding: 1%;
+  background-color: #42beff;
+  font-size: 1vw;
+  color: white;
+  font-family: "QS_Book";
+  cursor: pointer;
+  transition: 0.15s ease-in;
+}
+
+.button:hover {
+  background-color: #8dd8ff;
 }
 
 /*# sourceMappingURL=anime.css.map */

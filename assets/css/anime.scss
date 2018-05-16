@@ -44,7 +44,7 @@
 	grid-template-columns: 52.5% 47.5%;
 	padding: 2.5% 7.5%;
 
-	#a{
+	#a{ //Rating
 		grid-column-start: 1;
 		grid-column-end: 3;
 
@@ -62,12 +62,46 @@
 		}
 	}
 
-	#b{
+	#b{ //Video
 		padding: 5% 0;
 		#video_container{
 			width: 90%;
 			height: 20vw;
 			background-color: #2e2f60;
+		}
+	}
+
+	#c{ //Detail
+		@include setText(1.25vw, $cText, "QS_Book");
+		padding-top: 5%;
+
+		.detailContainer span:first-child{ 
+			display:inline-block; 
+			font-weight: bold; 
+			width: 15%;
+			padding: 1.5%;
+		}
+		.detailContainer span:last-child{ padding-left: 2.5%; }
+	}
+
+	#d{ //Related
+		@include setText(1.5vw, $cText, "QS_Bold");
+
+		.relatedContainer{ @include setText(1vw, $cText, "QS_Book"); }
+		.relatedContainer span{ 
+			display: inline-block; 
+			padding: 1.25% 5% 0% 0; 
+			width: 10%;
+		}
+		.relatedContainer a{ color: $cP; margin-right: 2.5%; }
+		.relatedContainer a:hover{ border-bottom: 1.1px solid $cP; }
+	}
+
+	#e{ //Button
+		.button{
+			border-radius: 50px;
+			padding: 1.5% 2%;
+			font-size: 1.25vw;
 		}
 	}
 }
@@ -203,6 +237,12 @@
 				.right{
 					width: 49%;
 					display: inline-block;
+
+					.button{
+						border-radius: 50px;
+						padding: 1.5% 2%;
+						font-size: 1.25vw;
+					}
 				}
 			}
 		}
@@ -249,3 +289,14 @@
 		}
 	}
 }
+
+.button{
+	display: inline-block;
+	padding: 1%;
+	background-color: $cP;
+	@include setText(1vw, white, "QS_Book");
+	cursor: pointer;
+	transition: 0.15s ease-in;
+}
+
+.button:hover{ background-color: #8dd8ff; }

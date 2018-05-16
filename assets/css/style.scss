@@ -142,8 +142,9 @@ input{ padding: 0; } //New
 
 	.fa-search { 
 		position: absolute;
-		top: 35%;
-		left: 15px;
+		top: 50%;
+		left: 12.5px;
+		transform: translate(0%, -30%);
 		cursor: pointer;
 		color: $cP;
 		font-size: 1vw;

@@ -152,8 +152,9 @@ input {
 }
 #widget_search .fa-search {
   position: absolute;
-  top: 35%;
-  left: 15px;
+  top: 50%;
+  left: 12.5px;
+  transform: translate(0%, -30%);
   cursor: pointer;
   color: #42beff;
   font-size: 1vw;
