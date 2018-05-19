@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lumina.to | News</title>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/news.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	
+	<body>
+		<div class="page grid-container">
+			<div class="navbar-area">
+				<!--Navbar-->
+				<div class="navbar grid-container">
+					<div class="logo"><a href="index.html">Lumina</a></div>
+
+					<div class="nav_wrapper grid-container">
+						<a class="nav" href="#">Anime List</a>
+						<a class="nav" href="news.html">News</a>
+						<!-- <a class="nav" id="nav_3" href="#">
+							<div id="nav_shop">
+								<u>OFFICIAL SHOP</u>
+							</div>
+							<i class="fas fa-shopping-bag fa-3x"></i>
+						</a> -->
+						<div class="nav">
+							<div class="nav_title">
+								LIBRARY
+							</div>
+							<a class="nav_subcontent" href="#">History</a>
+							<a class="nav_subcontent" href="#">Watch Later</a>
+						</div>
+						<div class="nav">
+							<div class="nav_title">
+								SUBSCRIPTION
+							</div>
+							<div class="subscription">
+								<a href="#" class="nav_subcontent">Title 1</a>
+								<a href="#" class="nav_subcontent">Title 2</a>
+								<a href="#" class="nav_subcontent">Title 3</a>
+								<a href="#" class="nav_subcontent">Title 4</a>
+								<a href="#" class="nav_subcontent">Title 5</a>
+								<a href="#" class="nav_subcontent">Title 6</a>
+								<a href="#" class="nav_subcontent">Title 7</a>
+								<a href="#" class="nav_subcontent">Title 8</a>
+								<a href="#" class="nav_subcontent">Title 9</a>
+								<a href="#" class="nav_subcontent">Title 10</a>
+							</div>
+							<a id="show_more" class="" href="#"><i class="fas fa-chevron-down"></i> Show 10 More</a>
+						</div>
+						<div class="nav">
+							<a class="nav_subnav" href="#">About</a><br>
+							<a class="nav_subnav" href="#">FAQ</a>
+							<a class="nav_subnav" href="#">Contact Us</a>
+							<br>
+							<a class="nav_subnav" href="#">Term of Services &copy; 2018 Lumina</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="widget-area">
+				<!--Widget-->
+				<div class="widget grid-container">
+					<form id="widget_search" action="">
+						<span onclick="document.getElementById('widget_search').submit();" class="fa fa-search"></span>
+						<input name="search" placeholder="Search">
+					</form>
+					<div>
+						<span onclick="open_navigation('filter');" id="widget_filter">
+							<i class="fas fa-sliders-h"></i>
+							Filter
+						</span>
+					</div>
+					<div id="widget_notification">
+						<i onclick="open_navigation('notification_wrapper');" class="fas fa-bell"></i>
+						<i id="isNotif" class="fas fa-circle"></i>
+
+						<div id="notification_wrapper">
+							<a href="#" class="notification">
+								Lorem Ipsum
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+						</div>
+					</div>
+					<div id="widget_login">
+						<span id="notLogged" onclick="open_navigation('manageAccount');">Login</span>
+						<span id="Logged">
+							<!--Isi dengan image-->
+						</span>
+					</div>
+				</div>
+			</div>
+	<!-- widget end -->
+
+
+
+			<!--News Bar-->
+			<div class="news_list grid-container">
+				<div>
+					<div class="title">Read</div>
+					<a href="#">
+						<div class="date">21 Mar 2018</div>
+						<div class="list_content">
+							Adaptasi Anime "ISLAND" Ungkap Staf Produksinya
+						</div>
+					</a>
+				</div>
+				<div>
+					<div class="title">Popular News</div>
+					<a href="#">
+						<div class="date">21 Mar 2018</div>
+						<div class="list_content">Lorem Ipsum atadatada</div>
+					</a>
+					<a href="#">
+						<div class="date">21 Mar 2018</div>
+						<div class="list_content">Lorem Ipsum atadatada</div>
+					</a>
+					<a href="#">
+						<div class="date">21 Mar 2018</div>
+						<div class="list_content">Lorem Ipsum atadatada</div>
+					</a>
+					<a href="#">
+						<div class="date">21 Mar 2018</div>
+						<div class="list_content">Lorem Ipsum atadatada</div>
+					</a>
+					<a href="#">
+						<div class="date">21 Mar 2018</div>
+						<div class="list_content">Lorem Ipsum atadatada</div>
+					</a>
+					<a href="#">
+						<div class="date">21 Mar 2018</div>
+						<div class="list_content">Lorem Ipsum atadatada</div>
+					</a>
+					<a href="#">
+						<div class="date">21 Mar 2018</div>
+						<div class="list_content">Lorem Ipsum atadatada</div>
+					</a>
+					<a href="#">
+						<div class="date">21 Mar 2018</div>
+						<div class="list_content">Lorem Ipsum atadatada</div>
+					</a>
+					<a href="#">
+						<div class="date">21 Mar 2018</div>
+						<div class="list_content">Lorem Ipsum atadatada</div>
+					</a>
+					<a href="#">
+						<div class="date">21 Mar 2018</div>
+						<div class="list_content">Lorem Ipsum atadatada</div>
+					</a>
+				</div>
+			</div>
+
+			<!--News Content-->
+			<div class="news_content_wrapper">
+				<div class="news_content">
+					<div class="img_container"></div>
+					<div class="tags">ANIME</div>
+					<div class="title">Adaptasi Anime ‘ISLAND’ Ungkap Staf Produksinya</div>
+					<div class="date">Kate Springer, Lumina • Published 21 Mar 2018</div> 
+					<div class="content">
+						<!-- <div class="img_container"><img id="fly" src="assets/image/island.jpg"></div> -->
+						Situs resmi dari adaptasi anime “ISLAND” telah mengungkap staf produksinya. Adaptasi VN ini direncanakan tayang pada tahun 2018 ini.
+						<br><br>
+						Staf produksinya adalah:
+						<br><br>
+						<li>Sutradara: Keiichiro Kawaguchi</li>
+						<li>Komposisi Seri: Naruhisa Arakawa</li>
+						<li>Desainer Karakter: Kousuke Kawamura</li>
+						<li>Musik: Akiyuki Tateyama</li>
+						<li>Lagu Pembuka: Yukari Tamura</li>
+						<li>Lagu Penutup: Asaka</li>
+						<li>Studio Produksi: feel.</li>
+						<br>
+						Seiyuu yang akan hadir beserta peran mereka adalah:
+						<br><br>
+						<li>Yukari Tamura sebagai <b>Rinne Ohara</b></li>
+						<li>Kana Asumi sebagai <b>Karen Kurutsu</b></li>
+						<li>Hibiku Yamamura <b>sebagai Sora Garandou</b></li>
+						<br>
+						VN in awalnya rilis pada April 2016 untuk PC dan rilis pada PlayStation Vita di 23 Februari
+						2017. Terdapat juga adaptasi manga karya Naoya Yao yang rilis pada April 2016.
+						<br><br>
+						Island menceritakan tentang pulau bernama Urashima. Sebuah insiden yang menimpa tiga keluarga besar pulau tersebut dari lima tahun yang lalu menyebabkan pulau tersebut terisolasi. Pulau tersebut terisolasi akibat penyakit lokal bernama Baimonbyou, tiga gadis dari pulau tersebut merupakan kunci untuk menyelamatkan pulau itu, namun tradisi membuat mereka tidak dapat bertindak. Suatu hari sebuah pria terdampar di pulau tersebut dan mengubah segalanya.
+						<br><br>
+						Gamenya diproduksi oleh Ryuichiro Yamakawa, Yousai Kuuchuu adalah ilustrator seri ini, sementara G.O. mengerjakan skenarionya.
+					</div>
+				</div>
+			</div>
+
+			<div id="manageAccount" onclick="open_navigation('manageAccount')">
+				<div id="container" class="grid-container" onclick="cancel_propagation();">
+					<div class="title">Manage Account</div>
+					<div class="register">
+						<div class="subtitle">Register</div>
+						<div class="small_comment">Join Lumina to stream your favourite anime</div>
+						<form class="form grid-container" method="post">
+							<div>
+								Username<br>
+								<input type="text" name="rname">
+							</div>
+							<div>
+								Password<br>
+								<input type="text" name="rpass">
+							</div>
+							<div>
+								Email<br>
+								<input type="text" name="remail">
+							</div>
+							<div>
+								Comfirm Password<br>
+								<input type="text" name="rcompass">
+							</div>
+							<div>
+								Gender<br>
+								<label class="custom_input_container">
+									Male
+									<input type="radio" name="gender" value="m">
+									<span class="custom_radio"></span>
+								</label>
+								<label class="custom_input_container">
+									Female
+									<input type="radio" name="gender" value="f">
+									<span class="custom_radio"></span>
+								</label>
+							</div>
+							<div>
+								<div class="terms">By clicking "Register", you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</div>
+								<div>
+									<input type="submit" class="button" value="Register">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="login">
+						<div class="subtitle">Login</div>
+						<div class="small_comment">Already have an account? Log in below</div>
+						<form class="form grid-container" method="post">
+							<div>
+								Email<br>
+								<input type="text" name="lemail">
+							</div>
+							<div>
+								Password<br>
+								<input type="text" name="lpass">
+							</div>
+							<div>
+								<input type="submit" class="button" value="Login">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="assets/js/script.js"></script>
+	<script type="text/javascript" src="assets/js/news.js"></script>
+</html>

@@ -1,0 +1,228 @@
+@import 'colors';
+@import 'functions';
+
+//Main CSS
+.page{
+	grid-template-columns: 15vw auto;
+	grid-template-rows: 5vw auto;
+	grid-template-areas:
+	"header widget"
+    "header main-content";
+}
+
+%anime_wrapper{
+	border: 1px solid $cS;
+	@include border-radius(15px);
+	margin: auto auto;
+	background-size: cover;
+	cursor: pointer;
+}
+
+.content-area{
+	grid-area: main-content;
+}
+
+.content{
+	grid-template-rows: auto auto auto auto;
+	grid-template-areas:
+	"latest-update"
+	"top-airing"
+	"latest-news"
+	"promotion";
+	grid-row-gap: 2.5vw;
+
+	padding: 4vw 4vw 5vw 4vw;
+
+	.section_title{
+		grid-area: section_title;
+		margin-bottom: 2.5%;
+	}
+	
+	.pagination{
+		position: relative;
+		right: 5%;
+		grid-area: pagination;
+		padding-bottom: 2.5vw;
+	}
+
+	.latest_update{
+		grid-template-row: auto auto;
+		grid-template-columns: auto auto;
+		grid-template-rows: auto auto;
+		grid-area: latest-update;
+		grid-template-areas:
+		"section_title pagination"
+		"latest_update_wrapper latest_update_wrapper";
+
+		.latest_update_wrapper{
+			grid-area: latest_update_wrapper;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+
+			div{
+				@extend %anime_wrapper;
+				width: 80%;
+				height: 20vw;
+			}
+			
+			span{
+				position: relative;
+				top: .5vw;
+				text-align: center;
+				@include setText(1.5vw, $cDrkBlue, "QS_Light");
+			}
+
+			div::after{
+				top: -20vw;
+				height: 20vw;
+			}
+		}
+	}
+
+	.top_airing{
+		grid-area: top-airing;
+
+		.top_airing_wrapper{
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+			div{
+				@extend %anime_wrapper;
+				width: 90%;
+				height: 18vw;
+				position: relative;
+			}
+
+			div:first-child .numbering{
+				color: white;
+				background-color: $cP;
+			}
+
+			button{
+				position: relative;
+				top: .5vw;
+				background-color: $cBlueLt;
+				border: none;
+				margin: .1vw 2vw;
+				@include border-radius(50px);
+				outline: none;
+				cursor: pointer;
+				@include setText(1.5vw, white, "QS_Light");
+			}
+
+			.numbering{
+				background-color: white;
+				position: absolute;
+				top: 10%;
+				text-align: center;
+				width: 10%;
+				padding: 4%;
+				display: block;
+				@include setText(1.5vw, $cP, "QS_Book");
+			}
+
+			div::after{
+				top: -18vw;
+				height: 18vw;
+			}
+		}
+	}
+
+	.latest_update_wrapper,
+	.top_airing_wrapper{
+		div::before{
+			content:"";
+			height: 100%;
+			display: block;
+			background-color: rgba(92,98,117,.6);
+			@include border-radius(15px);
+			@include setText(3vw, white, "QS_Light");
+			@include transition(all 0.25s ease);
+		}
+
+		div::after{
+			content: attr(title);
+			display: flex;
+			align-items: center;
+			text-align: center;
+			justify-content: center;
+			position: relative;
+			width: 100%;
+			@include setText(2vw, white, "QS_Light");
+			@include transition(all 0.25s ease);
+		}
+
+		div:hover:after,
+		div:hover:before{
+			opacity: 0;
+		}
+	}
+
+	.latest_news{
+		grid-area: latest-news;
+
+		.latest_news_wrapper{
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+			height: 18vw;
+			margin: 2.5% 0;
+		}
+
+		.latest_news_wrapper > span{
+			@extend %anime_wrapper;
+			width: 90%;
+			height: 100%;
+		}
+
+		.latest_news_wrapper > div{
+			grid-column: 2/6;
+			padding-left: 1%;
+
+
+			.news_title{ 
+				@include setText(2vw, $cP, "QS_Book");
+				cursor: pointer;
+			}
+			.news_content{ 
+				@include setText(1.25vw, $cText, "QS_Book"); 
+				width: 90%;
+				padding: 1% 0;
+				text-align: justify;
+			}
+			a{
+				@include setText(1.25vw, $cP, "QS_Book"); 
+			}
+			a:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.promotion{
+		.promotion_wrapper{
+			background-color: $cP;
+			width: 95 - 2 * 2.5%;
+			height: 25vw;
+			@include setText(2.5vw, white, "QS_Book");
+			padding: 2.5%;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		button{
+			position: relative;
+			top: 15vw;
+			background-color: white;
+			border: none;
+			margin: .1vw 2vw;
+			@include border-radius(50px);
+			width: 15vw;
+			height: 3vw;
+			outline: none;
+			cursor: pointer;
+			@include setText(1.5vw, $cBlueLt, "QS_Light");
+		}
+
+		.promotion_image{
+			background-size: 80%;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+	}
+}

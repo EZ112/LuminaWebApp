@@ -1,0 +1,302 @@
+@import 'colors';
+@import 'functions';
+
+//Main CSS
+.page{
+	grid-template-columns: 15vw auto;
+	grid-template-rows: 5vw auto;
+	grid-template-areas:
+	"header widget"
+    "header anime-content";
+}
+
+
+.anime-content{
+	grid-area: anime-content;
+
+	grid-template-rows: auto auto auto auto;
+	grid-template-areas:
+	"anime_image"
+	"anime_general"
+	"anime_synopsis"
+	"anime_episode_review"; 
+}
+
+#curr_anime_image{
+	grid-area: anime_image;
+	width: 100%;
+	height: 25vw;
+	position: relative;
+	background-color: $cT;
+
+	#curr_anime_title{
+		@include setText(3.25vw, white, "QS_Book");
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+#curr_anime_general{
+	grid-area: anime_general;
+
+	grid-template-columns: 52.5% 47.5%;
+	padding: 2.5% 5%;
+
+	#a{ //Rating
+		grid-column-start: 1;
+		grid-column-end: 3;
+
+		#rank{
+			@include setText(2.5vw, $cP, "QS_Book");
+		}
+		.fa-star{
+			font-size: 1.5vw;
+			color: $cS;
+			cursor: pointer;
+		}
+		#review_number{
+			margin-left: 1.5%;
+			@include setText(1.25vw, $cText, "QS_Book");
+		}
+	}
+
+	#b{ //Video
+		padding: 5% 0;
+		#video_container{
+			width: 90%;
+			height: 20vw;
+			background-color: #2e2f60;
+		}
+	}
+
+	#c{ //Detail
+		@include setText(1.25vw, $cText, "QS_Book");
+		padding-top: 5%;
+
+		.detailContainer span:first-child{ 
+			display:inline-block; 
+			font-weight: bold; 
+			width: 15%;
+			padding: 1.5%;
+		}
+		.detailContainer span:last-child{ padding-left: 2.5%; }
+	}
+
+	#d{ //Related
+		@include setText(1.5vw, $cText, "QS_Bold");
+
+		.relatedContainer{ @include setText(1vw, $cText, "QS_Book"); }
+		.relatedContainer span{ 
+			display: inline-block; 
+			padding: 1.25% 5% 0% 0; 
+			width: 10%;
+		}
+		.relatedContainer a{ color: $cP; margin-right: 2.5%; }
+		.relatedContainer a:hover{ border-bottom: 1.1px solid $cP; }
+	}
+
+	#e{ //Button
+		.button{
+			border-radius: 50px;
+			padding: 1.5% 2%;
+			font-size: 1.25vw;
+		}
+	}
+}
+
+#curr_anime_synopsis{
+	grid-area: anime_synopsis;
+	padding: 2.5% 5%;
+
+	.title{ @include setText(2.25vw, $cText, "QS_Book"); }
+	.synopsis{
+		@include setText(1.15vw, $cText, "QS_Book");
+		text-align: justify;
+		padding: 1.5% 0;
+	}
+}
+
+#curr_episode_review{
+	grid-area: anime_episode_review;
+	@include setText(1vw, $cText, "QS_Book");
+	padding: 0% 7.5% 2.5% 5%;
+
+	.tab{
+		display: inline-block;
+		padding: 0.5% 2.5%;
+		@include setText(2vw, $cText, "QS_Book");
+		cursor: pointer;
+	}
+
+	.tab:hover{ color: $cP; }
+
+	.tab_active{
+		border-top: 2px solid $cP;
+		border-left: 1.5px solid $cS;
+		border-right: 1.5px solid $cS;
+		border-bottom: none;
+		color: $cP;
+	}
+
+	.tab_inactive{
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		border-bottom: 1.5px solid $cS;
+	}
+
+	#dummy{
+		width: 60.5%;
+		color: white;
+		cursor: inherit;
+	}
+
+	.sort{
+		padding: 1% 0;
+
+		.sort_filter{
+			.active{ color: $cP; }
+			.inactive{ color: $cText; }
+		}
+		.sort_filter span{ cursor: pointer; }
+		.sort_filter span:hover{ color: $cP; }
+	}
+
+	.episode{
+		/* display: none; */
+		.episode_container{
+			margin: 1.5% 0;
+
+			.left{
+				display: inline-block;
+				width: 27.5%;
+
+				.thumbnail_container{
+					width: 90%;
+					height: 10vw;
+					border: 1px solid $cText;
+				}
+			}
+			.right{
+				display: inline-block;
+				width: 50%;
+				vertical-align: top;
+
+				.episode_num{ 
+					@include setText(1.75vw, $cP, "QS_Book"); 
+					margin-right: 2.5%;
+				}
+				.date, .views{ @include setText(1.25vw, $cText, "QS_Book"); }
+				.title{ 
+					@include setText(1.5vw, $cText, "QS_Book"); 
+					margin: 1.5% 0;
+				}
+
+				a:hover{ border-bottom: 1.5px solid $cP; }
+			}
+		}
+	}
+
+	.review{
+		display: none;
+
+		.rating_section{
+			margin: 1% 0;
+
+			.average_rating{
+
+				.left{
+					width: 50%;
+					display: inline-block;
+					.bar_container{
+						@include setText(1.25vw, $cText, "QS_Book");
+						margin-bottom: 0.75%;
+						
+						.rating_num{
+							text-align: center;
+							display: inline-block;
+							width: 2vw;
+						}
+						.bar{
+							display: inline-block;
+							vertical-align: bottom;
+							width: 50%;
+							height: 1.75vw;
+							background-color: $cS;
+							.fill{
+								background-color: orange;
+								width: 50%;
+								height: 100%;
+							}
+						}
+					}
+				}
+
+				.right{
+					width: 49%;
+					display: inline-block;
+
+					.button{
+						border-radius: 50px;
+						padding: 1.5% 2%;
+						font-size: 1.25vw;
+					}
+				}
+			}
+		}
+		.comment_section{
+			margin: 1% 0;
+
+			.comment_container{
+				.comment_description{
+					.fa-star{ font-size: 1.25vw; }
+					.comment_title{
+						@include setText(1.5vw, #333, "QS_Bold");
+						margin-left: 1.5%;
+					}
+					.mid{ margin: 0.5% 0; }
+					a{ color: $cP; }
+					a:hover{ border-bottom: 1px solid $cP; }
+				}
+				.comment{
+					padding: 1% 0;
+					text-align: justify;
+					width: 60%;
+					@include setText(1.25vw, $cText, "QS_Book");
+				}
+				.comment_rate{
+					@include setText(1vw, $cP, "QS_Book");
+					.read_more{
+						@include setText(1.25vw, $cP, "QS_Book");
+						margin-bottom: 0.5%;
+						display: inline-block;
+						/* display: none; */
+					}
+					.read_more:hover, .cr:hover{ 
+						cursor: pointer; 
+						border-bottom: 1px solid $cP;
+					}
+				}
+			}
+		}
+
+		.title{
+			display: inline-block;
+			@include setText(2vw, $cP, "QS_Book");
+			margin-bottom: 1%;
+		}
+	}
+}
+
+.button{
+	display: inline-block;
+	padding: 1%;
+	background-color: $cP;
+	@include setText(1vw, white, "QS_Book");
+	cursor: pointer;
+	transition: 0.15s ease-in;
+}
+
+.button:hover{ background-color: #8dd8ff; }

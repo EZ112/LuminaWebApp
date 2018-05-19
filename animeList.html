@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lumina.to</title>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/animeList.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	
+	<body>
+		<div class="page grid-container">
+			<div class="navbar-area">
+				<!--Navbar-->
+				<div class="navbar grid-container">
+					<div class="logo"><a href="index.html">Lumina</a></div>
+
+					<div class="nav_wrapper grid-container">
+						<a class="nav" href="#">Anime List</a>
+						<a class="nav" href="news.html">News</a>
+						<!-- <a class="nav" id="nav_3" href="#">
+							<div id="nav_shop">
+								<u>OFFICIAL SHOP</u>
+							</div>
+							<i class="fas fa-shopping-bag fa-3x"></i>
+						</a> -->
+						<div class="nav">
+							<div class="nav_title">
+								LIBRARY
+							</div>
+							<a class="nav_subcontent" href="watchHistory.html">History</a>
+							<a class="nav_subcontent" href="watchLater.html">Watch Later</a>
+						</div>
+						<div class="nav">
+							<div class="nav_title">
+								SUBSCRIPTION
+							</div>
+							<div class="subscription">
+								<a href="#" class="nav_subcontent">Title 1</a>
+								<a href="#" class="nav_subcontent">Title 2</a>
+								<a href="#" class="nav_subcontent">Title 3</a>
+								<a href="#" class="nav_subcontent">Title 4</a>
+								<a href="#" class="nav_subcontent">Title 5</a>
+								<a href="#" class="nav_subcontent">Title 6</a>
+								<a href="#" class="nav_subcontent">Title 7</a>
+								<a href="#" class="nav_subcontent">Title 8</a>
+								<a href="#" class="nav_subcontent">Title 9</a>
+								<a href="#" class="nav_subcontent">Title 10</a>
+							</div>
+							<a id="show_more" class="" href="#"><i class="fas fa-chevron-down"></i> Show 10 More</a>
+						</div>
+						<div class="nav">
+							<a class="nav_subnav" href="#">About</a><br>
+							<a class="nav_subnav" href="#">FAQ</a>
+							<a class="nav_subnav" href="#">Contact Us</a>
+							<br>
+							<a class="nav_subnav" href="#">Term of Services &copy; 2018 Lumina</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="widget-area">
+				<!--Widget-->
+				<div class="widget grid-container">
+					<form id="widget_search" action="">
+						<span onclick="document.getElementById('widget_search').submit();" class="fa fa-search"></span>
+						<input name="search" placeholder="Search">
+					</form>
+					<div>
+						<span onclick="open_navigation('filter');" id="widget_filter">
+							<i class="fas fa-sliders-h"></i>
+							Filter
+						</span>
+					</div>
+					<div id="widget_notification">
+						<i onclick="open_navigation('notification_wrapper');" class="fas fa-bell"></i>
+						<i id="isNotif" class="fas fa-circle"></i>
+
+						<div id="notification_wrapper">
+							<a href="#" class="notification">
+								Lorem Ipsum
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+							<a href="#" class="notification">
+								Ini di push pake js aja
+							</a>
+						</div>
+					</div>
+					<div id="widget_login">
+						<span id="notLogged" onclick="open_navigation('manageAccount');">Login</span>
+						<span id="Logged">
+							<!--Isi dengan image-->
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div id="filter" onclick="submit_filter()">
+				<form id="filter_content_wrapper" onclick="cancel_propagation()">
+					<span class="close_button" onclick="submit_filter()"> &times; </span>
+					<div id="filter_title">Filter</div>
+					<div class="filter_content grid-container">
+						<div>
+							<div id="filter_subtitle">
+								Type
+							</div>
+							<div id="filter_type">
+								<div id="active" onclick="change_filter(0);">Anime</div><div onclick="change_filter(1);">News</div>
+							</div>
+							<div class="filter_anime" id="filter_duration">
+								<div id="filter_subtitle">
+									Duration
+								</div>
+								<div id="label_container">
+									<!--Duration disini semua liat js-->
+								</div>
+							</div>
+						</div>
+						<div class="filter_news">
+							<!--Empty Grid-->
+						</div>
+						<div class="filter_anime" id="filter_genre">
+							<div id="filter_subtitle">
+								Genre
+							</div>
+							<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
+								<div class="label_container">
+									<!--Baca JS-->
+								</div>
+								<div class="label_container">
+									<!--Baca JS-->
+								</div>
+								<div class="label_container">
+									<!--Baca JS-->
+								</div>
+							</div>
+						</div>
+						<div class="filter_news" style="grid-column: 1/3;" id="filter_tag">
+							<div id="filter_subtitle">
+								Tags
+							</div>
+							<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
+								<div class="label_container">
+									<!--Baca JS-->
+								</div>
+								<div class="label_container">
+									<!--Baca JS-->
+								</div>
+								<div class="label_container">
+									<!--Baca JS-->
+								</div>
+							</div>
+						</div>
+						<div class="filter_anime" style="grid-column: 1/3;" id="filter_subgenre">
+							<div id="filter_subtitle">
+								Sub Genre
+							</div>
+							<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
+								<div class="label_container">
+									<!--Baca JS-->
+								</div>
+								<div class="label_container">
+									<!--Baca JS-->
+								</div>
+								<div class="label_container">
+									<!--Baca JS-->
+								</div>
+								<div class="label_container">
+									<!--Baca JS-->
+								</div>
+								<div class="label_container">
+									<!--Baca JS-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="mainContent">
+				<div class="navigation grid-container">
+					<div id="year">
+						<i class="far fa-calendar-alt"></i>
+						<span>Year</span>
+						<span class="value" onclick="showMenu(this);">
+							<div class="current">2018</div>
+							<div class="dropdown">
+								<div class="options" onclick="changeTo(this);">2018</div>
+								<div class="options" onclick="changeTo(this);">2017</div>
+								<div class="options" onclick="changeTo(this);">2016</div>
+								<div class="options" onclick="changeTo(this);">2015</div>
+								<div class="options" onclick="changeTo(this);">2014</div>
+							</div>
+						</span>
+					</div>
+					<div id="season">
+						<i class="far fa-snowflake" id="seasonFA"></i>
+						<span>Season</span>
+						<span class="value" onclick="showMenu(this);">
+							<div class="current">Winter</div>
+							<div class="dropdown">
+								<div class="options" onclick="changeTo(this);">Spring</div>
+								<div class="options" onclick="changeTo(this);">Summer</div>
+								<div class="options" onclick="changeTo(this);">Fall</div>
+								<div class="options" onclick="changeTo(this);">Winter</div>
+							</div>
+						</span>
+					</div>
+					<div id="status">
+						<i class="far fa-play-circle"></i>
+						<span>Status</span>
+						<span class="value">Ongoing</span>
+					</div>
+					<div id="duration">
+						<i class="far fa-clock"></i>
+						<span>Duration</span>
+						<span class="value">24min Series</span>
+					</div>
+					<div id="sort">
+						<i class="fas fa-sort"></i>
+						<span>Sort</span>
+						<span class="value" onclick="showMenu(this);">
+							<div class="current">Title</div>
+							<div class="dropdown">
+								<div class="options" onclick="changeTo(this);">Subscriber</div>
+								<div class="options" onclick="changeTo(this);">Title</div>
+							</div>
+						</span>
+					</div>
+				</div>
+				<div class="animeList grid-container">
+					<div>
+						<div class="animeImage"></div>
+						<div class="animeDetail">
+							<div class="detail"><div>Source</div><div>Manga</div></div>
+							<div class="detail"><div>Total Episodes</div><div>12</div></div>
+							<div class="detail"><div>Duration</div><div>24min / Episode</div></div>
+							<div class="detail"><div>Subscriber</div><div>300K</div></div>
+							<div class="detail"><div>Genres</div><div>Comedy, Slice of life</div></div>
+						</div>
+					</div>
+					<div>
+						<div class="animeImage"></div>
+						<div class="animeDetail">
+							<div class="detail"><div>Source</div><div>Manga</div></div>
+							<div class="detail"><div>Total Episodes</div><div>12</div></div>
+							<div class="detail"><div>Duration</div><div>24min / Episode</div></div>
+							<div class="detail"><div>Subscriber</div><div>300K</div></div>
+							<div class="detail"><div>Genres</div><div>Comedy, Slice of life</div></div>
+						</div>
+					</div>
+					<div>
+						<div class="animeImage"></div>
+						<div class="animeDetail">
+							<div class="detail"><div>Source</div><div>Manga</div></div>
+							<div class="detail"><div>Total Episodes</div><div>12</div></div>
+							<div class="detail"><div>Duration</div><div>24min / Episode</div></div>
+							<div class="detail"><div>Subscriber</div><div>300K</div></div>
+							<div class="detail"><div>Genres</div><div>Comedy</div></div>
+						</div>
+					</div>
+					<div>
+						<div class="animeImage"></div>
+						<div class="animeDetail">
+							<div class="detail"><div>Source</div><div>Manga</div></div>
+							<div class="detail"><div>Total Episodes</div><div>12</div></div>
+							<div class="detail"><div>Duration</div><div>24min / Episode</div></div>
+							<div class="detail"><div>Subscriber</div><div>300K</div></div>
+							<div class="detail"><div>Genres</div><div>Comedy</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="manageAccount" onclick="open_navigation('manageAccount')">
+				<div id="container" class="grid-container" onclick="cancel_propagation();">
+					<div class="title">Manage Account</div>
+					<div class="register">
+						<div class="subtitle">Register</div>
+						<div class="small_comment">Join Lumina to stream your favourite anime</div>
+						<form class="form grid-container" method="post">
+							<div>
+								Username<br>
+								<input type="text" name="rname">
+							</div>
+							<div>
+								Password<br>
+								<input type="text" name="rpass">
+							</div>
+							<div>
+								Email<br>
+								<input type="text" name="remail">
+							</div>
+							<div>
+								Comfirm Password<br>
+								<input type="text" name="rcompass">
+							</div>
+							<div>
+								Gender<br>
+								<label class="custom_input_container">
+									Male
+									<input type="radio" name="gender" value="m">
+									<span class="custom_radio"></span>
+								</label>
+								<label class="custom_input_container">
+									Female
+									<input type="radio" name="gender" value="f">
+									<span class="custom_radio"></span>
+								</label>
+							</div>
+							<div>
+								<div class="terms">By clicking "Register", you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</div>
+								<div>
+									<input type="submit" class="button" value="Register">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="login">
+						<div class="subtitle">Login</div>
+						<div class="small_comment">Already have an account? Log in below</div>
+						<form class="form grid-container" method="post">
+							<div>
+								Email<br>
+								<input type="text" name="lemail">
+							</div>
+							<div>
+								Password<br>
+								<input type="text" name="lpass">
+							</div>
+							<div>
+								<input type="submit" class="button" value="Login">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="assets/js/animeList.js"></script>
+	<script type="text/javascript" src="assets/js/script.js"></script>
+	<script type="text/javascript" src="assets/js/filter.js"></script>
+</html>

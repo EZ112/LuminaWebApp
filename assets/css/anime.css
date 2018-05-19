@@ -1,0 +1,325 @@
+.page {
+  grid-template-columns: 15vw auto;
+  grid-template-rows: 5vw auto;
+  grid-template-areas: "header widget" "header anime-content";
+}
+
+.anime-content {
+  grid-area: anime-content;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: "anime_image" "anime_general" "anime_synopsis" "anime_episode_review";
+}
+
+#curr_anime_image {
+  grid-area: anime_image;
+  width: 100%;
+  height: 25vw;
+  position: relative;
+  background-color: #bbcbdb;
+}
+#curr_anime_image #curr_anime_title {
+  font-size: 3.25vw;
+  color: white;
+  font-family: "QS_Book";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#curr_anime_general {
+  grid-area: anime_general;
+  grid-template-columns: 52.5% 47.5%;
+  padding: 2.5% 5%;
+}
+#curr_anime_general #a {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+#curr_anime_general #a #rank {
+  font-size: 2.5vw;
+  color: #42beff;
+  font-family: "QS_Book";
+}
+#curr_anime_general #a .fa-star {
+  font-size: 1.5vw;
+  color: #d5dfe8;
+  cursor: pointer;
+}
+#curr_anime_general #a #review_number {
+  margin-left: 1.5%;
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#curr_anime_general #b {
+  padding: 5% 0;
+}
+#curr_anime_general #b #video_container {
+  width: 90%;
+  height: 20vw;
+  background-color: #2e2f60;
+}
+#curr_anime_general #c {
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+  padding-top: 5%;
+}
+#curr_anime_general #c .detailContainer span:first-child {
+  display: inline-block;
+  font-weight: bold;
+  width: 15%;
+  padding: 1.5%;
+}
+#curr_anime_general #c .detailContainer span:last-child {
+  padding-left: 2.5%;
+}
+#curr_anime_general #d {
+  font-size: 1.5vw;
+  color: #888;
+  font-family: "QS_Bold";
+}
+#curr_anime_general #d .relatedContainer {
+  font-size: 1vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#curr_anime_general #d .relatedContainer span {
+  display: inline-block;
+  padding: 1.25% 5% 0% 0;
+  width: 10%;
+}
+#curr_anime_general #d .relatedContainer a {
+  color: #42beff;
+  margin-right: 2.5%;
+}
+#curr_anime_general #d .relatedContainer a:hover {
+  border-bottom: 1.1px solid #42beff;
+}
+#curr_anime_general #e .button {
+  border-radius: 50px;
+  padding: 1.5% 2%;
+  font-size: 1.25vw;
+}
+
+#curr_anime_synopsis {
+  grid-area: anime_synopsis;
+  padding: 2.5% 5%;
+}
+#curr_anime_synopsis .title {
+  font-size: 2.25vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#curr_anime_synopsis .synopsis {
+  font-size: 1.15vw;
+  color: #888;
+  font-family: "QS_Book";
+  text-align: justify;
+  padding: 1.5% 0;
+}
+
+#curr_episode_review {
+  grid-area: anime_episode_review;
+  font-size: 1vw;
+  color: #888;
+  font-family: "QS_Book";
+  padding: 0% 7.5% 2.5% 5%;
+}
+#curr_episode_review .tab {
+  display: inline-block;
+  padding: 0.5% 2.5%;
+  font-size: 2vw;
+  color: #888;
+  font-family: "QS_Book";
+  cursor: pointer;
+}
+#curr_episode_review .tab:hover {
+  color: #42beff;
+}
+#curr_episode_review .tab_active {
+  border-top: 2px solid #42beff;
+  border-left: 1.5px solid #d5dfe8;
+  border-right: 1.5px solid #d5dfe8;
+  border-bottom: none;
+  color: #42beff;
+}
+#curr_episode_review .tab_inactive {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1.5px solid #d5dfe8;
+}
+#curr_episode_review #dummy {
+  width: 60.5%;
+  color: white;
+  cursor: inherit;
+}
+#curr_episode_review .sort {
+  padding: 1% 0;
+}
+#curr_episode_review .sort .sort_filter .active {
+  color: #42beff;
+}
+#curr_episode_review .sort .sort_filter .inactive {
+  color: #888;
+}
+#curr_episode_review .sort .sort_filter span {
+  cursor: pointer;
+}
+#curr_episode_review .sort .sort_filter span:hover {
+  color: #42beff;
+}
+#curr_episode_review .episode {
+  /* display: none; */
+}
+#curr_episode_review .episode .episode_container {
+  margin: 1.5% 0;
+}
+#curr_episode_review .episode .episode_container .left {
+  display: inline-block;
+  width: 27.5%;
+}
+#curr_episode_review .episode .episode_container .left .thumbnail_container {
+  width: 90%;
+  height: 10vw;
+  border: 1px solid #888;
+}
+#curr_episode_review .episode .episode_container .right {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+#curr_episode_review .episode .episode_container .right .episode_num {
+  font-size: 1.75vw;
+  color: #42beff;
+  font-family: "QS_Book";
+  margin-right: 2.5%;
+}
+#curr_episode_review .episode .episode_container .right .date, #curr_episode_review .episode .episode_container .right .views {
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#curr_episode_review .episode .episode_container .right .title {
+  font-size: 1.5vw;
+  color: #888;
+  font-family: "QS_Book";
+  margin: 1.5% 0;
+}
+#curr_episode_review .episode .episode_container .right a:hover {
+  border-bottom: 1.5px solid #42beff;
+}
+#curr_episode_review .review {
+  display: none;
+}
+#curr_episode_review .review .rating_section {
+  margin: 1% 0;
+}
+#curr_episode_review .review .rating_section .average_rating .left {
+  width: 50%;
+  display: inline-block;
+}
+#curr_episode_review .review .rating_section .average_rating .left .bar_container {
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+  margin-bottom: 0.75%;
+}
+#curr_episode_review .review .rating_section .average_rating .left .bar_container .rating_num {
+  text-align: center;
+  display: inline-block;
+  width: 2vw;
+}
+#curr_episode_review .review .rating_section .average_rating .left .bar_container .bar {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 50%;
+  height: 1.75vw;
+  background-color: #d5dfe8;
+}
+#curr_episode_review .review .rating_section .average_rating .left .bar_container .bar .fill {
+  background-color: orange;
+  width: 50%;
+  height: 100%;
+}
+#curr_episode_review .review .rating_section .average_rating .right {
+  width: 49%;
+  display: inline-block;
+}
+#curr_episode_review .review .rating_section .average_rating .right .button {
+  border-radius: 50px;
+  padding: 1.5% 2%;
+  font-size: 1.25vw;
+}
+#curr_episode_review .review .comment_section {
+  margin: 1% 0;
+}
+#curr_episode_review .review .comment_section .comment_container .comment_description .fa-star {
+  font-size: 1.25vw;
+}
+#curr_episode_review .review .comment_section .comment_container .comment_description .comment_title {
+  font-size: 1.5vw;
+  color: #333;
+  font-family: "QS_Bold";
+  margin-left: 1.5%;
+}
+#curr_episode_review .review .comment_section .comment_container .comment_description .mid {
+  margin: 0.5% 0;
+}
+#curr_episode_review .review .comment_section .comment_container .comment_description a {
+  color: #42beff;
+}
+#curr_episode_review .review .comment_section .comment_container .comment_description a:hover {
+  border-bottom: 1px solid #42beff;
+}
+#curr_episode_review .review .comment_section .comment_container .comment {
+  padding: 1% 0;
+  text-align: justify;
+  width: 60%;
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#curr_episode_review .review .comment_section .comment_container .comment_rate {
+  font-size: 1vw;
+  color: #42beff;
+  font-family: "QS_Book";
+}
+#curr_episode_review .review .comment_section .comment_container .comment_rate .read_more {
+  font-size: 1.25vw;
+  color: #42beff;
+  font-family: "QS_Book";
+  margin-bottom: 0.5%;
+  display: inline-block;
+  /* display: none; */
+}
+#curr_episode_review .review .comment_section .comment_container .comment_rate .read_more:hover, #curr_episode_review .review .comment_section .comment_container .comment_rate .cr:hover {
+  cursor: pointer;
+  border-bottom: 1px solid #42beff;
+}
+#curr_episode_review .review .title {
+  display: inline-block;
+  font-size: 2vw;
+  color: #42beff;
+  font-family: "QS_Book";
+  margin-bottom: 1%;
+}
+
+.button {
+  display: inline-block;
+  padding: 1%;
+  background-color: #42beff;
+  font-size: 1vw;
+  color: white;
+  font-family: "QS_Book";
+  cursor: pointer;
+  transition: 0.15s ease-in;
+}
+
+.button:hover {
+  background-color: #8dd8ff;
+}
+
+/*# sourceMappingURL=anime.css.map */
