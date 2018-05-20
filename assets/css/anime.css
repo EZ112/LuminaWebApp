@@ -30,7 +30,7 @@
 #curr_anime_general {
   grid-area: anime_general;
   grid-template-columns: 52.5% 47.5%;
-  padding: 2.5% 7.5%;
+  padding: 2.5% 5%;
 }
 #curr_anime_general #a {
   grid-column-start: 1;
@@ -105,7 +105,7 @@
 
 #curr_anime_synopsis {
   grid-area: anime_synopsis;
-  padding: 2.5% 7.5%;
+  padding: 2.5% 5%;
 }
 #curr_anime_synopsis .title {
   font-size: 2.25vw;
@@ -125,7 +125,7 @@
   font-size: 1vw;
   color: #888;
   font-family: "QS_Book";
-  padding: 0% 7.5% 2.5% 7.5%;
+  padding: 0% 7.5% 2.5% 5%;
 }
 #curr_episode_review .tab {
   display: inline-block;

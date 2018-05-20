@@ -11,7 +11,11 @@
 
 .content{
 	grid-area: main-content;
-	padding: 2% 5%;
+	padding: 2.5% 5%;
+
+	.section_title{
+		margin-bottom: 2.5%;
+	}
 
 	.redify{
 		@include setText(1.5vw, $cRed, "QS_Book");
@@ -48,7 +52,7 @@
 					padding-bottom: 0.5%;
 					margin-bottom: 0.5%;
 				}
-				.videoEpisode:hover{ border-bottom: 1.1px solid $cP; }
+				.videoEpisode:hover{ /* border-bottom: 1.1px solid $cP; */ text-decoration: underline; }
 				.videoAirDate{
 					@include setText(1.1vw, $cT, "QS_Book");
 					margin-left: 2%;

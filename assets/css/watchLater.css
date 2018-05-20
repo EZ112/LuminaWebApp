@@ -6,7 +6,10 @@
 
 .content {
   grid-area: main-content;
-  padding: 2% 5%;
+  padding: 2.5% 5%;
+}
+.content .section_title {
+  margin-bottom: 2.5%;
 }
 .content .redify {
   font-size: 1.5vw;
@@ -45,7 +48,8 @@
   margin-bottom: 0.5%;
 }
 .content .videoContainer .dummyCenter .videoDetail .videoEpisode:hover {
-  border-bottom: 1.1px solid #42beff;
+  /* border-bottom: 1.1px solid $cP; */
+  text-decoration: underline;
 }
 .content .videoContainer .dummyCenter .videoDetail .videoAirDate {
   font-size: 1.1vw;

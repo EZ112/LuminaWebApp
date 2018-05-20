@@ -42,7 +42,7 @@
 	grid-area: anime_general;
 
 	grid-template-columns: 52.5% 47.5%;
-	padding: 2.5% 7.5%;
+	padding: 2.5% 5%;
 
 	#a{ //Rating
 		grid-column-start: 1;
@@ -108,7 +108,7 @@
 
 #curr_anime_synopsis{
 	grid-area: anime_synopsis;
-	padding: 2.5% 7.5%;
+	padding: 2.5% 5%;
 
 	.title{ @include setText(2.25vw, $cText, "QS_Book"); }
 	.synopsis{
@@ -121,7 +121,7 @@
 #curr_episode_review{
 	grid-area: anime_episode_review;
 	@include setText(1vw, $cText, "QS_Book");
-	padding: 0% 7.5% 2.5% 7.5%;
+	padding: 0% 7.5% 2.5% 5%;
 
 	.tab{
 		display: inline-block;

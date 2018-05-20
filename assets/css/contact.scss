@@ -13,8 +13,7 @@ pink{ color: $cRed; }
 
 .content{
 	grid-area: content;
-
-	padding: 2.5% 7.5%;
+	padding: 2.5% 5%;
 	@include setText(1.5vw, $cText, "QS_Book");
 
 	.heading{ font-weight: bolder; margin-bottom: 1%; }

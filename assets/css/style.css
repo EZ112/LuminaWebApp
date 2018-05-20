@@ -294,8 +294,8 @@ input {
 .custom_input_container {
   display: block;
   position: relative;
-  padding-left: 30px;
-  margin-bottom: 12px;
+  padding-left: 2vw;
+  margin-bottom: 1vw;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -310,10 +310,10 @@ input {
 }
 .custom_input_container .custom_radio, .custom_input_container .custom_checkbox {
   position: absolute;
-  top: 5px;
+  top: 5%;
   left: 0;
-  height: 20px;
-  width: 20px;
+  height: 1.5vw;
+  width: 1.5vw;
   background-color: #eee;
   transition: all 0.25s ease;
 }
@@ -428,6 +428,7 @@ input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 5px;
   grid-template-columns: 60% 40%;
   grid-template-rows: auto auto;
   grid-template-areas: "title title" "register login";
@@ -498,7 +499,8 @@ input {
 #manageAccount #container a:hover {
   border-bottom: 1px solid #42beff;
 }
-#manageAccount #container .button {
+
+.button {
   display: inline-block;
   border-radius: 50px;
   border: none;

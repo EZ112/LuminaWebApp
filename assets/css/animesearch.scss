@@ -13,7 +13,7 @@
 	grid-area: content;
 
 	grid-template-rows: auto auto auto;
-	padding: 2.5% 7.5%;
+	padding: 2.5% 5%;
 	@include setText(1.75vw, $cText, "QS_Book");
 
 	.pointAnime{
