@@ -1,0 +1,19 @@
+.page {
+  height: 100vh;
+  font-size: 1.25vw;
+  color: #0babfe;
+  font-family: "QS_Light";
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.status i {
+  font-size: 6vw;
+  color: #4bceaf;
+}
+
+/*# sourceMappingURL=success.css.map */

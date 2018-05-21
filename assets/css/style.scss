@@ -257,6 +257,7 @@ input{ padding: 0; } //New
 
 		.notification:hover{
 			background-color: $cP;
+			color: white;
 		}
 	}
 }
@@ -340,7 +341,7 @@ input{ padding: 0; } //New
 	a{
 		@include setText(1.15vw, $cText, "QS_Bold");
 		float: left;
-		border: .5px solid $cText;
+		border: .5px solid $cLgtGreyLt;
 		padding: 6px 12px;
 		@include transition(all 0.25s ease);
 	}

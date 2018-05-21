@@ -14,3 +14,8 @@ function changeDurationTo(str){
 		value[3].setAttribute("value", "p2");
 	}
 }
+
+function proceed(x){
+	window.location.href = 'success.html'; 
+	return false;
+}

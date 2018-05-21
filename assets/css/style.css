@@ -279,6 +279,7 @@ input {
 }
 #widget_notification #notification_wrapper .notification:hover {
   background-color: #42beff;
+  color: white;
 }
 
 #widget_login #notLogged {
@@ -359,7 +360,7 @@ input {
   color: #888;
   font-family: "QS_Bold";
   float: left;
-  border: 0.5px solid #888;
+  border: 0.5px solid #d5dfe8;
   padding: 6px 12px;
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;

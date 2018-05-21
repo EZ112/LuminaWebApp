@@ -56,3 +56,8 @@ function anime_object(title, filter, img_src){
 function show_more(x){
 	x.style.maxHeight = "none";
 }
+
+function search_anime(x){
+	window.location.href = 'animesearch.html'; 
+	return false;
+}
