@@ -1,25 +1,78 @@
+.video-js .vjs-control-bar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .vjs-default-skin .vjs-big-play-button {
-  /* The font size is what makes the big play button...big. 
-     All width/height values use ems, which are a multiple of the font size.
-     If the .video-js font-size is 10px, then 3em equals 30px.*/
   font-size: 3em;
-  /* We're using SCSS vars here because the values are used in multiple places.
-     Now that font size is set, the following em values will be a multiple of the
-     new font size. If the font-size is 3em (30px), then setting any of
-     the following values to 3em would equal 30px. 3 * font-size. */
-  /* 1.5em = 45px default */
   line-height: 1.5em;
   height: 1.5em;
   width: 3em;
-  /* 0.06666em = 2px default */
-  border: 0em;
-  /* 0.3em = 9px default */
-  border-radius: 50em;
-  /* Align center */
-  left: 50%;
-  top: 50%;
+  border: 0em !important;
+  border-radius: 50em !important;
+  left: 50% !important;
+  top: 50% !important;
   margin-left: -1.5em;
   margin-top: -0.75em;
+}
+
+.video-js .vjs-control-bar,
+.video-js .vjs-menu-button .vjs-menu-content {
+  /* IE8 - has no alpha support */
+  background-color: white;
+  /* Opacity: 1.0 = 100%, 0.0 = 0% */
+  background-color: rgba(34, 34, 34, 0.5);
+}
+
+.video-js .vjs-big-play-button {
+  color: #42beff;
+  background-color: white !important;
+  transition: .3s ease-in-out;
+}
+
+#pv:hover .vjs-big-play-button {
+  background-color: #42beff !important;
+  color: white;
+  transition: .3s ease-in-out;
+}
+
+/* Slider - used for Volume bar and Progress bar */
+.video-js .vjs-slider {
+  background-color: rgba(234, 248, 255, 0.5);
+}
+
+/* The slider bar color is used for the progress bar and the volume bar
+   (the first two can be removed after a fix that's coming) */
+.video-js .vjs-volume-level,
+.video-js .vjs-play-progress,
+.video-js .vjs-slider-bar {
+  background: #42beff;
+}
+
+/* The main progress bar also has a bar that shows how much has been loaded. */
+.video-js .vjs-load-progress {
+  /* For IE8 we'll lighten the color */
+  /* Otherwise we'll rely on stacked opacities */
+  background: rgba(66, 190, 255, 0.8);
+}
+
+/* The load progress bar also has internal divs that represent
+   smaller disconnected loaded time ranges */
+.video-js .vjs-load-progress div {
+  /* For IE8 we'll lighten the color */
+  background: white;
+  /* Otherwise we'll rely on stacked opacities */
+  background: rgba(234, 248, 255, 0.75);
+}
+
+.vjs-menu li {
+  text-transform: uppercase;
+}
+
+.vjs-poster {
+  transition: .5s ease-in-out;
 }
 
 /*# sourceMappingURL=video.css.map */

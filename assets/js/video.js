@@ -29,13 +29,13 @@ $(function(){
     window.player = player
     player.updateSrc([
       {
-        src: './assets/video/pv/TVアニメ「ゆるキャン△」予告編映像 360.mp4',
+        src: './assets/video/pv/pvyurucamp360.mp4',
         type: 'video/mp4',
         label: 'SD',
         res: 360
       },
       {
-        src: './assets/video/pv/TVアニメ「ゆるキャン△」予告編映像 720.mp4',
+        src: './assets/video/pv/pvyurucamp720.mp4',
         type: 'video/mp4',
         label: 'HD',
         res: 720
