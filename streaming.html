@@ -5,7 +5,12 @@
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/streaming.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/video.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+	
+		<link rel='stylesheet prefetch' href='https://vjs.zencdn.net/5-unsafe/video-js.css'>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/videojs-resolution-switcher/0.4.2/videojs-resolution-switcher.css" />
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	
@@ -99,7 +104,10 @@
 			<div class="content grid-container">
 				<div class="video">
 					<div class="video_container">
-						<!--Isi video-->
+						<video id="pv" class="video-js vjs-default-skin"
+						    preload="none" poster='https://i.imgur.com/oeODDMP.png'
+						    data-setup='' controls>
+						 </video>
 					</div>
 					<span id="episode">Episode 2</span>
 					<span id="airDate">Aired 04 Jan 2018</span>
@@ -201,7 +209,7 @@
 					<div class="section">Next Episode</div>
 					
 					<div class="container one grid-container" id="next_episode">
-						<a href="#" class="video_container">
+						<a href="#" class="video_container" style="background-image: url(assets/image/thumb2.jpg)">
 
 						</a>
 						<div class="info">
@@ -212,7 +220,7 @@
 					<div class="section">Prev Episode</div>
 					
 					<div class="container one grid-container" id="prev_episode">
-						<a href="#" class="video_container">
+						<a href="#" class="video_container" style="background-image: url(assets/image/thumb1.png)">
 							
 						</a>
 						<div class="info">
@@ -224,7 +232,7 @@
 					<div class="section" id="recommend">Recomended Anime</div>
 
 					<div class="container two grid-container">
-						<a href="#" class="video_container">
+						<a href="#" class="video_container" style="background-image: url(assets/image/vidcon4.jpg)">
 							
 						</a>
 						<div class="info">
@@ -236,7 +244,7 @@
 					</div>
 
 					<div class="container two grid-container">
-						<a href="#" class="video_container">
+						<a href="#" class="video_container" style="background-image: url(assets/image/vidcon3.jpg)">
 							
 						</a>
 						<div class="info">
@@ -248,7 +256,7 @@
 					</div>
 
 					<div class="container two grid-container">
-						<a href="#" class="video_container">
+						<a href="#" class="video_container" style="background-image: url(assets/image/vidcon2.jpg)">
 							
 						</a>
 						<div class="info">
@@ -260,7 +268,7 @@
 					</div>
 
 					<div class="container two grid-container">
-						<a href="#" class="video_container">
+						<a href="#" class="video_container" style="background-image: url(assets/image/vidcon1.png)">
 							
 						</a>
 						<div class="info">
@@ -272,7 +280,7 @@
 					</div>
 
 					<div class="container two grid-container">
-						<a href="#" class="video_container">
+						<a href="#" class="video_container" style="background-image: url(assets/image/vidcon1.png)">
 							
 						</a>
 						<div class="info">
@@ -456,4 +464,9 @@
 	<script type="text/javascript" src="assets/js/script.js"></script>
 	<script type="text/javascript" src="assets/js/streaming.js"></script>
 	<script type="text/javascript" src="assets/js/filter.js"></script>
+
+	<script src='https://vjs.zencdn.net/5-unsafe/video.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-resolution-switcher/0.4.2/videojs-resolution-switcher.js"></script>
+
+	<script type="text/javascript" src="assets/js/video.js"></script>
 </html>

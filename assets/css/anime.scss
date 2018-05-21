@@ -186,6 +186,7 @@
 		/* display: none; */
 		.episode_container{
 			margin: 1.5% 0;
+			cursor: pointer;
 
 			.left{
 				display: inline-block;
@@ -194,7 +195,7 @@
 				.thumbnail_container{
 					width: 90%;
 					height: 10vw;
-					border: 1px solid $cText;
+					background-size: cover;
 				}
 			}
 			.right{

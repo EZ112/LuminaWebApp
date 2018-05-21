@@ -12,13 +12,17 @@
 }
 .content .video {
   grid-area: video;
-  padding: 5% 7.5%;
+  padding: 5% 3.5% 5% 7.5%;
 }
 .content .video .video_container {
   width: 100%;
   height: 27.5vw;
   border: 1px solid black;
   margin-bottom: 2.5%;
+}
+.content .video .video_container #pv {
+  width: 100%;
+  height: 100%;
 }
 .content .video #episode {
   font-size: 2vw;
@@ -186,7 +190,7 @@
 }
 .content .other {
   grid-area: other;
-  padding: 8.5% 0;
+  padding: 8.5% 0 8.5% 4.5%;
 }
 .content .other .section {
   font-size: 1.5vw;
@@ -206,7 +210,7 @@
 .content .other .container .video_container {
   width: 90%;
   height: 6vw;
-  border: 1px solid black;
+  background-size: cover;
 }
 .content .other .one .info {
   position: absolute;
