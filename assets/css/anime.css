@@ -52,6 +52,9 @@
   grid-template-columns: 52.5% 47.5%;
   padding: 2.5% 5%;
 }
+#curr_anime_general > div {
+  margin: 1.5% 0;
+}
 #curr_anime_general #a {
   grid-column-start: 1;
   grid-column-end: 3;

@@ -64,7 +64,8 @@
 				<!--Widget-->
 				<div class="widget grid-container">
 					<form id="widget_search" action="" onsubmit="return search_anime(this);">
-						<span onclick="document.getElementById('widget_search').submit();" class="fa fa-search"></span>
+						<!-- <span onclick="document.getElementById('widget_search').submit();" class="fa fa-search"></span> -->
+						<span onclick="search_anime(this);" class="fa fa-search"></span>
 						<input name="search" placeholder="Search">
 					</form>
 					<div>
@@ -385,6 +386,9 @@
 
 			<div id="manageAccount" onclick="open_navigation('manageAccount')">
 				<div id="container" class="grid-container" onclick="cancel_propagation();">
+					<div>
+						<span class="close_button" onclick="close_popup(this)"> × </span>	
+					</div>
 					<div class="title">Manage Account</div>
 					<div class="register">
 						<div class="subtitle">Register</div>

@@ -64,7 +64,8 @@
 				<!--Widget-->
 				<div class="widget grid-container">
 					<form id="widget_search" action="" onsubmit="return search_anime(this);">
-						<span onclick="document.getElementById('widget_search').submit();" class="fa fa-search"></span>
+						<!-- <span onclick="document.getElementById('widget_search').submit();" class="fa fa-search"></span> -->
+						<span onclick="search_anime(this);" class="fa fa-search"></span>
 						<input name="search" placeholder="Search">
 					</form>
 					<div>
@@ -100,7 +101,7 @@
 			<!-- widget end -->
 
 			<div class="content">
-				<form id="formClass" action="#" onsubmit="return search_anime(this);">
+				<form id="formClass" action="" onsubmit="return proceed(this);">
 					<div class="row grid-container">
 						<div class="question">Which one do you <br> like to choose?</div>
 						<label class="custom_input_container basic"><div class="label">Basic</div><input type="radio" name="paymentType" value="Basic" checked="true" onclick="changeDurationTo('basic');"> <span class="custom_radio"></span></label>
@@ -141,7 +142,8 @@
 					<div class="row grid-container">
 						<div></div>
 						<div></div>
-						<div><span class="button" onclick="document.getElementById('formClass').submit();">Proceed</span></div>
+						<!-- <div><span class="button" onclick="document.getElementById('formClass').submit()">Proceed</span></div> -->
+						<div><span class="button" onclick="proceed(this);">Proceed</span></div>
 					</div>
 				</form>
 			</div>
@@ -230,6 +232,9 @@
 
 			<div id="manageAccount" onclick="open_navigation('manageAccount')">
 				<div id="container" class="grid-container" onclick="cancel_propagation();">
+					<div>
+						<span class="close_button" onclick="close_popup(this)"> × </span>	
+					</div>
 					<div class="title">Manage Account</div>
 					<div class="register">
 						<div class="subtitle">Register</div>

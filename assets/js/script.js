@@ -61,3 +61,7 @@ function search_anime(x){
 	window.location.href = 'animesearch.html'; 
 	return false;
 }
+
+function close_popup(x){
+	$(x).parent().parent().parent().hide();
+}

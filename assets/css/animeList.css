@@ -81,10 +81,48 @@
 }
 .mainContent .animeList > div .animeImage {
   background-color: #42beff;
-  background-image: url(../image/karakai.jpg);
   background-size: cover;
   background-position: center;
   border-radius: 10px;
+}
+.mainContent .animeList > div .animeImage::before {
+  content: "";
+  height: 100%;
+  display: block;
+  background-color: rgba(92, 98, 117, 0.6);
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  border-radius: 15px;
+  font-size: 3vw;
+  color: white;
+  font-family: "QS_Light";
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.mainContent .animeList > div .animeImage::after {
+  content: attr(title);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  top: -100%;
+  height: 100%;
+  width: 100%;
+  font-size: 2vw;
+  color: white;
+  font-family: "QS_Light";
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.mainContent .animeList > div .animeImage:hover:after,
+.mainContent .animeList > div .animeImage:hover:before {
+  opacity: 0;
 }
 .mainContent .animeList > div .animeDetail {
   padding-left: 10%;

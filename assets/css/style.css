@@ -340,6 +340,7 @@ input {
   top: 0;
   float: right;
   cursor: pointer;
+  color: #888;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -432,7 +433,7 @@ input {
   border-radius: 5px;
   grid-template-columns: 60% 40%;
   grid-template-rows: auto auto;
-  grid-template-areas: "title title" "register login";
+  grid-template-areas: "title ." "register login";
 }
 #manageAccount #container .title {
   grid-area: title;

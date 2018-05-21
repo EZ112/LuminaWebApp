@@ -57,6 +57,10 @@
 	grid-template-columns: 52.5% 47.5%;
 	padding: 2.5% 5%;
 
+	>div{
+		margin: 1.5% 0;
+	}
+
 	#a{ //Rating
 		grid-column-start: 1;
 		grid-column-end: 3;
