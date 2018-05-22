@@ -15,3 +15,7 @@ function changeTo(x){
 	var str = x.innerHTML;
 	x.parentElement.parentElement.getElementsByClassName("current")[0].innerHTML = str;
 }
+
+function search(str){
+	
+}

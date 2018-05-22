@@ -159,6 +159,9 @@ input {
   color: #878da0;
   font-family: "QS_Book";
 }
+#widget_search input[type="submit"] {
+  display: none;
+}
 #widget_search .fa-search {
   position: absolute;
   top: 50%;

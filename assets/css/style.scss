@@ -149,6 +149,7 @@ input{ padding: 0; } //New
 		text-indent: 40px;
 		@include setText(1.2vw, $cDrkBlueLt, "QS_Book");
 	}
+	input[type="submit"]{ display: none; }
 
 	.fa-search { 
 		position: absolute;
