@@ -1,10 +1,13 @@
 function showMenu(x){
-	var dropdown = x.getElementsByClassName("dropdown")[0];
+	var curr = x.getElementsByClassName("dropdown")[0];
 
-	if(dropdown.style.display == "block"){
-		dropdown.style.display = "none";
+	var dropdown = document.getElementsByClassName("dropdown");
+	for(var i = 0; i < dropdown.length; ++i){ if(dropdown[i] != curr) dropdown[i].style.display = "none"; }
+
+	if(curr.style.display == "block"){
+		curr.style.display = "none";
 	} else{
-		dropdown.style.display = "block";
+		curr.style.display = "block";
 	}
 }
 
