@@ -38,6 +38,8 @@
 					color: white;
 					border-radius: 0 0 5px 5px;
 					display: none;
+					z-index: 100;
+					cursor: pointer;
 
 					.options{ padding: 10%; }
 					.options:hover{ background-color: #8dd8ff; }
@@ -55,6 +57,20 @@
 		#season .dropdown{
 			width: 8vw;
 			top: 140%;
+		}
+
+		#status .dropdown{
+			width: 10vw;
+			top: 140%;
+
+			.options{ font-size: 1.25vw; }
+		}
+
+		#duration .dropdown{
+			width: 8vw;
+			top: 140%;
+
+			.options{ font-size: 1.25vw; }
 		}
 
 		#sort .dropdown{

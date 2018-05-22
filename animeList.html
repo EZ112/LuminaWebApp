@@ -213,12 +213,25 @@
 					<div id="status">
 						<i class="far fa-play-circle"></i>
 						<span>Status</span>
-						<span class="value">Ongoing</span>
+						<span class="value" onclick="showMenu(this);">
+							<div class="current">On Going</div>
+							<div class="dropdown">
+								<div class="options" onclick="changeTo(this);">On Going</div>
+								<div class="options" onclick="changeTo(this);">Completed</div>
+							</div>
+						</span>
 					</div>
 					<div id="duration">
 						<i class="far fa-clock"></i>
 						<span>Duration</span>
-						<span class="value">24min Series</span>
+						<span class="value" onclick="showMenu(this);">
+							<div class="current">Short</div>
+							<div class="dropdown">
+								<div class="options" onclick="changeTo(this);">Short</div>
+								<div class="options" onclick="changeTo(this);">24min Series</div>
+								<div class="options" onclick="changeTo(this);">Movie</div>
+							</div>
+						</span>
 					</div>
 					<div id="sort">
 						<i class="fas fa-sort"></i>

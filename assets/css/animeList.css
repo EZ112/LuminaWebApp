@@ -41,6 +41,8 @@
   color: white;
   border-radius: 0 0 5px 5px;
   display: none;
+  z-index: 100;
+  cursor: pointer;
 }
 .mainContent .navigation > div .value .dropdown .options {
   padding: 10%;
@@ -61,6 +63,20 @@
 .mainContent .navigation #season .dropdown {
   width: 8vw;
   top: 140%;
+}
+.mainContent .navigation #status .dropdown {
+  width: 10vw;
+  top: 140%;
+}
+.mainContent .navigation #status .dropdown .options {
+  font-size: 1.25vw;
+}
+.mainContent .navigation #duration .dropdown {
+  width: 8vw;
+  top: 140%;
+}
+.mainContent .navigation #duration .dropdown .options {
+  font-size: 1.25vw;
 }
 .mainContent .navigation #sort .dropdown {
   width: 8vw;
