@@ -1,0 +1,33 @@
+@import 'colors';
+@import 'functions';
+
+.page{
+	grid-template-columns: 15vw 85vw;
+	grid-template-rows: 10vw auto;
+	grid-template-areas: 
+	"header head_title"
+	"header content";
+	overflow: hidden;
+}
+
+.content{
+	grid-area: content;
+	padding: 3.5% 5% 5% 5%;
+	@include setText(1.25vw, $cText, "QS_Book");
+
+	.contentTitle{
+		display: inline-block;
+		@include setText(1.5vw, $cText, "QS_Book");
+		padding: 1.5% 0 1.5% 0;
+	}
+
+	a{
+		font-style: italic;
+		color: $cP;
+		border: 1px solid transparent;
+	}
+
+	a:hover{
+		border-bottom: 1.25px solid $cP;
+	}
+}

@@ -1,0 +1,544 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.grid-container {
+  display: grid;
+}
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: auto;
+}
+
+input {
+  padding: 0;
+}
+
+.navbar-area {
+  grid-area: header;
+}
+
+.navbar {
+  grid-template-rows: auto 1fr 3fr;
+  background-color: #d5dfe8;
+  width: 15vw;
+  position: fixed;
+  z-index: 100;
+  font-family: "QS_Book";
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+.navbar .grid-container > a:hover {
+  color: white;
+  background-color: #42beff;
+}
+
+.logo {
+  font-size: 2.5vw;
+  text-align: center;
+  line-height: 5vw;
+  color: #5c6275;
+  height: 5vw;
+}
+.logo a {
+  display: inline-block;
+  background: url(../image/LogoLumina_Black.png) 40% 50%;
+  background-size: 120%;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.nav_wrapper {
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.nav_wrapper::-webkit-scrollbar {
+  display: none !important;
+}
+
+.nav {
+  font-size: 1.5vw;
+  padding: 5% 15%;
+  color: #878da0;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.nav .nav_title, .nav .nav_subnav {
+  font-size: 1vw;
+  font-family: "QS_Bold";
+  padding-bottom: 0.5vw;
+  color: #5c6275;
+}
+.nav .subscription {
+  max-height: 15vw;
+  overflow: hidden;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.nav .nav_subcontent {
+  display: block;
+  font-size: 1.25vw;
+  padding: 0.5vw 1vw;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.nav .nav_subcontent:hover {
+  font-weight: bold;
+  background-color: white;
+}
+.nav .nav_subnav {
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  color: #878da0;
+}
+.nav #show_more {
+  font-size: 1vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+
+.nav:last-child {
+  padding-bottom: 20%;
+}
+
+.nav > .nav_subnav:hover {
+  color: white;
+}
+
+#active {
+  background-color: #42beff !important;
+  color: white !important;
+}
+
+.widget-area {
+  grid-area: widget;
+}
+
+.widget {
+  box-shadow: 0px -5px 20px #5c6275;
+  position: fixed;
+  z-index: 99;
+  background-color: white;
+  padding: 1.5vw 2vw;
+  grid-template-columns: 3fr 2fr 5vw 1fr;
+  grid-template-rows: 2vw;
+  font-family: "QS_Book";
+}
+
+#widget_search {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+}
+#widget_search input {
+  width: 42.5vw;
+  height: 100%;
+  border: 1px solid #878da0;
+  text-indent: 40px;
+  font-size: 1.2vw;
+  color: #878da0;
+  font-family: "QS_Book";
+}
+#widget_search input[type="submit"] {
+  display: none;
+}
+#widget_search .fa-search {
+  position: absolute;
+  top: 50%;
+  left: 12.5px;
+  transform: translate(0%, -30%);
+  cursor: pointer;
+  color: #42beff;
+  font-size: 1vw;
+}
+
+#widget_filter {
+  margin: 0 5%;
+  padding: 1%;
+  cursor: pointer;
+  font-size: calc(7px + 1vw);
+  color: #878da0;
+  font-family: "QS_Book";
+  position: relative;
+  display: inline-block;
+}
+
+#filter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #bbcbdb;
+  z-index: 101;
+  display: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#filter .filter_news {
+  display: none;
+}
+#filter #filter_content_wrapper {
+  width: 90%;
+  height: 80%;
+  margin: 2.5% auto;
+  padding: 2%;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 1.75vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#filter #filter_title {
+  font-size: 3.5vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#filter #filter_subtitle {
+  font-size: 2.5vw;
+  color: #888;
+  font-family: "QS_Book";
+  margin: 2% 0;
+}
+#filter .filter_content {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  margin-top: 1%;
+  padding-left: 2.5%;
+  /* 		#filter_duration label:last-child{
+  			margin-left: 10%;
+  		} */
+}
+#filter .filter_content #filter_type {
+  width: 80%;
+  margin-top: 2%;
+}
+#filter .filter_content #filter_type > div {
+  text-align: center;
+  display: inline-block;
+  width: 48.5%;
+  padding: 1% 0;
+  font-size: 2vw;
+  color: #42beff;
+  font-family: "QS_Book";
+  border: 1px solid #42beff;
+  cursor: pointer;
+}
+#filter .filter_content #filter_type > div:first-child {
+  border-radius: 5px 0 0 5px;
+}
+#filter .filter_content #filter_type > div:last-child {
+  border-radius: 0 5px 5px 0;
+}
+#filter .filter_content #filter_duration label {
+  display: inline !important;
+  margin: 2%;
+}
+#filter .filter_content #filter_duration label:first-child {
+  margin-left: 0%;
+}
+
+#widget_notification {
+  position: relative;
+}
+#widget_notification .fa-bell {
+  font-size: 2vw;
+  color: #aac7dd;
+  cursor: pointer;
+}
+#widget_notification .fa-circle {
+  font-size: 0.75vw;
+  color: #42beff;
+  position: absolute;
+  top: 0vw;
+}
+#widget_notification #notification_wrapper {
+  width: 12.5vw;
+  height: 18vw;
+  position: absolute;
+  top: 2.25vw;
+  font-family: "QS_Book";
+  display: none;
+}
+#widget_notification #notification_wrapper .notification {
+  display: block;
+  height: 5vw;
+  padding: 0.5vw;
+  background-color: white;
+}
+#widget_notification #notification_wrapper .notification:hover {
+  background-color: #42beff;
+  color: white;
+}
+
+#widget_login #notLogged {
+  font-size: 1.5vw;
+  color: #888;
+  font-family: "QS_Book";
+  cursor: pointer;
+}
+#widget_login #Logged {
+  display: none;
+}
+
+.custom_input_container {
+  display: block;
+  position: relative;
+  padding-left: 2vw;
+  margin-bottom: 1vw;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.custom_input_container input[type="radio"],
+.custom_input_container input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.custom_input_container .custom_radio, .custom_input_container .custom_checkbox {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  height: 1.5vw;
+  width: 1.5vw;
+  background-color: #eee;
+  transition: all 0.25s ease;
+}
+.custom_input_container .custom_radio {
+  border-radius: 50%;
+}
+.custom_input_container .custom_checkbox {
+  border-radius: 2px;
+}
+
+.custom_input_container:hover input[type="radio"] ~ .custom_radio,
+.custom_input_container:hover input[type="checkbox"] ~ .custom_checkbox {
+  background-color: #ccc;
+}
+
+.custom_input_container input[type="radio"]:checked ~ .custom_radio,
+.custom_input_container input[type="checkbox"]:checked ~ .custom_checkbox {
+  background-color: #42beff;
+}
+
+.close_button {
+  position: relative;
+  top: 0;
+  float: right;
+  cursor: pointer;
+  color: #888;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.section_title {
+  font-size: 2vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+
+.pagination {
+  display: inline-block;
+}
+.pagination a {
+  font-size: 1.15vw;
+  color: #888;
+  font-family: "QS_Bold";
+  float: left;
+  border: 0.5px solid #d5dfe8;
+  padding: 6px 12px;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.pagination a:first-child {
+  border-radius: 5px 0 0 5px;
+}
+.pagination a:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.pagination a:hover {
+  color: white;
+  background-color: #42beff;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #42beff;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #42beff;
+}
+
+.rating_check {
+  color: orange !important;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+#manageAccount {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #bbcbdb;
+  z-index: 101;
+  display: none;
+}
+#manageAccount #container {
+  width: 70vw;
+  background-color: #FFF;
+  padding: 2.5% 5%;
+  font-size: 1.5vw;
+  color: #42beff;
+  font-family: "QS_Book";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: auto auto;
+  grid-template-areas: "title ." "register login";
+}
+#manageAccount #container .title {
+  grid-area: title;
+  font-size: 2vw;
+  color: #888;
+  font-family: "QS_Book";
+  margin-bottom: 1.5%;
+}
+#manageAccount #container .subtitle {
+  font-size: 1.75vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#manageAccount #container .small_comment {
+  font-size: 1.25vw;
+  color: #bbcbdb;
+  font-family: "QS_Book";
+  padding: 1% 0;
+}
+#manageAccount #container .register {
+  grid-area: register;
+  width: 85%;
+  padding-right: 5.5%;
+  border-right: 2px solid #d5dfe8;
+}
+#manageAccount #container .register .form {
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto auto auto;
+}
+#manageAccount #container .register .terms {
+  font-size: 0.75vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+#manageAccount #container .login {
+  grid-area: login;
+}
+#manageAccount #container .login .form {
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+}
+#manageAccount #container .login .form .button {
+  float: right;
+  position: relative;
+  right: 7.5%;
+}
+#manageAccount #container .form input[type="text"] {
+  width: 90%;
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+  padding: 1%;
+  border: 1px solid #888;
+}
+#manageAccount #container .form input, #manageAccount #container .form label {
+  margin: 3.5% 0;
+}
+#manageAccount #container .form .custom_input_container {
+  display: inline-block;
+  margin-right: 2.5%;
+}
+#manageAccount #container a {
+  color: #42beff;
+}
+#manageAccount #container a:hover {
+  border-bottom: 1px solid #42beff;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 50px;
+  border: none;
+  background-color: #42beff;
+  font-size: 1.25vw;
+  color: white;
+  font-family: "QS_Book";
+  padding: 1.5% 10%;
+  cursor: pointer;
+}
+
+.head_title {
+  grid-area: head_title;
+  background-color: #42beff;
+  height: 10vw;
+  position: relative;
+}
+.head_title .title {
+  font-size: 2.5vw;
+  color: white;
+  font-family: "QS_Book";
+  position: absolute;
+  bottom: 15%;
+  left: 5%;
+}
+
+/*# sourceMappingURL=style.css.map */

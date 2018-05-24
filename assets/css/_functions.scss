@@ -1,0 +1,26 @@
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin transition($content){
+	-webkit-transition: $content;
+	-moz-transition: $content;
+	-ms-transition: $content;
+	transition: $content;
+}
+
+@mixin user-select($value){
+	-webkit-user-select: $value;
+	-moz-user-select: $value;
+	-ms-user-select: $value;
+	user-select: $value;
+}
+
+@mixin setText($size, $color, $font){
+	font-size: $size;
+	color: $color;
+	font-family: $font;
+}
