@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2018 at 07:21 PM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 7.2.5
+-- Generation Time: May 25, 2018 at 05:46 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `luminadb`
 --
-CREATE DATABASE IF NOT EXISTS `luminadb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `luminadb`;
 
 -- --------------------------------------------------------
 
@@ -37,13 +35,13 @@ CREATE TABLE `anime` (
   `SourceID` int(11) DEFAULT NULL,
   `ReleaseSeasonID` int(11) DEFAULT NULL,
   `DurationID` int(11) DEFAULT NULL,
-  `AnimeTitle` longtext CHARACTER SET utf8 COLLATE utf8_bin,
+  `AnimeTitle` longtext,
   `Synopsis` longtext,
   `SeasonID` varchar(35) DEFAULT NULL,
   `EpisodeTotal` int(11) DEFAULT NULL,
   `Thumbnail` longtext,
   `AnimeReleaseDate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `anime`
@@ -63,7 +61,7 @@ INSERT INTO `anime` (`AnimeID`, `SeriesID`, `StudioID`, `SourceID`, `ReleaseSeas
 CREATE TABLE `animeandgenres` (
   `AnimeID` int(11) NOT NULL,
   `GenreID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `animeandgenres`
@@ -90,7 +88,7 @@ INSERT INTO `animeandgenres` (`AnimeID`, `GenreID`) VALUES
 CREATE TABLE `bankdetail` (
   `BankID` int(11) NOT NULL,
   `BankName` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `bankdetail`
@@ -113,10 +111,10 @@ INSERT INTO `bankdetail` (`BankID`, `BankName`) VALUES
 CREATE TABLE `comments` (
   `CommentsID` int(11) NOT NULL,
   `EpisodeID` int(11) DEFAULT NULL,
-  `Username` varchar(25) DEFAULT NULL,
+  `UserID` int(11) NOT NULL,
   `CommentContent` longtext,
   `PostingDate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -127,7 +125,7 @@ CREATE TABLE `comments` (
 CREATE TABLE `durations` (
   `DurationID` int(11) NOT NULL,
   `Duration` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `durations`
@@ -152,7 +150,7 @@ CREATE TABLE `episodes` (
   `Episode` int(11) DEFAULT NULL,
   `EpisodeTotalViews` int(11) DEFAULT NULL,
   `VideoLink` longtext
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `episodes`
@@ -178,7 +176,7 @@ INSERT INTO `episodes` (`EpisodeID`, `AnimeID`, `EpsTitle`, `EpsDateAir`, `Episo
 CREATE TABLE `genres` (
   `GenreID` int(11) NOT NULL,
   `Genre` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `genres`
@@ -229,7 +227,7 @@ CREATE TABLE `news` (
   `Writer` varchar(50) DEFAULT NULL,
   `NewsContent` longtext,
   `NewsLink` longtext
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -239,13 +237,13 @@ CREATE TABLE `news` (
 
 CREATE TABLE `paymenthistory` (
   `PaymentHistoryID` int(11) NOT NULL,
-  `Username` varchar(25) DEFAULT NULL,
+  `UserID` int(11) NOT NULL,
   `BankID` int(11) DEFAULT NULL,
   `PaymentStatus` bit(1) DEFAULT NULL,
   `AccountNumber` varchar(20) DEFAULT NULL,
   `PaymentPlan` varchar(10) DEFAULT NULL,
   `PaymentTime` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -257,7 +255,7 @@ CREATE TABLE `releaseseason` (
   `ReleaseSeasonID` int(11) NOT NULL,
   `ReleaseSeason` varchar(10) NOT NULL,
   `SeasonFlag` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `releaseseason`
@@ -278,7 +276,7 @@ INSERT INTO `releaseseason` (`ReleaseSeasonID`, `ReleaseSeason`, `SeasonFlag`) V
 CREATE TABLE `series` (
   `SeriesID` int(11) NOT NULL,
   `Series` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `series`
@@ -298,7 +296,7 @@ INSERT INTO `series` (`SeriesID`, `Series`) VALUES
 CREATE TABLE `source` (
   `SourceID` int(11) NOT NULL,
   `Source` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `source`
@@ -318,7 +316,7 @@ INSERT INTO `source` (`SourceID`, `Source`) VALUES
 CREATE TABLE `studio` (
   `StudioID` int(11) NOT NULL,
   `Studio` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `studio`
@@ -337,9 +335,9 @@ INSERT INTO `studio` (`StudioID`, `Studio`) VALUES
 
 CREATE TABLE `subscription` (
   `AnimeID` int(11) NOT NULL,
-  `Username` varchar(25) NOT NULL,
-  `SubscriptionStatus` bit(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `UserID` int(11) NOT NULL,
+  `SubscriptionStatus` bit(1) NOT NULL DEFAULT b'0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -348,11 +346,12 @@ CREATE TABLE `subscription` (
 --
 
 CREATE TABLE `username` (
+  `UserID` int(11) NOT NULL,
   `Username` varchar(25) NOT NULL,
-  `Email` varchar(25) DEFAULT NULL,
-  `Gender` varchar(10) DEFAULT NULL,
-  `SubStatus` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Email` varchar(25) NOT NULL,
+  `Gender` varchar(10) NOT NULL,
+  `SubStatus` varchar(10) NOT NULL DEFAULT 'FREE'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -363,9 +362,9 @@ CREATE TABLE `username` (
 CREATE TABLE `watchhistories` (
   `WatchHistoryID` int(11) NOT NULL,
   `EpisodeID` int(11) DEFAULT NULL,
-  `Username` varchar(25) DEFAULT NULL,
+  `UserID` int(11) NOT NULL,
   `WatchTime` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -376,8 +375,8 @@ CREATE TABLE `watchhistories` (
 CREATE TABLE `watchlater` (
   `WatchLaterID` int(11) NOT NULL,
   `EpisodeID` int(11) DEFAULT NULL,
-  `Username` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `UserID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
@@ -413,7 +412,7 @@ ALTER TABLE `bankdetail`
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`CommentsID`),
   ADD KEY `EpisodeID` (`EpisodeID`),
-  ADD KEY `Username` (`Username`);
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexes for table `durations`
@@ -446,7 +445,7 @@ ALTER TABLE `news`
 ALTER TABLE `paymenthistory`
   ADD PRIMARY KEY (`PaymentHistoryID`),
   ADD KEY `BankID` (`BankID`),
-  ADD KEY `Username` (`Username`);
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexes for table `releaseseason`
@@ -476,14 +475,14 @@ ALTER TABLE `studio`
 -- Indexes for table `subscription`
 --
 ALTER TABLE `subscription`
-  ADD PRIMARY KEY (`AnimeID`,`Username`),
-  ADD KEY `Username` (`Username`);
+  ADD PRIMARY KEY (`AnimeID`,`UserID`),
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexes for table `username`
 --
 ALTER TABLE `username`
-  ADD PRIMARY KEY (`Username`);
+  ADD PRIMARY KEY (`UserID`);
 
 --
 -- Indexes for table `watchhistories`
@@ -491,7 +490,7 @@ ALTER TABLE `username`
 ALTER TABLE `watchhistories`
   ADD PRIMARY KEY (`WatchHistoryID`),
   ADD KEY `EpisodeID` (`EpisodeID`),
-  ADD KEY `Username` (`Username`);
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexes for table `watchlater`
@@ -499,7 +498,7 @@ ALTER TABLE `watchhistories`
 ALTER TABLE `watchlater`
   ADD PRIMARY KEY (`WatchLaterID`),
   ADD KEY `EpisodeID` (`EpisodeID`),
-  ADD KEY `Username` (`Username`);
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -578,6 +577,12 @@ ALTER TABLE `studio`
   MODIFY `StudioID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `username`
+--
+ALTER TABLE `username`
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `watchhistories`
 --
 ALTER TABLE `watchhistories`
@@ -615,7 +620,7 @@ ALTER TABLE `animeandgenres`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`EpisodeID`) REFERENCES `episodes` (`EpisodeID`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`Username`) REFERENCES `username` (`Username`);
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `username` (`UserID`);
 
 --
 -- Constraints for table `episodes`
@@ -628,484 +633,28 @@ ALTER TABLE `episodes`
 --
 ALTER TABLE `paymenthistory`
   ADD CONSTRAINT `paymenthistory_ibfk_1` FOREIGN KEY (`BankID`) REFERENCES `bankdetail` (`BankID`),
-  ADD CONSTRAINT `paymenthistory_ibfk_2` FOREIGN KEY (`Username`) REFERENCES `username` (`Username`);
+  ADD CONSTRAINT `paymenthistory_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `username` (`UserID`);
 
 --
 -- Constraints for table `subscription`
 --
 ALTER TABLE `subscription`
   ADD CONSTRAINT `subscription_ibfk_1` FOREIGN KEY (`AnimeID`) REFERENCES `anime` (`AnimeID`),
-  ADD CONSTRAINT `subscription_ibfk_2` FOREIGN KEY (`Username`) REFERENCES `username` (`Username`);
+  ADD CONSTRAINT `subscription_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `username` (`UserID`);
 
 --
 -- Constraints for table `watchhistories`
 --
 ALTER TABLE `watchhistories`
   ADD CONSTRAINT `watchhistories_ibfk_1` FOREIGN KEY (`EpisodeID`) REFERENCES `episodes` (`EpisodeID`),
-  ADD CONSTRAINT `watchhistories_ibfk_2` FOREIGN KEY (`Username`) REFERENCES `username` (`Username`);
+  ADD CONSTRAINT `watchhistories_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `username` (`UserID`);
 
 --
 -- Constraints for table `watchlater`
 --
 ALTER TABLE `watchlater`
   ADD CONSTRAINT `watchlater_ibfk_1` FOREIGN KEY (`EpisodeID`) REFERENCES `episodes` (`EpisodeID`),
-  ADD CONSTRAINT `watchlater_ibfk_2` FOREIGN KEY (`Username`) REFERENCES `username` (`Username`);
---
--- Database: `phpmyadmin`
---
-CREATE DATABASE IF NOT EXISTS `phpmyadmin` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `phpmyadmin`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__bookmark`
---
-
-CREATE TABLE `pma__bookmark` (
-  `id` int(11) NOT NULL,
-  `dbase` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `user` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `label` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `query` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Bookmarks';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__central_columns`
---
-
-CREATE TABLE `pma__central_columns` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_type` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_length` text COLLATE utf8_bin,
-  `col_collation` varchar(64) COLLATE utf8_bin NOT NULL,
-  `col_isNull` tinyint(1) NOT NULL,
-  `col_extra` varchar(255) COLLATE utf8_bin DEFAULT '',
-  `col_default` text COLLATE utf8_bin
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Central list of columns';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__column_info`
---
-
-CREATE TABLE `pma__column_info` (
-  `id` int(5) UNSIGNED NOT NULL,
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `column_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `comment` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `mimetype` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `transformation` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `transformation_options` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `input_transformation` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `input_transformation_options` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Column information for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__designer_settings`
---
-
-CREATE TABLE `pma__designer_settings` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `settings_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Settings related to Designer';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__export_templates`
---
-
-CREATE TABLE `pma__export_templates` (
-  `id` int(5) UNSIGNED NOT NULL,
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `export_type` varchar(10) COLLATE utf8_bin NOT NULL,
-  `template_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `template_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved export templates';
-
---
--- Dumping data for table `pma__export_templates`
---
-
-INSERT INTO `pma__export_templates` (`id`, `username`, `export_type`, `template_name`, `template_data`) VALUES
-(1, 'root', 'server', 'luminadb', '{\"quick_or_custom\":\"quick\",\"what\":\"sql\",\"db_select[]\":[\"luminadb\",\"phpmyadmin\",\"test\"],\"aliases_new\":\"\",\"output_format\":\"sendit\",\"filename_template\":\"@SERVER@\",\"remember_template\":\"on\",\"charset\":\"utf-8\",\"compression\":\"none\",\"maxsize\":\"\",\"codegen_structure_or_data\":\"data\",\"codegen_format\":\"0\",\"csv_separator\":\",\",\"csv_enclosed\":\"\\\"\",\"csv_escaped\":\"\\\"\",\"csv_terminated\":\"AUTO\",\"csv_null\":\"NULL\",\"csv_structure_or_data\":\"data\",\"excel_null\":\"NULL\",\"excel_columns\":\"something\",\"excel_edition\":\"win\",\"excel_structure_or_data\":\"data\",\"json_structure_or_data\":\"data\",\"json_unicode\":\"something\",\"latex_caption\":\"something\",\"latex_structure_or_data\":\"structure_and_data\",\"latex_structure_caption\":\"Structure of table @TABLE@\",\"latex_structure_continued_caption\":\"Structure of table @TABLE@ (continued)\",\"latex_structure_label\":\"tab:@TABLE@-structure\",\"latex_relation\":\"something\",\"latex_comments\":\"something\",\"latex_mime\":\"something\",\"latex_columns\":\"something\",\"latex_data_caption\":\"Content of table @TABLE@\",\"latex_data_continued_caption\":\"Content of table @TABLE@ (continued)\",\"latex_data_label\":\"tab:@TABLE@-data\",\"latex_null\":\"\\\\textit{NULL}\",\"mediawiki_structure_or_data\":\"data\",\"mediawiki_caption\":\"something\",\"mediawiki_headers\":\"something\",\"htmlword_structure_or_data\":\"structure_and_data\",\"htmlword_null\":\"NULL\",\"ods_null\":\"NULL\",\"ods_structure_or_data\":\"data\",\"odt_structure_or_data\":\"structure_and_data\",\"odt_relation\":\"something\",\"odt_comments\":\"something\",\"odt_mime\":\"something\",\"odt_columns\":\"something\",\"odt_null\":\"NULL\",\"pdf_report_title\":\"\",\"pdf_structure_or_data\":\"data\",\"phparray_structure_or_data\":\"data\",\"sql_include_comments\":\"something\",\"sql_header_comment\":\"\",\"sql_use_transaction\":\"something\",\"sql_compatibility\":\"NONE\",\"sql_structure_or_data\":\"structure_and_data\",\"sql_create_table\":\"something\",\"sql_auto_increment\":\"something\",\"sql_create_view\":\"something\",\"sql_create_trigger\":\"something\",\"sql_backquotes\":\"something\",\"sql_type\":\"INSERT\",\"sql_insert_syntax\":\"both\",\"sql_max_query_size\":\"50000\",\"sql_hex_for_binary\":\"something\",\"sql_utc_time\":\"something\",\"texytext_structure_or_data\":\"structure_and_data\",\"texytext_null\":\"NULL\",\"yaml_structure_or_data\":\"data\",\"\":null,\"as_separate_files\":null,\"csv_removeCRLF\":null,\"csv_columns\":null,\"excel_removeCRLF\":null,\"json_pretty_print\":null,\"htmlword_columns\":null,\"ods_columns\":null,\"sql_dates\":null,\"sql_relation\":null,\"sql_mime\":null,\"sql_disable_fk\":null,\"sql_views_as_tables\":null,\"sql_metadata\":null,\"sql_drop_database\":null,\"sql_drop_table\":null,\"sql_if_not_exists\":null,\"sql_procedure_function\":null,\"sql_truncate\":null,\"sql_delayed\":null,\"sql_ignore\":null,\"texytext_columns\":null}');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__favorite`
---
-
-CREATE TABLE `pma__favorite` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `tables` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Favorite tables';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__history`
---
-
-CREATE TABLE `pma__history` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `username` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `timevalue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `sqlquery` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='SQL history for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__navigationhiding`
---
-
-CREATE TABLE `pma__navigationhiding` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `item_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `item_type` varchar(64) COLLATE utf8_bin NOT NULL,
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Hidden items of navigation tree';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__pdf_pages`
---
-
-CREATE TABLE `pma__pdf_pages` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `page_nr` int(10) UNSIGNED NOT NULL,
-  `page_descr` varchar(50) CHARACTER SET utf8 NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='PDF relation pages for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__recent`
---
-
-CREATE TABLE `pma__recent` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `tables` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Recently accessed tables';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__relation`
---
-
-CREATE TABLE `pma__relation` (
-  `master_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `master_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `master_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `foreign_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Relation table';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__savedsearches`
---
-
-CREATE TABLE `pma__savedsearches` (
-  `id` int(5) UNSIGNED NOT NULL,
-  `username` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `search_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `search_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved searches';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__table_coords`
---
-
-CREATE TABLE `pma__table_coords` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `pdf_page_number` int(11) NOT NULL DEFAULT '0',
-  `x` float UNSIGNED NOT NULL DEFAULT '0',
-  `y` float UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table coordinates for phpMyAdmin PDF output';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__table_info`
---
-
-CREATE TABLE `pma__table_info` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `display_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table information for phpMyAdmin';
-
---
--- Dumping data for table `pma__table_info`
---
-
-INSERT INTO `pma__table_info` (`db_name`, `table_name`, `display_field`) VALUES
-('luminadb', 'anime', 'AnimeTitle');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__table_uiprefs`
---
-
-CREATE TABLE `pma__table_uiprefs` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `prefs` text COLLATE utf8_bin NOT NULL,
-  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Tables'' UI preferences';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__tracking`
---
-
-CREATE TABLE `pma__tracking` (
-  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
-  `version` int(10) UNSIGNED NOT NULL,
-  `date_created` datetime NOT NULL,
-  `date_updated` datetime NOT NULL,
-  `schema_snapshot` text COLLATE utf8_bin NOT NULL,
-  `schema_sql` text COLLATE utf8_bin,
-  `data_sql` longtext COLLATE utf8_bin,
-  `tracking` set('UPDATE','REPLACE','INSERT','DELETE','TRUNCATE','CREATE DATABASE','ALTER DATABASE','DROP DATABASE','CREATE TABLE','ALTER TABLE','RENAME TABLE','DROP TABLE','CREATE INDEX','DROP INDEX','CREATE VIEW','ALTER VIEW','DROP VIEW') COLLATE utf8_bin DEFAULT NULL,
-  `tracking_active` int(1) UNSIGNED NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Database changes tracking for phpMyAdmin';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__userconfig`
---
-
-CREATE TABLE `pma__userconfig` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `timevalue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `config_data` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User preferences storage for phpMyAdmin';
-
---
--- Dumping data for table `pma__userconfig`
---
-
-INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
-('root', '2018-05-24 17:18:24', '{\"Console\\/Mode\":\"collapse\"}');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__usergroups`
---
-
-CREATE TABLE `pma__usergroups` (
-  `usergroup` varchar(64) COLLATE utf8_bin NOT NULL,
-  `tab` varchar(64) COLLATE utf8_bin NOT NULL,
-  `allowed` enum('Y','N') COLLATE utf8_bin NOT NULL DEFAULT 'N'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User groups with configured menu items';
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pma__users`
---
-
-CREATE TABLE `pma__users` (
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `usergroup` varchar(64) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Users and their assignments to user groups';
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `pma__bookmark`
---
-ALTER TABLE `pma__bookmark`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `pma__central_columns`
---
-ALTER TABLE `pma__central_columns`
-  ADD PRIMARY KEY (`db_name`,`col_name`);
-
---
--- Indexes for table `pma__column_info`
---
-ALTER TABLE `pma__column_info`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `db_name` (`db_name`,`table_name`,`column_name`);
-
---
--- Indexes for table `pma__designer_settings`
---
-ALTER TABLE `pma__designer_settings`
-  ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `pma__export_templates`
---
-ALTER TABLE `pma__export_templates`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `u_user_type_template` (`username`,`export_type`,`template_name`);
-
---
--- Indexes for table `pma__favorite`
---
-ALTER TABLE `pma__favorite`
-  ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `pma__history`
---
-ALTER TABLE `pma__history`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `username` (`username`,`db`,`table`,`timevalue`);
-
---
--- Indexes for table `pma__navigationhiding`
---
-ALTER TABLE `pma__navigationhiding`
-  ADD PRIMARY KEY (`username`,`item_name`,`item_type`,`db_name`,`table_name`);
-
---
--- Indexes for table `pma__pdf_pages`
---
-ALTER TABLE `pma__pdf_pages`
-  ADD PRIMARY KEY (`page_nr`),
-  ADD KEY `db_name` (`db_name`);
-
---
--- Indexes for table `pma__recent`
---
-ALTER TABLE `pma__recent`
-  ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `pma__relation`
---
-ALTER TABLE `pma__relation`
-  ADD PRIMARY KEY (`master_db`,`master_table`,`master_field`),
-  ADD KEY `foreign_field` (`foreign_db`,`foreign_table`);
-
---
--- Indexes for table `pma__savedsearches`
---
-ALTER TABLE `pma__savedsearches`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `u_savedsearches_username_dbname` (`username`,`db_name`,`search_name`);
-
---
--- Indexes for table `pma__table_coords`
---
-ALTER TABLE `pma__table_coords`
-  ADD PRIMARY KEY (`db_name`,`table_name`,`pdf_page_number`);
-
---
--- Indexes for table `pma__table_info`
---
-ALTER TABLE `pma__table_info`
-  ADD PRIMARY KEY (`db_name`,`table_name`);
-
---
--- Indexes for table `pma__table_uiprefs`
---
-ALTER TABLE `pma__table_uiprefs`
-  ADD PRIMARY KEY (`username`,`db_name`,`table_name`);
-
---
--- Indexes for table `pma__tracking`
---
-ALTER TABLE `pma__tracking`
-  ADD PRIMARY KEY (`db_name`,`table_name`,`version`);
-
---
--- Indexes for table `pma__userconfig`
---
-ALTER TABLE `pma__userconfig`
-  ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `pma__usergroups`
---
-ALTER TABLE `pma__usergroups`
-  ADD PRIMARY KEY (`usergroup`,`tab`,`allowed`);
-
---
--- Indexes for table `pma__users`
---
-ALTER TABLE `pma__users`
-  ADD PRIMARY KEY (`username`,`usergroup`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `pma__bookmark`
---
-ALTER TABLE `pma__bookmark`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pma__column_info`
---
-ALTER TABLE `pma__column_info`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pma__export_templates`
---
-ALTER TABLE `pma__export_templates`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `pma__history`
---
-ALTER TABLE `pma__history`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pma__pdf_pages`
---
-ALTER TABLE `pma__pdf_pages`
-  MODIFY `page_nr` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pma__savedsearches`
---
-ALTER TABLE `pma__savedsearches`
-  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- Database: `test`
---
-CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `test`;
+  ADD CONSTRAINT `watchlater_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `username` (`UserID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
