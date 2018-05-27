@@ -29,7 +29,7 @@ input {
 }
 
 .navbar {
-  grid-template-rows: auto 1fr 3fr;
+  grid-template-rows: 6.755vw 1fr 3fr;
   background-color: #d5dfe8;
   width: 15vw;
   position: fixed;
@@ -46,9 +46,9 @@ input {
 .logo {
   font-size: 2.5vw;
   text-align: center;
-  line-height: 5vw;
+  line-height: 6.755vw;
   color: #5c6275;
-  height: 5vw;
+  height: 6.755vw;
 }
 .logo a {
   display: inline-block;

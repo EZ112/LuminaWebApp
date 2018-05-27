@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lumina.to | FAQ</title>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/backend.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+	
+	<body>
+		<div class="page grid-container">
+			<div class="navbar grid-container">
+				<!--Navbar-->
+				<div class="logo"><a href="index.html"></a></div>
+
+				<div class="nav_backend">
+					<div onclick="switchNav(this)">Master</div>
+					<div onclick="switchNav(this)">Insert</div>
+				</div>
+			</div>
+
+			<div class="head_title">
+				<div class="title">Master</div>
+			</div>
+			<div class="content">
+				<!--Master-->
+				<div id="master">
+					<select id="selectMaster" onchange="switchForm(this);">
+						<option value="volvo">Series</option>
+						<option value="saab">Studio</option>
+						<option value="mercedes">Source</option>
+					</select>
+
+					<!--Ganti action dari js-->
+					<form action="#" id="formMaster">
+						<span id="label">Series</span>
+						<input type="text" name="input" placeholder="Insert Text Here" autocomplete="off">
+						<span id="submitForm" onclick="submitForm(this)">Submit</span>
+					</form>
+
+					<!--Notification-->
+					<div id="warning" class="notif"><span>Series</span> already exists</div>
+					<div id="success" class="notif"><span>Series</span> successfully added</div>
+
+					<!--Table-->
+					<div id="table">
+						<div id="tableHeading">Series</div>
+						<div id="tableContent">
+							<div id="empty">Table is empty</div>
+							<div class="tableObject">
+								<span class="title">Dummy</span>
+								<i class="fas fa-times" onclick="deleteTableObject(this.parentElement);"></i>
+							</div>
+							<div class="tableObject">
+								<span class="title">Dummy2</span>
+								<i class="fas fa-times" onclick="deleteTableObject(this.parentElement);"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!--Insert-->
+				<div id="insert">b</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="assets/js/script.js"></script>
+	<script type="text/javascript" src="assets/js/backend.js"></script>
+</html>
