@@ -58,7 +58,7 @@
 			grid-area: latest_update_wrapper;
 			grid-template-columns: 1fr 1fr 1fr 1fr;
 
-			div{
+			.animeThumb{
 				@extend %anime_wrapper;
 				width: 80%;
 				height: 20vw;
@@ -118,7 +118,7 @@
 
 	.latest_update_wrapper,
 	.top_airing_wrapper{
-		div::before{
+		.animeThumb::before{
 			content:"";
 			height: 100%;
 			display: block;
@@ -128,7 +128,7 @@
 			@include transition(all 0.25s ease);
 		}
 
-		div::after{
+		.animeThumb::after{
 			content: attr(title);
 			display: flex;
 			align-items: center;
@@ -142,8 +142,8 @@
 			@include transition(all 0.25s ease);
 		}
 
-		div:hover:after,
-		div:hover:before{
+		.animeThumb:hover:after,
+		.animeThumb:hover:before{
 			opacity: 0;
 		}
 	}

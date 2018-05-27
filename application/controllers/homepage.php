@@ -20,7 +20,13 @@ class Homepage extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->database();
 		$this->load->view('index');
 	}
+	
+	public function getAnimeLatestUpdate(){
+		$result = $this->db->query("CALL sp_GetAnimeLatestUpdate()")->result();
+		echo json_encode($result);
+	}
+
+	
 }

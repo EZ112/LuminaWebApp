@@ -1,42 +1,24 @@
 <?php include APPPATH.'/views/templates/header.php';?>
 <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.js"></script>
 <body>
 	<div class="page grid-container">
 		<?php 
 		  include APPPATH.'/views/templates/navbar.php';
 		  include APPPATH.'/views/templates/widget.php';
 		?>
-		
 		<div class="content-area"> 
 			<div class="content grid-container">
 				<div class="latest_update grid-container">
 					<div style="text-align: right;">
-						<div class="pagination">
-							<a href="#"><i class="fas fa-angle-double-left"></i></a>
-							<a href="#"><i class="fas fa-angle-left"></i></a>
-							<a href="#">1</a>
-							<a href="#">2</a>
-							<a href="#">3</a>
-							<a href="#"><i class="fas fa-angle-right"></i></a>
-							<a href="#"><i class="fas fa-angle-double-right"></i></a>
-						</div>
+						<ul class="pagination">
+            			</ul>
 					</div>
 					<div class="section_title">
 						Latest Update
 					</div>
 					<div class="latest_update_wrapper grid-container">
-						<div onclick="location.href='streaming.html'" title="Yuru Camp" style="background-image: url(assets/image/yurucamp.jpg)">
-						</div>
-						<div onclick="" title="Koi wa Ameagari no You ni" style="background-image: url(assets/image/koiwa.jpg)">
-						</div>
-						<div onclick="" title="Violet Evergarden" style="background-image: url(assets/image/violet.jpg)">
-						</div>
-						<div onclick="" title="Karakai Jouzu no Takagi-san" style="background-image: url(assets/image/karakai.jpg)">
-						</div>
-						<span>Episode 2</span>
-						<span>Episode 5</span>
-						<span>Episode 6</span>
-						<span>Episode 7</span>
+						<!-- LatestUpdate -->
 					</div>
 				</div>
 				<div class="top_airing">
@@ -44,19 +26,19 @@
 						Top 5 Airing Anime
 					</div>
 					<div class="top_airing_wrapper grid-container">
-						<div onclick="location.href='animepage.html'" title="Yuru Camp" style="background-image: url(assets/image/yurucamp.jpg)">
+						<div class="animeThumb" onclick="location.href='animepage.html'" title="Yuru Camp" style="background-image: url(assets/image/yurucamp.jpg)">
 							<span class="numbering">1</span>
 						</div>
-						<div onclick="" title="Koi wa Ameagari no You ni" style="background-image: url(assets/image/koiwa.jpg)">
+						<div class="animeThumb" onclick="" title="Koi wa Ameagari no You ni" style="background-image: url(assets/image/koiwa.jpg)">
 							<span class="numbering">2</span>
 						</div>
-						<div onclick="" title="Violet Evergarden" style="background-image: url(assets/image/violet.jpg)">
+						<div class="animeThumb" onclick="" title="Violet Evergarden" style="background-image: url(assets/image/violet.jpg)">
 							<span class="numbering">3</span>
 						</div>
-						<div onclick="" title="Overlord" style="background-image: url(assets/image/overlord.png)">
+						<div class="animeThumb" onclick="" title="Overlord" style="background-image: url(assets/image/overlord.png)">
 							<span class="numbering">4</span>
 						</div>
-						<div onclick="" title="Karakai Jouzu no Takagi-san" style="background-image: url(assets/image/karakai.jpg)">
+						<div class="animeThumb" onclick="" title="Karakai Jouzu no Takagi-san" style="background-image: url(assets/image/karakai.jpg)">
 							<span class="numbering">5</span>
 						</div>
 						<button onclick="">Subscribe</button>
@@ -108,4 +90,5 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="assets/js/index.js"></script>
 <?php include APPPATH.'/views/templates/footer.php'?>

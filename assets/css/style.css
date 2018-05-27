@@ -365,14 +365,11 @@ input {
   font-family: "QS_Book";
 }
 
-.pagination {
+.pagination .page-item {
   display: inline-block;
-}
-.pagination a {
   font-size: 1.15vw;
   color: #888;
   font-family: "QS_Bold";
-  float: left;
   border: 0.5px solid #d5dfe8;
   padding: 6px 12px;
   -webkit-transition: all 0.25s ease;
@@ -380,13 +377,21 @@ input {
   -ms-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
-.pagination a:first-child {
+.pagination .page-item.active {
+  background-color: #42beff;
+  border-color: #42beff;
+  color: white;
+}
+.pagination .page-item.disabled {
+  color: #d5dfe8;
+}
+.pagination .page-item:first-child {
   border-radius: 5px 0 0 5px;
 }
-.pagination a:last-child {
+.pagination .page-item:last-child {
   border-radius: 0 5px 5px 0;
 }
-.pagination a:hover {
+.pagination .page-item:hover {
   color: white;
   background-color: #42beff;
 }

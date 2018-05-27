@@ -348,20 +348,28 @@ input{ padding: 0; } //New
 }
 
 .pagination{
-	display: inline-block;
-
-	a{
+	.page-item{
+		display: inline-block;	
 		@include setText(1.15vw, $cText, "QS_Bold");
-		float: left;
 		border: .5px solid $cLgtGreyLt;
 		padding: 6px 12px;
 		@include transition(all 0.25s ease);
 	}
 
-	a:first-child{ border-radius: 5px 0 0 5px; }
-	a:last-child{ border-radius: 0 5px 5px 0; }
+	.page-item.active{
+		background-color: $cP;
+		border-color: $cP;
+		color: white;
+	}
 
-	a:hover{
+	.page-item.disabled{
+		color: $cLgtGreyLt;
+	}
+
+	.page-item:first-child{ border-radius: 5px 0 0 5px; }
+	.page-item:last-child{ border-radius: 0 5px 5px 0; }
+
+	.page-item:hover{
 		color: white;
 		background-color: $cP;
 	}

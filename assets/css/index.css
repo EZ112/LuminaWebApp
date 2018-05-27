@@ -4,7 +4,7 @@
   grid-template-areas: "header widget" "header main-content";
 }
 
-.content .latest_update .latest_update_wrapper div, .content .top_airing .top_airing_wrapper div, .content .latest_news .latest_news_wrapper > span {
+.content .latest_update .latest_update_wrapper .animeThumb, .content .top_airing .top_airing_wrapper div, .content .latest_news .latest_news_wrapper > span {
   border: 1px solid #d5dfe8;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -46,7 +46,7 @@
   grid-area: latest_update_wrapper;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.content .latest_update .latest_update_wrapper div {
+.content .latest_update .latest_update_wrapper .animeThumb {
   width: 80%;
   height: 20vw;
 }
@@ -101,8 +101,8 @@
   color: #42beff;
   font-family: "QS_Book";
 }
-.content .latest_update_wrapper div::before,
-.content .top_airing_wrapper div::before {
+.content .latest_update_wrapper .animeThumb::before,
+.content .top_airing_wrapper .animeThumb::before {
   content: "";
   height: 100%;
   display: block;
@@ -119,8 +119,8 @@
   -ms-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
-.content .latest_update_wrapper div::after,
-.content .top_airing_wrapper div::after {
+.content .latest_update_wrapper .animeThumb::after,
+.content .top_airing_wrapper .animeThumb::after {
   content: attr(title);
   display: flex;
   align-items: center;
@@ -138,10 +138,10 @@
   -ms-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
-.content .latest_update_wrapper div:hover:after,
-.content .latest_update_wrapper div:hover:before,
-.content .top_airing_wrapper div:hover:after,
-.content .top_airing_wrapper div:hover:before {
+.content .latest_update_wrapper .animeThumb:hover:after,
+.content .latest_update_wrapper .animeThumb:hover:before,
+.content .top_airing_wrapper .animeThumb:hover:after,
+.content .top_airing_wrapper .animeThumb:hover:before {
   opacity: 0;
 }
 .content .latest_news {
