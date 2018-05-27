@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2018 at 05:46 AM
+-- Generation Time: May 27, 2018 at 09:06 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `luminadb`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetAnimeLatestUpdate` ()  BEGIN
+    SELECT a.AnimeTitle, a.Thumbnail, MAX(e.Episode) AS LatestEpisode, MAX(e.EpsDateAir) AS AirDate
+    FROM anime a
+    JOIN episodes e ON a.AnimeID = e.AnimeID
+    GROUP BY a.AnimeID
+    ORDER BY AirDate DESC;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -48,9 +62,11 @@ CREATE TABLE `anime` (
 --
 
 INSERT INTO `anime` (`AnimeID`, `SeriesID`, `StudioID`, `SourceID`, `ReleaseSeasonID`, `DurationID`, `AnimeTitle`, `Synopsis`, `SeasonID`, `EpisodeTotal`, `Thumbnail`, `AnimeReleaseDate`) VALUES
-(1, 1, 3, 3, 1, 2, 'Yuru Camp△', 'While the perfect getaway for most girls her age might be a fancy vacation with their loved ones, Rin Shima\'s ideal way of spending her days off is camping alone at the base of Mount Fuji. From pitching her tent to gathering firewood, she has always done everything by herself, and has no plans of leaving her little solitary world.\r\n\r\nHowever, what starts off as one of Rin\'s usual camping sessions somehow ends up as a surprise get-together for two when the lost Nadeshiko Kagamihara is forced to take refuge at her campsite. Originally intending to see the picturesque view of Mount Fuji for herself, Nadeshiko\'s plans are disrupted when she ends up falling asleep partway to her destination. Alone and with no other choice, she seeks help from the only other person nearby. Despite their hasty introductions, the two girls nevertheless enjoy the chilly night together, eating ramen and conversing while the campfire keeps them warm. And even after Nadeshiko\'s sister finally picks her up later that night, both girls silently ponder the possibility of another camping trip together.', 'YuruCampS001', 12, NULL, '2018-01-04'),
-(2, 2, 1, 2, 1, 2, 'Violet Evergarden', 'The Great War finally came to an end after four long years of conflict; fractured in two, the continent of Telesis slowly began to flourish once again. Caught up in the bloodshed was Violet Evergarden, a young girl raised for the sole purpose of decimating enemy lines. Hospitalized and maimed in a bloody skirmish during the War\'s final leg, she was left with only words from the person she held dearest, but with no understanding of their meaning.\r\n\r\nRecovering from her wounds, Violet starts a new life working at CH Postal Services after a falling out with her new intended guardian family. There, she witnesses by pure chance the work of an \"Auto Memory Doll,\" amanuenses that transcribe people\'s thoughts and feelings into words on paper. Moved by the notion, Violet begins work as an Auto Memory Doll, a trade that will take her on an adventure, one that will reshape the lives of her clients and hopefully lead to self-discovery.', 'VioletEvergardenS001', 13, NULL, '2018-01-11'),
-(3, 3, 2, 3, 1, 2, 'Karakai Jouzu no Takagi-san', '\"If you blush, you lose.\"\r\n\r\nLiving by this principle, the middle schooler Nishikata gets constantly made fun of by his seat neighbor Takagi-san. With his pride shattered to pieces, he vows to turn the tables and get back at her some day. And so, he attempts to tease her day after day, only to find himself victim to Takagi-san\'s ridicule again sooner than later. Will he be able to make Takagi-san blush from embarrassment even once in the end?', 'KarakaiJouzuS001', 12, NULL, '2018-01-08');
+(1, 1, 3, 3, 1, 2, 'Yuru Camp△', 'While the perfect getaway for most girls her age might be a fancy vacation with their loved ones, Rin Shima\'s ideal way of spending her days off is camping alone at the base of Mount Fuji. From pitching her tent to gathering firewood, she has always done everything by herself, and has no plans of leaving her little solitary world.\r\n\r\nHowever, what starts off as one of Rin\'s usual camping sessions somehow ends up as a surprise get-together for two when the lost Nadeshiko Kagamihara is forced to take refuge at her campsite. Originally intending to see the picturesque view of Mount Fuji for herself, Nadeshiko\'s plans are disrupted when she ends up falling asleep partway to her destination. Alone and with no other choice, she seeks help from the only other person nearby. Despite their hasty introductions, the two girls nevertheless enjoy the chilly night together, eating ramen and conversing while the campfire keeps them warm. And even after Nadeshiko\'s sister finally picks her up later that night, both girls silently ponder the possibility of another camping trip together.', 'YuruCampS001', 12, 'assets/image/yurucamp.jpg', '2018-01-04'),
+(2, 2, 1, 2, 1, 2, 'Violet Evergarden', 'The Great War finally came to an end after four long years of conflict; fractured in two, the continent of Telesis slowly began to flourish once again. Caught up in the bloodshed was Violet Evergarden, a young girl raised for the sole purpose of decimating enemy lines. Hospitalized and maimed in a bloody skirmish during the War\'s final leg, she was left with only words from the person she held dearest, but with no understanding of their meaning.\r\n\r\nRecovering from her wounds, Violet starts a new life working at CH Postal Services after a falling out with her new intended guardian family. There, she witnesses by pure chance the work of an \"Auto Memory Doll,\" amanuenses that transcribe people\'s thoughts and feelings into words on paper. Moved by the notion, Violet begins work as an Auto Memory Doll, a trade that will take her on an adventure, one that will reshape the lives of her clients and hopefully lead to self-discovery.', 'VioletEvergardenS001', 13, 'assets/image/violet.jpg', '2018-01-11'),
+(3, 3, 2, 3, 1, 2, 'Karakai Jouzu no Takagi-san', '\"If you blush, you lose.\"\r\n\r\nLiving by this principle, the middle schooler Nishikata gets constantly made fun of by his seat neighbor Takagi-san. With his pride shattered to pieces, he vows to turn the tables and get back at her some day. And so, he attempts to tease her day after day, only to find himself victim to Takagi-san\'s ridicule again sooner than later. Will he be able to make Takagi-san blush from embarrassment even once in the end?', 'KarakaiJouzuS001', 12, 'assets/image/karakai.jpg', '2018-01-08'),
+(4, 4, 4, 2, 3, 2, 'Overlord', 'The final hour of the popular virtual reality game Yggdrasil has come. However, Momonga, a powerful wizard and master of the dark guild Ainz Ooal Gown, decides to spend his last few moments in the game as the servers begin to shut down. To his surprise, despite the clock having struck midnight, Momonga is still fully conscious as his character and, moreover, the non-player characters appear to have developed personalities of their own!\r\n\r\nConfronted with this abnormal situation, Momonga commands his loyal servants to help him investigate and take control of this new world, with the hopes of figuring out what has caused this development and if there may be others in the same predicament.', 'OverlordS001', 13, 'assets/image/overlord.png', '2018-01-08'),
+(5, 5, 5, 3, 3, 2, 'Koi wa Ameagari no You ni', 'Akira Tachibana, a reserved high school student and former track runner, has not been able to race the same as she used to since she experienced a severe foot injury. And although she is regarded as attractive by her classmates, she is not interested in the boys around school.\r\n\r\nWhile working part-time at the Garden Cafe, Akira begins to develop feelings for the manager—a 45-year-old man named Masami Kondou—despite the large age gap. Kondou shows genuine concern and kindness toward the customers of his restaurant, which, while viewed by others as soft or weak, draws Akira to him. Spending time together at the restaurant, they grow closer, which only strengthens her feelings. Weighed down by these uncertain emotions, Akira finally resolves to confess, but what will be the result?', 'KoiwaS001', 12, 'assets/image/koiwa.jpg', '2018-05-29');
 
 -- --------------------------------------------------------
 
@@ -146,7 +162,7 @@ CREATE TABLE `episodes` (
   `EpisodeID` int(11) NOT NULL,
   `AnimeID` int(11) DEFAULT NULL,
   `EpsTitle` longtext,
-  `EpsDateAir` date DEFAULT NULL,
+  `EpsDateAir` datetime DEFAULT NULL,
   `Episode` int(11) DEFAULT NULL,
   `EpisodeTotalViews` int(11) DEFAULT NULL,
   `VideoLink` longtext
@@ -157,15 +173,18 @@ CREATE TABLE `episodes` (
 --
 
 INSERT INTO `episodes` (`EpisodeID`, `AnimeID`, `EpsTitle`, `EpsDateAir`, `Episode`, `EpisodeTotalViews`, `VideoLink`) VALUES
-(1, 1, 'Mount Fuji and Curry Noodles', '2018-01-04', 1, NULL, NULL),
-(2, 1, 'Welcome to the Outdoor Activities Club', '2018-01-11', 2, NULL, NULL),
-(3, 1, 'Mount Fuji and Relaxed Hot Pot Camp', '2018-01-18', 3, NULL, NULL),
-(4, 2, '\"I Love You\" and Auto Memory Dolls', '2018-01-11', 1, NULL, NULL),
-(5, 2, 'Never Coming Back', '2018-01-18', 2, NULL, NULL),
-(6, 2, 'May You Be an Exemplary Auto Memory Doll', '2018-01-25', 3, NULL, NULL),
-(7, 3, 'Eraser / Day Duty / Funny Face / One Hundred Yen', '2018-01-08', 1, NULL, NULL),
-(8, 3, 'Calligraphy / Seasonal Change of Clothing / Pool', '2018-01-15', 2, NULL, NULL),
-(9, 3, 'Coffee / Empty Can / Soda / Muscle Training / Dubbing / Umbrella', '2018-01-22', 3, NULL, NULL);
+(1, 1, 'Mount Fuji and Curry Noodles', '2018-01-04 00:00:00', 1, NULL, NULL),
+(2, 1, 'Welcome to the Outdoor Activities Club', '2018-01-11 00:00:00', 2, NULL, NULL),
+(3, 1, 'Mount Fuji and Relaxed Hot Pot Camp', '2018-01-18 00:00:00', 3, NULL, NULL),
+(4, 2, '\"I Love You\" and Auto Memory Dolls', '2018-01-11 00:00:00', 1, NULL, NULL),
+(5, 2, 'Never Coming Back', '2018-01-18 00:00:00', 2, NULL, NULL),
+(6, 2, 'May You Be an Exemplary Auto Memory Doll', '2018-01-25 00:00:00', 3, NULL, NULL),
+(7, 3, 'Eraser / Day Duty / Funny Face / One Hundred Yen', '2018-01-08 00:00:00', 1, NULL, NULL),
+(8, 3, 'Calligraphy / Seasonal Change of Clothing / Pool', '2018-01-15 00:00:00', 2, NULL, NULL),
+(9, 4, 'End and Beginning', '2018-05-29 00:00:00', 1, NULL, NULL),
+(10, 5, 'The Sound of Rain', '2018-05-30 00:00:00', 1, NULL, NULL),
+(11, 1, 'The Outdoor Activities Club and the Solo Camping Girl', '2018-05-31 00:00:00', 4, NULL, NULL),
+(12, 3, 'Coffee / Empty Can / Soda / Muscle Training / Dubbing / Umbrella', '2018-05-31 01:00:00', 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -226,7 +245,8 @@ CREATE TABLE `news` (
   `PublishDate` date DEFAULT NULL,
   `Writer` varchar(50) DEFAULT NULL,
   `NewsContent` longtext,
-  `NewsLink` longtext
+  `NewsLink` longtext,
+  `NewsThumbnail` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -285,7 +305,9 @@ CREATE TABLE `series` (
 INSERT INTO `series` (`SeriesID`, `Series`) VALUES
 (1, 'Yuru Camp'),
 (2, 'Violet Evergarden'),
-(3, 'Karakai Jouzu');
+(3, 'Karakai Jouzu'),
+(4, 'Overlord'),
+(5, 'Koi wa Ameagari no You ni');
 
 -- --------------------------------------------------------
 
@@ -325,7 +347,9 @@ CREATE TABLE `studio` (
 INSERT INTO `studio` (`StudioID`, `Studio`) VALUES
 (1, 'Kyoto Animation'),
 (2, 'Shin-Ei Animation'),
-(3, 'C-Station');
+(3, 'C-Station'),
+(4, 'Madhouse'),
+(5, 'Wit Studio');
 
 -- --------------------------------------------------------
 
@@ -348,6 +372,7 @@ CREATE TABLE `subscription` (
 CREATE TABLE `username` (
   `UserID` int(11) NOT NULL,
   `Username` varchar(25) NOT NULL,
+  `Password` varchar(30) NOT NULL,
   `Email` varchar(25) NOT NULL,
   `Gender` varchar(10) NOT NULL,
   `SubStatus` varchar(10) NOT NULL DEFAULT 'FREE'
@@ -508,7 +533,7 @@ ALTER TABLE `watchlater`
 -- AUTO_INCREMENT for table `anime`
 --
 ALTER TABLE `anime`
-  MODIFY `AnimeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `AnimeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `bankdetail`
@@ -532,7 +557,7 @@ ALTER TABLE `durations`
 -- AUTO_INCREMENT for table `episodes`
 --
 ALTER TABLE `episodes`
-  MODIFY `EpisodeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `EpisodeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `genres`
@@ -562,7 +587,7 @@ ALTER TABLE `releaseseason`
 -- AUTO_INCREMENT for table `series`
 --
 ALTER TABLE `series`
-  MODIFY `SeriesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `SeriesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `source`
@@ -574,7 +599,7 @@ ALTER TABLE `source`
 -- AUTO_INCREMENT for table `studio`
 --
 ALTER TABLE `studio`
-  MODIFY `StudioID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `StudioID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `username`
