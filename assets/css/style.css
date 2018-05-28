@@ -29,7 +29,7 @@ input {
 }
 
 .navbar {
-  grid-template-rows: 6.755vw 1fr 3fr;
+  grid-template-rows: 6vw 1fr 3fr;
   background-color: #d5dfe8;
   width: 15vw;
   position: fixed;
@@ -539,6 +539,18 @@ input {
   position: absolute;
   bottom: 15%;
   left: 5%;
+}
+
+.table {
+  display: table;
+}
+
+.row {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
 }
 
 /*# sourceMappingURL=style.css.map */

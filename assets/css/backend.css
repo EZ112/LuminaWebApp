@@ -117,5 +117,37 @@
   cursor: pointer;
   float: right;
 }
+.content #insert .formInsert {
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+.content #insert .formInsert .row .warning {
+  font-size: 0.75vw;
+  color: #f1637e;
+  font-family: "QS_Book";
+}
+.content #insert .formInsert .row .cell {
+  padding: 1% 0;
+}
+.content #insert .formInsert .label {
+  width: 12.5vw;
+  font-weight: bold;
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+.content #insert .formInsert #genreContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  margin-top: 1%;
+}
+.content #insert .anime {
+  display: block;
+}
+.content #insert .episode, .content #insert .news {
+  display: none;
+}
 
 /*# sourceMappingURL=backend.css.map */
