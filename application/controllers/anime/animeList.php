@@ -8,4 +8,17 @@ class AnimeList extends CI_Controller {
 		$this->load->database();
 		$this->load->view('anime/animeList');
 	}
+
+	public function getAnimeList(){
+		$arr = array(
+			'inYear' => $_POST['year'],
+			'inSeason' => $_POST['season'],
+			'inStat' => $_POST['status'],
+			'inDuration' => $_POST['duration'],
+			'inSort' => $_POST['sort']
+		);
+		$sp = "CALL sp_GetAnimeList(?,?,?,?,?)";
+		$result = $this->db->query($sp,$arr)->result();
+		echo json_encode($result);
+	}
 }

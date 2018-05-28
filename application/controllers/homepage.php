@@ -28,5 +28,30 @@ class Homepage extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	public function getTopAiringAnime(){
+		$result = $this->db->query("CALL sp_GetTopAiringAnime()")->result();
+		echo json_encode($result);
+	}
+
+	public function getNewsLatestUpdate(){
+		$result = $this->db->query("CALL sp_GetNewsLatestUpdate()")->result();
+		echo json_encode($result);
+	}
+
+	public function getDuration(){
+		$result = $this->db->query("CALL sp_GetDuration()")->result();
+		echo json_encode($result);
+	}
+
+	public function getGenre(){
+		$result = $this->db->query("CALL sp_GetGenre()")->result();
+		echo json_encode($result);
+	}
+
+	public function getTags(){
+		$result = $this->db->query("CALL sp_GetTags()")->result();
+		echo json_encode($result);
+	}
+
 	
 }

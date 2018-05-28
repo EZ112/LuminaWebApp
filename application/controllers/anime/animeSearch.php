@@ -8,4 +8,8 @@ class AnimeSearch extends CI_Controller {
 		$this->load->database();
 		$this->load->view('anime/animeSearch');
 	}
+
+	public function getAnime(){
+		
+	}
 }

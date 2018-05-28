@@ -1,0 +1,36 @@
+/*
+Error: Inconsistent indentation: 3 tabs were used for indentation, but the rest of the document was indented using 2 tabs.
+        on line 5 of C:\xampp\htdocs\LuminaWebApp\application\views\anime\animeList.php
+
+1: <?php include APPPATH.'/views/templates/header.php';?>
+2: <link rel="stylesheet" type="text/css" href="assets/css/animeList.css">
+3: <body>
+4: 		<div class="page grid-container">
+5: 			<?php 
+6: 			  include APPPATH.'/views/templates/navbar.php';
+7: 			  include APPPATH.'/views/templates/widget.php';
+8: 			?>
+9: 			
+10: 			<div class="mainContent">
+
+Backtrace:
+C:\xampp\htdocs\LuminaWebApp\application\views\anime\animeList.php:5
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:494:in `block in tabulate'
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:452:in `each'
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:452:in `each_with_index'
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:452:in `tabulate'
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:417:in `_to_tree'
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/engine.rb:307:in `render_with_sourcemap'
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/sass_scss.rb:391:in `run'
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/base.rb:52:in `parse'
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/lib/sass/exec/base.rb:19:in `parse!'
+C:/Compiler/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.6/bin/sass:13:in `<top (required)>'
+C:/Compiler/Ruby24-x64/bin/sass:23:in `load'
+C:/Compiler/Ruby24-x64/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Inconsistent indentation: 3 tabs were used for indentation, but the rest of the document was indented using 2 tabs.\A         on line 5 of C:\xampp\htdocs\LuminaWebApp\application\views\anime\animeList.php\A \A 1: <?php include APPPATH.'/views/templates/header.php';?>\A 2: <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/animeList.css\">\A 3: <body>\A 4: 		<div class=\"page grid-container\">\A 5: 			<?php \A 6: 			  include APPPATH.'/views/templates/navbar.php';\A 7: 			  include APPPATH.'/views/templates/widget.php';\A 8: 			?>\A 9: 			\A 10: 			<div class=\"mainContent\">"; }

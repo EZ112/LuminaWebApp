@@ -59,4 +59,5 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="assets/js/animesearch.js"></script>
 <?php include APPPATH.'/views/templates/footer.php'?>

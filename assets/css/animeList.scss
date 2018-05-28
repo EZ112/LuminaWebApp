@@ -85,6 +85,14 @@
 		grid-template-columns: 33.33% 33.33% 33.33%;
 		margin-top: 1.25%; 
 
+		h2{
+			display: flex;
+			text-align: center;
+		    align-items: center;
+		    justify-content: center;
+		    @include setText(2.5vw, $cText, "QS_Light");
+		}
+
 		>div{
 			display: grid;
 			grid-template-columns: 50% 50%;

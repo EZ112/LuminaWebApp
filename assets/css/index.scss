@@ -46,9 +46,8 @@
 	}
 
 	.latest_update{
-		grid-template-row: auto auto;
 		grid-template-columns: auto auto;
-		grid-template-rows: auto auto;
+		grid-template-rows: 5vw auto;
 		grid-area: latest-update;
 		grid-template-areas:
 		"section_title pagination"
@@ -152,22 +151,20 @@
 		grid-area: latest-news;
 
 		.latest_news_wrapper{
-			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-			height: 18vw;
-			margin: 2.5% 0;
+			grid-template-columns: 1fr 3fr;
+			grid-template-rows: 1fr 1fr;
+			grid-row-gap: 2vw;
 		}
 
-		.latest_news_wrapper > span{
+		.latest_news_wrapper span{
 			@extend %anime_wrapper;
 			width: 90%;
 			height: 100%;
+			background-position: center;
 		}
 
-		.latest_news_wrapper > div{
-			grid-column: 2/6;
-			padding-left: 1%;
-
-
+		.latest_news_wrapper div{
+			margin: 0 0 1.75% 0;
 			.news_title{ 
 				@include setText(2vw, $cP, "QS_Book");
 				cursor: pointer;

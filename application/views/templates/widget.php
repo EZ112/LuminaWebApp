@@ -1,7 +1,7 @@
 <div class="widget-area">
 	<!--Widget-->
 	<div class="widget grid-container">
-		<form id="widget_search" action="anime/animeSearch" method="post">
+		<form id="widget_search" action="anime/animeSearch" method="get">
 			<span onclick="search_anime(this);" class="fa fa-search"></span>
 			<input name="search" placeholder="Search">
 			<input type="submit">
@@ -38,7 +38,7 @@
 </div>
 
 <div id="filter" onclick="submit_filter()">
-	<form id="filter_content_wrapper" onclick="cancel_propagation()">
+	<form id="filter_content_wrapper" onclick="cancel_propagation()" method="post">
 		<span class="close_button" onclick="submit_filter()"> &times; </span>
 		<div id="filter_title">Filter</div>
 		<div class="filter_content grid-container">
@@ -49,7 +49,8 @@
 				<div id="filter_type">
 					<div id="active" onclick="change_filter(0);">Anime</div><div onclick="change_filter(1);">News</div>
 				</div>
-				<div class="filter_anime" id="filter_duration">
+			</div>
+			<div class="filter_anime" id="filter_duration">
 					<div id="filter_subtitle">
 						Duration
 					</div>
@@ -57,11 +58,10 @@
 						<!--Duration disini semua liat js-->
 					</div>
 				</div>
-			</div>
 			<div class="filter_news">
 				<!--Empty Grid-->
 			</div>
-			<div class="filter_anime" id="filter_genre">
+			<div class="filter_anime" style="grid-column: 1/3;" id="filter_genre">
 				<div id="filter_subtitle">
 					Genre
 				</div>
@@ -82,28 +82,6 @@
 					Tags
 				</div>
 				<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
-					<div class="label_container">
-						<!--Baca JS-->
-					</div>
-					<div class="label_container">
-						<!--Baca JS-->
-					</div>
-					<div class="label_container">
-						<!--Baca JS-->
-					</div>
-				</div>
-			</div>
-			<div class="filter_anime" style="grid-column: 1/3;" id="filter_subgenre">
-				<div id="filter_subtitle">
-					Sub Genre
-				</div>
-				<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
-					<div class="label_container">
-						<!--Baca JS-->
-					</div>
-					<div class="label_container">
-						<!--Baca JS-->
-					</div>
 					<div class="label_container">
 						<!--Baca JS-->
 					</div>

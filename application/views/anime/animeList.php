@@ -27,7 +27,7 @@
 						<i class="far fa-snowflake" id="seasonFA"></i>
 						<span>Season</span>
 						<span class="value" onclick="showMenu(this);">
-							<div class="current">Winter</div>
+							<div class="current">Spring</div>
 							<div class="dropdown">
 								<div class="options" onclick="changeTo(this);">Spring</div>
 								<div class="options" onclick="changeTo(this);">Summer</div>
@@ -51,10 +51,10 @@
 						<i class="far fa-clock"></i>
 						<span>Duration</span>
 						<span class="value" onclick="showMenu(this);">
-							<div class="current">Short</div>
+							<div class="current">24 min Series</div>
 							<div class="dropdown">
 								<div class="options" onclick="changeTo(this);">Short</div>
-								<div class="options" onclick="changeTo(this);">24min Series</div>
+								<div class="options" onclick="changeTo(this);">24 min Series</div>
 								<div class="options" onclick="changeTo(this);">Movie</div>
 							</div>
 						</span>
@@ -72,46 +72,7 @@
 					</div>
 				</div>
 				<div class="animeList grid-container">
-					<div>
-						<div onclick="location.href='animepage.html'" class="animeImage" title="Yuru Camp" style="background-image: url(assets/image/yurucamp.jpg)"></div>
-						<div class="animeDetail">
-							<div class="detail"><div>Source</div><div>Manga</div></div>
-							<div class="detail"><div>Total Episodes</div><div>12</div></div>
-							<div class="detail"><div>Duration</div><div>24min / Episode</div></div>
-							<div class="detail"><div>Subscriber</div><div>300K</div></div>
-							<div class="detail"><div>Genres</div><div>Comedy, Slice of life</div></div>
-						</div>
-					</div>
-					<div>
-						<div onclick="" class="animeImage" title="Koi wa Ameagari no You ni" style="background-image: url(assets/image/koiwa.jpg)"></div>
-						<div class="animeDetail">
-							<div class="detail"><div>Source</div><div>Manga</div></div>
-							<div class="detail"><div>Total Episodes</div><div>12</div></div>
-							<div class="detail"><div>Duration</div><div>24min / Episode</div></div>
-							<div class="detail"><div>Subscriber</div><div>300K</div></div>
-							<div class="detail"><div>Genres</div><div>Comedy, Slice of life</div></div>
-						</div>
-					</div>
-					<div>
-						<div onclick="" class="animeImage" title="Violet Evergarden" style="background-image: url(assets/image/violet.jpg)"></div>
-						<div class="animeDetail">
-							<div class="detail"><div>Source</div><div>Manga</div></div>
-							<div class="detail"><div>Total Episodes</div><div>12</div></div>
-							<div class="detail"><div>Duration</div><div>24min / Episode</div></div>
-							<div class="detail"><div>Subscriber</div><div>300K</div></div>
-							<div class="detail"><div>Genres</div><div>Comedy</div></div>
-						</div>
-					</div>
-					<div>
-						<div onclick="" class="animeImage" title="Karakai Jouzu no Takagi-san" style="background-image: url(assets/image/karakai.jpg)"></div>
-						<div class="animeDetail">
-							<div class="detail"><div>Source</div><div>Manga</div></div>
-							<div class="detail"><div>Total Episodes</div><div>12</div></div>
-							<div class="detail"><div>Duration</div><div>24min / Episode</div></div>
-							<div class="detail"><div>Subscriber</div><div>300K</div></div>
-							<div class="detail"><div>Genres</div><div>Comedy</div></div>
-						</div>
-					</div>
+					<!-- Anime List Content -->
 				</div>
 			</div>
 		</div>

@@ -4,7 +4,7 @@
   grid-template-areas: "header widget" "header main-content";
 }
 
-.content .latest_update .latest_update_wrapper .animeThumb, .content .top_airing .top_airing_wrapper div, .content .latest_news .latest_news_wrapper > span {
+.content .latest_update .latest_update_wrapper .animeThumb, .content .top_airing .top_airing_wrapper div, .content .latest_news .latest_news_wrapper span {
   border: 1px solid #d5dfe8;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -36,9 +36,8 @@
   padding-bottom: 2.5vw;
 }
 .content .latest_update {
-  grid-template-row: auto auto;
   grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
+  grid-template-rows: 5vw auto;
   grid-area: latest-update;
   grid-template-areas: "section_title pagination" "latest_update_wrapper latest_update_wrapper";
 }
@@ -148,25 +147,25 @@
   grid-area: latest-news;
 }
 .content .latest_news .latest_news_wrapper {
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  height: 18vw;
-  margin: 2.5% 0;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 2vw;
 }
-.content .latest_news .latest_news_wrapper > span {
+.content .latest_news .latest_news_wrapper span {
   width: 90%;
   height: 100%;
+  background-position: center;
 }
-.content .latest_news .latest_news_wrapper > div {
-  grid-column: 2/6;
-  padding-left: 1%;
+.content .latest_news .latest_news_wrapper div {
+  margin: 0 0 1.75% 0;
 }
-.content .latest_news .latest_news_wrapper > div .news_title {
+.content .latest_news .latest_news_wrapper div .news_title {
   font-size: 2vw;
   color: #42beff;
   font-family: "QS_Book";
   cursor: pointer;
 }
-.content .latest_news .latest_news_wrapper > div .news_content {
+.content .latest_news .latest_news_wrapper div .news_content {
   font-size: 1.25vw;
   color: #888;
   font-family: "QS_Book";
@@ -174,12 +173,12 @@
   padding: 1% 0;
   text-align: justify;
 }
-.content .latest_news .latest_news_wrapper > div a {
+.content .latest_news .latest_news_wrapper div a {
   font-size: 1.25vw;
   color: #42beff;
   font-family: "QS_Book";
 }
-.content .latest_news .latest_news_wrapper > div a:hover {
+.content .latest_news .latest_news_wrapper div a:hover {
   text-decoration: underline;
 }
 .content .promotion .promotion_wrapper {

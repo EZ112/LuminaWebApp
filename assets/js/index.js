@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	loadAnimeLatestUpdate();
+	loadTopAiringAnime();
+	loadNewsLatestUpdate();
 
 	pageSize = 4;
 	pagesCount = $(".latest_update_wrapper div").length;
@@ -34,23 +36,69 @@ function loadAnimeLatestUpdate() {
 		type : 'POST',
 		success : function(data){
 			var container = $('.latest_update_wrapper');
-			dummylen = 4-data.length%4;
 
 			$.each(data,function(key,val){
-				container.append('<div class="animeThumb" onclick="" title="'+val.AnimeTitle+'" style="background-image: url('+val.Thumbnail+')"></div>');
+				container.append(`<div class="animeThumb" onclick="" title="`+val.AnimeTitle+`" 
+									   style="background-image: url(`+val.Thumbnail+`)">
+								  </div>`);
 			});
 
 			for (var i = 0; i < 4-data.length%4; i++) {
-				container.append('<div></div>');
+				container.append(`<div></div>`);
 			}
 
 			$.each(data,function(key,val){
-				container.append('<span class="episode">Episode '+val.LatestEpisode+'</span>');
+				container.append(`<span class="episode">Episode `+val.LatestEpisode+`</span>`);
 			});
 
 			for (var i = 0; i < 4-data.length%4; i++) {
-				container.append('<span></span>');
+				container.append(`<span></span>`);
 			}
+		}, 
+	  	async: false
+	});
+}
+
+function loadTopAiringAnime(){
+	$.ajax({
+		url :'homepage/getTopAiringAnime',
+		dataType : 'json',
+		type : 'POST',
+		success : function(data){
+			var container = $('.top_airing_wrapper');
+
+			$.each(data,function(key,val){
+				container.append(`<div class="animeThumb" onclick="" title="`+val.AnimeTitle+`" style="background-image: url(`+val.Thumbnail+`)">
+									<span class="numbering">`+(key+1)+`</span>
+								  </div>`);
+			});
+
+			$.each(data,function(key,val){
+				container.append(`<button onclick="">Subscribe</button>`);
+			});
+		}, 
+	  	async: false
+	});
+}
+
+function loadNewsLatestUpdate(){
+	$.ajax({
+		url :'homepage/getNewsLatestUpdate',
+		dataType : 'json',
+		type : 'POST',
+		success : function(data){
+			var container = $('.latest_news_wrapper');
+
+			$.each(data,function(key,val){
+				container.append(`<span onclick="" style="background-image: url(`+val.NewsThumbnail+`)"></span>`);
+				container.append(`<div>
+									<div onclick="" class="news_title">`+val.NewsTitle+`</div>
+										<div class="news_content">
+											`+val.Headline+`
+									</div>
+									<a href="#">Read More &gt;&gt;</a>
+								  </div>`);
+			});
 		}, 
 	  	async: false
 	});
