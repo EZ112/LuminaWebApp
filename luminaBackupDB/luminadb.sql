@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2018 at 03:54 PM
+-- Generation Time: May 30, 2018 at 01:19 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -68,8 +68,46 @@ SELECT DISTINCT a.AnimeTitle, a.Thumbnail, s.Source, a.EpisodeTotal, d.Duration,
     ORDER BY CASE WHEN inSort = 'Title' THEN a.AnimeTitle END ASC, COUNT(a.AnimeID) DESC;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetAnimeSearch` (IN `inSearch` LONGTEXT, IN `inDuration` INT, IN `inGenre` LONGTEXT)  BEGIN
+    SELECT a.AnimeTitle, a.Thumbnail, a.ThumbnailLandscape, d.Duration, MAX(e.Episode) as LatestEpisode, b.SubScriber, c.Genres
+    FROM anime a
+    JOIN episodes e ON a.AnimeID = e.AnimeID
+    JOIN durations d ON a.DurationID = d.DurationID,
+    (SELECT a.AnimeID, COUNT(s.UserID) AS SubScriber
+    FROM anime a 
+    JOIN subscription s ON a.AnimeID = s.AnimeID
+    GROUP BY a.AnimeID) b,
+    (SELECT a.AnimeID, substring_index(GROUP_CONCAT(DISTINCT g.Genre     
+     SEPARATOR ', '),', ', 5) AS Genres 
+     FROM anime a 
+     JOIN animeandgenres ag ON a.AnimeID = ag.AnimeID
+     JOIN genres g ON ag.GenreID = g.GenreID
+     WHERE g.Genre REGEXP inGenre
+     GROUP BY a.AnimeID) AS c
+    WHERE a.AnimeID = b.AnimeID
+    AND a.AnimeID = c.AnimeID
+    AND a.AnimeTitle LIKE CONCAT('%',inSearch,'%')
+    GROUP BY a.AnimeID;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetDuration` ()  BEGIN
 	SELECT * FROM durations;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetEpisodeSearch` (IN `inSearch` LONGTEXT, IN `inDuration` INT, IN `inGenre` LONGTEXT)  BEGIN
+    SELECT a.AnimeTitle, a.Thumbnail, e.EpsThumbnail, d.Duration, e.Episode, e.EpsTitle, DATE_FORMAT(e.EpsDateAir, "%d %M %Y") AS EpsDateAir, e.EpisodeTotalViews, b.Genres
+    FROM anime a
+    JOIN episodes e ON a.AnimeID = e.AnimeID
+    JOIN durations d ON a.DurationID = d.DurationID,
+    (SELECT a.AnimeID, substring_index(GROUP_CONCAT(DISTINCT g.Genre     
+     SEPARATOR ', '),', ', 5) AS Genres 
+     FROM anime a 
+     JOIN animeandgenres ag ON a.AnimeID = ag.AnimeID
+     JOIN genres g ON ag.GenreID = g.GenreID
+     WHERE g.Genre REGEXP inGenre
+     GROUP BY a.AnimeID) AS b
+    WHERE a.AnimeID = b.AnimeID
+    AND a.AnimeTitle LIKE CONCAT('%',inSearch,'%');
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetGenre` ()  BEGIN
@@ -119,6 +157,7 @@ CREATE TABLE `anime` (
   `SeasonID` varchar(35) DEFAULT NULL,
   `EpisodeTotal` int(11) DEFAULT NULL,
   `Thumbnail` longtext,
+  `ThumbnailLandscape` longtext NOT NULL,
   `AnimeReleaseDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -126,12 +165,12 @@ CREATE TABLE `anime` (
 -- Dumping data for table `anime`
 --
 
-INSERT INTO `anime` (`AnimeID`, `SeriesID`, `StudioID`, `SourceID`, `ReleaseSeasonID`, `DurationID`, `AnimeTitle`, `Synopsis`, `SeasonID`, `EpisodeTotal`, `Thumbnail`, `AnimeReleaseDate`) VALUES
-(1, 1, 3, 3, 2, 2, 'Yuru Camp△', 'While the perfect getaway for most girls her age might be a fancy vacation with their loved ones, Rin Shima\'s ideal way of spending her days off is camping alone at the base of Mount Fuji. From pitching her tent to gathering firewood, she has always done everything by herself, and has no plans of leaving her little solitary world.\r\n\r\nHowever, what starts off as one of Rin\'s usual camping sessions somehow ends up as a surprise get-together for two when the lost Nadeshiko Kagamihara is forced to take refuge at her campsite. Originally intending to see the picturesque view of Mount Fuji for herself, Nadeshiko\'s plans are disrupted when she ends up falling asleep partway to her destination. Alone and with no other choice, she seeks help from the only other person nearby. Despite their hasty introductions, the two girls nevertheless enjoy the chilly night together, eating ramen and conversing while the campfire keeps them warm. And even after Nadeshiko\'s sister finally picks her up later that night, both girls silently ponder the possibility of another camping trip together.', 'YuruCampS001', 12, 'assets/image/yurucamp.jpg', '2018-05-01'),
-(2, 2, 1, 2, 2, 2, 'Violet Evergarden', 'The Great War finally came to an end after four long years of conflict; fractured in two, the continent of Telesis slowly began to flourish once again. Caught up in the bloodshed was Violet Evergarden, a young girl raised for the sole purpose of decimating enemy lines. Hospitalized and maimed in a bloody skirmish during the War\'s final leg, she was left with only words from the person she held dearest, but with no understanding of their meaning.\r\n\r\nRecovering from her wounds, Violet starts a new life working at CH Postal Services after a falling out with her new intended guardian family. There, she witnesses by pure chance the work of an \"Auto Memory Doll,\" amanuenses that transcribe people\'s thoughts and feelings into words on paper. Moved by the notion, Violet begins work as an Auto Memory Doll, a trade that will take her on an adventure, one that will reshape the lives of her clients and hopefully lead to self-discovery.', 'VioletEvergardenS001', 13, 'assets/image/violet.jpg', '2018-05-11'),
-(3, 3, 2, 3, 2, 2, 'Karakai Jouzu no Takagi-san', '\"If you blush, you lose.\"\r\n\r\nLiving by this principle, the middle schooler Nishikata gets constantly made fun of by his seat neighbor Takagi-san. With his pride shattered to pieces, he vows to turn the tables and get back at her some day. And so, he attempts to tease her day after day, only to find himself victim to Takagi-san\'s ridicule again sooner than later. Will he be able to make Takagi-san blush from embarrassment even once in the end?', 'KarakaiJouzuS001', 12, 'assets/image/karakai.jpg', '2018-05-08'),
-(4, 4, 4, 2, 2, 2, 'Overlord', 'The final hour of the popular virtual reality game Yggdrasil has come. However, Momonga, a powerful wizard and master of the dark guild Ainz Ooal Gown, decides to spend his last few moments in the game as the servers begin to shut down. To his surprise, despite the clock having struck midnight, Momonga is still fully conscious as his character and, moreover, the non-player characters appear to have developed personalities of their own!\r\n\r\nConfronted with this abnormal situation, Momonga commands his loyal servants to help him investigate and take control of this new world, with the hopes of figuring out what has caused this development and if there may be others in the same predicament.', 'OverlordS001', 13, 'assets/image/overlord.png', '2018-05-08'),
-(5, 5, 5, 3, 2, 2, 'Koi wa Ameagari no You ni', 'Akira Tachibana, a reserved high school student and former track runner, has not been able to race the same as she used to since she experienced a severe foot injury. And although she is regarded as attractive by her classmates, she is not interested in the boys around school.\r\n\r\nWhile working part-time at the Garden Cafe, Akira begins to develop feelings for the manager—a 45-year-old man named Masami Kondou—despite the large age gap. Kondou shows genuine concern and kindness toward the customers of his restaurant, which, while viewed by others as soft or weak, draws Akira to him. Spending time together at the restaurant, they grow closer, which only strengthens her feelings. Weighed down by these uncertain emotions, Akira finally resolves to confess, but what will be the result?', 'KoiwaS001', 12, 'assets/image/koiwa.jpg', '2018-05-29');
+INSERT INTO `anime` (`AnimeID`, `SeriesID`, `StudioID`, `SourceID`, `ReleaseSeasonID`, `DurationID`, `AnimeTitle`, `Synopsis`, `SeasonID`, `EpisodeTotal`, `Thumbnail`, `ThumbnailLandscape`, `AnimeReleaseDate`) VALUES
+(1, 1, 3, 3, 2, 2, 'Yuru Camp△', 'While the perfect getaway for most girls her age might be a fancy vacation with their loved ones, Rin Shima\'s ideal way of spending her days off is camping alone at the base of Mount Fuji. From pitching her tent to gathering firewood, she has always done everything by herself, and has no plans of leaving her little solitary world.\r\n\r\nHowever, what starts off as one of Rin\'s usual camping sessions somehow ends up as a surprise get-together for two when the lost Nadeshiko Kagamihara is forced to take refuge at her campsite. Originally intending to see the picturesque view of Mount Fuji for herself, Nadeshiko\'s plans are disrupted when she ends up falling asleep partway to her destination. Alone and with no other choice, she seeks help from the only other person nearby. Despite their hasty introductions, the two girls nevertheless enjoy the chilly night together, eating ramen and conversing while the campfire keeps them warm. And even after Nadeshiko\'s sister finally picks her up later that night, both girls silently ponder the possibility of another camping trip together.', 'YuruCampS001', 12, 'assets/image/yurucamp.jpg', 'assets/image/yuruwall.png', '2018-05-01'),
+(2, 2, 1, 2, 2, 2, 'Violet Evergarden', 'The Great War finally came to an end after four long years of conflict; fractured in two, the continent of Telesis slowly began to flourish once again. Caught up in the bloodshed was Violet Evergarden, a young girl raised for the sole purpose of decimating enemy lines. Hospitalized and maimed in a bloody skirmish during the War\'s final leg, she was left with only words from the person she held dearest, but with no understanding of their meaning.\r\n\r\nRecovering from her wounds, Violet starts a new life working at CH Postal Services after a falling out with her new intended guardian family. There, she witnesses by pure chance the work of an \"Auto Memory Doll,\" amanuenses that transcribe people\'s thoughts and feelings into words on paper. Moved by the notion, Violet begins work as an Auto Memory Doll, a trade that will take her on an adventure, one that will reshape the lives of her clients and hopefully lead to self-discovery.', 'VioletEvergardenS001', 13, 'assets/image/violet.jpg', '', '2018-05-11'),
+(3, 3, 2, 3, 2, 2, 'Karakai Jouzu no Takagi-san', '\"If you blush, you lose.\"\r\n\r\nLiving by this principle, the middle schooler Nishikata gets constantly made fun of by his seat neighbor Takagi-san. With his pride shattered to pieces, he vows to turn the tables and get back at her some day. And so, he attempts to tease her day after day, only to find himself victim to Takagi-san\'s ridicule again sooner than later. Will he be able to make Takagi-san blush from embarrassment even once in the end?', 'KarakaiJouzuS001', 12, 'assets/image/karakai.jpg', '', '2018-05-08'),
+(4, 4, 4, 2, 2, 2, 'Overlord', 'The final hour of the popular virtual reality game Yggdrasil has come. However, Momonga, a powerful wizard and master of the dark guild Ainz Ooal Gown, decides to spend his last few moments in the game as the servers begin to shut down. To his surprise, despite the clock having struck midnight, Momonga is still fully conscious as his character and, moreover, the non-player characters appear to have developed personalities of their own!\r\n\r\nConfronted with this abnormal situation, Momonga commands his loyal servants to help him investigate and take control of this new world, with the hopes of figuring out what has caused this development and if there may be others in the same predicament.', 'OverlordS001', 13, 'assets/image/overlord.png', '', '2018-05-08'),
+(5, 5, 5, 3, 2, 2, 'Koi wa Ameagari no You ni', 'Akira Tachibana, a reserved high school student and former track runner, has not been able to race the same as she used to since she experienced a severe foot injury. And although she is regarded as attractive by her classmates, she is not interested in the boys around school.\r\n\r\nWhile working part-time at the Garden Cafe, Akira begins to develop feelings for the manager—a 45-year-old man named Masami Kondou—despite the large age gap. Kondou shows genuine concern and kindness toward the customers of his restaurant, which, while viewed by others as soft or weak, draws Akira to him. Spending time together at the restaurant, they grow closer, which only strengthens her feelings. Weighed down by these uncertain emotions, Akira finally resolves to confess, but what will be the result?', 'KoiwaS001', 12, 'assets/image/koiwa.jpg', '', '2018-05-29');
 
 -- --------------------------------------------------------
 
@@ -234,6 +273,7 @@ CREATE TABLE `episodes` (
   `EpsDateAir` datetime DEFAULT NULL,
   `Episode` int(11) DEFAULT NULL,
   `EpisodeTotalViews` int(11) DEFAULT NULL,
+  `EpsThumbnail` longtext NOT NULL,
   `VideoLink` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -241,27 +281,27 @@ CREATE TABLE `episodes` (
 -- Dumping data for table `episodes`
 --
 
-INSERT INTO `episodes` (`EpisodeID`, `AnimeID`, `EpsTitle`, `EpsDateAir`, `Episode`, `EpisodeTotalViews`, `VideoLink`) VALUES
-(1, 1, 'Mount Fuji and Curry Noodles', '2018-01-04 00:00:00', 1, NULL, NULL),
-(2, 1, 'Welcome to the Outdoor Activities Club', '2018-01-11 00:00:00', 2, NULL, NULL),
-(3, 1, 'Mount Fuji and Relaxed Hot Pot Camp', '2018-01-18 00:00:00', 3, NULL, NULL),
-(4, 2, '\"I Love You\" and Auto Memory Dolls', '2018-01-11 00:00:00', 1, NULL, NULL),
-(5, 2, 'Never Coming Back', '2018-01-18 00:00:00', 2, NULL, NULL),
-(6, 2, 'May You Be an Exemplary Auto Memory Doll', '2018-01-25 00:00:00', 3, NULL, NULL),
-(7, 3, 'Eraser / Day Duty / Funny Face / One Hundred Yen', '2018-01-08 00:00:00', 1, NULL, NULL),
-(8, 3, 'Calligraphy / Seasonal Change of Clothing / Pool', '2018-01-15 00:00:00', 2, NULL, NULL),
-(9, 4, 'End and Beginning', '2018-05-29 00:00:00', 1, NULL, NULL),
-(10, 5, 'The Sound of Rain', '2018-05-30 00:00:00', 1, NULL, NULL),
-(11, 1, 'The Outdoor Activities Club and the Solo Camping Girl', '2018-05-31 00:00:00', 4, NULL, NULL),
-(12, 3, 'Coffee / Empty Can / Soda / Muscle Training / Dubbing / Umbrella', '2018-05-31 01:00:00', 3, NULL, NULL),
-(13, 1, 'Two Camps, Two Campers\' Views', '2018-06-02 00:00:00', 5, NULL, NULL),
-(14, 1, 'Meat and Fall Colors and the Mystery Lake', '2018-06-07 00:00:00', 6, NULL, NULL),
-(15, 1, 'A Night on the Lake Shore and Campers', '2018-06-14 00:00:00', 7, NULL, NULL),
-(16, 1, 'Exams, Caribou, Steamed Buns, Yum!', '2018-06-15 00:00:00', 8, NULL, NULL),
-(17, 1, 'A Night of Navigator Nadeshiko and Hot Spring Steam', '2018-06-16 00:00:00', 9, NULL, 'A Night of Navigator Nadeshiko and Hot Spring Steam'),
-(18, 1, 'Clumsy Travelers and Camp Meetings', '2018-06-17 00:00:00', 10, NULL, NULL),
-(19, 1, 'Christmas Camp!', '2018-06-18 00:00:00', 11, NULL, NULL),
-(20, 1, 'Mount Fuji and the Laid-Back Camp Girls', '2018-07-23 00:00:00', 12, NULL, NULL);
+INSERT INTO `episodes` (`EpisodeID`, `AnimeID`, `EpsTitle`, `EpsDateAir`, `Episode`, `EpisodeTotalViews`, `EpsThumbnail`, `VideoLink`) VALUES
+(1, 1, 'Mount Fuji and Curry Noodles', '2018-01-04 00:00:00', 1, NULL, 'assets/image/YuruCampEps1.jpg', NULL),
+(2, 1, 'Welcome to the Outdoor Activities Club', '2018-01-11 00:00:00', 2, NULL, 'assets/image/YuruCampEps2.jpg', NULL),
+(3, 1, 'Mount Fuji and Relaxed Hot Pot Camp', '2018-01-18 00:00:00', 3, NULL, '', NULL),
+(4, 2, '\"I Love You\" and Auto Memory Dolls', '2018-01-11 00:00:00', 1, NULL, '', NULL),
+(5, 2, 'Never Coming Back', '2018-01-18 00:00:00', 2, NULL, '', NULL),
+(6, 2, 'May You Be an Exemplary Auto Memory Doll', '2018-01-25 00:00:00', 3, NULL, '', NULL),
+(7, 3, 'Eraser / Day Duty / Funny Face / One Hundred Yen', '2018-01-08 00:00:00', 1, NULL, '', NULL),
+(8, 3, 'Calligraphy / Seasonal Change of Clothing / Pool', '2018-01-15 00:00:00', 2, NULL, '', NULL),
+(9, 4, 'End and Beginning', '2018-05-29 00:00:00', 1, NULL, '', NULL),
+(10, 5, 'The Sound of Rain', '2018-05-30 00:00:00', 1, NULL, '', NULL),
+(11, 1, 'The Outdoor Activities Club and the Solo Camping Girl', '2018-05-31 00:00:00', 4, NULL, '', NULL),
+(12, 3, 'Coffee / Empty Can / Soda / Muscle Training / Dubbing / Umbrella', '2018-05-31 01:00:00', 3, NULL, '', NULL),
+(13, 1, 'Two Camps, Two Campers\' Views', '2018-06-02 00:00:00', 5, NULL, '', NULL),
+(14, 1, 'Meat and Fall Colors and the Mystery Lake', '2018-06-07 00:00:00', 6, NULL, '', NULL),
+(15, 1, 'A Night on the Lake Shore and Campers', '2018-06-14 00:00:00', 7, NULL, '', NULL),
+(16, 1, 'Exams, Caribou, Steamed Buns, Yum!', '2018-06-15 00:00:00', 8, NULL, '', NULL),
+(17, 1, 'A Night of Navigator Nadeshiko and Hot Spring Steam', '2018-06-16 00:00:00', 9, NULL, '', 'A Night of Navigator Nadeshiko and Hot Spring Steam'),
+(18, 1, 'Clumsy Travelers and Camp Meetings', '2018-06-17 00:00:00', 10, NULL, '', NULL),
+(19, 1, 'Christmas Camp!', '2018-06-18 00:00:00', 11, NULL, '', NULL),
+(20, 1, 'Mount Fuji and the Laid-Back Camp Girls', '2018-07-23 00:00:00', 12, NULL, '', NULL);
 
 -- --------------------------------------------------------
 

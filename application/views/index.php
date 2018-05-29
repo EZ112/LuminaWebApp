@@ -9,6 +9,11 @@
 		?>
 		<div class="content-area"> 
 			<div class="content grid-container">
+				<div class="google_adds">
+					<div class="section_title">
+						Google Adds	
+					</div>
+				</div>
 				<div class="latest_update grid-container">
 					<div style="text-align: right;">
 						<ul class="pagination">

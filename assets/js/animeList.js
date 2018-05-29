@@ -67,6 +67,7 @@ function loadAnimeList(inyear,inseason,instatus,induration,insort){
 				});
 			}
 			else{
+				$('.result').text("About "+data.length+" Result");
 				container.append(`<div></div><h2>Sorry, Anime<br>Not Found</h2><div></div>`);
 			}
 		}, 

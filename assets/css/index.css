@@ -20,8 +20,8 @@
 }
 
 .content {
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas: "latest-update" "top-airing" "latest-news" "promotion";
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-areas: "google_adds" "latest-update" "top-airing" "latest-news" "promotion";
   grid-row-gap: 2.5vw;
   padding: 4vw 4vw 5vw 4vw;
 }
@@ -34,6 +34,21 @@
   right: 5%;
   grid-area: pagination;
   padding-bottom: 2.5vw;
+}
+.content .google_adds {
+  grid-area: google_adds;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #42beff;
+  height: 8vw;
+}
+.content .google_adds .section_title {
+  margin: 0;
+  text-align: center;
+  font-size: 2vw;
+  color: white;
+  font-family: "QS_Book";
 }
 .content .latest_update {
   grid-template-columns: auto auto;

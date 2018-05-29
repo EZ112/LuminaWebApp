@@ -23,8 +23,9 @@
 }
 
 .content{
-	grid-template-rows: auto auto auto auto;
+	grid-template-rows: auto auto auto auto auto;
 	grid-template-areas:
+	"google_adds"
 	"latest-update"
 	"top-airing"
 	"latest-news"
@@ -43,6 +44,20 @@
 		right: 5%;
 		grid-area: pagination;
 		padding-bottom: 2.5vw;
+	}
+
+	.google_adds{
+		grid-area: google_adds;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $cP;
+		height: 8vw;
+		.section_title{
+			margin: 0;
+			text-align: center;
+			@include setText(2vw, white, "QS_Book");
+		}
 	}
 
 	.latest_update{

@@ -22,10 +22,8 @@
 .content .pointAnime .animeContainer .thumbnail_container {
   width: 80%;
   height: 10vw;
-}
-.content .pointAnime .animeContainer .thumbnail_container img {
-  width: 100%;
-  height: 100%;
+  background-position: center;
+  background-size: cover;
 }
 .content .pointAnime .animeContainer .info_container #title {
   font-size: 1.75vw;

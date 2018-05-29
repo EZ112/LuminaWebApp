@@ -4,11 +4,33 @@
   grid-template-areas: "header widget" "header main-content";
 }
 
-.mainContent {
+.content-area {
   grid-area: main-content;
+}
+
+.content {
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "google_adds" "navigation" "animeList";
+  grid-row-gap: 2vw;
   padding: 2.5%;
 }
-.mainContent .navigation {
+.content .google_adds {
+  grid-area: google_adds;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #42beff;
+  height: 8vw;
+}
+.content .google_adds .section_title {
+  margin: 0;
+  text-align: center;
+  font-size: 2vw;
+  color: white;
+  font-family: "QS_Book";
+}
+.content .navigation {
+  grid-area: navigation;
   grid-template-columns: auto auto auto auto auto;
   background-color: #42beff;
   font-size: 1vw;
@@ -17,13 +39,13 @@
   padding: 1%;
   border-radius: 5px;
 }
-.mainContent .navigation > div {
+.content .navigation > div {
   font-size: 1.15vw;
   color: white;
   font-family: "QS_Book";
   text-align: center;
 }
-.mainContent .navigation > div .value {
+.content .navigation > div .value {
   font-size: 1.5vw;
   color: white;
   font-family: "QS_Book";
@@ -31,11 +53,11 @@
   position: relative;
   display: inline-block;
 }
-.mainContent .navigation > div .value .current {
+.content .navigation > div .value .current {
   cursor: pointer;
   border: 2px solid transparent;
 }
-.mainContent .navigation > div .value .dropdown {
+.content .navigation > div .value .dropdown {
   position: absolute;
   background-color: #42beff;
   color: white;
@@ -44,52 +66,53 @@
   z-index: 100;
   cursor: pointer;
 }
-.mainContent .navigation > div .value .dropdown .options {
+.content .navigation > div .value .dropdown .options {
   padding: 10%;
 }
-.mainContent .navigation > div .value .dropdown .options:hover {
+.content .navigation > div .value .dropdown .options:hover {
   background-color: #8dd8ff;
 }
-.mainContent .navigation > div .value .dropdown .options:last-child:hover {
+.content .navigation > div .value .dropdown .options:last-child:hover {
   border-radius: 0 0 5px 5px;
 }
-.mainContent .navigation > div .value .current:hover {
+.content .navigation > div .value .current:hover {
   border: 2px solid #8dd8ff;
 }
-.mainContent .navigation #year .dropdown {
+.content .navigation #year .dropdown {
   width: 5vw;
   top: 140%;
 }
-.mainContent .navigation #season .dropdown {
+.content .navigation #season .dropdown {
   width: 8vw;
   top: 140%;
 }
-.mainContent .navigation #status .dropdown {
+.content .navigation #status .dropdown {
   width: 10vw;
   top: 140%;
 }
-.mainContent .navigation #status .dropdown .options {
+.content .navigation #status .dropdown .options {
   font-size: 1.25vw;
 }
-.mainContent .navigation #duration .dropdown {
+.content .navigation #duration .dropdown {
   width: 8vw;
   top: 140%;
 }
-.mainContent .navigation #duration .dropdown .options {
+.content .navigation #duration .dropdown .options {
   font-size: 1.25vw;
 }
-.mainContent .navigation #sort .dropdown {
+.content .navigation #sort .dropdown {
   width: 8vw;
   top: 140%;
 }
-.mainContent .navigation #sort .dropdown .options:first-child {
+.content .navigation #sort .dropdown .options:first-child {
   font-size: 1.25vw;
 }
-.mainContent .animeList {
+.content .animeList {
+  grid-area: animeList;
   grid-template-columns: 33.33% 33.33% 33.33%;
   margin-top: 1.25%;
 }
-.mainContent .animeList h2 {
+.content .animeList h2 {
   display: flex;
   text-align: center;
   align-items: center;
@@ -98,20 +121,20 @@
   color: #888;
   font-family: "QS_Light";
 }
-.mainContent .animeList > div {
+.content .animeList > div {
   display: grid;
   grid-template-columns: 50% 50%;
   height: 20vw;
   margin: 0 0 2.5vw 0;
 }
-.mainContent .animeList > div .animeImage {
+.content .animeList > div .animeImage {
   background-color: #42beff;
   background-size: cover;
   background-position: center;
   border-radius: 10px;
   cursor: pointer;
 }
-.mainContent .animeList > div .animeImage::before {
+.content .animeList > div .animeImage::before {
   content: "";
   height: 100%;
   display: block;
@@ -128,7 +151,7 @@
   -ms-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
-.mainContent .animeList > div .animeImage::after {
+.content .animeList > div .animeImage::after {
   content: attr(title);
   display: flex;
   align-items: center;
@@ -146,23 +169,23 @@
   -ms-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
-.mainContent .animeList > div .animeImage:hover:after,
-.mainContent .animeList > div .animeImage:hover:before {
+.content .animeList > div .animeImage:hover:after,
+.content .animeList > div .animeImage:hover:before {
   opacity: 0;
 }
-.mainContent .animeList > div .animeDetail {
+.content .animeList > div .animeDetail {
   padding-left: 10%;
 }
-.mainContent .animeList > div .animeDetail .detail div {
+.content .animeList > div .animeDetail .detail div {
   margin: 3.5% 0;
   wrod-wrap: break-word;
 }
-.mainContent .animeList > div .animeDetail .detail div:first-child {
+.content .animeList > div .animeDetail .detail div:first-child {
   font-size: 1vw;
   color: #42beff;
   font-family: "QS_Book";
 }
-.mainContent .animeList > div .animeDetail .detail div:last-child {
+.content .animeList > div .animeDetail .detail div:last-child {
   font-size: 1.25vw;
   color: #888;
   font-family: "QS_Book";

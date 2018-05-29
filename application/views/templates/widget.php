@@ -2,9 +2,9 @@
 	<!--Widget-->
 	<div class="widget grid-container">
 		<form id="widget_search" action="anime/animeSearch" method="get">
-			<span onclick="search_anime(this);" class="fa fa-search"></span>
-			<input name="search" placeholder="Search">
-			<input type="submit">
+			<span class="fa fa-search"></span>
+			<input name="search" placeholder="Search" required>
+			<!-- <input type="submit"> -->
 		</form>
 		<div>
 			<span onclick="open_navigation('filter');" id="widget_filter">
@@ -65,7 +65,16 @@
 				<div id="filter_subtitle">
 					Genre
 				</div>
-				<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
+				<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;">
+					<div class="label_container">
+						<!--Baca JS-->
+					</div>
+					<div class="label_container">
+						<!--Baca JS-->
+					</div>
+					<div class="label_container">
+						<!--Baca JS-->
+					</div>
 					<div class="label_container">
 						<!--Baca JS-->
 					</div>

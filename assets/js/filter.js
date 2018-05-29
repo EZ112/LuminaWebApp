@@ -2,19 +2,35 @@ $(document).ready(function(){
 	loadDuration();
 	loadGenre();
 	loadTags();
+	var lsdur = parseInt(JSON.parse(localStorage.getItem("duration")));
+	var lsgen = JSON.parse(localStorage.getItem("genre"));	
+
+	if(isNaN(lsdur) && !lsgen){
+		var lsdur = 0;
+		var lsgen = [];
+		localStorage.setItem("duration", JSON.stringify(lsdur));
+		localStorage.setItem("genre", JSON.stringify(lsgen));
+	}
+
 	var dest = document.getElementById('filter_duration').querySelector('#label_container');
 	for(var i = 0; i < filter_duration_object.length; ++i){
 		add_filter(dest, filter_duration_object[i]);
 	}
 
-	$('.custom_input_container [name="duration"]')[0].checked=true
+	$('.custom_input_container [name="duration"]')[lsdur].checked=true;
+
 
 	dest = document.getElementById('filter_genre').getElementsByClassName('label_container');
-	for(var j = 0; j < 3; ++j){
-		for(var i = 0; i < 4; ++i){
-			add_filter(dest[j], filter_genre_object[4*j+i]);
+	for(var j = 0; j < 6; ++j){
+		for(var i = 0; i < 5; ++i){
+			add_filter(dest[j], filter_genre_object[5*j+i]);
 		}
 	}
+
+	for (var i = 0; i < lsgen.length; i++) {
+		$('.custom_input_container :input[value="'+lsgen[i]+'"]').prop('checked', true);
+	}
+
 
 	dest = document.getElementById('filter_tag').getElementsByClassName('label_container');
 	for(var j = 0; j < 3; ++j){
@@ -141,9 +157,8 @@ function change_filter(x){
 
 function submit_filter(){
 	var obj = document.getElementById('filter_content_wrapper');
-	// obj.submit();
 	obj.parentElement.style.display = "none";
-	var durVals = $('input[name="duration"]:checked').val()
+	var durVals = $('input[name="duration"]:checked').val();
 	var genreVals = [];
 	$('input[name="genre"]:checked').each(function(){
 		genreVals.push($(this).val());
