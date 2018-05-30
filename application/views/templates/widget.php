@@ -3,7 +3,7 @@
 	<div class="widget grid-container">
 		<form id="widget_search" action="anime/animeSearch" method="get">
 			<span class="fa fa-search"></span>
-			<input name="search" placeholder="Search" required>
+			<input name="search" placeholder="Search">
 			<!-- <input type="submit"> -->
 		</form>
 		<div>

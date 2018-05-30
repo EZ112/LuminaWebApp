@@ -16,16 +16,24 @@ class AnimeSearch extends CI_Controller {
 			$genre = '';
 		else 
 			$genre = implode("|",$_POST['genre']);
+		$offset = $_POST['offset'];
+		$limit = $_POST['limit'];
 
 		$arr = array(
 			'inSearch' => $search,
 			'inDuration' => $duration,
-			'inGenre' => $genre
+			'inGenre' => $genre,
+			'inLimit' => $limit,
+			'inOffset' => $offset
 		);
 
-		$sp = "CALL sp_GetAnimeSearch(?,?,?)";
+		$sp = "CALL sp_GetAnimeSearch(?,?,?,?,?,@Total)";
 		$result = $this->db->query($sp,$arr)->result();
-		echo json_encode($result);
+		mysqli_next_result( $this->db->conn_id );
+		$result2 = $this->db->query("SELECT @Total as TotalRow;")->result();
+		$arrRes = array('AnimeTbl' => $result, 
+				   		'TotalRow' => $result2);
+		echo json_encode($arrRes);
 	}
 
 	public function getEpisodeSearch(){
@@ -35,15 +43,23 @@ class AnimeSearch extends CI_Controller {
 			$genre = '';
 		else 
 			$genre = implode("|",$_POST['genre']);
+		$offset = $_POST['offset'];
+		$limit = $_POST['limit'];
 
 		$arr = array(
 			'inSearch' => $search,
 			'inDuration' => $duration,
-			'inGenre' => $genre
+			'inGenre' => $genre,
+			'inLimit' => $limit,
+			'inOffset' => $offset
 		);
 
-		$sp = "CALL sp_GetEpisodeSearch(?,?,?)";
+		$sp = "CALL sp_GetEpisodeSearch(?,?,?,?,?,@Total);";
 		$result = $this->db->query($sp,$arr)->result();
-		echo json_encode($result);
+		mysqli_next_result( $this->db->conn_id );
+		$result2 = $this->db->query("SELECT @Total as TotalRow;")->result();
+		$arrRes = array('EpisodesTbl' => $result, 
+				   		'TotalRow' => $result2);
+		echo json_encode($arrRes);
 	}
 }

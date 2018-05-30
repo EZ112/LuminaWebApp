@@ -1,5 +1,6 @@
 <?php include APPPATH.'/views/templates/header.php';?>
 <link rel="stylesheet" type="text/css" href="assets/css/animesearch.css">
+<link rel="stylesheet" type="text/css" href="assets/css/loader.css">
 <body>
 	<div class="page grid-container">
 		<?php 
