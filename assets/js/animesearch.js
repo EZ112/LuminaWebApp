@@ -1,6 +1,8 @@
 var flagAnime = 0;
 var flagEpisode = 0;
 var animeIsDone = false;
+var animeloaded = false;
+var episodeloaded = false;
 var animeRow;
 var episodeRow;
 var lsdur;
@@ -11,7 +13,7 @@ $(document).ready(function(){
 	var totalResult;
 
 	searchAnime(lsdur,lsgen,flagAnime,5);
-	searchEpisode(lsdur,lsgen,flagEpisode,(3-(animeRow-2)));
+	searchEpisode(lsdur,lsgen,flagEpisode,(3-((animeRow%5)-1)));
 });
 
 function searchAnime(inDuration, inGenre, inOffset, inLimit){
@@ -31,6 +33,7 @@ function searchAnime(inDuration, inGenre, inOffset, inLimit){
 		type : 'POST',
 		data : param,
 		beforeSend : function(){
+			animeloaded = false;
 			container.append(`<div class="page-load-status">
 							  <div class="loader-ellips infinite-scroll-request">
 							    <span class="loader-ellips__dot"></span>
@@ -41,7 +44,6 @@ function searchAnime(inDuration, inGenre, inOffset, inLimit){
 							</div>`);
 		},
 		success : function(data){
-			
 			animeRow = parseInt(data.TotalRow[0]['TotalRow']);
 			if(data.AnimeTbl.length>0){
 				setTimeout(function(){ 
@@ -59,10 +61,12 @@ function searchAnime(inDuration, inGenre, inOffset, inLimit){
 					});
 					container.css('border-bottom','1.25px solid #bbcbdb');
 					$('.page-load-status').remove();
+					animeloaded = true;
 				}, 500);
 			}
 			else{
 				animeIsDone = true;
+				$('.page-load-status').remove();
 			}
 		}, 
 	  	async: false
@@ -86,6 +90,7 @@ function searchEpisode(inDuration, inGenre, inOffset, inLimit){
 		type : 'POST',
 		data : param,
 		beforeSend : function(){
+			episodeloaded = false;
 			container.append(`<div class="page-load-status">
 							  <div class="loader-ellips infinite-scroll-request">
 							    <span class="loader-ellips__dot"></span>
@@ -100,6 +105,7 @@ function searchEpisode(inDuration, inGenre, inOffset, inLimit){
 			totalResult = animeRow + episodeRow;
 			$('.result').text("About "+totalResult+" Results");
 			if(data.EpisodesTbl.length>0){
+				$('.subheader').text("Most Viewed Episode");
 				setTimeout(function(){ 
 				flagEpisode+=inLimit;
 				$.each(data.EpisodesTbl,function(key,val){
@@ -115,11 +121,14 @@ function searchEpisode(inDuration, inGenre, inOffset, inLimit){
 									</div>`);
 				});
 				$('.page-load-status').remove();
+				episodeloaded = true;
 				}, 500);
 			}
 			else {
 				if (animeIsDone)
 					$('.page-load-status').remove();
+				if (totalResult == 0)
+					container.remove();
 			}
 		}, 
 	  	async: false
@@ -127,12 +136,13 @@ function searchEpisode(inDuration, inGenre, inOffset, inLimit){
 }
 
 $(window).scroll(function(){
+	console.log(animeloaded, episodeloaded);
 	if (Math.ceil($(window).scrollTop()) >= $(document).height() - $(window).height()) {
-		console.log(Math.ceil($(window).scrollTop()) >= $(document).height() - $(window).height());
-		console.log(animeIsDone);
-		if(!animeIsDone)
+		if(!animeIsDone && animeloaded){
 			searchAnime(lsdur,lsgen,flagAnime,3);
-		else
+		}
+		else if(animeIsDone && episodeloaded){
 			searchEpisode(lsdur,lsgen,flagEpisode,3);
+		}
 	}
 });

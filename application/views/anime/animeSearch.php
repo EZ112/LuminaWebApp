@@ -14,7 +14,7 @@
 				<!-- Point Anime Content -->
 			</div>
 			<div class="pointEpisode">
-				Most Viewed Episode
+				<div class="subheader"></div>
 				<!-- Point Episode Content -->
 			</div>
 		</div>
