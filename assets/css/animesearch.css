@@ -12,6 +12,20 @@
   color: #888;
   font-family: "QS_Book";
 }
+.content .google_adds {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #42beff;
+  height: 8vw;
+}
+.content .google_adds .section_title {
+  margin: 0;
+  text-align: center;
+  font-size: 2vw;
+  color: white;
+  font-family: "QS_Book";
+}
 .content .pointAnime .animeContainer {
   grid-template-columns: 30% 50% auto;
   margin: 0 0 1.5% 0;

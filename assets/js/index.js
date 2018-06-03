@@ -27,6 +27,17 @@ $(document).ready(function(){
 			$('.pagination').find('li:contains("Last")').html('<i class="fas fa-angle-double-right"></i>');
 	    }
 	});
+
+	var sessionData = getSessionData();
+
+	if(sessionData.loginUser!=null &&
+		sessionData.loginSubStatus!=null){
+		if(sessionData.loginSubStatus!='Premium')
+			$('.google_adds').css('display','flex');
+	}
+	else{
+		$('.google_adds').css('display','flex');
+	}
 });
 
 function loadAnimeLatestUpdate() {
@@ -38,7 +49,7 @@ function loadAnimeLatestUpdate() {
 			var container = $('.latest_update_wrapper');
 
 			$.each(data,function(key,val){
-				container.append(`<div class="animeThumb" onclick="" title="`+val.AnimeTitle+`" 
+				container.append(`<div class="animeThumb" onclick="location.href='anime/streaming?anime=`+val.AnimeID+`&episode=`+val.EpisodeID+`'" title="`+val.AnimeTitle+`" 
 									   style="background-image: url(`+val.Thumbnail+`)">
 								  </div>`);
 			});
@@ -68,7 +79,7 @@ function loadTopAiringAnime(){
 			var container = $('.top_airing_wrapper');
 
 			$.each(data,function(key,val){
-				container.append(`<div class="animeThumb" onclick="" title="`+val.AnimeTitle+`" style="background-image: url(`+val.Thumbnail+`)">
+				container.append(`<div class="animeThumb" onclick="location.href='anime/animepage?anime=`+val.AnimeID+`'" title="`+val.AnimeTitle+`" style="background-image: url(`+val.Thumbnail+`)">
 									<span class="numbering">`+(key+1)+`</span>
 								  </div>`);
 			});

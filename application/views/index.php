@@ -11,7 +11,7 @@
 			<div class="content grid-container">
 				<div class="google_adds">
 					<div class="section_title">
-						Google Adds	
+						Google Ads	
 					</div>
 				</div>
 				<div class="latest_update grid-container">
@@ -30,9 +30,9 @@
 					<div class="section_title">
 						Top 5 Airing Anime
 					</div>
-					<div class="top_airing_wrapper grid-container">
-						<!-- Top 5 Airing Anime Content -->
-					</div>
+						<div class="top_airing_wrapper grid-container">
+							<!-- Top 5 Airing Anime Content -->
+						</div>
 				</div>
 				<div class="latest_news">
 					<div class="section_title">

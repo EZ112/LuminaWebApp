@@ -9,14 +9,12 @@
 }
 
 .content {
-  grid-template-rows: auto auto auto;
-  grid-template-areas: "google_adds" "navigation" "animeList";
+  grid-template-columns: auto;
   grid-row-gap: 2vw;
   padding: 2.5%;
 }
 .content .google_adds {
-  grid-area: google_adds;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   background-color: #42beff;
@@ -30,7 +28,6 @@
   font-family: "QS_Book";
 }
 .content .navigation {
-  grid-area: navigation;
   grid-template-columns: auto auto auto auto auto;
   background-color: #42beff;
   font-size: 1vw;
@@ -108,7 +105,6 @@
   font-size: 1.25vw;
 }
 .content .animeList {
-  grid-area: animeList;
   grid-template-columns: 33.33% 33.33% 33.33%;
   margin-top: 1.25%;
 }
@@ -131,7 +127,10 @@
   background-color: #42beff;
   background-size: cover;
   background-position: center;
-  border-radius: 10px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  border-radius: 15px;
   cursor: pointer;
 }
 .content .animeList > div .animeImage::before {

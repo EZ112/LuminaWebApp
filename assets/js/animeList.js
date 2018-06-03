@@ -1,4 +1,16 @@
 $(document).ready(function(){
+	var sessionData = getSessionData();
+
+	if(sessionData.loginUser!=null &&
+		sessionData.loginSubStatus!=null){
+		if(sessionData.loginSubStatus!='Premium')
+			$('.google_adds').css('display','flex');
+	}
+	else{
+		$('.google_adds').css('display','flex');
+	}
+	
+	
 	var inyear = $('#year .current').text();
 	var inseason = $('#season .current').text();
 	var instatus = $('#status .current').text();
@@ -51,11 +63,12 @@ function loadAnimeList(inyear,inseason,instatus,induration,insort){
 		data : param,
 		success : function(data){
 			var container = $('.animeList');
+			console.log(data);
 			$('.animeList').empty();
 			if(data.length>0){
 				$.each(data,function(key,val){
 					container.append(`<div>
-										<div onclick="" class="animeImage" title="`+val.AnimeTitle+`" style="background-image: url(`+val.Thumbnail+`)"></div>
+										<div onclick="location.href='anime/animePage?anime=`+val.AnimeID+`'" class="animeImage" title="`+val.AnimeTitle+`" style="background-image: url(`+val.Thumbnail+`)"></div>
 										<div class="animeDetail">
 											<div class="detail"><div>Source</div><div>`+val.Source+`</div></div>
 											<div class="detail"><div>Total Episodes</div><div>`+val.EpisodeTotal+`</div></div>

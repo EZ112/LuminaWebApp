@@ -17,7 +17,6 @@
 .content .video .video_container {
   width: 100%;
   height: 27.5vw;
-  border: 1px solid black;
   margin-bottom: 2.5%;
 }
 .content .video .video_container #pv {
@@ -46,6 +45,7 @@
   color: #888;
   font-family: "QS_Book";
   margin: 1.5% 0;
+  border-bottom: 2px solid #bbcbdb;
 }
 .content .video .stats #views {
   width: 50%;
@@ -60,7 +60,6 @@
 }
 .content .video .stats > span {
   display: inline-block;
-  border-bottom: 2px solid #bbcbdb;
   padding: 2.5% 0;
   height: 100%;
 }

@@ -25,7 +25,6 @@
     .video_container{
       width: 100%;
       height: 27.5vw;
-      border: 1px solid black;
       margin-bottom: 2.5%;
 
       #pv{
@@ -42,6 +41,7 @@
     .stats{
       @include setText(1.25vw, $cText, "QS_Book"); 
       margin: 1.5% 0;
+      border-bottom: 2px solid $cT;
       #views{ width: 50%;}
       #likes, #dislikes, #share{ cursor: pointer; padding: 2.5% 1.5%; }
       #likes:hover, #dislikes:hover, #share:hover{
@@ -52,7 +52,6 @@
     
     .stats > span{
       display: inline-block;
-      border-bottom: 2px solid $cT;
       padding: 2.5% 0;
       height: 100%;
     }

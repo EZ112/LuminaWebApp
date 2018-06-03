@@ -16,6 +16,19 @@
 	padding: 2.5% 5%;
 	@include setText(1.75vw, $cText, "QS_Book");
 
+	.google_adds{
+		display: none;
+		justify-content: center;
+		align-items: center;
+		background-color: $cP;
+		height: 8vw;
+		.section_title{
+			margin: 0;
+			text-align: center;
+			@include setText(2vw, white, "QS_Book");
+		}
+	}
+
 	.pointAnime{
 		.animeContainer{
 			grid-template-columns: 30% 50% auto;

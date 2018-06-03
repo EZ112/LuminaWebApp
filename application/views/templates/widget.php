@@ -2,7 +2,7 @@
 	<!--Widget-->
 	<div class="widget grid-container">
 		<form id="widget_search" action="anime/animeSearch" method="get">
-			<span class="fa fa-search"></span>
+			<span onclick="this.parentElement.submit();" class="fa fa-search"></span>
 			<input name="search" placeholder="Search">
 			<!-- <input type="submit"> -->
 		</form>
@@ -30,8 +30,18 @@
 		</div>
 		<div id="widget_login">
 			<span id="notLogged" onclick="open_navigation('manageAccount');">Login</span>
-			<span id="Logged">
-				<!--Isi dengan image-->
+			<span id="Logged" onclick="open_navigation('logged_wrapper');">
+				<div id="logged_wrapper">
+					<a href="#" class="logged_item">
+						Edit Profile
+					</a>
+					<a href="payment/payment" class="logged_item">
+						Subscription
+					</a>
+					<a onclick="logout();" class="logged_item">
+						Logout
+					</a>
+				</div>
 			</span>
 		</div>
 	</div>
@@ -118,30 +128,30 @@
 			<form class="form grid-container" method="post">
 				<div>
 					Username<br>
-					<input type="text" name="rname">
+					<input type="text" name="rname" oninput="checkUser(this);" required>
 				</div>
 				<div>
 					Password<br>
-					<input type="text" name="rpass">
+					<input type="password" name="rpass" required>
 				</div>
 				<div>
 					Email<br>
-					<input type="text" name="remail">
+					<input type="email" name="remail" required>
 				</div>
 				<div>
-					Comfirm Password<br>
-					<input type="text" name="rcompass">
+					Confirm Password<br>
+					<input type="password" name="rconpass" oninput="checkPass(this)" required>
 				</div>
 				<div>
 					Gender<br>
 					<label class="custom_input_container">
 						Male
-						<input type="radio" name="gender" value="m">
+						<input type="radio" name="gender" value="Male" required>
 						<span class="custom_radio"></span>
 					</label>
 					<label class="custom_input_container">
 						Female
-						<input type="radio" name="gender" value="f">
+						<input type="radio" name="gender" value="Female" required>
 						<span class="custom_radio"></span>
 					</label>
 				</div>
@@ -158,12 +168,12 @@
 			<div class="small_comment">Already have an account? Log in below</div>
 			<form class="form grid-container" method="post">
 				<div>
-					Email<br>
-					<input type="text" name="lemail">
+					Username<br>
+					<input type="text" name="lname" required>
 				</div>
 				<div>
 					Password<br>
-					<input type="text" name="lpass">
+					<input type="password" name="lpass" required>
 				</div>
 				<div>
 					<input type="submit" class="button" value="Login">

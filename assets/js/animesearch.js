@@ -8,8 +8,20 @@ var episodeRow;
 var lsdur;
 var lsgen;
 $(document).ready(function(){
+	var sessionData = getSessionData();
+
+	if(sessionData.loginUser!=null &&
+		sessionData.loginSubStatus!=null){
+		if(sessionData.loginSubStatus!='Premium')
+			$('.google_adds').css('display','flex');
+	}
+	else{
+		$('.google_adds').css('display','flex');
+	}
+
 	lsdur = JSON.parse(localStorage.getItem("duration"));
 	lsgen = JSON.parse(localStorage.getItem("genre"));
+	console.log(lsdur,lsgen);
 	var totalResult;
 
 	searchAnime(lsdur,lsgen,flagAnime,5);
@@ -50,9 +62,9 @@ function searchAnime(inDuration, inGenre, inOffset, inLimit){
 					flagAnime+=inLimit;
 					$.each(data.AnimeTbl,function(key,val){
 						container.append(`<div class="animeContainer grid-container">
-											<div class="thumbnail_container" style="background-image: url(`+val.ThumbnailLandscape+`)" onclick="location.href='animepage.html'"></div>
+											<div class="thumbnail_container" style="background-image: url(`+val.ThumbnailLandscape+`)" onclick="location.href='anime/animepage'"></div>
 											<div class="info_container">
-												<a href="animepage.html" id="title">`+val.AnimeTitle+`</a>
+												<a href="anime/animepage?anime=`+val.AnimeID+`" id="title">`+val.AnimeTitle+`</a>
 												<div id="latest">Latest Episode `+val.LatestEpisode+`</div>
 												<div id="subscriber">Subscriber `+val.SubScriber+`</div>
 											</div>
@@ -109,10 +121,10 @@ function searchEpisode(inDuration, inGenre, inOffset, inLimit){
 				setTimeout(function(){ 
 				flagEpisode+=inLimit;
 				$.each(data.EpisodesTbl,function(key,val){
-					container.append(`<div class="episodeContainer grid-container" onclick="location.href='streaming.html'">
+					container.append(`<div class="episodeContainer grid-container" onclick="location.href='anime/streaming?anime=`+val.AnimeID+`&episode=`+val.EpisodeID+`'">
 										<div class="thumbnail_container" style="background-image: url(`+val.EpsThumbnail+`)"></div>
 										<div class="info_container">
-											<a href="streaming.html" id="episode">Episode `+val.Episode+`</a>
+											<a href="anime/streaming?anime=`+val.AnimeID+`&episode=`+val.EpisodeID+`" id="episode">Episode `+val.Episode+`</a>
 											<span id="airDate">Aired `+val.EpsDateAir+`</span>
 											<div id="title">`+val.EpsTitle+`</div>
 											<div id="anime">`+val.AnimeTitle+`</div>

@@ -11,7 +11,7 @@
 				<div class="content grid-container">
 					<div class="google_adds">
 						<div class="section_title">
-							Google Adds	
+							Google Ads	
 						</div>
 					</div>
 					<div class="navigation grid-container">

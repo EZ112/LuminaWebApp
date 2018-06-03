@@ -38,6 +38,83 @@ $(document).ready(function(){
 			add_filter(dest[j], filter_tag_object[4*j+i]);
 		}
 	}
+
+	var sessionData = getSessionData();
+
+	if(sessionData.loginUser!=null &&
+		sessionData.loginSubStatus!=null){
+		$('#widget_notification').css('visibility','visible');
+		$('#Logged').append(getSessionData().loginUser);
+		$('#Logged').show();
+	}
+	else
+		$('#notLogged').show();
+
+
+	$('#manageAccount .register .form').submit(function(){
+
+		var inuser = $(this).find('input[name="rname"]').val();
+		var inemail = $(this).find('input[name="remail"]').val();
+		var inpass = $(this).find('input[name="rpass"]').val();
+		var inconpass = $(this).find('input[name="rconpass"]').val();
+		var ingender = $(this).find('input[name="gender"]').val();
+
+		var param = {
+			user : inuser,
+			email : inemail,
+			pass : inpass,
+			gender : ingender
+		}
+
+		$.ajax({
+			url :'homepage/registerAccount',
+			type : 'POST',
+			data : param,
+			complete : function(data){
+				console.log(data.responseText);
+			},
+			async: false
+		});
+
+		var param = {
+			user : inuser,
+			pass : inpass
+		}
+
+		$.ajax({
+			url :'homepage/loginAccount',
+			dataType : 'json',
+			type : 'POST',
+			data : param,
+			complete : function(data){
+				console.log(data.responseText);
+			}
+		});
+	});
+
+	$('#manageAccount .login .form').submit(function(){
+
+		var inuser = $(this).find('input[name="lname"]').val();
+		var inpass = $(this).find('input[name="lpass"]').val();
+
+		var param = {
+			user : inuser,
+			pass : inpass
+		}
+
+		$.ajax({
+			url :'homepage/loginAccount',
+			dataType : 'json',
+			type : 'POST',
+			data : param,
+			complete : function(data){
+				console.log(data.responseText);
+			}
+		});
+	});
+
+
+
 });
 
 //INI CLASS BKN FUNCTION, DECLARE PAKE VAR = NEW FILTER_OBJECT(ARGS[]);
@@ -166,4 +243,58 @@ function submit_filter(){
 
 	localStorage.setItem("duration", JSON.stringify(durVals));
 	localStorage.setItem("genre", JSON.stringify(genreVals));
+}
+
+function checkUser(x){
+	var param = {
+		user : x.value
+	}
+	$.ajax({
+		url :'homepage/checkUser',
+		dataType : 'json',
+		type : 'POST',
+		data : param,
+		success : function(data){
+			if(data[0].Status != 0)
+				x.setCustomValidity('Username already been taken');
+			else
+				x.setCustomValidity('');
+		}
+	});
+}
+
+function checkPass(x){
+	var inpass = $('#manageAccount .register .form input[name="rpass"]').val();
+	var inconpass = x.value;
+	if(inpass!=inconpass){
+		x.setCustomValidity('Confirm Password doesn\'t match');
+	}
+	else{
+		x.setCustomValidity('');
+	}
+}
+
+function getSessionData(){
+	var sessionData;
+	$.ajax({
+		url :'homepage/getSessionData',
+		dataType : 'json',
+		type : 'POST',
+		success : function(data){
+			sessionData = data;
+		},
+		async : false
+	});
+	return sessionData;
+}
+
+function logout(){
+	$.ajax({
+		url :'homepage/logout',
+		type : 'POST',
+		complete : function(data){
+			console.log(data.responseText);
+		}
+	});
+	location.reload();
 }

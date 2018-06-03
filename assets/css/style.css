@@ -262,6 +262,7 @@ input {
 }
 
 #widget_notification {
+  visibility: hidden;
   position: relative;
 }
 #widget_notification .fa-bell {
@@ -279,7 +280,7 @@ input {
   width: 12.5vw;
   height: 18vw;
   position: absolute;
-  top: 2.25vw;
+  top: 3.5vw;
   font-family: "QS_Book";
   display: none;
 }
@@ -287,14 +288,16 @@ input {
   display: block;
   height: 5vw;
   padding: 0.5vw;
-  background-color: white;
+  background-color: #5c6275;
+  color: white;
 }
 #widget_notification #notification_wrapper .notification:hover {
-  background-color: #42beff;
-  color: white;
+  background-color: white;
+  color: #5c6275;
 }
 
 #widget_login #notLogged {
+  display: none;
   font-size: 1.5vw;
   color: #888;
   font-family: "QS_Book";
@@ -302,6 +305,31 @@ input {
 }
 #widget_login #Logged {
   display: none;
+  font-size: 1.5vw;
+  color: #888;
+  font-family: "QS_Book";
+  position: relative;
+}
+#widget_login #Logged #logged_wrapper {
+  width: 12.5vw;
+  height: 8vw;
+  position: absolute;
+  top: 3.5vw;
+  font-family: "QS_Book";
+  display: none;
+}
+#widget_login #Logged #logged_wrapper .logged_item {
+  display: flex;
+  align-items: center;
+  height: 3vw;
+  padding: 0.5vw;
+  background-color: #5c6275;
+  color: white;
+  cursor: pointer;
+}
+#widget_login #Logged #logged_wrapper .logged_item:hover {
+  background-color: white;
+  color: #5c6275;
 }
 
 .custom_input_container {
@@ -497,7 +525,9 @@ input {
   position: relative;
   right: 7.5%;
 }
-#manageAccount #container .form input[type="text"] {
+#manageAccount #container .form input[type="text"],
+#manageAccount #container .form input[type="password"],
+#manageAccount #container .form input[type="email"] {
   width: 90%;
   font-size: 1.25vw;
   color: #888;

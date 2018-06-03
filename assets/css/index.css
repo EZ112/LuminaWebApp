@@ -20,8 +20,7 @@
 }
 
 .content {
-  grid-template-rows: auto auto auto auto auto;
-  grid-template-areas: "google_adds" "latest-update" "top-airing" "latest-news" "promotion";
+  grid-template-columns: auto;
   grid-row-gap: 2.5vw;
   padding: 4vw 4vw 5vw 4vw;
 }
@@ -36,8 +35,7 @@
   padding-bottom: 2.5vw;
 }
 .content .google_adds {
-  grid-area: google_adds;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   background-color: #42beff;
@@ -53,7 +51,6 @@
 .content .latest_update {
   grid-template-columns: auto auto;
   grid-template-rows: 5vw auto;
-  grid-area: latest-update;
   grid-template-areas: "section_title pagination" "latest_update_wrapper latest_update_wrapper";
 }
 .content .latest_update .latest_update_wrapper {
@@ -71,9 +68,6 @@
   font-size: 1.5vw;
   color: #5c6275;
   font-family: "QS_Light";
-}
-.content .top_airing {
-  grid-area: top-airing;
 }
 .content .top_airing .top_airing_wrapper {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -157,9 +151,6 @@
 .content .top_airing_wrapper .animeThumb:hover:after,
 .content .top_airing_wrapper .animeThumb:hover:before {
   opacity: 0;
-}
-.content .latest_news {
-  grid-area: latest-news;
 }
 .content .latest_news .latest_news_wrapper {
   grid-template-columns: 1fr 3fr;

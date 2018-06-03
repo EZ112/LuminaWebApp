@@ -9,6 +9,11 @@
 		?>
 
 		<div class="content grid-area">
+			<div class="google_adds">
+				<div class="section_title">
+					Google Ads	
+				</div>
+			</div>
 			<div class="result"></div>
 			<div class="pointAnime">
 				<!-- Point Anime Content -->

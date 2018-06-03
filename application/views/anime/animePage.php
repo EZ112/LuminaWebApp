@@ -1,8 +1,6 @@
 <?php include APPPATH.'/views/templates/header.php';?>
 <link rel="stylesheet" type="text/css" href="assets/css/anime.css">
-<link rel="stylesheet" type="text/css" href="assets/css/video.css">
-<link rel='stylesheet prefetch' href='https://vjs.zencdn.net/5-unsafe/video-js.css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/videojs-resolution-switcher/0.4.2/videojs-resolution-switcher.css" />
+<script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
 <body>
 	<div class="page grid-container">
 		<?php 
@@ -13,78 +11,66 @@
 		<div class="anime-content grid-container">
 			<div id="curr_anime_image">
 				<span id="curr_anime_title">
-					Yuru Camp
 				</span>
 			</div>
 
 			<div id="curr_anime_general" class="grid-container">
 				<div id="a">
 					<span id="rank">
-						Ranked #415
 					</span>
-					<span id="user_rate">
+					<!-- <span id="user_rate">
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
-					</span>
-					<span id="review_number">185 reviews</span>
+					</span> -->
+					<!-- <span id="review_number">185 reviews</span> -->
 				</div>
 				<div id="b">
-					  <video id="pv" class="video-js vjs-default-skin"
-					      preload="none" poster='https://i.imgur.com/oeODDMP.png'
-					      data-setup='' controls>
-					  </video>
+					  <span class="wistia_embed popover=true popoverAnimateThumbnail=true" style="display:inline-block;height:100%;position:relative;width:100%">&nbsp;
+					  </span>
 				</div>
 				<div id="c">
-					<div class="detailContainer">
-						<span>Title</span><span>Yuru Camp</span>
-					</div>
-					<div class="detailContainer">
-						<span>Episode</span><span>12</span>
-					</div>
-					<div class="detailContainer">
-						<span>Status</span><span>Ongoing</span>
-					</div>
-					<div class="detailContainer">
-						<span>Duration</span><span>23min / episode</span>
-					</div>
-					<div class="detailContainer">
-						<span>Studio</span><span>C-Station</span>
-					</div>
-					<div class="detailContainer">
-						<span>Source</span><span>Manga</span>
-					</div>
-					<div class="detailContainer">
-						<span>Rating</span><span>Teens 13 or older</span>
-					</div>
-					<div class="detailContainer">
-						<span>Genres</span><span>Comedy, Slice of life</span>
-					</div>
+					
 				</div>
 				<div id="d">
 					Related Anime<br>
-					<div class="relatedContainer"><span>Sequel</span><a href="#">Yuru Camp Season 2</a></div>
-					<div class="relatedContainer"><span>Prequel</span><a href="#">Yuru Camp 0</a></div>
-					<div class="relatedContainer"><span>Other</span><a href="#">Yuru Camp OVA</a><a href="#">Yuru Camp Side Story</a></div>
+					<!-- <div class="relatedContainer">
+						<div>
+							<a href="#">Yuru Camp Season 2</a>
+						</div>
+					</div>
+					<div class="relatedContainer">
+						<div>
+							<a href="#">Yuru Camp 0</a>
+						</div>
+					</div>
+					<div class="relatedContainer">
+						<div>
+							<a href="#">Yuru Camp OVA</a>
+						</div>
+						<div>
+							<a href="#">Yuru Camp Side Story asdfasdfsadfasdfsadfds</a>
+						</div>
+					</div> -->
 				</div>
-				<div id="e"><span class="button">Subscribe <span id="price">300K</span></span></div>
+				<div id="e"></div>
 			</div>
 
 			<div id="curr_anime_synopsis">
 				<span class="title">Synopsis</span>
-				<div class="synopsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+				<p class="synopsis">
+				</p>
 			</div>
 
 			<div id="curr_episode_review">
 				<div>
 					<div class="tab tab_active" onclick="change_tab(0);">
 						Episodes
-					</div><div class="tab tab_inactive" onclick="change_tab(1);">
+					</div><!-- <div class="tab tab_inactive" onclick="change_tab(1);">
 						Reviews
-					</div><div class="tab tab_inactive" id="dummy">
+					</div> --><div class="tab tab_inactive" id="dummy">
 						 a
 					</div>
 				</div>
@@ -100,33 +86,9 @@
 					</div>
 				</div>
 				<div class="episode content">
-					<div onclick="location.href='streaming.html'" class="episode_container">
-						<div class="left">
-							<div class="thumbnail_container" style="background-image: url(assets/image/thumb2.jpg)">
-								 
-							</div>
-						</div><div class="right">
-							<a href="streaming.html" class="episode_num">Episode 2</a> 
-							<span class="date">Aired 25 Jan 2018</span>
-							<div class="title">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</div>
-							<div class="views">9,000,000 views</div>
-						</div>
-					</div>
-					<div class="episode_container">
-						<div class="left">
-							<div class="thumbnail_container" style="background-image: url(assets/image/thumb1.png)">
-								 
-							</div>
-						</div><div class="right">
-							<a href="streaming.html" class="episode_num">Episode 1</a> 
-							<span class="date">Aired 25 Jan 2018</span>
-							<div class="title">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</div>
-							<div class="views">9,000,000 views</div>
-						</div>
-					</div>
 				</div>
 
-				<div class="review content">
+				<!-- <div class="review content">
 					<div class="rating_section">
 						<span class="title">Average Rating</span>
 						<div class="average_rating">
@@ -202,13 +164,10 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
 </body>
 <script type="text/javascript" src="assets/js/animepage.js"></script>
-<script src='https://vjs.zencdn.net/5-unsafe/video.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-resolution-switcher/0.4.2/videojs-resolution-switcher.js"></script>
-<script type="text/javascript" src="assets/js/video.js"></script>
 <?php include APPPATH.'/views/templates/footer.php'?>

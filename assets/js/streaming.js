@@ -1,3 +1,122 @@
+var currEps;
+var currSeries;
+var recommendFlag = 0;
+$(document).ready(function(){
+	showEpisodeStream();
+	showPrevNextEps();
+	showRecomendedAnime(recommendFlag,3);
+});
+
+function showEpisodeStream(){
+	var param = {
+		animeID : getParameterByName("anime"),
+		episodeID : getParameterByName("episode")
+	};
+
+	$.ajax({
+		url : 'anime/streaming/getEpisodeStream',
+		dataType : 'json',
+		type : 'POST',
+		data : param,
+		success : function(data){
+			var container = $('.video');
+			$.each(data,function(key,val){
+				$('head').append(val.HeadScriptVideo);
+				$('.wistia_embed').addClass(val.StreamVideo);
+				currEps = val.Episode;
+				currSeries = val.SeriesID;
+				container.append(`<span id="episode">Episode `+val.Episode+`</span>
+									<span id="airDate">Aired `+val.EpsDateAir+`</span>
+									<div id="title">`+val.EpsTitle+`</div>
+									<div class="stats" name="curr">
+										<span>`+val.AnimeTitle+`</span>
+										<span id="views">`+val.EpisodeTotalViews+` views</span>
+									</div>`);
+			});
+		}, 
+	  	async: false
+	});
+}
+
+function showPrevNextEps(){
+	var param = {
+		animeID : getParameterByName("anime"),
+		currEps : currEps
+	};
+
+	$.ajax({
+		url : 'anime/streaming/getPrevNextEps',
+		dataType : 'json',
+		type : 'POST',
+		data : param,
+		success : function(data){
+			var container = $('.other');
+			$.each(data.PrevEps,function(key,val){
+				container.append(`<div class="section">Prev Episode</div>
+									<div class="container one grid-container" id="prev_episode">
+										<a href="anime/streaming?anime=`+val.AnimeID+`&episode=`+val.EpisodeID+`" class="video_container" style="background-image: url(`+val.EpsThumbnail+`)">
+										</a>
+										<div class="info">
+											<a href="anime/streaming?anime=`+val.AnimeID+`&episode=`+val.EpisodeID+`" class="episode">Episode `+val.Episode+`</a>
+											<div class="title">`+val.EpsTitle+`</div>
+										</div>
+									</div>`);
+			});
+			$.each(data.NextEps,function(key,val){
+				container.append(`<div class="section">Next Episode</div>
+									<div class="container one grid-container" id="next_episode">
+										<a href="anime/streaming?anime=`+val.AnimeID+`&episode=`+val.EpisodeID+`" class="video_container" style="background-image: url(`+val.EpsThumbnail+`)">
+
+										</a>
+										<div class="info">
+											<a href="anime/streaming?anime=`+val.AnimeID+`&episode=`+val.EpisodeID+`" class="episode">Episode `+val.Episode+`</a>
+											<div class="title">`+val.EpsTitle+`</div>
+										</div>
+									</div>`);
+			});
+			container.append(`<div class="section" id="recommend">Recomended Anime</div>`);
+		}
+	});
+}
+
+function showRecomendedAnime(inOffset,inLimit){
+	var param = {
+		animeID : getParameterByName("anime"),
+		currSeries : currSeries,
+		offset : inOffset,
+		limit : inLimit
+	};
+
+	$.ajax({
+		url : 'anime/streaming/getRecomendedAnime',
+		dataType : 'json',
+		type : 'POST',
+		data : param,
+		success : function(data){
+			var container = $('.other');
+			if(data.length>0){
+				recommendFlag+=3;
+				$.each(data,function(key,val){
+					container.append(`<div class="container two grid-container">
+										<a href="#" class="video_container" style="background-image: url(`+val.ThumbnailLandscape+`)">
+										</a>
+										<div class="info">
+											<a href="anime/animePage?anime=`+val.AnimeID+`" class="title">`+val.AnimeTitle+`</a>
+											<div class="episode">`+val.EpisodeTotal+` Episodes</div>
+											<div class="subscriber">`+val.Subscriber+` Subscriber</div>
+											<span class="button">Subscribe</span>
+										</div>
+									</div>`);
+				});
+				container.append(`<div class="more" onclick="showMore(this)">
+								<i class="fas fa-chevron-down"></i>
+								<span id="text">Show More</span>
+							</div>`);
+			}
+		}
+	});
+}
+
 var showReplyObject = document.getElementsByClassName("showReply");
 var showReplyObjectLength = showReplyObject.length;
 var subCommentsLength = [];
@@ -68,24 +187,8 @@ function subscribe(x){
 }
 
 function showMore(x){
-	var fas = x.querySelector(".fas");
-	var text = x.querySelector("#text");
-
-	if(fas.getAttribute("class") == "fas fa-chevron-down"){
-		fas.setAttribute("class", "fas fa-chevron-up");
-		text.innerHTML = "Show Less";
-
-		for(var i = 5; i < relatedAnimeLength; ++i){
-			relatedAnime[i].style.display = "grid";
-		}
-	} else{
-		fas.setAttribute("class", "fas fa-chevron-down");
-		text.innerHTML = "Show More";
-
-		for(var i = 5; i < relatedAnimeLength; ++i){
-			relatedAnime[i].style.display = "none";
-		}
-	}
+	showRecomendedAnime(recommendFlag,3);
+	$(x).remove();
 }
 
 function replyComment(x){

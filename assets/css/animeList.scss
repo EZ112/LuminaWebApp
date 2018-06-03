@@ -14,17 +14,12 @@
 }
 
 .content{
-	grid-template-rows: auto auto auto;
-	grid-template-areas:
-	"google_adds"
-	"navigation"
-	"animeList";
+	grid-template-columns: auto;
 	grid-row-gap: 2vw; 
 	padding: 2.5%;
 
 	.google_adds{
-		grid-area: google_adds;
-		display: flex;
+		display: none;
 		justify-content: center;
 		align-items: center;
 		background-color: $cP;
@@ -37,7 +32,6 @@
 	}
 
 	.navigation{
-		grid-area: navigation;
 		grid-template-columns: auto auto auto auto auto;
 		background-color: $cP;
 		@include setText(1vw, white, "QS_Book");
@@ -106,7 +100,6 @@
 	}
 
 	.animeList{
-		grid-area: animeList;
 		grid-template-columns: 33.33% 33.33% 33.33%;
 		margin-top: 1.25%; 
 
@@ -128,7 +121,7 @@
 				background-color: $cP;
 				background-size: cover;
 				background-position: center;
-				border-radius: 10px;
+				@include border-radius(15px);
 				cursor: pointer;
 			}
 

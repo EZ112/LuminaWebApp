@@ -3,6 +3,7 @@
 	<head>
 		<title>Lumina.to</title>
 		<base href="<?php echo base_url();?>" />
+		<link rel="icon" href="assets/image/Luminaico.png">
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
