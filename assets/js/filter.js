@@ -263,7 +263,7 @@ function checkUser(x){
 	});
 }
 
-function checkPass(x){
+function checkMatchPass(x){
 	var inpass = $('#manageAccount .register .form input[name="rpass"]').val();
 	var inconpass = x.value;
 	if(inpass!=inconpass){
@@ -272,6 +272,25 @@ function checkPass(x){
 	else{
 		x.setCustomValidity('');
 	}
+}
+
+function loginCheck(x){
+	var param = {
+		user : $('#manageAccount .login .form input[name="lname"]').val(),
+		pass : x.value
+	}
+	$.ajax({
+		url :'homepage/loginCheck',
+		dataType : 'json',
+		type : 'POST',
+		data : param,
+		success : function(data){
+			if(data[0].Status == 0)
+				x.setCustomValidity('Incorrect Username or Password');
+			else
+				x.setCustomValidity('');
+		}
+	});
 }
 
 function getSessionData(){

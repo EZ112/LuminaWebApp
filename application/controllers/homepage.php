@@ -63,6 +63,16 @@ class Homepage extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	public function loginCheck(){
+		$arr = array(
+			'InUsername' => $_POST['user'],
+			'InPass' => base64_encode($_POST['pass'])
+		);
+		$sp = "CALL sp_loginCheck(?,?)";
+		$result = $this->db->query($sp,$arr)->result();
+		echo json_encode($result);
+	}
+
 	public function registerAccount(){
 		$arr = array(
 			'InUsername' => $_POST['user'],

@@ -33,10 +33,10 @@ $(document).ready(function(){
 	if(sessionData.loginUser!=null &&
 		sessionData.loginSubStatus!=null){
 		if(sessionData.loginSubStatus!='Premium')
-			$('.google_adds').css('display','flex');
+			$('.google_ads').css('display','flex');
 	}
 	else{
-		$('.google_adds').css('display','flex');
+		$('.google_ads').css('display','flex');
 	}
 });
 

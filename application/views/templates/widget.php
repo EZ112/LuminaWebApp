@@ -140,7 +140,7 @@
 				</div>
 				<div>
 					Confirm Password<br>
-					<input type="password" name="rconpass" oninput="checkPass(this)" required>
+					<input type="password" name="rconpass" oninput="checkMatchPass(this)" required>
 				</div>
 				<div>
 					Gender<br>
@@ -173,7 +173,7 @@
 				</div>
 				<div>
 					Password<br>
-					<input type="password" name="lpass" required>
+					<input type="password" oninput="loginCheck(this);" name="lpass" required>
 				</div>
 				<div>
 					<input type="submit" class="button" value="Login">

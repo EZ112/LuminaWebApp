@@ -13,14 +13,14 @@
   grid-row-gap: 2vw;
   padding: 2.5%;
 }
-.content .google_adds {
+.content .google_ads {
   display: none;
   justify-content: center;
   align-items: center;
   background-color: #42beff;
   height: 8vw;
 }
-.content .google_adds .section_title {
+.content .google_ads .section_title {
   margin: 0;
   text-align: center;
   font-size: 2vw;

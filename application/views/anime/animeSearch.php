@@ -9,7 +9,7 @@
 		?>
 
 		<div class="content grid-area">
-			<div class="google_adds">
+			<div class="google_ads">
 				<div class="section_title">
 					Google Ads	
 				</div>

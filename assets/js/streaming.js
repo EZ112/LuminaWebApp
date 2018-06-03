@@ -25,13 +25,17 @@ function showEpisodeStream(){
 				$('.wistia_embed').addClass(val.StreamVideo);
 				currEps = val.Episode;
 				currSeries = val.SeriesID;
+				var code = val.StreamVideo.split("_");
+				var views = getViews(code[code.length-1]);
+				updateTotalView(val.EpisodeID,views);
 				container.append(`<span id="episode">Episode `+val.Episode+`</span>
 									<span id="airDate">Aired `+val.EpsDateAir+`</span>
 									<div id="title">`+val.EpsTitle+`</div>
 									<div class="stats" name="curr">
 										<span>`+val.AnimeTitle+`</span>
-										<span id="views">`+val.EpisodeTotalViews+` views</span>
+										<span id="views">`+views+` views</span>
 									</div>`);
+				
 			});
 		}, 
 	  	async: false
@@ -114,6 +118,41 @@ function showRecomendedAnime(inOffset,inLimit){
 							</div>`);
 			}
 		}
+	});
+}
+
+function getViews(Incode){
+	var totalView = 0;
+	var param = {
+		code : Incode
+	}
+	$.ajax({
+		url : 'anime/streaming/getViews',
+		dataType : 'json',
+		type : 'POST',
+		data : param,
+		success : function(data){
+			totalView = data.play_count;
+		},
+		async : false
+	});
+
+	return totalView;
+}
+
+function updateTotalView(InEpisodeID, InViews){
+	var param = {
+		episodeID : InEpisodeID,
+		views : InViews
+	}
+	$.ajax({
+		url : 'anime/streaming/updateTotalViews',
+		dataType : 'json',
+		type : 'POST',
+		data : param,
+		complete : function(data){
+			console.log(data.responseText);
+		},
 	});
 }
 
