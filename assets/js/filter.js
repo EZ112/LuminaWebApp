@@ -43,12 +43,15 @@ $(document).ready(function(){
 
 	if(sessionData.loginUser!=null &&
 		sessionData.loginSubStatus!=null){
+		getFollowing(sessionData.loginUser);
 		$('#widget_notification').css('visibility','visible');
-		$('#Logged').append(getSessionData().loginUser);
+		$('#Logged').append(sessionData.loginUser);
 		$('#Logged').show();
 	}
-	else
+	else{
 		$('#notLogged').show();
+		getMostPopular();
+	}
 
 
 	$('#manageAccount .register .form').submit(function(){
@@ -88,6 +91,7 @@ $(document).ready(function(){
 			data : param,
 			complete : function(data){
 				console.log(data.responseText);
+				localStorage.setItem("username", JSON.stringify(inuser));
 			}
 		});
 	});
@@ -109,6 +113,7 @@ $(document).ready(function(){
 			data : param,
 			complete : function(data){
 				console.log(data.responseText);
+				localStorage.setItem("username", JSON.stringify(inuser));	
 			}
 		});
 	});
@@ -295,16 +300,67 @@ function loginCheck(x){
 
 function getSessionData(){
 	var sessionData;
+
+	var param = {
+		user : JSON.parse(localStorage.getItem("username"))
+	}
+
 	$.ajax({
 		url :'homepage/getSessionData',
 		dataType : 'json',
 		type : 'POST',
+		data : param,
 		success : function(data){
 			sessionData = data;
 		},
 		async : false
 	});
 	return sessionData;
+}
+
+function getFollowing(Inuser){
+	var param = {
+		user : Inuser
+	}
+
+	$.ajax({
+		url :'homepage/getFollowing',
+		dataType : 'json',
+		type : 'POST',
+		data : param,
+		success : function(data){
+			$('.nav_title').eq(1).next().empty();
+			$('.nav_title').eq(1).next().removeClass();
+			$('.nav_title').eq(1).next().addClass('following');
+			var container = $('.following');
+			container.prev().text('FOLLOWING');
+			$.each(data,function(key,val){
+				container.append(`<a href="anime/animePage?anime=`+val.AnimeID+`" class="nav_subcontent">`+val.AnimeTitle+`</a>`);
+			});
+			if (data.length>6) 
+				container.parent().append(`<a id="show_more" onclick="showMore(this)" class=""><i class="fas fa-chevron-down"></i> Show `+data.length+` More</a>`);
+		}
+	});
+}
+
+function getMostPopular(){
+	$.ajax({
+		url :'homepage/getMostPopular',
+		dataType : 'json',
+		type : 'POST',
+		success : function(data){
+			$('.nav_title').eq(1).next().empty();
+			$('.nav_title').eq(1).next().removeClass();
+			$('.nav_title').eq(1).next().addClass('mostpopular');
+			var container = $('.mostpopular');
+			container.prev().text('MOST POPULAR');
+			$.each(data,function(key,val){
+				container.append(`<a href="anime/animePage?anime=`+val.AnimeID+`" class="nav_subcontent">`+val.AnimeTitle+`</a>`);
+			});
+			if (data.length>6) 
+				container.parent().append(`<a id="show_more" onclick="showMore(this)" class=""><i class="fas fa-chevron-down"></i> Show `+data.length+` More</a>`);
+		}
+	});
 }
 
 function logout(){
@@ -315,5 +371,6 @@ function logout(){
 			console.log(data.responseText);
 		}
 	});
+	localStorage.removeItem("username")
 	location.reload();
 }

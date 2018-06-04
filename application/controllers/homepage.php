@@ -30,7 +30,11 @@ class Homepage extends CI_Controller {
 	}
 
 	public function getTopAiringAnime(){
-		$result = $this->db->query("CALL sp_GetTopAiringAnime()")->result();
+		$arr = array(
+			'InUsername' => $_POST['user']
+		);
+		$sp = "CALL sp_GetTopAiringAnime(?)";
+		$result = $this->db->query($sp,$arr)->result();
 		echo json_encode($result);
 	}
 
@@ -107,7 +111,8 @@ class Homepage extends CI_Controller {
 
 			$data = array(
                    'loginUser' => $_POST['user'],
-                   'loginSubStatus' => $result2[0]->SubStatus
+                   'loginSubStatus' => $result2[0]->SubStatus,
+                   'loginExpStatus' => $result2[0]->Status
             	);
 			$this->session->set_userdata($data);
 			echo "Success";
@@ -117,11 +122,45 @@ class Homepage extends CI_Controller {
 	}
 
 	public function getSessionData(){
-		$this->load->library('session');
-		$data = array('loginUser' => $this->session->userdata('loginUser'),
-                   'loginSubStatus' => $this->session->userdata('loginSubStatus')
-            	);
+		$arr = array(
+			'InUsername' => $_POST['user']
+		);
+		$sp = "CALL sp_CheckSubStatus(?)";
+		$result = $this->db->query($sp,$arr)->result();
+
+		if($result){
+			$this->load->library('session');
+
+			$data = array(
+	               'loginUser' => $_POST['user'],
+	               'loginSubStatus' => $result[0]->SubStatus,
+	               'loginExpStatus' => $result[0]->Status
+	        	);
+			$this->session->set_userdata($data);
+		}
+		else{
+			$data = array(
+	               'loginUser' => null,
+	               'loginSubStatus' => null,
+	               'loginExpStatus' => null
+	        	);
+		}
 		echo json_encode($data);
+	}
+
+	public function getFollowing(){
+		$arr = array(
+			'InUsername' => $_POST['user']
+		);
+		$sp = "CALL sp_GetFollowing(?)";
+		$result = $this->db->query($sp,$arr)->result();
+		echo json_encode($result);
+	}
+
+	public function getMostPopular(){
+		$sp = "CALL sp_GetMostPopular()";
+		$result = $this->db->query($sp)->result();
+		echo json_encode($result);
 	}
 
 	public function logout(){

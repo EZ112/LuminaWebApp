@@ -54,7 +54,7 @@ function showAnimeDetail(){
 				container = $('.synopsis');
 				container.html(val.Synopsis);
 				container = $('#e');
-				container.append(`<span class="button">Subscribe `+val.Subscriber+`</span>`);
+				container.append(`<span class="button">Follower `+val.Follower+`</span>`);
 			});
 			 	
 		}

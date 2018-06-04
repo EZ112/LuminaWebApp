@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	loadAnimeLatestUpdate();
-	loadTopAiringAnime();
 	loadNewsLatestUpdate();
 
 	pageSize = 4;
@@ -30,9 +29,11 @@ $(document).ready(function(){
 
 	var sessionData = getSessionData();
 
+	loadTopAiringAnime(sessionData.loginUser);
+
 	if(sessionData.loginUser!=null &&
 		sessionData.loginSubStatus!=null){
-		if(sessionData.loginSubStatus!='Premium')
+		if(sessionData.loginSubStatus!='Premium' && sessionData.Status!='Active')
 			$('.google_ads').css('display','flex');
 	}
 	else{
@@ -70,12 +71,17 @@ function loadAnimeLatestUpdate() {
 	});
 }
 
-function loadTopAiringAnime(){
+function loadTopAiringAnime(InUser){
+	var param = {
+		user : InUser
+	}
 	$.ajax({
 		url :'homepage/getTopAiringAnime',
 		dataType : 'json',
 		type : 'POST',
+		data : param,
 		success : function(data){
+			console.log(data);
 			var container = $('.top_airing_wrapper');
 
 			$.each(data,function(key,val){
@@ -85,7 +91,10 @@ function loadTopAiringAnime(){
 			});
 
 			$.each(data,function(key,val){
-				container.append(`<button onclick="">Subscribe</button>`);
+				if(val.FollowStatus != null)
+					container.append(`<button class="followed" onclick="unfollow()">Follow</button>`);
+				else
+					container.append(`<button class="unfollow" onclick="follow()">Follow</button>`);
 			});
 		}, 
 	  	async: false

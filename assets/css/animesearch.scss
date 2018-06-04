@@ -50,7 +50,7 @@
 					margin: 1.25% 0;
 				}
 				#title:hover{ border-bottom: 1.25px solid $cText; }
-				#latest, #subscriber{ 
+				#latest, #follower{ 
 					@include setText(1.1vw, $cText, "QS_Book"); 
 					padding: 0.5% 0;
 				}			

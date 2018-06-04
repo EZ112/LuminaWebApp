@@ -83,7 +83,7 @@ input {
   padding-bottom: 0.5vw;
   color: #5c6275;
 }
-.nav .subscription {
+.nav .following, .nav .ranking {
   max-height: 15vw;
   overflow: hidden;
   -webkit-transition: all 0.25s ease;
@@ -91,9 +91,12 @@ input {
   -ms-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
+.nav #show_more {
+  cursor: pointer;
+}
 .nav .nav_subcontent {
   display: block;
-  font-size: 1.25vw;
+  font-size: 1.2vw;
   padding: 0.5vw 1vw;
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;

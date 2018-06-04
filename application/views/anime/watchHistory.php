@@ -1,5 +1,5 @@
 <?php include APPPATH.'/views/templates/header.php';?>
-<link rel="stylesheet" type="text/css" href="assets/css/watchLater.css">	
+<link rel="stylesheet" type="text/css" href="assets/css/watchHistory.css">	
 <body>
 	<div class="page grid-container">
 		<?php 
@@ -80,5 +80,5 @@
 		</div>	
 	</div>
 </body>
-<script type="text/javascript" src="assets/js/watchLater.js"></script>
+<script type="text/javascript" src="assets/js/watchHistory.js"></script>
 <?php include APPPATH.'/views/templates/footer.php'?>

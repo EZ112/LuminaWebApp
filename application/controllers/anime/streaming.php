@@ -7,10 +7,15 @@ class Streaming extends CI_Controller {
 	{
 		$this->load->library('session');
 		$subStatus = $this->session->userdata('loginSubStatus');
-		if($subStatus != 'FREE' && $subStatus != null)
+		$expStatus = $this->session->userdata('loginExpStatus');
+
+		if($subStatus != 'FREE' && $subStatus != null && $expStatus == 'Active')
 			$this->load->view('anime/streaming');
 		else {
-			redirect($_SERVER['HTTP_REFERER']);
+			if($expStatus != null)
+				$this->load->view('expire');
+			else
+				$this->load->view('restrict');
 		}
 	}
 

@@ -67,15 +67,19 @@ input{ padding: 0; } //New
 		color: $cDrkBlue;
 	}
 
-	.subscription{
+	.following, .ranking{
 		max-height: 15vw;
 		overflow: hidden;
 		@include transition(all 0.25s ease);
 	}
 
+	#show_more{
+		cursor: pointer;
+	}
+
 	.nav_subcontent{
 		display: block;
-		font-size: 1.25vw;
+		font-size: 1.2vw;
 		padding: 0.5vw 1vw;
 		@include transition(all 0.25s ease);
 	}

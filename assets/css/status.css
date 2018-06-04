@@ -1,0 +1,32 @@
+.page {
+  height: 100vh;
+  font-size: 1.2vw;
+  color: #888;
+  font-family: "QS_Light";
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.status a {
+  font-size: 1.25vw;
+  color: #0babfe;
+  font-family: "QS_Light";
+}
+.status i {
+  font-size: 6vw;
+}
+.status .fa-check {
+  color: #4bceaf;
+}
+.status .fa-times {
+  color: #f1637e;
+}
+.status .section_title {
+  text-align: center;
+}
+
+/*# sourceMappingURL=status.css.map */

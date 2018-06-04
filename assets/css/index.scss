@@ -98,13 +98,21 @@
 			button{
 				position: relative;
 				top: .5vw;
-				background-color: $cBlueLt;
 				border: none;
 				margin: .1vw 2vw;
 				@include border-radius(50px);
 				outline: none;
 				cursor: pointer;
+			}
+
+			.unfollow{
+				background-color: $cBlueLt;
 				@include setText(1.5vw, white, "QS_Light");
+			}
+
+			.followed{
+				background-color: $cS;
+				@include setText(1.5vw, $cDrkBlueLt, "QS_Light");
 			}
 
 			.numbering{

@@ -15,25 +15,12 @@
 					LIBRARY
 				</div>
 				<a class="nav_subcontent" href="anime/watchHistory">History</a>
-				<a class="nav_subcontent" href="anime/watchLater">Watch Later</a>
 			</div>
 			<div class="nav">
 				<div class="nav_title">
-					SUBSCRIPTION
 				</div>
-				<div class="subscription">
-					<a href="anime/animePage" class="nav_subcontent">Title 1</a>
-					<a href="anime/animePage" class="nav_subcontent">Title 2</a>
-					<a href="anime/animePage" class="nav_subcontent">Title 3</a>
-					<a href="anime/animePage" class="nav_subcontent">Title 4</a>
-					<a href="anime/animePage" class="nav_subcontent">Title 5</a>
-					<a href="anime/animePage" class="nav_subcontent">Title 6</a>
-					<a href="anime/animePage" class="nav_subcontent">Title 7</a>
-					<a href="anime/animePage" class="nav_subcontent">Title 8</a>
-					<a href="anime/animePage" class="nav_subcontent">Title 9</a>
-					<a href="anime/animePage" class="nav_subcontent">Title 10</a>
+				<div>
 				</div>
-				<a id="show_more" class="" href="#"><i class="fas fa-chevron-down"></i> Show 10 More</a>
 			</div>
 			<div class="nav">
 				<a class="nav_subnav" href="#">About</a><br>

@@ -18,42 +18,15 @@
 				<div id="a">
 					<span id="rank">
 					</span>
-					<!-- <span id="user_rate">
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-					</span> -->
-					<!-- <span id="review_number">185 reviews</span> -->
 				</div>
 				<div id="b">
 					  <span class="wistia_embed popover=true popoverAnimateThumbnail=true" style="display:inline-block;height:100%;position:relative;width:100%">&nbsp;
 					  </span>
 				</div>
 				<div id="c">
-					
 				</div>
 				<div id="d">
 					Related Anime<br>
-					<!-- <div class="relatedContainer">
-						<div>
-							<a href="#">Yuru Camp Season 2</a>
-						</div>
-					</div>
-					<div class="relatedContainer">
-						<div>
-							<a href="#">Yuru Camp 0</a>
-						</div>
-					</div>
-					<div class="relatedContainer">
-						<div>
-							<a href="#">Yuru Camp OVA</a>
-						</div>
-						<div>
-							<a href="#">Yuru Camp Side Story asdfasdfsadfasdfsadfds</a>
-						</div>
-					</div> -->
 				</div>
 				<div id="e"></div>
 			</div>

@@ -72,7 +72,7 @@ function loadAnimeList(inyear,inseason,instatus,induration,insort){
 											<div class="detail"><div>Source</div><div>`+val.Source+`</div></div>
 											<div class="detail"><div>Total Episodes</div><div>`+val.EpisodeTotal+`</div></div>
 											<div class="detail"><div>Duration</div><div>`+val.Duration+`</div></div>
-											<div class="detail"><div>Subscriber</div><div>`+val.Subscriber+`</div></div>
+											<div class="detail"><div>Follower</div><div>`+val.Follower+`</div></div>
 											<div class="detail"><div>Genres</div><div>`+val.Genres+`</div></div>
 										</div>
 									</div>`);

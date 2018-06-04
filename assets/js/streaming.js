@@ -79,7 +79,8 @@ function showPrevNextEps(){
 									</div>`);
 			});
 			container.append(`<div class="section" id="recommend">Recomended Anime</div>`);
-		}
+		},
+		async : false
 	});
 }
 
@@ -107,8 +108,8 @@ function showRecomendedAnime(inOffset,inLimit){
 										<div class="info">
 											<a href="anime/animePage?anime=`+val.AnimeID+`" class="title">`+val.AnimeTitle+`</a>
 											<div class="episode">`+val.EpisodeTotal+` Episodes</div>
-											<div class="subscriber">`+val.Subscriber+` Subscriber</div>
-											<span class="button">Subscribe</span>
+											<div class="follower">`+val.Follower+` Follower</div>
+											<span class="button">Follow</span>
 										</div>
 									</div>`);
 				});

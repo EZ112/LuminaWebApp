@@ -66,9 +66,9 @@ function searchAnime(inDuration, inGenre, inOffset, inLimit){
 											<div class="info_container">
 												<a href="anime/animepage?anime=`+val.AnimeID+`" id="title">`+val.AnimeTitle+`</a>
 												<div id="latest">Latest Episode `+val.LatestEpisode+`</div>
-												<div id="subscriber">Subscriber `+val.SubScriber+`</div>
+												<div id="follower">Follower `+val.Follower+`</div>
 											</div>
-											<div class="button_container"><span class="button">Subscribe</span></div>
+											<div class="button_container"><span class="button">Follow</span></div>
 										</div>`);
 					});
 					container.css('border-bottom','1.25px solid #bbcbdb');

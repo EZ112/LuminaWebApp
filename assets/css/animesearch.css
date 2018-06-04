@@ -48,7 +48,7 @@
 .content .pointAnime .animeContainer .info_container #title:hover {
   border-bottom: 1.25px solid #888;
 }
-.content .pointAnime .animeContainer .info_container #latest, .content .pointAnime .animeContainer .info_container #subscriber {
+.content .pointAnime .animeContainer .info_container #latest, .content .pointAnime .animeContainer .info_container #follower {
   font-size: 1.1vw;
   color: #888;
   font-family: "QS_Book";

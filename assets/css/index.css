@@ -84,7 +84,6 @@
 .content .top_airing .top_airing_wrapper button {
   position: relative;
   top: .5vw;
-  background-color: #42beff;
   border: none;
   margin: .1vw 2vw;
   -webkit-border-radius: 50px;
@@ -93,8 +92,17 @@
   border-radius: 50px;
   outline: none;
   cursor: pointer;
+}
+.content .top_airing .top_airing_wrapper .unfollow {
+  background-color: #42beff;
   font-size: 1.5vw;
   color: white;
+  font-family: "QS_Light";
+}
+.content .top_airing .top_airing_wrapper .followed {
+  background-color: #d5dfe8;
+  font-size: 1.5vw;
+  color: #878da0;
   font-family: "QS_Light";
 }
 .content .top_airing .top_airing_wrapper .numbering {

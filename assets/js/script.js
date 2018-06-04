@@ -1,17 +1,15 @@
-$(document).ready(function(){
-    $('#show_more').click(function() {
-    	if($(this).attr('class') == ''){
-    		$(this).prev().css("max-height","none");
-    		$(this).attr('class','open');
-    		$(this).html('<i class="fas fa-chevron-up"></i> Show Less');
-    	}
-    	else{
-    		$(this).prev().css("max-height","15vw");
-    		$(this).attr('class','');
-    		$(this).html('<i class="fas fa-chevron-down"></i> Show 10 More');
-    	}
-    });
-});
+function showMore(x){
+	if($(x).attr('class') == ''){
+	   $(x).prev().css("max-height","none");
+	   $(x).attr('class','open');
+	   $(x).html('<i class="fas fa-chevron-up"></i> Show Less');
+	}
+	else{
+		$(x).prev().css("max-height","15vw");
+		$(x).attr('class','');
+		$(x).html('<i class="fas fa-chevron-down"></i> Show 10 More');
+	}
+}
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
