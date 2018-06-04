@@ -173,10 +173,10 @@
 				</div>
 				<div>
 					Password<br>
-					<input type="password" oninput="loginCheck(this);" name="lpass" required>
+					<input type="password" oninput="this.setCustomValidity('')" name="lpass" required>
 				</div>
 				<div>
-					<input type="submit" class="button" value="Login">
+					<input type="submit" onclick="submitLogin(this);" class="button" value="Login">
 				</div>
 			</form>
 		</div>

@@ -39,6 +39,15 @@ $(document).ready(function(){
 	else{
 		$('.google_ads').css('display','flex');
 	}
+
+	// function followToggle(x){
+	// 	if (sessionData.loginUser != null) {
+
+	// 	}
+	// 	if($(x).attr('class') == 'followed'){
+			
+	// 	}
+	// }
 });
 
 function loadAnimeLatestUpdate() {
@@ -81,7 +90,6 @@ function loadTopAiringAnime(InUser){
 		type : 'POST',
 		data : param,
 		success : function(data){
-			console.log(data);
 			var container = $('.top_airing_wrapper');
 
 			$.each(data,function(key,val){
@@ -92,9 +100,9 @@ function loadTopAiringAnime(InUser){
 
 			$.each(data,function(key,val){
 				if(val.FollowStatus != null)
-					container.append(`<button class="followed" onclick="unfollow()">Follow</button>`);
+					container.append(`<button class="followed" onclick="followToggle(this)">Follow</button>`);
 				else
-					container.append(`<button class="unfollow" onclick="follow()">Follow</button>`);
+					container.append(`<button class="unfollowed" onclick="followToggle(this)">Follow</button>`);
 			});
 		}, 
 	  	async: false

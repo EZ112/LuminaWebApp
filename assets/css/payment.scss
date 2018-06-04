@@ -18,6 +18,10 @@
 			grid-template-columns: 60% 20% 20%;
 			margin-bottom: 1.75%;
 
+			.creditCard{
+				display: none;
+			}
+
 			.question{
 				@include setText(1.75vw, $cP, "QS_Book");
 				font-weight: bold;

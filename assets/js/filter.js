@@ -53,9 +53,7 @@ $(document).ready(function(){
 		getMostPopular();
 	}
 
-
 	$('#manageAccount .register .form').submit(function(){
-
 		var inuser = $(this).find('input[name="rname"]').val();
 		var inemail = $(this).find('input[name="remail"]').val();
 		var inpass = $(this).find('input[name="rpass"]').val();
@@ -95,31 +93,6 @@ $(document).ready(function(){
 			}
 		});
 	});
-
-	$('#manageAccount .login .form').submit(function(){
-
-		var inuser = $(this).find('input[name="lname"]').val();
-		var inpass = $(this).find('input[name="lpass"]').val();
-
-		var param = {
-			user : inuser,
-			pass : inpass
-		}
-
-		$.ajax({
-			url :'homepage/loginAccount',
-			dataType : 'json',
-			type : 'POST',
-			data : param,
-			complete : function(data){
-				console.log(data.responseText);
-				localStorage.setItem("username", JSON.stringify(inuser));	
-			}
-		});
-	});
-
-
-
 });
 
 //INI CLASS BKN FUNCTION, DECLARE PAKE VAR = NEW FILTER_OBJECT(ARGS[]);
@@ -260,8 +233,10 @@ function checkUser(x){
 		type : 'POST',
 		data : param,
 		success : function(data){
-			if(data[0].Status != 0)
+			if(data[0].Status != 0){
 				x.setCustomValidity('Username already been taken');
+				x.reportValidity();
+			}
 			else
 				x.setCustomValidity('');
 		}
@@ -273,10 +248,10 @@ function checkMatchPass(x){
 	var inconpass = x.value;
 	if(inpass!=inconpass){
 		x.setCustomValidity('Confirm Password doesn\'t match');
+		x.reportValidity();
 	}
-	else{
+	else
 		x.setCustomValidity('');
-	}
 }
 
 function loginCheck(x){
@@ -284,18 +259,28 @@ function loginCheck(x){
 		user : $('#manageAccount .login .form input[name="lname"]').val(),
 		pass : x.value
 	}
+
+	var status = false;
+
 	$.ajax({
 		url :'homepage/loginCheck',
 		dataType : 'json',
 		type : 'POST',
 		data : param,
 		success : function(data){
-			if(data[0].Status == 0)
+			if(data[0].Status == 0){
 				x.setCustomValidity('Incorrect Username or Password');
-			else
+				x.reportValidity();
+			}
+			else{
 				x.setCustomValidity('');
-		}
+				status = true;
+			}
+		},
+		async : false
 	});
+
+	return status;
 }
 
 function getSessionData(){
@@ -360,6 +345,33 @@ function getMostPopular(){
 			if (data.length>6) 
 				container.parent().append(`<a id="show_more" onclick="showMore(this)" class=""><i class="fas fa-chevron-down"></i> Show `+data.length+` More</a>`);
 		}
+	});
+}
+
+function submitLogin(x){
+	$('#manageAccount .login .form').submit(function(){
+
+		if(!loginCheck($(this).find('input[type="password"]')[0]))
+			return false;
+
+		var inuser = $(this).find('input[name="lname"]').val();
+		var inpass = $(this).find('input[name="lpass"]').val();
+
+		var param = {
+			user : inuser,
+			pass : inpass
+		}
+
+		$.ajax({
+			url :'homepage/loginAccount',
+			dataType : 'json',
+			type : 'POST',
+			data : param,
+			complete : function(data){
+				console.log(data.responseText);
+				localStorage.setItem("username", JSON.stringify(inuser));	
+			}
+		});
 	});
 }
 
