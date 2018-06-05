@@ -27,7 +27,6 @@
   margin: 2.5% 0;
 }
 .content .videoContainer .videoThumbnail {
-  background-image: url("../image/news-img.jpg");
   background-size: cover;
 }
 .content .videoContainer .dummyCenter {

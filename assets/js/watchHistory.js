@@ -37,7 +37,7 @@ function loadWatchHistory(InUsername) {
 
 			$.each(data,function(key,val){
 				container.append(`<div class="videoContainer grid-container" value="`+val.WatchHistoryID+`">
-									<a href="#" class="videoThumbnail" style="background-image(`+val.EpsThumbnail+`)"></a>
+									<a href="#" class="videoThumbnail" style="background-image:url(`+val.EpsThumbnail+`);"></a>
 									<div class="dummyCenter">
 										<div class="videoDetail">
 											<a href="#" class="videoEpisode">Episode `+val.EpisodeID+`</a>
