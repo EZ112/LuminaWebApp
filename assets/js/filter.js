@@ -350,7 +350,6 @@ function getMostPopular(){
 }
 
 function submitLogin(x){
-<<<<<<< HEAD
 		console.log($(x).parent().parent().find('input[type="password"]')[0]);
 		$(x).parent().parent().find('input[type="password"]')[0].setCustomValidity('');
 		$('#manageAccount .login .form').submit(function(){
@@ -377,33 +376,6 @@ function submitLogin(x){
 			});
 		});
 	}
-=======
-	$('#manageAccount .login .form').submit(function(){
-
-		if(!loginCheck($(this).find('input[type="password"]')[0]))
-			return false;
-
-		var inuser = $(this).find('input[name="lname"]').val();
-		var inpass = $(this).find('input[name="lpass"]').val();
-
-		var param = {
-			user : inuser,
-			pass : inpass
-		}
-
-		$.ajax({
-			url :'homepage/loginAccount',
-			dataType : 'json',
-			type : 'POST',
-			data : param,
-			complete : function(data){
-				console.log(data.responseText);
-				localStorage.setItem("username", JSON.stringify(inuser));	
-			}
-		});
-	});
-}
->>>>>>> f042a2abe673515ec80dbe71416e800d976ac5f4
 
 function logout(){
 	$.ajax({
