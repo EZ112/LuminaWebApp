@@ -1,0 +1,40 @@
+//sp_getLatestNews
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getLatestNews`(IN `InNewsID` INT)
+BEGIN
+    SELECT DATE_FORMAT(n.PublishDate, "%d %b %Y") as PublishDate, n.NewsTitle, n.NewsID
+    FROM news n
+    WHERE n.NewsID <> InNewsID
+    ORDER BY n.PublishDate DESC
+    LIMIT 30;
+END$$
+DELIMITER ;
+
+//sp_getNewsDetail
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getNewsDetail`(IN `InNewsID` INT)
+BEGIN
+    SELECT t.Tag, n.NewsTitle, n.writer, DATE_FORMAT(n.PublishDate, "%d %b %Y") as PublishDate, 
+    n.NewsContent, n.NewsImage
+    FROM news n 
+    JOIN tags t ON t.TagsID = n.TagsID
+    WHERE n.NewsID = InNewsID;
+END$$
+DELIMITER ;
+
+//sp_getWatchHistory
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getWatchHistory`(IN `InUsername` VARCHAR(25))
+BEGIN
+    SELECT e.EpsThumbnail, e.EpisodeID, DATE_FORMAT(e.EpsDateAir, "%d %b %Y") as DateAir, e.EpsTitle, a.AnimeTitle, e.EpisodeTotalViews, h.UserID, h.WatchTime 
+    FROM watchhistories h
+    JOIN episodes e ON e.EpisodeID = h.EpisodeID
+    JOIN anime a ON a.AnimeID = e.AnimeID
+    JOIN user u ON u.UserID = h.UserID
+    WHERE InUsername = u.Username
+    ORDER BY DateAir DESC;
+END$$
+DELIMITER ;
