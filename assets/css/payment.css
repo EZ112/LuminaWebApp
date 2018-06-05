@@ -92,7 +92,7 @@
   color: #4bceaf;
 }
 .content #formClass .row .button {
-  padding: 1.5% 17.5%;
+  width: 70%;
   font-size: 1.5vw;
   margin-top: 5%;
 }

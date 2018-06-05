@@ -4,7 +4,7 @@
 	<div class="page grid-container">
 		<div class="navbar grid-container">
 			<!--Navbar-->
-			<div class="logo"><a href="index.html"></a></div>
+			<div class="logo"><a href="/LuminaWebApp"></a></div>
 
 			<div class="nav_backend">
 				<div onclick="switchNav(this)">Master</div>
@@ -30,24 +30,33 @@
 					<input type="text" name="input" placeholder="Insert Text Here" autocomplete="off">
 					<span id="submitForm" onclick="submitForm(this.parentElement);">Submit</span>
 				</form>
-
+	
 				<!--Notification-->
 				<div id="warning" class="notif"><span>Series</span> already exists</div>
 				<div id="success" class="notif"><span>Series</span> successfully added</div>
 
-				<!--Table-->
-				<div id="table">
+				<!--TABLE-->
+				<!--Series-->
+				<div class="table" id="SeriesTable">
 					<div id="tableHeading">Series</div>
-					<div id="tableContent">
+					<div class="tableContent">
 						<div id="empty">Table is empty</div>
-						<div class="tableObject">
-							<span class="title">Dummy</span>
-							<i class="fas fa-times" onclick="deleteTableObject(this.parentElement);"></i>
-						</div>
-						<div class="tableObject">
-							<span class="title">Dummy2</span>
-							<i class="fas fa-times" onclick="deleteTableObject(this.parentElement);"></i>
-						</div>
+					</div>
+				</div>
+
+				<!--Studio-->
+				<div class="table" id="StudioTable" style="display: none;">
+					<div id="tableHeading">Studio</div>
+					<div class="tableContent">
+						<div id="empty">Table is empty</div>
+					</div>
+				</div>
+
+				<!--Source-->
+				<div class="table" id="SourceTable" style="display: none;">
+					<div id="tableHeading">Source</div>
+					<div class="tableContent">
+						<div id="empty">Table is empty</div>
 					</div>
 				</div>
 			</div>
@@ -175,5 +184,6 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="assets/js/backend.js"></script>
 <?php include APPPATH.'/views/templates/footer.php'?>
+<script type="text/javascript" src="assets/js/backend.js"></script>
+

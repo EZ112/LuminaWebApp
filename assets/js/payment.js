@@ -3,35 +3,37 @@ $(document).ready(function(){
 
 	$('#formClass').submit(function(){
 		var param;
-		if($('input[name="paymentType"]:checked').val() == 'Basic'){
-			param = {
-				paymentStatus : $('input[name="paymentType"]:checked').val(),
-				paymentPlan : $('input[name="paymentDuration"]:checked').val(),
-				bankID : $('#selectBank').val(),
-				accountNum : $('input[name="AccountName"]').val()
-			}
+
+		param = {
+			paymentStatus : $('input[name="paymentType"]:checked').val(),
+			paymentPlan : $('input[name="paymentDuration"]:checked').val(),
+			paymentMethod : $('input[name="paymentMethod"]:checked').val()
+
+		}
+
+		if($('input[name="paymentMethod"]:checked').val() == 'TransferBank'){
+			param.BankID = $('#selectBank').val();
+			param.AccountNum = $('input[name="AccountNum"]').val();
+			param.AccountName = $('input[name="AccountName"]').val();
 		}
 		else{
-			param = {
-				paymentStatus : $('input[name="paymentType"]:checked').val(),
-				paymentPlan : $('input[name="paymentDuration"]:checked').val(),
-				bankID : $('#selectBank').val(),
-				accountNum : $('input[name="AccountName"]').val()
-			}
+			param.cardNum = $('input[name="CardNum"]').val();
+			param.cardName = $('input[name="CardName"]').val();
+			param.cardExpDate = $('input[name="CardExp"]').val();
 		}
 
-		
-
 		$.ajax({
-			url :'payment/payment/getBankDetail',
+			url :'payment/payment/doPayment',
 			dataType : 'json',
 			type : 'POST',
-			success : function(data){
-			}
+			data : param,
+			complete : function(data){
+				console.log(data);
+				window.location.href = 'Success';
+			},
+			async : false
 		});
 	});
-
-
 });
 
 function changePaymentPlan(str){
@@ -69,9 +71,19 @@ function loadBankDetail(){
 function changePaymentMet(str){
 	if(str == 'Transfer'){
 		$('.transferBank').show();
+		$('input[name="AccountNum"]').attr('required',true);
+		$('input[name="AccountName"]').attr('required',true);
+		$('input[name="CardNum"]').attr('required',false);
+		$('input[name="CardName"]').attr('required',false);
+		$('input[name="CardExp"]').attr('required',false);
 		$('.creditCard').hide();
 	} else{
 		$('.creditCard').show();
+		$('input[name="AccountNum"]').attr('required',false);
+		$('input[name="AccountName"]').attr('required',false);
+		$('input[name="CardNum"]').attr('required',true);
+		$('input[name="CardName"]').attr('required',true);
+		$('input[name="CardExp"]').attr('required',true);
 		$('.transferBank').hide();
 	}
 }

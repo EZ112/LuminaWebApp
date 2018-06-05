@@ -8,7 +8,7 @@
 		?>
 
 		<div class="content">
-			<form id="formClass">
+			<form id="formClass" method="POST" action="success">
 				<div class="row grid-container">
 					<div class="question">Which one do you <br> like to choose?</div>
 					<label class="custom_input_container basic"><div class="label">Basic</div><input type="radio" name="paymentType" value="Basic" checked="true" onclick="changePaymentPlan('basic');"> <span class="custom_radio"></span></label>
@@ -33,8 +33,8 @@
 				</div>
 				<div class="row grid-container">
 					<div class="question">How would you <br> like to pay?</div>
-					<label class="custom_input_container basic"><div class="label">Rp 50k Monthly</div><input type="radio" name="paymentDuration" value="b1" checked="true"> <span class="custom_radio"></span></label>
-					<label class="custom_input_container premium"><div class="label">Rp 550k Annually</div><input type="radio" name="paymentDuration" value="b2"> <span class="custom_radio"></span></label>
+					<label class="custom_input_container basic"><div class="label">Rp 50k Monthly</div><input type="radio" name="paymentDuration" value="Monthly" checked="true"> <span class="custom_radio"></span></label>
+					<label class="custom_input_container premium"><div class="label">Rp 550k Annually</div><input type="radio" name="paymentDuration" value="Annually"> <span class="custom_radio"></span></label>
 				</div>
 				<div class="row grid-container">
 					<div class="warning">*tax included</div>
@@ -53,29 +53,25 @@
 						</div>
 						<div>
 							<label class="txtlabel">Account Number</label>
-							<input type="text" name="AccountNum">
+							<input type="number" name="AccountNum" required>
 						</div>
 						<div>
 							<label class="txtlabel">Account Name</label>
-							<input type="text" name="AccountName">
+							<input type="text" name="AccountName" required>
 						</div>
 					</div>
 					<div class="creditCard">
 						<div>
 							<label class="txtlabel">Card Number</label>
-							<input type="text" name="CardNum">
+							<input type="number" name="CardNum">
 						</div>
 						<div>
-							<label class="txtlabel">Cardholder Number</label>
+							<label class="txtlabel">Cardholder Name</label>
 							<input type="text" name="CardName">
 						</div>
 						<div>
 							<label class="txtlabel">Card Expiration</label>
 							<input type="date" name="CardExp">
-						</div>
-						<div>
-							<label class="txtlabel">Card 3 Last Number</label>
-							<input type="number" name="Account">
 						</div>
 					</div>
 				</div>
@@ -83,7 +79,7 @@
 					<div></div>
 					<div></div>
 					<!-- <div><span class="button" onclick="document.getElementById('formClass').submit()">Proceed</span></div> -->
-					<div><span class="button" onclick="$(this).closest('form').submit();">Proceed</span></div>
+					<div><input class="button" type="submit" name="" value="Proceed"></div>
 				</div>
 			</form>
 		</div>
