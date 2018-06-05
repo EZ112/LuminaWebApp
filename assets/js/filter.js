@@ -47,15 +47,14 @@ $(document).ready(function(){
 		$('#widget_notification').css('visibility','visible');
 		$('#Logged').append(sessionData.loginUser);
 		$('#Logged').show();
+		$('.nav').eq(2).show();
 	}
 	else{
 		$('#notLogged').show();
 		getMostPopular();
 	}
 
-
 	$('#manageAccount .register .form').submit(function(){
-
 		var inuser = $(this).find('input[name="rname"]').val();
 		var inemail = $(this).find('input[name="remail"]').val();
 		var inpass = $(this).find('input[name="rpass"]').val();
@@ -235,8 +234,10 @@ function checkUser(x){
 		type : 'POST',
 		data : param,
 		success : function(data){
-			if(data[0].Status != 0)
+			if(data[0].Status != 0){
 				x.setCustomValidity('Username already been taken');
+				x.reportValidity();
+			}
 			else
 				x.setCustomValidity('');
 		}
@@ -248,10 +249,10 @@ function checkMatchPass(x){
 	var inconpass = x.value;
 	if(inpass!=inconpass){
 		x.setCustomValidity('Confirm Password doesn\'t match');
+		x.reportValidity();
 	}
-	else{
+	else
 		x.setCustomValidity('');
-	}
 }
 
 function loginCheck(x){
@@ -349,6 +350,7 @@ function getMostPopular(){
 }
 
 function submitLogin(x){
+<<<<<<< HEAD
 		console.log($(x).parent().parent().find('input[type="password"]')[0]);
 		$(x).parent().parent().find('input[type="password"]')[0].setCustomValidity('');
 		$('#manageAccount .login .form').submit(function(){
@@ -375,6 +377,33 @@ function submitLogin(x){
 			});
 		});
 	}
+=======
+	$('#manageAccount .login .form').submit(function(){
+
+		if(!loginCheck($(this).find('input[type="password"]')[0]))
+			return false;
+
+		var inuser = $(this).find('input[name="lname"]').val();
+		var inpass = $(this).find('input[name="lpass"]').val();
+
+		var param = {
+			user : inuser,
+			pass : inpass
+		}
+
+		$.ajax({
+			url :'homepage/loginAccount',
+			dataType : 'json',
+			type : 'POST',
+			data : param,
+			complete : function(data){
+				console.log(data.responseText);
+				localStorage.setItem("username", JSON.stringify(inuser));	
+			}
+		});
+	});
+}
+>>>>>>> f042a2abe673515ec80dbe71416e800d976ac5f4
 
 function logout(){
 	$.ajax({

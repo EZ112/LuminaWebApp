@@ -1,0 +1,153 @@
+.navbar {
+  height: 100vw;
+}
+.navbar .logo {
+  height: 6vw;
+}
+.navbar .nav_backend div {
+  font-size: 1.5vw;
+  color: #555;
+  font-family: "QS_Book";
+  cursor: pointer;
+  height: 2.5vw;
+  line-height: 2.5vw;
+  padding: 5% 15%;
+  vertical-align: middle;
+  transition: 0.2s ease-in;
+}
+.navbar .nav_backend div:hover {
+  background-color: #42beff;
+  color: white;
+}
+
+.page {
+  grid-template-columns: 15vw 85vw;
+  grid-template-areas: "header head_title" "header content";
+}
+
+.content {
+  grid-area: content;
+}
+.content #master, .content #insert {
+  display: none;
+  padding: 2.5%;
+}
+.content #master {
+  display: block;
+}
+.content #master #selectMaster {
+  width: 50%;
+  padding: 0.5%;
+  font-size: 1.25vw;
+}
+.content #master #formMaster {
+  width: 50%;
+  margin: 1.75vw 0;
+  font-family: "QS_Book";
+  color: #888;
+}
+.content #master #formMaster #label {
+  font-size: 1.25vw;
+  font-weight: bold;
+  display: inline-block;
+  width: 12.5%;
+}
+.content #master #formMaster input[type="text"] {
+  font-size: 1.15vw;
+  padding: 0.45%;
+  width: 71.5%;
+  margin-right: 0.25vw;
+}
+.content #master #formMaster #submitForm {
+  font-size: 1.2vw;
+  padding: 0.5%;
+  border: 1px solid #888;
+  border-radius: 5px;
+  cursor: pointer;
+  transform: 0.2s ease-in;
+}
+.content #master .notif {
+  font-size: 1.25vw;
+  color: "";
+  font-family: "QS_Book";
+  border: 1px solid;
+  padding: 0.5% 0;
+  margin-bottom: 1.75vw;
+  width: 50%;
+  text-align: center;
+  color: white;
+  display: none;
+}
+.content #master #warning {
+  background-color: #f1637e;
+  border-color: #f1637e;
+}
+.content #master #success {
+  background-color: #4bceaf;
+  border-color: #4bceaf;
+}
+.content #master #table {
+  width: 50%;
+  border: 1px solid black;
+}
+.content #master #table #tableHeading {
+  font-size: 1.5vw;
+  color: #888;
+  font-family: "QS_Book";
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  padding: 1% 2.5%;
+}
+.content #master #table #tableContent #empty {
+  text-align: center;
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+  padding: 1% 0;
+  display: none;
+}
+.content #master #table #tableContent .tableObject {
+  font-size: 1.15vw;
+  color: #888;
+  font-family: "QS_Book";
+  padding: 1% 2.5%;
+}
+.content #master #table #tableContent .tableObject .fa-times {
+  color: #f1637e;
+  cursor: pointer;
+  float: right;
+}
+.content #insert .formInsert {
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+.content #insert .formInsert .row .warning {
+  font-size: 0.75vw;
+  color: #f1637e;
+  font-family: "QS_Book";
+}
+.content #insert .formInsert .row .cell {
+  padding: 1% 0;
+}
+.content #insert .formInsert .label {
+  width: 12.5vw;
+  font-weight: bold;
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+.content #insert .formInsert #genreContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  margin-top: 1%;
+}
+.content #insert .anime {
+  display: block;
+}
+.content #insert .episode, .content #insert .news {
+  display: none;
+}
+
+/*# sourceMappingURL=backend.css.map */

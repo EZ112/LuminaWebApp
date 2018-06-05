@@ -105,7 +105,7 @@
 				cursor: pointer;
 			}
 
-			.unfollow{
+			.unfollowed{
 				background-color: $cBlueLt;
 				@include setText(1.5vw, white, "QS_Light");
 			}

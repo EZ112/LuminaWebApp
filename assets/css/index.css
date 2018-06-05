@@ -93,7 +93,7 @@
   outline: none;
   cursor: pointer;
 }
-.content .top_airing .top_airing_wrapper .unfollow {
+.content .top_airing .top_airing_wrapper .unfollowed {
   background-color: #42beff;
   font-size: 1.5vw;
   color: white;

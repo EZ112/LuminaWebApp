@@ -8,11 +8,11 @@
 		?>
 
 		<div class="content">
-			<form id="formClass" action="" onsubmit="return proceed(this);">
+			<form id="formClass">
 				<div class="row grid-container">
 					<div class="question">Which one do you <br> like to choose?</div>
-					<label class="custom_input_container basic"><div class="label">Basic</div><input type="radio" name="paymentType" value="Basic" checked="true" onclick="changeDurationTo('basic');"> <span class="custom_radio"></span></label>
-					<label class="custom_input_container premium"><div class="label">Premium</div><input type="radio" name="paymentType" value="Premium" onclick="changeDurationTo('premium');"> <span class="custom_radio"></span></label>
+					<label class="custom_input_container basic"><div class="label">Basic</div><input type="radio" name="paymentType" value="Basic" checked="true" onclick="changePaymentPlan('basic');"> <span class="custom_radio"></span></label>
+					<label class="custom_input_container premium"><div class="label">Premium</div><input type="radio" name="paymentType" value="Premium" onclick="changePaymentPlan('premium');"> <span class="custom_radio"></span></label>
 				</div>
 				<div class="row grid-container">
 					<div class="text">SD and HD Quality (480p and 720p)</div>
@@ -43,14 +43,47 @@
 				</div>
 				<div class="row grid-container">
 					<div class="question">Choose your <br> payment method</div>
-					<label class="custom_input_container basic"><div class="label">Transfer Bank</div><input type="radio" name="paymentMethod" value="action" checked="true"> <span class="custom_radio"></span></label>
-					<label class="custom_input_container premium"><div class="label">Credit <br> Card</div><input type="radio" name="paymentMethod" value="action"> <span class="custom_radio"></span></label>
+					<label class="custom_input_container basic"><div class="label">Transfer Bank</div><input type="radio" name="paymentMethod" value="TransferBank" checked="true" onclick="changePaymentMet('Transfer');"> <span class="custom_radio"></span></label>
+					<label class="custom_input_container premium"><div class="label">Credit <br> Card</div><input type="radio" name="paymentMethod" value="CreditCard" onclick="changePaymentMet('Credit');"> <span class="custom_radio"></span></label>
+					<div class="transferBank">
+						<div>
+							<label class="ddllabel">Bank</label>
+							<select id="selectBank">
+							</select>
+						</div>
+						<div>
+							<label class="txtlabel">Account Number</label>
+							<input type="text" name="AccountNum">
+						</div>
+						<div>
+							<label class="txtlabel">Account Name</label>
+							<input type="text" name="AccountName">
+						</div>
+					</div>
+					<div class="creditCard">
+						<div>
+							<label class="txtlabel">Card Number</label>
+							<input type="text" name="CardNum">
+						</div>
+						<div>
+							<label class="txtlabel">Cardholder Number</label>
+							<input type="text" name="CardName">
+						</div>
+						<div>
+							<label class="txtlabel">Card Expiration</label>
+							<input type="date" name="CardExp">
+						</div>
+						<div>
+							<label class="txtlabel">Card 3 Last Number</label>
+							<input type="number" name="Account">
+						</div>
+					</div>
 				</div>
 				<div class="row grid-container">
 					<div></div>
 					<div></div>
 					<!-- <div><span class="button" onclick="document.getElementById('formClass').submit()">Proceed</span></div> -->
-					<div><span class="button" onclick="proceed(this);">Proceed</span></div>
+					<div><span class="button" onclick="$(this).closest('form').submit();">Proceed</span></div>
 				</div>
 			</form>
 		</div>
