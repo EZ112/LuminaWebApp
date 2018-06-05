@@ -36,7 +36,7 @@ function loadWatchHistory(InUsername) {
 			var container = $('.content');
 
 			$.each(data,function(key,val){
-				container.append(`<div class="videoContainer grid-container">
+				container.append(`<div class="videoContainer grid-container" value="`+val.WatchHistoryID+`">
 									<a href="#" class="videoThumbnail" style="background-image(`+val.EpsThumbnail+`)"></a>
 									<div class="dummyCenter">
 										<div class="videoDetail">
@@ -47,11 +47,31 @@ function loadWatchHistory(InUsername) {
 											<div class="videoViews">`+val.EpisodeTotalViews+` views</div>
 										</div>
 									</div>
-									<div class="redify" onclick="removeElement(this.parentElement);">
+									<div class="redify" onclick="removeWatchHistory(this); removeElement(this.parentElement);">
 										<i class="fas fa-times"></i>
 									</div>
 								</div>`);
 			});
+		}
+	});
+}
+
+function removeWatchHistory(x){
+	var InUsername = getSessionData().loginUser;
+	var InHistoryID = x.parentElement.getAttribute("value");
+
+	var param = {
+		historyID : InHistoryID,
+		username : InUsername
+	};
+
+	$.ajax({
+		url : 'anime/watchHistory/deleteWatchHistory',
+		dataType : 'json',
+		type : 'POST',
+		data : param,
+		success : function(data){
+			console.log(data);
 		}
 	});
 }

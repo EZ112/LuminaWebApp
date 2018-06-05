@@ -1,0 +1,43 @@
+@import 'colors';
+@import 'functions';
+
+body{
+	//background: url();
+	user-select: none;
+
+	.formContainer{
+		margin: auto;
+		width: 30%;
+		position: relative;
+		transform: translateY(-55%);
+		top: 50%;
+		text-align: center;
+		border: 1px solid black;
+		padding: 2.5%;
+		background-color: $cT;
+
+		.heading{
+			@include setText(2vw, "inherit", "QS_Book");
+		}
+
+		form{
+			margin: 0;
+
+			input{
+				@include setText(1.25vw, "", "QS_Book");
+				padding: 1.25%;
+				width: 100%;
+				margin: 3.33% 0;
+				display: block;
+				border: 1px solid black;
+				border-radius: 5px;
+			}
+
+			input[type="submit"]{
+				background-color: $cP;
+				color: white;
+				border: none;
+			}
+		}
+	}
+}

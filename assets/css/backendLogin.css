@@ -1,0 +1,40 @@
+body {
+  user-select: none;
+}
+body .formContainer {
+  margin: auto;
+  width: 30%;
+  position: relative;
+  transform: translateY(-55%);
+  top: 50%;
+  text-align: center;
+  border: 1px solid black;
+  padding: 2.5%;
+  background-color: #bbcbdb;
+}
+body .formContainer .heading {
+  font-size: 2vw;
+  color: "inherit";
+  font-family: "QS_Book";
+}
+body .formContainer form {
+  margin: 0;
+}
+body .formContainer form input {
+  font-size: 1.25vw;
+  color: "";
+  font-family: "QS_Book";
+  padding: 1.25%;
+  width: 100%;
+  margin: 3.33% 0;
+  display: block;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+body .formContainer form input[type="submit"] {
+  background-color: #42beff;
+  color: white;
+  border: none;
+}
+
+/*# sourceMappingURL=backendLogin.css.map */

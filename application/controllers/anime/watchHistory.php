@@ -5,14 +5,7 @@ class WatchHistory extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->library('session');
-		$subStatus = $this->session->userdata('loginSubStatus');
-
-		if($subStatus != null)
-			$this->load->view('anime/watchHistory');
-		else
-			header("Location: /LuminaWebApp");
-		
+		$this->load->view('anime/watchHistory');
 	}
 
 	public function getWatchHistory(){
@@ -25,13 +18,18 @@ class WatchHistory extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function getWatchHistory(){
+	public function deleteWatchHistory(){
 		$arr = array(
-			'InUsername' => $_POST['username']
+			'InUsername' => $_POST['username'],
+			'InHistoryID' => $_POST['historyID']
 		);
 
-		$sp = "CALL sp_getWatchHistory(?)";
-		$result = $this->db->query($sp,$arr)->result();
-		echo json_encode($result);
+		$sp = "CALL sp_deleteWatchHistory(?, ?)";
+		$result = $this->db->query($sp,$arr);
+		//echo json_encode($result);
+		if($result)
+			echo "Success";
+		else 
+			echo "Failed";
 	}
 }
