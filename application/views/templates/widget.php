@@ -12,7 +12,7 @@
 				Filter
 			</span>
 		</div>
-		<div id="widget_notification">
+		<!-- <div id="widget_notification">
 			<i onclick="open_navigation('notification_wrapper');" class="fas fa-bell"></i>
 			<i id="isNotif" class="fas fa-circle"></i>
 
@@ -27,14 +27,14 @@
 					Notif 3
 				</a>
 			</div>
-		</div>
+		</div> -->
 		<div id="widget_login">
 			<span id="notLogged" onclick="open_navigation('manageAccount');">Login</span>
 			<span id="Logged" onclick="open_navigation('logged_wrapper');">
 				<div id="logged_wrapper">
-					<a href="#" class="logged_item">
+				<!-- <a href="#" class="logged_item">
 						Edit Profile
-					</a>
+					</a> -->
 					<a href="payment/payment" class="logged_item">
 						Subscription
 					</a>
@@ -52,14 +52,14 @@
 		<span class="close_button" onclick="submit_filter()"> &times; </span>
 		<div id="filter_title">Filter</div>
 		<div class="filter_content grid-container">
-			<div>
+			<!-- <div>
 				<div id="filter_subtitle">
 					Type
 				</div>
 				<div id="filter_type">
 					<div id="active" onclick="change_filter(0);">Anime</div><div onclick="change_filter(1);">News</div>
 				</div>
-			</div>
+			</div> -->
 			<div class="filter_anime" id="filter_duration">
 					<div id="filter_subtitle">
 						Duration
@@ -156,7 +156,7 @@
 					</label>
 				</div>
 				<div>
-					<div class="terms">By clicking "Register", you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</div>
+					<div class="terms">By clicking "Register", you agree to the <a href="sevices/terms">Terms of Service</a> and <a href="#">Privacy Policy</a>.</div>
 					<div>
 						<input type="submit" class="button" value="Register">
 					</div>
@@ -173,7 +173,7 @@
 				</div>
 				<div>
 					Password<br>
-					<input type="password" name="lpass" required>
+					<input type="password" oninput="this.setCustomValidity('')" name="lpass" required>
 				</div>
 				<div>
 					<input type="submit" onclick="submitLogin(this);" class="button" value="Login">
