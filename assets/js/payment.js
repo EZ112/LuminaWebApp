@@ -1,7 +1,37 @@
 $(document).ready(function(){
-	$('input[name="paymentMethod"]').change(function(){
-		console.log('qwe');
+	loadBankDetail();
+
+	$('#formClass').submit(function(){
+		var param;
+		if($('input[name="paymentType"]:checked').val() == 'Basic'){
+			param = {
+				paymentStatus : $('input[name="paymentType"]:checked').val(),
+				paymentPlan : $('input[name="paymentDuration"]:checked').val(),
+				bankID : $('#selectBank').val(),
+				accountNum : $('input[name="AccountName"]').val()
+			}
+		}
+		else{
+			param = {
+				paymentStatus : $('input[name="paymentType"]:checked').val(),
+				paymentPlan : $('input[name="paymentDuration"]:checked').val(),
+				bankID : $('#selectBank').val(),
+				accountNum : $('input[name="AccountName"]').val()
+			}
+		}
+
+		
+
+		$.ajax({
+			url :'payment/payment/getBankDetail',
+			dataType : 'json',
+			type : 'POST',
+			success : function(data){
+			}
+		});
 	});
+
+
 });
 
 function changePaymentPlan(str){
@@ -10,34 +40,38 @@ function changePaymentPlan(str){
 
 	if(str == 'basic'){
 		label[2].innerHTML = "Rp 50k Monthly";
-		value[2].setAttribute("value", "basicMonthly");
+		value[2].setAttribute("value", "Monthly");
 		label[3].innerHTML = "Rp 550k Annually";
-		value[3].setAttribute("value", "basicAnnually");
+		value[3].setAttribute("value", "Annually");
 	} else{
 		label[2].innerHTML = "Rp 100k Monthly";
-		value[2].setAttribute("value", "primaryMonthly");
+		value[2].setAttribute("value", "Monthly");
 		label[3].innerHTML = "Rp 1000k Annually";
-		value[3].setAttribute("value", "primaryAnnually");
+		value[3].setAttribute("value", "Annually");
 	}
 }
 
-// function changePaymentPlan(str){
-// 	var label = document.getElementsByClassName("label");
-// 	var value = document.querySelectorAll("label input");
+function loadBankDetail(){
+	$.ajax({
+		url :'payment/payment/getBankDetail',
+		dataType : 'json',
+		type : 'POST',
+		success : function(data){
+			var container = $('#selectBank');
+			$.each(data,function(key,val){
+				container.append(`<option value="`+val.BankID+`">`+val.BankName
++`</option>`);
+			});
+		}
+	});
+}
 
-// 	if(str == 'basic'){
-// 		label[2].innerHTML = "Rp 50k Monthly";
-// 		value[2].setAttribute("value", "basicMonthly");
-// 		label[3].innerHTML = "Rp 550k Annually";
-// 		value[3].setAttribute("value", "basicAnnually");
-// 	} else{
-// 		label[2].innerHTML = "Rp 100k Monthly";
-// 		value[2].setAttribute("value", "primaryMonthly");
-// 		label[3].innerHTML = "Rp 1000k Annually";
-// 		value[3].setAttribute("value", "primaryAnnually");
-// 	}
-// }
-
-// function proceed(x){
-// 	x.
-// }
+function changePaymentMet(str){
+	if(str == 'Transfer'){
+		$('.transferBank').show();
+		$('.creditCard').hide();
+	} else{
+		$('.creditCard').show();
+		$('.transferBank').hide();
+	}
+}

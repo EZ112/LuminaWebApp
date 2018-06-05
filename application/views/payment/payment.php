@@ -43,22 +43,47 @@
 				</div>
 				<div class="row grid-container">
 					<div class="question">Choose your <br> payment method</div>
-					<label class="custom_input_container basic"><div class="label">Transfer Bank</div><input type="radio" name="paymentMethod" value="TransferBank" checked="true" onclick="changePaymentPlan('premium');"> <span class="custom_radio"></span></label>
-					<label class="custom_input_container premium"><div class="label">Credit <br> Card</div><input type="radio" name="paymentMethod" value="CreditCard" onclick="changePaymentPlan('premium');"> <span class="custom_radio"></span></label>
+					<label class="custom_input_container basic"><div class="label">Transfer Bank</div><input type="radio" name="paymentMethod" value="TransferBank" checked="true" onclick="changePaymentMet('Transfer');"> <span class="custom_radio"></span></label>
+					<label class="custom_input_container premium"><div class="label">Credit <br> Card</div><input type="radio" name="paymentMethod" value="CreditCard" onclick="changePaymentMet('Credit');"> <span class="custom_radio"></span></label>
 					<div class="transferBank">
-						<div>D</div>
-						<div>jkjhkhjv</div>
+						<div>
+							<label class="ddllabel">Bank</label>
+							<select id="selectBank">
+							</select>
+						</div>
+						<div>
+							<label class="txtlabel">Account Number</label>
+							<input type="text" name="AccountNum">
+						</div>
+						<div>
+							<label class="txtlabel">Account Name</label>
+							<input type="text" name="AccountName">
+						</div>
 					</div>
 					<div class="creditCard">
-						<div>qwewq</div>
-						<div>asdas</div>
+						<div>
+							<label class="txtlabel">Card Number</label>
+							<input type="text" name="CardNum">
+						</div>
+						<div>
+							<label class="txtlabel">Cardholder Number</label>
+							<input type="text" name="CardName">
+						</div>
+						<div>
+							<label class="txtlabel">Card Expiration</label>
+							<input type="date" name="CardExp">
+						</div>
+						<div>
+							<label class="txtlabel">Card 3 Last Number</label>
+							<input type="number" name="Account">
+						</div>
 					</div>
 				</div>
 				<div class="row grid-container">
 					<div></div>
 					<div></div>
 					<!-- <div><span class="button" onclick="document.getElementById('formClass').submit()">Proceed</span></div> -->
-					<div><span class="button" onclick="proceed(this);">Proceed</span></div>
+					<div><span class="button" onclick="$(this).closest('form').submit();">Proceed</span></div>
 				</div>
 			</form>
 		</div>

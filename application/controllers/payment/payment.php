@@ -12,6 +12,10 @@ class Payment extends CI_Controller {
 			$this->load->view('payment/payment');
 		else
 			header("Location: /LuminaWebApp");
-		
+	}
+
+	public function getBankDetail(){
+		$result = $this->db->query("CALL sp_GetBankDetail()")->result();
+		echo json_encode($result);
 	}
 }

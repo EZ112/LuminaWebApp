@@ -47,6 +47,7 @@ $(document).ready(function(){
 		$('#widget_notification').css('visibility','visible');
 		$('#Logged').append(sessionData.loginUser);
 		$('#Logged').show();
+		$('.nav').eq(2).show();
 	}
 	else{
 		$('#notLogged').show();

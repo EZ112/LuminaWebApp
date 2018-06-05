@@ -10,7 +10,7 @@
 				</div>
 				<i class="fas fa-shopping-bag fa-3x"></i>
 			</a> -->
-			<div class="nav">
+			<div class="nav" style="display: none;">
 				<div class="nav_title">
 					LIBRARY
 				</div>

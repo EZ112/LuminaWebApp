@@ -18,6 +18,27 @@
 			grid-template-columns: 60% 20% 20%;
 			margin-bottom: 1.75%;
 
+			div{
+				div{
+				    display: grid;
+					grid-template-columns: 1fr 3fr;
+					margin: 1%;
+				}
+				.ddllabel,.txtlabel{
+					@include setText(1.25vw, $cText, "QS_Book");
+				}
+				#selectBank{
+					width: 51.8%;
+					padding: 0.5%;
+					font-size: 1.25vw;
+				}
+				input{ 
+					font-size: 1.25vw;
+					padding: 0.5%;
+					width: 50%;
+				}
+			}
+
 			.creditCard{
 				display: none;
 			}
@@ -71,8 +92,12 @@
 				margin-top: 5%;
 			}
 		}
-
-		.row div:not(:first-child){ text-align: center; }
+		
+		
+		.row div:nth-child(2){ text-align: center;} 
+		.row div:nth-child(3){ text-align: center;} 
+		.transferBank div{ text-align: left !important;} 
+		.creditCard div{ text-align: left !important;} 
 		/* .row div:last-child{ text-align: left; } */
 	}
 }

@@ -15,6 +15,26 @@
   grid-template-columns: 60% 20% 20%;
   margin-bottom: 1.75%;
 }
+.content #formClass .row div div {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin: 1%;
+}
+.content #formClass .row div .ddllabel, .content #formClass .row div .txtlabel {
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+.content #formClass .row div #selectBank {
+  width: 51.8%;
+  padding: 0.5%;
+  font-size: 1.25vw;
+}
+.content #formClass .row div input {
+  font-size: 1.25vw;
+  padding: 0.5%;
+  width: 50%;
+}
 .content #formClass .row .creditCard {
   display: none;
 }
@@ -76,8 +96,17 @@
   font-size: 1.5vw;
   margin-top: 5%;
 }
-.content #formClass .row div:not(:first-child) {
+.content #formClass .row div:nth-child(2) {
   text-align: center;
+}
+.content #formClass .row div:nth-child(3) {
+  text-align: center;
+}
+.content #formClass .transferBank div {
+  text-align: left !important;
+}
+.content #formClass .creditCard div {
+  text-align: left !important;
 }
 
 /*# sourceMappingURL=payment.css.map */
