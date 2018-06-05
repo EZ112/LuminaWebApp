@@ -95,31 +95,6 @@ $(document).ready(function(){
 			}
 		});
 	});
-
-	$('#manageAccount .login .form').submit(function(){
-
-		var inuser = $(this).find('input[name="lname"]').val();
-		var inpass = $(this).find('input[name="lpass"]').val();
-
-		var param = {
-			user : inuser,
-			pass : inpass
-		}
-
-		$.ajax({
-			url :'homepage/loginAccount',
-			dataType : 'json',
-			type : 'POST',
-			data : param,
-			complete : function(data){
-				console.log(data.responseText);
-				localStorage.setItem("username", JSON.stringify(inuser));	
-			}
-		});
-	});
-
-
-
 });
 
 //INI CLASS BKN FUNCTION, DECLARE PAKE VAR = NEW FILTER_OBJECT(ARGS[]);
@@ -284,18 +259,28 @@ function loginCheck(x){
 		user : $('#manageAccount .login .form input[name="lname"]').val(),
 		pass : x.value
 	}
+
+	var status = false;
+
 	$.ajax({
 		url :'homepage/loginCheck',
 		dataType : 'json',
 		type : 'POST',
 		data : param,
 		success : function(data){
-			if(data[0].Status == 0)
+			if(data[0].Status == 0){
 				x.setCustomValidity('Incorrect Username or Password');
-			else
+				x.reportValidity();
+			}
+			else{
 				x.setCustomValidity('');
-		}
+				status = true;
+			}
+		},
+		async : false
 	});
+
+	return status;
 }
 
 function getSessionData(){
@@ -362,6 +347,34 @@ function getMostPopular(){
 		}
 	});
 }
+
+function submitLogin(x){
+		console.log($(x).parent().parent().find('input[type="password"]')[0]);
+		$(x).parent().parent().find('input[type="password"]')[0].setCustomValidity('');
+		$('#manageAccount .login .form').submit(function(){
+			if(!loginCheck($(this).find('input[type="password"]')[0]))
+				return false;
+
+			var inuser = $(this).find('input[name="lname"]').val();
+			var inpass = $(this).find('input[name="lpass"]').val();
+
+			var param = {
+				user : inuser,
+				pass : inpass
+			}
+
+			$.ajax({
+				url :'homepage/loginAccount',
+				dataType : 'json',
+				type : 'POST',
+				data : param,
+				complete : function(data){
+					console.log(data.responseText);
+					localStorage.setItem("username", JSON.stringify(inuser));	
+				}
+			});
+		});
+	}
 
 function logout(){
 	$.ajax({
