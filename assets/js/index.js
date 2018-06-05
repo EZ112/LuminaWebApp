@@ -118,9 +118,9 @@ function loadNewsLatestUpdate(){
 			var container = $('.latest_news_wrapper');
 
 			$.each(data,function(key,val){
-				container.append(`<span onclick="" style="background-image: url(`+val.NewsThumbnail+`)"></span>`);
+				container.append(`<span onclick="location.href='news/news?news=`+val.NewsID+`'" style="background-image: url(`+val.NewsThumbnail+`)"></span>`);
 				container.append(`<div>
-									<div onclick="" class="news_title">`+val.NewsTitle+`</div>
+									<div onclick="location.href='news/news?news=`+val.NewsID+`'" class="news_title">`+val.NewsTitle+`</div>
 										<div class="news_content">
 											`+val.Headline+`
 									</div>

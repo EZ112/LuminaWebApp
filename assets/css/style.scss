@@ -133,7 +133,7 @@ input{ padding: 0; } //New
 	background-color: white;
 	padding: 1.5vw 2vw;
 
-	grid-template-columns: 3fr 2fr 5vw 1fr;
+	grid-template-columns: 3fr 2fr 1.25fr;
 	grid-template-rows: 2vw; 
 
 	font-family: "QS_Book";
@@ -284,6 +284,7 @@ input{ padding: 0; } //New
 	#notLogged{
 		display: none;
 		@include setText(1.5vw, $cText, "QS_Book");
+		margin-left: 40%;
 		cursor: pointer;
 	}
 	#notLogged:hover{

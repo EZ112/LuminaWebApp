@@ -84,7 +84,7 @@
 		#warning{ background-color: $cRed; border-color: $cRed; }
 		#success{ background-color: $cGreen; border-color: $cGreen; }
 		
-		#table{
+		.table{
 			width: 50%;
 			border: 1px solid black;
 			//border-radius: 3px;
@@ -96,7 +96,7 @@
 				padding: 1% 2.5%;
 			}
 
-			#tableContent{
+			.tableContent{
 				#empty{ text-align: center; @include setText(1.25vw, $cText, "QS_Book"); padding: 1% 0; display: none; }
 				.tableObject{
 					@include setText(1.15vw, $cText, "QS_Book");

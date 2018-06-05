@@ -143,7 +143,7 @@ input {
   z-index: 99;
   background-color: white;
   padding: 1.5vw 2vw;
-  grid-template-columns: 3fr 2fr 5vw 1fr;
+  grid-template-columns: 3fr 2fr 1.25fr;
   grid-template-rows: 2vw;
   font-family: "QS_Book";
 }
@@ -304,6 +304,7 @@ input {
   font-size: 1.5vw;
   color: #888;
   font-family: "QS_Book";
+  margin-left: 40%;
   cursor: pointer;
 }
 #widget_login #Logged {

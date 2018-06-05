@@ -45,7 +45,7 @@ $(document).ready(function(){
 		sessionData.loginSubStatus!=null){
 		getFollowing(sessionData.loginUser);
 		$('#widget_notification').css('visibility','visible');
-		$('#Logged').append(sessionData.loginUser);
+		$('#Logged').append("Welcome, "+sessionData.loginUser);
 		$('#Logged').show();
 		$('.nav').eq(2).show();
 	}

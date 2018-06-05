@@ -27,7 +27,7 @@
 				<a class="nav_subnav" href="services/faq">FAQ</a>
 				<a class="nav_subnav" href="services/contact">Contact Us</a>
 				<br>
-				<a class="nav_subnav" href="terms.html">Term of Services &copy; 2018 Lumina</a>
+				<a class="nav_subnav" href="services/terms">Term of Services &copy; 2018 Lumina</a>
 			</div>
 		</div>
 	</div>

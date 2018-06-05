@@ -1,3 +1,10 @@
+$(document).ready(function(){
+	main();
+	loadSeries();
+	loadStudio();
+	loadSource();
+});
+
 function changeInsertEpisodeStatus(){
 	var status = document.getElementById("status");
 	var curr = parseInt(document.getElementById("currEpisode").innerHTML);
@@ -68,10 +75,14 @@ function switchForm(x){
 	if(active == "Master"){
 		var form = document.getElementById("formMaster");
 		var label = document.querySelector("#formMaster #label");
-		var tableHeading = document.querySelector("#table #tableHeading");
+		var table = document.getElementsByClassName("table");
 		
 		label.innerHTML = obj;
-		tableHeading.innerHTML = obj;
+
+		for(var i = 0; i < table.length; ++i){
+			table[i].style.display = "none";
+			if(table[i].getAttribute("id") == obj+"Table") table[i].style.display = "block";
+		}
 
 		var action;
 		if(obj == "Series"){ action = "#"; }
@@ -103,4 +114,53 @@ function main(){
 	insertGenre();
 }
 
-main();
+function loadSeries(){
+	$.ajax({
+		url :'staff/MasterConfig/getSeries',
+		dataType : 'json',
+		type : 'POST',
+		success : function(data){
+			var container = $('#SeriesTable .tableContent');
+			$.each(data,function(key,val){
+				container.append(`<div class="tableObject">
+										<span class="title">`+val.Series+`</span>
+										<i class="fas fa-times" onclick="deleteTableObject(this.parentElement);"></i>
+									</div>`);
+			});
+		}
+	}); 
+}
+
+function loadStudio(){
+	$.ajax({
+		url :'staff/MasterConfig/getStudio',
+		dataType : 'json',
+		type : 'POST',
+		success : function(data){
+			var container = $('#StudioTable .tableContent');
+			$.each(data,function(key,val){
+				container.append(`<div class="tableObject">
+										<span class="title">`+val.Studio+`</span>
+										<i class="fas fa-times" onclick="deleteTableObject(this.parentElement);"></i>
+									</div>`);
+			});
+		}
+	}); 
+}
+
+function loadSource(){
+	$.ajax({
+		url :'staff/MasterConfig/getSource',
+		dataType : 'json',
+		type : 'POST',
+		success : function(data){
+			var container = $('#SourceTable .tableContent');
+			$.each(data,function(key,val){
+				container.append(`<div class="tableObject">
+										<span class="title">`+val.Source+`</span>
+										<i class="fas fa-times" onclick="deleteTableObject(this.parentElement);"></i>
+									</div>`)
+			});
+		}
+	}); 
+}
