@@ -1,0 +1,117 @@
+.page {
+  grid-template-columns: 15vw auto;
+  grid-template-rows: 5vw auto;
+  grid-template-areas: "header widget"  "header content";
+}
+
+.content {
+  grid-area: content;
+  grid-template-rows: auto auto auto;
+  padding: 2.5% 5%;
+  font-size: 1.75vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+.content .google_ads {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #42beff;
+  height: 8vw;
+}
+.content .google_ads .section_title {
+  margin: 0;
+  text-align: center;
+  font-size: 2vw;
+  color: white;
+  font-family: "QS_Book";
+}
+.content .pointAnime .animeContainer {
+  grid-template-columns: 30% 50% auto;
+  margin: 0 0 1.5% 0;
+}
+.content .pointAnime .animeContainer .thumbnail_container {
+  width: 80%;
+  height: 10vw;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}
+.content .pointAnime .animeContainer .info_container #title {
+  font-size: 1.75vw;
+  color: #888;
+  font-family: "QS_Book";
+  font-weight: bolder;
+  display: inline-block;
+  margin: 1.25% 0;
+}
+.content .pointAnime .animeContainer .info_container #title:hover {
+  border-bottom: 1.25px solid #888;
+}
+.content .pointAnime .animeContainer .info_container #latest, .content .pointAnime .animeContainer .info_container #follower {
+  font-size: 1.1vw;
+  color: #888;
+  font-family: "QS_Book";
+  padding: 0.5% 0;
+}
+.content .pointAnime .animeContainer .button_container {
+  position: relative;
+}
+.content .pointAnime .animeContainer .button_container .button {
+  font-size: 1.25vw;
+  color: white;
+  font-family: "QS_Book";
+  padding: 2.5% 10%;
+  background-color: #42beff;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.content .pointEpisode {
+  margin-top: 1.5%;
+}
+.content .pointEpisode .episodeContainer {
+  grid-template-columns: 30% auto;
+  margin: 1.5% 0 0 0;
+  cursor: pointer;
+}
+.content .pointEpisode .episodeContainer .thumbnail_container {
+  width: 80%;
+  height: 10vw;
+  background-position: center;
+  background-size: cover;
+}
+.content .pointEpisode .episodeContainer .info_container #episode {
+  font-size: 1.75vw;
+  color: #42beff;
+  font-family: "QS_Book";
+  display: inline-block;
+  margin: 1.25% 0;
+}
+.content .pointEpisode .episodeContainer .info_container #episode:hover {
+  border-bottom: 1.25px solid #42beff;
+}
+.content .pointEpisode .episodeContainer .info_container #anime, .content .pointEpisode .episodeContainer .info_container #views, .content .pointEpisode .episodeContainer .info_container #airDate {
+  font-size: 1.1vw;
+  color: #888;
+  font-family: "QS_Book";
+  padding: 0.5% 0;
+}
+
+.content > div {
+  padding: 1% 0;
+}
+
+.page-load-status {
+  padding-top: 20px;
+  border-top: 1px solid #DDD;
+  text-align: center;
+  color: #777;
+}
+
+/*# sourceMappingURL=animesearch.css.map */

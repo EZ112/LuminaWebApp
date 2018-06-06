@@ -1,0 +1,68 @@
+@import 'colors';
+@import 'functions';
+
+.page{
+	grid-template-columns: 15vw auto;
+	grid-template-rows: 10vw auto;
+	grid-template-areas: 
+	"header head_title" 
+	"header content";
+}
+
+pink{ color: $cRed; }
+
+.content{
+	grid-area: content;
+	padding: 2.5% 5%;
+	@include setText(1.5vw, $cText, "QS_Book");
+
+	.heading{ font-weight: bolder; margin-bottom: 1%; }
+	.comment{ font-size: 1vw; font-style: italic; }
+
+	.line {
+	    overflow: visible;
+	    padding: 0;
+	    border: none;
+	    border-top: 1.5px solid $cText;
+	    color: $cText;
+	    text-align: center;
+	    margin: 2.5% 0 0.5% 0;
+	    width: 40%;
+	    font-size: 0.75vw;
+	}
+	.line:after {
+	    content: "OR";
+	    display: inline-block;
+	    position: relative;
+	    top: -0.7em;
+	    font-size: 1.5em;
+	    padding: 0 0.25em;
+	    background: white;
+	}
+
+	.form{
+		grid-template-rows: auto auto auto;
+		margin-top: 2.5%;
+		width: 80%;
+
+		input[type="text"], textarea{
+			@include setText(1.25vw, $cText, "QS_Book");
+			padding: 0.5%;
+			margin: 1% 0 2.5% 0;
+			width: 100%;
+			border: 1px solid $cText;
+		}
+		textarea{ height: 10vw; }
+
+		.button{
+			@include setText(1.25vw, white, "QS_Book");
+			padding: 1% 5%;
+			background-color: $cP;
+			border-radius: 50px;
+			border: none;
+			cursor: pointer;
+			float: right;
+			transform: translateX(5%);
+		}
+	}
+}

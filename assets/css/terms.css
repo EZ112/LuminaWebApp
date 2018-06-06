@@ -1,0 +1,31 @@
+.page {
+  grid-template-columns: 15vw 85vw;
+  grid-template-rows: 10vw auto;
+  grid-template-areas: "header head_title" "header content";
+  overflow: hidden;
+}
+
+.content {
+  grid-area: content;
+  padding: 3.5% 5% 5% 5%;
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+.content .contentTitle {
+  display: inline-block;
+  font-size: 1.5vw;
+  color: #888;
+  font-family: "QS_Book";
+  padding: 1.5% 0 1.5% 0;
+}
+.content a {
+  font-style: italic;
+  color: #42beff;
+  border: 1px solid transparent;
+}
+.content a:hover {
+  border-bottom: 1.25px solid #42beff;
+}
+
+/*# sourceMappingURL=terms.css.map */

@@ -1,0 +1,35 @@
+@import 'colors';
+@import 'functions';
+
+.page{
+	height: 100vh;
+	@include setText(1.2vw, $cText, "QS_Light");
+}
+
+.status{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	
+	a{
+		@include setText(1.25vw, $cBlue, "QS_Light");
+	}
+
+	i{
+		font-size: 6vw;
+	}
+
+	.fa-check{
+		color: $cGreen;
+	}
+
+	.fa-times{
+		color: $cRed;
+	}
+
+	.section_title{
+		text-align: center;
+	}
+}
+

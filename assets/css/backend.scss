@@ -1,0 +1,137 @@
+@import 'colors';
+@import 'functions';
+
+.navbar{
+	height: 100vw;
+	.logo{ height: 6vw; }
+
+	.nav_backend{
+		div{
+			@include setText(1.5vw, #555, "QS_Book");
+			//text-align: center;
+			cursor: pointer;
+			height: 2.5vw;
+			line-height: 2.5vw;
+			padding: 5% 15%;
+			vertical-align: middle;
+			transition: 0.2s ease-in;
+		}
+		div:hover{
+			background-color: $cP;
+			color: white;
+		}
+	}
+}
+
+.page{
+	grid-template-columns: 15vw 85vw;
+	grid-template-areas: 
+	"header head_title"
+	"header content";
+}
+
+.content{
+	grid-area: content;
+	#master, #insert{ display: none; padding: 2.5%; }
+
+	#master{
+		display: block; //Initial display
+
+		#selectMaster{
+			width: 50%;
+			padding: 0.5%;
+			font-size: 1.25vw;
+		}
+
+		#formMaster{
+			width: 50%;
+			margin: 1.75vw 0;
+			font-family: "QS_Book";
+			color: $cText;
+
+			#label{ 
+				font-size: 1.25vw;
+				font-weight: bold;
+				display: inline-block;
+				width: 12.5%;
+			}
+			input[type="text"]{ 
+				font-size: 1.15vw;
+				padding: 0.45%;
+				width: 71.5%;
+				margin-right: 0.25vw;
+			}
+			#submitForm{ 
+				font-size: 1.2vw;
+				padding: 0.5%;
+				border: 1px solid $cText;
+				border-radius: 5px;
+				cursor: pointer;
+				transform: 0.2s ease-in;
+			}
+		}
+		
+		.notif{
+			@include setText(1.25vw, "", "QS_Book");
+			border: 1px solid;
+			padding: 0.5% 0;
+			margin-bottom: 1.75vw;
+			width: 50%;
+			text-align: center;
+			color: white;
+			display: none;
+		}
+		#warning{ background-color: $cRed; border-color: $cRed; }
+		#success{ background-color: $cGreen; border-color: $cGreen; }
+		
+		.table{
+			width: 50%;
+			border: 1px solid black;
+			//border-radius: 3px;
+
+			#tableHeading{
+				@include setText(1.5vw, $cText, "QS_Book");
+				font-weight: bold;
+				border-bottom: 1px solid black;
+				padding: 1% 2.5%;
+			}
+
+			.tableContent{
+				#empty{ text-align: center; @include setText(1.25vw, $cText, "QS_Book"); padding: 1% 0; display: none; }
+				.tableObject{
+					@include setText(1.15vw, $cText, "QS_Book");
+					padding: 1% 2.5%;
+					.fa-times{
+						color: $cRed;
+						cursor: pointer;
+						float: right;
+					}
+				}
+			}
+		}
+	}
+
+	#insert{
+		.formInsert{
+			@include setText(1.25vw, $cText, "QS_Book");
+			
+			.row{
+				.warning{ @include setText(0.75vw, $cRed, "QS_Book"); }
+				.cell{ padding: 1% 0; }
+			}
+			.label{ 
+				width: 12.5vw;
+				font-weight: bold; 
+				@include setText(1.25vw, $cText, "QS_Book"); 
+			}
+			#genreContainer{
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: 1fr 1fr 1fr 1fr;
+				margin-top: 1%;
+			}
+		}
+		.anime{ display: block; }
+		.episode, .news{ display: none; }
+	}
+}

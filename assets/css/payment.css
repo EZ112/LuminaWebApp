@@ -1,0 +1,112 @@
+.page {
+  grid-template-columns: 15vw auto;
+  grid-template-rows: 5vw auto;
+  grid-template-areas: "header widget" "header main-content";
+}
+
+.content {
+  grid-area: main-content;
+  padding: 5%;
+}
+.content #formClass {
+  /* .row div:last-child{ text-align: left; } */
+}
+.content #formClass .row {
+  grid-template-columns: 60% 20% 20%;
+  margin-bottom: 1.75%;
+}
+.content #formClass .row div div {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin: 1%;
+}
+.content #formClass .row div .ddllabel, .content #formClass .row div .txtlabel {
+  font-size: 1.25vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+.content #formClass .row div #selectBank {
+  width: 51.8%;
+  padding: 0.5%;
+  font-size: 1.25vw;
+}
+.content #formClass .row div input {
+  font-size: 1.25vw;
+  padding: 0.5%;
+  width: 50%;
+}
+.content #formClass .row .creditCard {
+  display: none;
+}
+.content #formClass .row .question {
+  font-size: 1.75vw;
+  color: #42beff;
+  font-family: "QS_Book";
+  font-weight: bold;
+}
+.content #formClass .row .text {
+  font-size: 1.5vw;
+  color: #888;
+  font-family: "QS_Book";
+}
+.content #formClass .row .warning {
+  font-size: 1vw;
+  color: #f1637e;
+  font-family: "QS_Book";
+}
+.content #formClass .row .basic, .content #formClass .row .premium {
+  font-size: 1.5vw;
+  color: white;
+  font-family: "QS_Book";
+  height: 9vw;
+  width: 9vw;
+  position: relative;
+  margin: auto;
+  border-radius: 5px;
+}
+.content #formClass .row .basic span, .content #formClass .row .premium span {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width: 1.75vw;
+  height: 1.75vw;
+  border: 0.2vw solid white;
+  transform: translate(-50%, -50%);
+}
+.content #formClass .row .basic .label, .content #formClass .row .premium .label {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+}
+.content #formClass .row .basic input:checked ~ .custom_radio, .content #formClass .row .premium input:checked ~ .custom_radio {
+  background-color: inherit;
+}
+.content #formClass .row .basic {
+  background-color: #555;
+}
+.content #formClass .row .premium {
+  background-color: #42beff;
+}
+.content #formClass .row .fas {
+  font-size: 1.75vw;
+  color: #4bceaf;
+}
+.content #formClass .row .button {
+  width: 70%;
+  font-size: 1.5vw;
+  margin-top: 5%;
+}
+.content #formClass .row div:nth-child(2) {
+  text-align: center;
+}
+.content #formClass .row div:nth-child(3) {
+  text-align: center;
+}
+.content #formClass .transferBank div {
+  text-align: left !important;
+}
+.content #formClass .creditCard div {
+  text-align: left !important;
+}
+
+/*# sourceMappingURL=payment.css.map */

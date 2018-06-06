@@ -1,0 +1,117 @@
+@import 'colors';
+@import 'functions';
+
+.page{
+	grid-template-columns: 15vw auto;
+	grid-template-rows: 5vw auto;
+	grid-template-areas: 
+	"header widget" 
+	"header content";
+}
+
+.content{
+	grid-area: content;
+
+	grid-template-rows: auto auto auto;
+	padding: 2.5% 5%;
+	@include setText(1.75vw, $cText, "QS_Book");
+
+	.google_ads{
+		display: none;
+		justify-content: center;
+		align-items: center;
+		background-color: $cP;
+		height: 8vw;
+		.section_title{
+			margin: 0;
+			text-align: center;
+			@include setText(2vw, white, "QS_Book");
+		}
+	}
+
+	.pointAnime{
+		.animeContainer{
+			grid-template-columns: 30% 50% auto;
+			margin: 0 0 1.5% 0; 
+
+			.thumbnail_container{
+				width: 80%;
+				height: 10vw;
+				background-position: center;
+    			background-size: cover;
+    			cursor: pointer;
+			}
+
+			.info_container{
+				#title{ 
+					@include setText(1.75vw, $cText, "QS_Book"); 
+					font-weight: bolder; 
+					display: inline-block;
+					margin: 1.25% 0;
+				}
+				#title:hover{ border-bottom: 1.25px solid $cText; }
+				#latest, #follower{ 
+					@include setText(1.1vw, $cText, "QS_Book"); 
+					padding: 0.5% 0;
+				}			
+			}
+
+			.button_container{
+				position: relative;
+
+				.button{
+					@include setText(1.25vw, white, "QS_Book");
+					padding: 2.5% 10%;
+					background-color: $cP;
+					border-radius: 50px;
+					border: none;
+					cursor: pointer;
+					display: inline-block;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
+	}
+
+	.pointEpisode{
+		margin-top: 1.5%;
+
+		.episodeContainer{
+			grid-template-columns: 30% auto;
+			margin: 1.5% 0 0 0; 
+			cursor: pointer;
+
+			.thumbnail_container{
+				width: 80%;
+				height: 10vw;
+				background-position: center;
+    			background-size: cover;
+			}
+
+			.info_container{
+				#episode{ 
+					@include setText(1.75vw, $cP, "QS_Book"); 
+					display: inline-block;
+					margin: 1.25% 0;
+				}
+				#episode:hover{ border-bottom: 1.25px solid $cP; }
+				#anime, #views, #airDate{ 
+					@include setText(1.1vw, $cText, "QS_Book"); 
+					padding: 0.5% 0;
+				}			
+			}
+		}
+	}
+}
+
+.content > div{ padding: 1% 0; }
+
+.page-load-status {
+  padding-top: 20px;
+  border-top: 1px solid #DDD;
+  text-align: center;
+  color: #777;
+}

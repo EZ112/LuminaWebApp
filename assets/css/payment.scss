@@ -1,0 +1,103 @@
+@import 'colors';
+@import 'functions';
+
+.page{
+	grid-template-columns: 15vw auto;
+	grid-template-rows: 5vw auto;
+	grid-template-areas:
+	"header widget"
+    "header main-content";
+}
+
+.content{
+	grid-area: main-content;
+	padding: 5%;
+
+	#formClass{
+		.row{
+			grid-template-columns: 60% 20% 20%;
+			margin-bottom: 1.75%;
+
+			div{
+				div{
+				    display: grid;
+					grid-template-columns: 1fr 3fr;
+					margin: 1%;
+				}
+				.ddllabel,.txtlabel{
+					@include setText(1.25vw, $cText, "QS_Book");
+				}
+				#selectBank{
+					width: 51.8%;
+					padding: 0.5%;
+					font-size: 1.25vw;
+				}
+				input{ 
+					font-size: 1.25vw;
+					padding: 0.5%;
+					width: 50%;
+				}
+			}
+
+			.creditCard{
+				display: none;
+			}
+
+			.question{
+				@include setText(1.75vw, $cP, "QS_Book");
+				font-weight: bold;
+			}
+			.text{ @include setText(1.5vw, $cText, "QS_Book"); }
+			.warning{ @include setText(1vw, $cRed, "QS_Book"); }
+
+			.basic, .premium{
+				@include setText(1.5vw, white, "QS_Book");
+				height: 9vw;
+				width: 9vw;
+				position: relative;
+				margin: auto;
+				border-radius: 5px;
+
+				span{
+					position: absolute;
+					left: 50%;
+					top: 30%;
+					width: 1.75vw;
+					height: 1.75vw;
+					border: 0.2vw solid white;
+					transform: translate(-50%, -50%);
+				}
+
+				.label{
+					position: absolute;
+					bottom: 10%;
+					left: 10%;
+				}
+
+				input:checked ~ .custom_radio{
+					background-color: inherit;
+				}
+			}
+			.basic{ background-color: #555; }
+			.premium{ background-color: $cP; }
+
+			.fas{
+				font-size: 1.75vw;
+				color: $cGreen;
+			}
+
+			.button{
+				width: 70%;
+    			font-size: 1.5vw;
+				margin-top: 5%;
+			}
+		}
+		
+		
+		.row div:nth-child(2){ text-align: center;} 
+		.row div:nth-child(3){ text-align: center;} 
+		.transferBank div{ text-align: left !important;} 
+		.creditCard div{ text-align: left !important;} 
+		/* .row div:last-child{ text-align: left; } */
+	}
+}
