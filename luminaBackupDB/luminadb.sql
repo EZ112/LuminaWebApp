@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2018 at 07:25 PM
+-- Generation Time: Jul 03, 2018 at 10:03 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -44,6 +44,25 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_CheckUsername` (IN `InUsername` 
 	SELECT EXISTS(SELECT u.Username FROM user u
           WHERE u.Username = InUsername) AS Status;
 END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_deleteWatchHistory` (IN `InUsername` VARCHAR(25), IN `InHistoryID` INT)  BEGIN
+    DELETE h FROM watchhistories h
+        JOIN user u ON h.UserID = u.UserID
+    WHERE u.Username = InUsername AND
+       h.WatchHistoryID = InHistoryID;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_DoPayment` (IN `InBankID` INT, IN `InPaymentStatus` VARCHAR(20), IN `InPaymentPlan` VARCHAR(20), IN `InUsername` VARCHAR(25), IN `InAccountNumber` VARCHAR(20), IN `InAccountName` VARCHAR(30), IN `CardExpDate` DATE)  BEGIN
+     SET @UserID = (SELECT u.UserID FROM user u WHERE u.Username = InUsername);
+     
+     INSERT INTO `paymenthistory` (`PaymentHistoryID`, `UserID`, `BankID`, `PaymentStatus`, `AccountName`, `AccountNumber`, `PaymentPlan`, `CardExpDate`, `PaymentTime`) VALUES (NULL, @UserID, InBankID, InPaymentStatus, InAccountName, InAccountNumber, InPaymentPlan, CardExpDate, NOW());
+     
+     UPDATE user u SET u.SubStatus = InPaymentStatus, 
+     u.SubExpDate = (CASE WHEN InPaymentPlan = 'Monthly' 
+     THEN CAST(DATE_SUB(NOW(), INTERVAL -1 MONTH) AS DATE) 
+     ELSE CAST(DATE_SUB(NOW(), INTERVAL -1 YEAR) AS DATE) END)
+     WHERE u.Username = InUsername;
+ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetAnimeDetail` (IN `InAnimeID` INT)  BEGIN
 
@@ -178,6 +197,10 @@ JOIN durations d ON a.DurationID = d.DurationID,
     SET outTotalRow = FOUND_ROWS();
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetBankDetail` ()  BEGIN
+	SELECT * FROM bankdetail;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetDuration` ()  BEGIN
 	SELECT * FROM durations;
 END$$
@@ -221,6 +244,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetGenre` ()  BEGIN
 	SELECT * FROM genres;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getLatestNews` (IN `InNewsID` INT)  BEGIN
+    SELECT DATE_FORMAT(n.PublishDate, "%d %b %Y") as PublishDate, n.NewsTitle, n.NewsID
+    FROM news n
+    WHERE n.NewsID <> InNewsID
+    ORDER BY n.PublishDate DESC
+    LIMIT 30;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetMostPopular` ()  BEGIN
 	SELECT CASE WHEN LENGTH(ani.AnimeTitle) > 12 THEN CONCAT(SUBSTRING(ani.AnimeTitle,1,10), '...') ELSE ani.AnimeTitle END AS AnimeTitle, ani.AnimeID, que.Follower, que.Rank FROM anime ani,
     (SELECT 
@@ -239,8 +270,16 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetMostPopular` ()  BEGIN
     LIMIT 10;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getNewsDetail` (IN `InNewsID` INT)  BEGIN
+    SELECT t.Tag, n.NewsTitle, n.writer, DATE_FORMAT(n.PublishDate, "%d %b %Y") as PublishDate, 
+    n.NewsContent, n.NewsImage
+    FROM news n 
+    JOIN tags t ON t.TagsID = n.TagsID
+    WHERE n.NewsID = InNewsID;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetNewsLatestUpdate` ()  BEGIN
-    SELECT n.NewsTitle, n.PublishDate, n.NewsThumbnail, n.Headline 
+    SELECT n.NewsID, n.NewsTitle, n.PublishDate, n.NewsThumbnail, n.Headline 
     FROM news n
     ORDER BY n.PublishDate DESC
     LIMIT 2;
@@ -250,6 +289,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetNextEps` (IN `InAnimeID` INT,
     SELECT e.AnimeID, e.EpisodeID, e.EpsTitle, e.Episode, e.EpsThumbnail FROM episodes e
     WHERE e.AnimeID = InAnimeID
     AND e.Episode = (IncurrEps+1);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetPaymentHistory` ()  BEGIN
+    SELECT u.Username, b.BankName, p.PaymentStatus, p.PaymentPlan ,
+    p.PaymentTime
+    FROM paymenthistory p
+    JOIN user u ON u.UserID = p.UserID
+    JOIN bankdetail b ON b.BankID = p.BankID;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetPrevEps` (IN `InAnimeID` INT, IN `IncurrEps` INT)  BEGIN
@@ -300,6 +347,18 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetRelatedAnime` (IN `InAnimeID`
     LIMIT 9;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetSeries` ()  BEGIN
+	SELECT * FROM series;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetSource` ()  BEGIN
+	SELECT * FROM source;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetStudio` ()  BEGIN
+	SELECT * FROM studio;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetTags` ()  BEGIN
 	SELECT * FROM tags;
 END$$
@@ -310,16 +369,26 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetTopAiringAnime` (IN `InUserna
     ON a.ReleaseSeasonID = rs.ReleaseSeasonID
     LEFT JOIN followanime f
     ON a.AnimeID = f.AnimeID
-    JOIN user u ON u.UserID = f.UserID
+    LEFT JOIN user u ON u.UserID = f.UserID
     WHERE YEAR(a.AnimeReleaseDate) = YEAR(NOW())
     AND rs.SeasonFlag = FLOOR((MONTH(NOW())-1)/3)
     GROUP BY a.animeTitle, a.Thumbnail, a.AnimeReleaseDate
     ORDER BY Follower DESC, a.AnimeTitle ASC) que1
     LEFT JOIN (SELECT a.AnimeID, a.AnimeTitle, u.Username, f.FollowStatus FROM anime a 
-    JOIN followanime f ON f.AnimeID = a.AnimeID
-    JOIN user u ON u.UserID = f.UserID
+    LEFT JOIN followanime f ON f.AnimeID = a.AnimeID
+    LEFT JOIN user u ON u.UserID = f.UserID
     WHERE u.Username LIKE InUsername) que2 ON que1.AnimeID = que2.AnimeID
     LIMIT 5;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getWatchHistory` (IN `InUsername` VARCHAR(25))  BEGIN
+    SELECT h.WatchHistoryID, e.EpsThumbnail, e.EpisodeID, DATE_FORMAT(e.EpsDateAir, "%d %b %Y") as DateAir, e.EpsTitle, a.AnimeTitle, e.EpisodeTotalViews, h.UserID, h.WatchTime 
+    FROM watchhistories h
+    JOIN episodes e ON e.EpisodeID = h.EpisodeID
+    JOIN anime a ON a.AnimeID = e.AnimeID
+    JOIN user u ON u.UserID = h.UserID
+    WHERE InUsername = u.Username
+    ORDER BY DateAir DESC;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_InsertUser` (IN `InUsername` VARCHAR(25), IN `InPass` VARCHAR(30), IN `InEmail` VARCHAR(25), IN `InGender` VARCHAR(10))  BEGIN
@@ -372,7 +441,7 @@ INSERT INTO `anime` (`AnimeID`, `SeriesID`, `StudioID`, `SourceID`, `ReleaseSeas
 (1, 1, 3, 3, 2, 2, 2, 'Yuru Camp△', 'While the perfect getaway for most girls her age might be a fancy vacation with their loved ones, Rin \r\n					 Shima\'s ideal way of spending her days off is camping alone at the base of Mount Fuji. From pitching her tent\r\n					 to gathering firewood, she has always done everything by herself, and has no plans of leaving her little\r\n					 solitary world.\r\n					<br><br>\r\n						However, what starts off as one of Rin\'s usual camping sessions somehow ends up as a surprise \r\n					get-together for two when the lost Nadeshiko Kagamihara is forced to take refuge at her campsite. \r\n					Originally intending to see the picturesque view of Mount Fuji for herself, Nadeshiko\'s plans are disrupted when she ends up falling asleep partway to her destination. Alone and with no other choice, she seeks help from the only other person nearby. Despite their hasty introductions, the two girls nevertheless enjoy the chilly night together, eating ramen and conversing while the campfire keeps them warm. And even after Nadeshiko\'s sister finally picks her up later that night, both girls silently ponder the possibility of another camping trip together.', 'YuruCampS001', 12, 'assets/image/yurucamp.jpg', 'assets/image/yuruwall.png', 'wistia_async_iz35go3560', '<script src=\"https://fast.wistia.com/embed/medias/iz35go3560.jsonp\" async></script>', '2018-05-01'),
 (2, 2, 1, 2, 2, 2, 2, 'Violet Evergarden', 'The Great War finally came to an end after four long years of conflict; fractured in two, the continent of Telesis slowly began to flourish once again. Caught up in the bloodshed was Violet Evergarden, a young girl raised for the sole purpose of decimating enemy lines. Hospitalized and maimed in a bloody skirmish during the War\'s final leg, she was left with only words from the person she held dearest, but with no understanding of their meaning.\r\n\r\nRecovering from her wounds, Violet starts a new life working at CH Postal Services after a falling out with her new intended guardian family. There, she witnesses by pure chance the work of an \"Auto Memory Doll,\" amanuenses that transcribe people\'s thoughts and feelings into words on paper. Moved by the notion, Violet begins work as an Auto Memory Doll, a trade that will take her on an adventure, one that will reshape the lives of her clients and hopefully lead to self-discovery.', 'VioletEvergardenS001', 13, 'assets/image/violet.jpg', '', '', '', '2018-05-11'),
 (3, 3, 2, 3, 2, 2, 2, 'Karakai Jouzu no Takagi-san', '\"If you blush, you lose.\"\r\n\r\nLiving by this principle, the middle schooler Nishikata gets constantly made fun of by his seat neighbor Takagi-san. With his pride shattered to pieces, he vows to turn the tables and get back at her some day. And so, he attempts to tease her day after day, only to find himself victim to Takagi-san\'s ridicule again sooner than later. Will he be able to make Takagi-san blush from embarrassment even once in the end?', 'KarakaiJouzuS001', 12, 'assets/image/karakai.jpg', '', '', '', '2018-05-08'),
-(4, 4, 4, 2, 2, 2, 2, 'Overlord', 'The final hour of the popular virtual reality game Yggdrasil has come. However, Momonga, a powerful wizard and master of the dark guild Ainz Ooal Gown, decides to spend his last few moments in the game as the servers begin to shut down. To his surprise, despite the clock having struck midnight, Momonga is still fully conscious as his character and, moreover, the non-player characters appear to have developed personalities of their own!\r\n\r\nConfronted with this abnormal situation, Momonga commands his loyal servants to help him investigate and take control of this new world, with the hopes of figuring out what has caused this development and if there may be others in the same predicament.', 'OverlordS001', 13, 'assets/image/overlord.png', '', '', '', '2018-05-08'),
+(4, 4, 4, 2, 2, 2, 2, 'Overlord II', 'The final hour of the popular virtual reality game Yggdrasil has come. However, Momonga, a powerful wizard and master of the dark guild Ainz Ooal Gown, decides to spend his last few moments in the game as the servers begin to shut down. To his surprise, despite the clock having struck midnight, Momonga is still fully conscious as his character and, moreover, the non-player characters appear to have developed personalities of their own!\r\n\r\nConfronted with this abnormal situation, Momonga commands his loyal servants to help him investigate and take control of this new world, with the hopes of figuring out what has caused this development and if there may be others in the same predicament.', 'OverlordS001', 13, 'assets/image/overlord.png', '', '', '', '2018-05-08'),
 (5, 5, 5, 3, 2, 2, 2, 'Koi wa Ameagari no You ni', 'Akira Tachibana, a reserved high school student and former track runner, has not been able to race the same as she used to since she experienced a severe foot injury. And although she is regarded as attractive by her classmates, she is not interested in the boys around school.\r\n\r\nWhile working part-time at the Garden Cafe, Akira begins to develop feelings for the manager—a 45-year-old man named Masami Kondou—despite the large age gap. Kondou shows genuine concern and kindness toward the customers of his restaurant, which, while viewed by others as soft or weak, draws Akira to him. Spending time together at the restaurant, they grow closer, which only strengthens her feelings. Weighed down by these uncertain emotions, Akira finally resolves to confess, but what will be the result?', 'KoiwaS001', 12, 'assets/image/koiwa.jpg', '', '', '', '2018-05-29'),
 (6, 1, 3, 3, 2, 2, 2, 'Yuru Camp△ Season 2', NULL, 'YuruCampS002', 13, NULL, '', '', '', '2018-06-01');
 
@@ -435,20 +504,6 @@ INSERT INTO `bankdetail` (`BankID`, `BankName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
---
-
-CREATE TABLE `comments` (
-  `CommentsID` int(11) NOT NULL,
-  `EpisodeID` int(11) DEFAULT NULL,
-  `UserID` int(11) NOT NULL,
-  `CommentContent` longtext,
-  `PostingDate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `durations`
 --
 
@@ -489,7 +544,7 @@ CREATE TABLE `episodes` (
 --
 
 INSERT INTO `episodes` (`EpisodeID`, `AnimeID`, `EpsTitle`, `EpsDateAir`, `Episode`, `EpisodeTotalViews`, `EpsThumbnail`, `StreamVideo`, `HeadScriptVideo`) VALUES
-(1, 1, 'Mount Fuji and Curry Noodles', '2018-01-04 00:00:00', 1, 15, 'assets/image/YuruCampEps1.jpg', 'wistia_async_zqo0g6k2c5', '<script src=\"https://fast.wistia.com/embed/medias/zqo0g6k2c5.jsonp\" async></script>'),
+(1, 1, 'Mount Fuji and Curry Noodles', '2018-01-04 00:00:00', 1, 19, 'assets/image/YuruCampEps1.jpg', 'wistia_async_zqo0g6k2c5', '<script src=\"https://fast.wistia.com/embed/medias/zqo0g6k2c5.jsonp\" async></script>'),
 (2, 1, 'Welcome to the Outdoor Activities Club', '2018-01-11 00:00:00', 2, 2, 'assets/image/YuruCampEps2.jpg', 'wistia_async_nszp6qskon', '<script src=\"https://fast.wistia.com/embed/medias/nszp6qskon.jsonp\" async>'),
 (3, 1, 'Mount Fuji and Relaxed Hot Pot Camp', '2018-01-18 00:00:00', 3, 0, '', NULL, '0'),
 (4, 2, '\"I Love You\" and Auto Memory Dolls', '2018-01-11 00:00:00', 1, 0, '', NULL, '0'),
@@ -543,8 +598,7 @@ INSERT INTO `followanime` (`AnimeID`, `UserID`, `FollowStatus`) VALUES
 (3, 2, b'1'),
 (4, 1, b'1'),
 (4, 3, b'1'),
-(4, 4, b'1'),
-(5, 1, b'1');
+(4, 4, b'1');
 
 -- --------------------------------------------------------
 
@@ -608,16 +662,17 @@ CREATE TABLE `news` (
   `Headline` longtext NOT NULL,
   `NewsContent` longtext,
   `NewsLink` longtext,
-  `NewsThumbnail` longtext NOT NULL
+  `NewsThumbnail` longtext NOT NULL,
+  `NewsImage` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `news`
 --
 
-INSERT INTO `news` (`NewsID`, `TagsID`, `NewsTitle`, `PublishDate`, `Writer`, `Headline`, `NewsContent`, `NewsLink`, `NewsThumbnail`) VALUES
-(3, 1, 'Adaptasi Anime ‘ISLAND’ Ungkap Staf Produksinya', '2018-05-29', 'Kate Springer', 'VN in awalnya rilis pada April 2016 untuk PC dan rilis pada PlayStation Vita di 23 Februari\r\n					2017. Terdapat juga adaptasi manga karya Naoya Yao yang rilis pada April 2016.\r\n					<br><br>\r\n					Island menceritakan tentang pulau bernama Urashima. Sebuah insiden yang menimpa tiga keluarga besar pulau tersebut dari lima tahun yang lalu menyebabkan pulau tersebut terisolasi. Pulau tersebut terisolasi akibat penyakit lokal bernama Baimonbyou, tiga gadis dari pulau tersebut merupakan kunci untuk menyelamatkan pulau itu, namun tradisi membuat mereka tidak dapat bertindak. Suatu hari sebuah pria terdampar di pulau tersebut dan mengubah segalanya.', 'Situs resmi dari adaptasi anime “ISLAND” telah mengungkap staf produksinya. Adaptasi VN ini direncanakan tayang pada tahun 2018 ini.\r\n					<br><br>\r\n					Staf produksinya adalah:\r\n					<br><br>\r\n					<li>Sutradara: Keiichiro Kawaguchi</li>\r\n					<li>Komposisi Seri: Naruhisa Arakawa</li>\r\n					<li>Desainer Karakter: Kousuke Kawamura</li>\r\n					<li>Musik: Akiyuki Tateyama</li>\r\n					<li>Lagu Pembuka: Yukari Tamura</li>\r\n					<li>Lagu Penutup: Asaka</li>\r\n					<li>Studio Produksi: feel.</li>\r\n					<br>\r\n					Seiyuu yang akan hadir beserta peran mereka adalah:\r\n					<br><br>\r\n					<li>Yukari Tamura sebagai <b>Rinne Ohara</b></li>\r\n					<li>Kana Asumi sebagai <b>Karen Kurutsu</b></li>\r\n					<li>Hibiku Yamamura <b>sebagai Sora Garandou</b></li>\r\n					<br>\r\n					VN in awalnya rilis pada April 2016 untuk PC dan rilis pada PlayStation Vita di 23 Februari\r\n					2017. Terdapat juga adaptasi manga karya Naoya Yao yang rilis pada April 2016.\r\n					<br><br>\r\n					Island menceritakan tentang pulau bernama Urashima. Sebuah insiden yang menimpa tiga keluarga besar pulau tersebut dari lima tahun yang lalu menyebabkan pulau tersebut terisolasi. Pulau tersebut terisolasi akibat penyakit lokal bernama Baimonbyou, tiga gadis dari pulau tersebut merupakan kunci untuk menyelamatkan pulau itu, namun tradisi membuat mereka tidak dapat bertindak. Suatu hari sebuah pria terdampar di pulau tersebut dan mengubah segalanya.\r\n					<br><br>\r\n					Gamenya diproduksi oleh Ryuichiro Yamakawa, Yousai Kuuchuu adalah ilustrator seri ini, sementara G.O. mengerjakan skenarionya.', NULL, 'assets/image/island.jpg'),
-(4, 1, '‘Grand Blue’ Tampilkan Teaser Anime dan Ungkap Staf Produksi', '2018-05-28', 'Kate Springer', 'Seri ini menceritakan tentang Kitahara Iori yang pindah ke Izu untuk kuliah, di sana dia menetap di toko alat selam bernama “Grand Blue” yang dimiliki oleh kerabatnya. Setelah berbagai insiden yang melibatkan kakak kelas dan sepupunya yang bergabung dengan circle menyelam tingkat universitas, dia memutuskan untuk ikut mencoba menyelam juga.', NULL, NULL, 'assets/image/grand.jpg');
+INSERT INTO `news` (`NewsID`, `TagsID`, `NewsTitle`, `PublishDate`, `Writer`, `Headline`, `NewsContent`, `NewsLink`, `NewsThumbnail`, `NewsImage`) VALUES
+(3, 1, 'Adaptasi Anime ‘ISLAND’ Ungkap Staf Produksinya', '2018-05-29', 'Kate Springer', 'VN in awalnya rilis pada April 2016 untuk PC dan rilis pada PlayStation Vita di 23 Februari\r\n					2017. Terdapat juga adaptasi manga karya Naoya Yao yang rilis pada April 2016.\r\n					<br><br>\r\n					Island menceritakan tentang pulau bernama Urashima. Sebuah insiden yang menimpa tiga keluarga besar pulau tersebut dari lima tahun yang lalu menyebabkan pulau tersebut terisolasi. Pulau tersebut terisolasi akibat penyakit lokal bernama Baimonbyou, tiga gadis dari pulau tersebut merupakan kunci untuk menyelamatkan pulau itu, namun tradisi membuat mereka tidak dapat bertindak. Suatu hari sebuah pria terdampar di pulau tersebut dan mengubah segalanya.', 'Situs resmi dari adaptasi anime “ISLAND” telah mengungkap staf produksinya. Adaptasi VN ini direncanakan tayang pada tahun 2018 ini.\r\n					<br><br>\r\n					Staf produksinya adalah:\r\n					<br><br>\r\n					<li>Sutradara: Keiichiro Kawaguchi</li>\r\n					<li>Komposisi Seri: Naruhisa Arakawa</li>\r\n					<li>Desainer Karakter: Kousuke Kawamura</li>\r\n					<li>Musik: Akiyuki Tateyama</li>\r\n					<li>Lagu Pembuka: Yukari Tamura</li>\r\n					<li>Lagu Penutup: Asaka</li>\r\n					<li>Studio Produksi: feel.</li>\r\n					<br>\r\n					Seiyuu yang akan hadir beserta peran mereka adalah:\r\n					<br><br>\r\n					<li>Yukari Tamura sebagai <b>Rinne Ohara</b></li>\r\n					<li>Kana Asumi sebagai <b>Karen Kurutsu</b></li>\r\n					<li>Hibiku Yamamura <b>sebagai Sora Garandou</b></li>\r\n					<br>\r\n					VN in awalnya rilis pada April 2016 untuk PC dan rilis pada PlayStation Vita di 23 Februari\r\n					2017. Terdapat juga adaptasi manga karya Naoya Yao yang rilis pada April 2016.\r\n					<br><br>\r\n					Island menceritakan tentang pulau bernama Urashima. Sebuah insiden yang menimpa tiga keluarga besar pulau tersebut dari lima tahun yang lalu menyebabkan pulau tersebut terisolasi. Pulau tersebut terisolasi akibat penyakit lokal bernama Baimonbyou, tiga gadis dari pulau tersebut merupakan kunci untuk menyelamatkan pulau itu, namun tradisi membuat mereka tidak dapat bertindak. Suatu hari sebuah pria terdampar di pulau tersebut dan mengubah segalanya.\r\n					<br><br>\r\n					Gamenya diproduksi oleh Ryuichiro Yamakawa, Yousai Kuuchuu adalah ilustrator seri ini, sementara G.O. mengerjakan skenarionya.', NULL, 'assets/image/island.jpg', 'background: url(assets/image/news-img.jpg) 50% 20%;'),
+(4, 1, '‘Grand Blue’ Tampilkan Teaser Anime dan Ungkap Staf Produksi', '2018-03-01', 'Kaptain', 'Seri ini menceritakan tentang Kitahara Iori yang pindah ke Izu untuk kuliah, di sana dia menetap di toko alat selam bernama “Grand Blue” yang dimiliki oleh kerabatnya. Setelah berbagai insiden yang melibatkan kakak kelas dan sepupunya yang bergabung dengan circle menyelam tingkat universitas, dia memutuskan untuk ikut mencoba menyelam juga.', '<p>Situs resmi dari adaptasi&nbsp;<em>anime&nbsp;</em><strong>“Grand Blue”&nbsp;</strong>telah menampilkan sebuah&nbsp;<em>teaser&nbsp;</em>serta visual&nbsp;<em>anime-</em>nya. Bersamaan dengan ini staf produksinya juga telah diungkap.</p>\r\n<p>Staf produksi&nbsp;<em>anime-</em>nya adalah:</p>\r\n<ul>\r\n<li>Sutradara, Skrip: Shinji Takamatsu (<em>Gintama, Danshi Koukousei no Nichijou, School Rumble</em>)</li>\r\n<li>Desainer Karakter: Hideoki Kusama</li>\r\n<li>Studio Produksi: <strong>Zero-G</strong> (<em>Battery, Tsugumomo, Dive!!</em>)</li>\r\n</ul>\r\n<p>Pilihan sutradara yang sempurna untuk seri ini, namun studionya sayang masih belum terlalu berpengalaman.</p>\r\n<p>Seri ini menceritakan tentang Kitahara Iori yang pindah ke Izu untuk kuliah, di sana dia menetap di toko alat selam bernama “Grand Blue” yang dimiliki oleh kerabatnya. Setelah berbagai insiden yang melibatkan kakak kelas dan sepupunya yang bergabung dengan&nbsp;<em>circle&nbsp;</em>menyelam tingkat universitas, dia memutuskan untuk ikut mencoba menyelam juga.</p>\r\n', NULL, 'assets/image/grand.jpg', 'background: url(assets/image/news4.jpg);\r\nbackground-size: cover;');
 
 -- --------------------------------------------------------
 
@@ -629,11 +684,25 @@ CREATE TABLE `paymenthistory` (
   `PaymentHistoryID` int(11) NOT NULL,
   `UserID` int(11) NOT NULL,
   `BankID` int(11) DEFAULT NULL,
-  `PaymentStatus` bit(1) DEFAULT NULL COMMENT 'Basic = 0, Premium =1',
+  `PaymentStatus` varchar(20) DEFAULT NULL COMMENT 'Basic / Premium',
+  `AccountName` varchar(30) DEFAULT NULL,
   `AccountNumber` varchar(20) DEFAULT NULL,
-  `PaymentPlan` varchar(10) DEFAULT NULL,
+  `PaymentPlan` varchar(20) DEFAULT NULL COMMENT 'Monthly / Annually',
+  `CardExpDate` date DEFAULT NULL,
   `PaymentTime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `paymenthistory`
+--
+
+INSERT INTO `paymenthistory` (`PaymentHistoryID`, `UserID`, `BankID`, `PaymentStatus`, `AccountName`, `AccountNumber`, `PaymentPlan`, `CardExpDate`, `PaymentTime`) VALUES
+(8, 1, 1, 'Premium', 'Izzi Dzikri', '123123', 'Annually', NULL, '2018-06-05 06:19:37'),
+(9, 1, 1, 'Premium', 'Izzi', '2342342', 'Monthly', NULL, '2018-06-05 11:13:46'),
+(34, 1, 1, 'Basic', 'hyhy', '324123123123', 'Monthly', NULL, '2018-06-05 12:12:06'),
+(35, 2, 1, 'Basic', 'CandyPanda', '3241324321', 'Monthly', NULL, '2018-06-05 12:15:50'),
+(36, 1, 1, 'Premium', 'Hy', '124234', 'Monthly', NULL, '2018-06-05 14:56:18'),
+(37, 18, NULL, 'Premium', 'Andree Chdnara', '4700523412345678', 'Annually', '2021-02-02', '2018-06-05 16:46:29');
 
 -- --------------------------------------------------------
 
@@ -790,15 +859,16 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `Gender`, `SubStatus`, `SubExpDate`) VALUES
-(1, 'EZ', 'MTIzMTIz', 'ez@gmail.com', 'Male', 'Premium', '2018-06-04'),
-(2, 'HY', 'MTIzMTIz', 'hy@gmail.com', 'Male', 'FREE', NULL),
+(1, 'EZ', 'MTIzMTIz', 'ez@gmail.com', 'Male', 'Premium', '2018-07-05'),
+(2, 'HY', 'MTIzMTIz', 'hy@gmail.com', 'Male', 'Basic', '2018-07-05'),
 (3, 'Will', 'MTIzMTIz', 'will@gmail.com', 'Male', 'FREE', NULL),
 (4, 'Andree', 'MTIzMTIz', 'andree@gmail.com', 'Male', 'FREE', NULL),
 (13, 'qweqwe', 'cXdl', 'qweqwe@qwe.com', 'Male', 'FREE', NULL),
 (14, 'hyhy', 'cXdlcXdl', 'hyhy@gmail.com', 'Male', 'FREE', NULL),
 (15, 'hyhy2', 'MTIzMTIz', 'hyhy@gmail.com', 'Male', 'FREE', NULL),
 (16, 'hyhy3', 'MTIzMTIz', 'hyhy@gmail.com', 'Male', 'FREE', NULL),
-(17, 'qweqwe2', 'cXdlcXdl', 'qweqwe@qwe.com', 'Male', 'FREE', NULL);
+(17, 'qweqwe2', 'cXdlcXdl', 'qweqwe@qwe.com', 'Male', 'FREE', NULL),
+(18, 'andreesc15', 'MTIzMTIz', 'andrees.chandra@gmail.com', 'Male', 'Premium', '2019-06-05');
 
 -- --------------------------------------------------------
 
@@ -812,6 +882,13 @@ CREATE TABLE `watchhistories` (
   `UserID` int(11) NOT NULL,
   `WatchTime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `watchhistories`
+--
+
+INSERT INTO `watchhistories` (`WatchHistoryID`, `EpisodeID`, `UserID`, `WatchTime`) VALUES
+(1, 4, 1, '2018-06-05 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -841,14 +918,6 @@ ALTER TABLE `animeandgenres`
 --
 ALTER TABLE `bankdetail`
   ADD PRIMARY KEY (`BankID`);
-
---
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`CommentsID`),
-  ADD KEY `EpisodeID` (`EpisodeID`),
-  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexes for table `durations`
@@ -958,12 +1027,6 @@ ALTER TABLE `bankdetail`
   MODIFY `BankID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `comments`
---
-ALTER TABLE `comments`
-  MODIFY `CommentsID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `durations`
 --
 ALTER TABLE `durations`
@@ -991,7 +1054,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `paymenthistory`
 --
 ALTER TABLE `paymenthistory`
-  MODIFY `PaymentHistoryID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PaymentHistoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `pgratingdetails`
@@ -1033,13 +1096,13 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `watchhistories`
 --
 ALTER TABLE `watchhistories`
-  MODIFY `WatchHistoryID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `WatchHistoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -1062,13 +1125,6 @@ ALTER TABLE `anime`
 ALTER TABLE `animeandgenres`
   ADD CONSTRAINT `animeandgenres_ibfk_1` FOREIGN KEY (`AnimeID`) REFERENCES `anime` (`AnimeID`),
   ADD CONSTRAINT `animeandgenres_ibfk_2` FOREIGN KEY (`GenreID`) REFERENCES `genres` (`GenreID`);
-
---
--- Constraints for table `comments`
---
-ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`EpisodeID`) REFERENCES `episodes` (`EpisodeID`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`);
 
 --
 -- Constraints for table `episodes`
