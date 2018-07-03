@@ -323,8 +323,8 @@ function getFollowing(Inuser){
 			$.each(data,function(key,val){
 				container.append(`<a href="anime/animePage?anime=`+val.AnimeID+`" class="nav_subcontent">`+val.AnimeTitle+`</a>`);
 			});
-			if (data.length>6) 
-				container.parent().append(`<a id="show_more" onclick="showMore(this)" class=""><i class="fas fa-chevron-down"></i> Show `+data.length+` More</a>`);
+			if (data.length>12) 
+				container.parent().append(`<a id="show_more" onclick="showMore(this)" class=""><i class="fas fa-chevron-down"></i> Show All</a>`);
 		}
 	});
 }
@@ -343,8 +343,8 @@ function getMostPopular(){
 			$.each(data,function(key,val){
 				container.append(`<a href="anime/animePage?anime=`+val.AnimeID+`" class="nav_subcontent">`+val.AnimeTitle+`</a>`);
 			});
-			if (data.length>6) 
-				container.parent().append(`<a id="show_more" onclick="showMore(this)" class=""><i class="fas fa-chevron-down"></i> Show `+data.length+` More</a>`);
+			if (data.length>12) 
+				container.parent().append(`<a id="show_more" onclick="showMore(this)" class=""><i class="fas fa-chevron-down"></i> Show All</a>`);
 		}
 	});
 }

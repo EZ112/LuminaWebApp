@@ -1,13 +1,16 @@
 function showMore(x){
 	if($(x).attr('class') == ''){
-	   $(x).prev().css("max-height","none");
+	   $(x).prev().css("height","100%");
 	   $(x).attr('class','open');
 	   $(x).html('<i class="fas fa-chevron-up"></i> Show Less');
 	}
 	else{
-		$(x).prev().css("max-height","15vw");
+		if($(x).prev().attr('class') == 'mostpopular')
+			$(x).prev().css("height","55vh");
+		else 
+			$(x).prev().css("height","50vh");
 		$(x).attr('class','');
-		$(x).html('<i class="fas fa-chevron-down"></i> Show 10 More');
+		$(x).html('<i class="fas fa-chevron-down"></i> Show All');
 	}
 }
 

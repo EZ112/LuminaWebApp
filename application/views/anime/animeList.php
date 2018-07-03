@@ -30,7 +30,7 @@
 							</span>
 						</div>
 						<div id="season">
-							<i class="far fa-snowflake" id="seasonFA"></i>
+							<!-- <i class="far fa-snowflake" id="seasonFA"></i> -->
 							<span>Season</span>
 							<span class="value" onclick="showMenu(this);">
 								<div class="current">Spring</div>

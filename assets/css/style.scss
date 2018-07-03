@@ -7,7 +7,10 @@ body{
 	overflow: auto;
 }
 
-input{ padding: 0; } //New
+input{ 
+	padding: 0; 
+	outline: none;
+} 
 
 .navbar-area{ grid-area: header; }
 
@@ -67,10 +70,17 @@ input{ padding: 0; } //New
 		color: $cDrkBlue;
 	}
 
-	.following, .ranking{
-		max-height: 15vw;
+	.following, .mostpopular{
 		overflow: hidden;
 		@include transition(all 0.25s ease);
+	}
+
+	.following{
+		height: 50vh;
+	}
+
+	.mostpopular{
+		height: 55vh;
 	}
 
 	#show_more{
@@ -98,10 +108,6 @@ input{ padding: 0; } //New
 	#show_more{
 		@include setText(1vw, $cText, "QS_Book");
 	}
-}
-
-.nav:last-child{
-	padding-bottom: 20%;
 }
 
 .nav > .nav_subnav:hover{

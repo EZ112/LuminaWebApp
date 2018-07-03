@@ -22,6 +22,7 @@ body {
 
 input {
   padding: 0;
+  outline: none;
 }
 
 .navbar-area {
@@ -83,13 +84,18 @@ input {
   padding-bottom: 0.5vw;
   color: #5c6275;
 }
-.nav .following, .nav .ranking {
-  max-height: 15vw;
+.nav .following, .nav .mostpopular {
   overflow: hidden;
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
   transition: all 0.25s ease;
+}
+.nav .following {
+  height: 50vh;
+}
+.nav .mostpopular {
+  height: 55vh;
 }
 .nav #show_more {
   cursor: pointer;
@@ -118,10 +124,6 @@ input {
   font-size: 1vw;
   color: #888;
   font-family: "QS_Book";
-}
-
-.nav:last-child {
-  padding-bottom: 20%;
 }
 
 .nav > .nav_subnav:hover {
