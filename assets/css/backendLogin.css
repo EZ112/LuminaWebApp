@@ -1,25 +1,33 @@
 body {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
+
 body .formContainer {
   margin: auto;
   width: 30%;
   position: relative;
-  transform: translateY(-55%);
+  -webkit-transform: translateY(-55%);
+          transform: translateY(-55%);
   top: 50%;
   text-align: center;
   border: 1px solid black;
   padding: 2.5%;
   background-color: #bbcbdb;
 }
+
 body .formContainer .heading {
   font-size: 2vw;
   color: "inherit";
   font-family: "QS_Book";
 }
+
 body .formContainer form {
   margin: 0;
 }
+
 body .formContainer form input {
   font-size: 1.25vw;
   color: "";
@@ -31,10 +39,10 @@ body .formContainer form input {
   border: 1px solid black;
   border-radius: 5px;
 }
+
 body .formContainer form input[type="submit"] {
   background-color: #42beff;
   color: white;
   border: none;
 }
-
 /*# sourceMappingURL=backendLogin.css.map */

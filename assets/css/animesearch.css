@@ -1,24 +1,35 @@
 .page {
-  grid-template-columns: 15vw auto;
-  grid-template-rows: 5vw auto;
-  grid-template-areas: "header widget"  "header content";
+  -ms-grid-columns: 15vw auto;
+      grid-template-columns: 15vw auto;
+  -ms-grid-rows: 5vw auto;
+      grid-template-rows: 5vw auto;
+      grid-template-areas: "header widget"  "header content";
 }
 
 .content {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
   grid-area: content;
-  grid-template-rows: auto auto auto;
+  -ms-grid-rows: auto auto auto;
+      grid-template-rows: auto auto auto;
   padding: 2.5% 5%;
   font-size: 1.75vw;
   color: #888;
   font-family: "QS_Book";
 }
+
 .content .google_ads {
   display: none;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #42beff;
   height: 8vw;
 }
+
 .content .google_ads .section_title {
   margin: 0;
   text-align: center;
@@ -26,10 +37,13 @@
   color: white;
   font-family: "QS_Book";
 }
+
 .content .pointAnime .animeContainer {
-  grid-template-columns: 30% 50% auto;
+  -ms-grid-columns: 30% 50% auto;
+      grid-template-columns: 30% 50% auto;
   margin: 0 0 1.5% 0;
 }
+
 .content .pointAnime .animeContainer .thumbnail_container {
   width: 80%;
   height: 10vw;
@@ -37,6 +51,7 @@
   background-size: cover;
   cursor: pointer;
 }
+
 .content .pointAnime .animeContainer .info_container #title {
   font-size: 1.75vw;
   color: #888;
@@ -45,18 +60,22 @@
   display: inline-block;
   margin: 1.25% 0;
 }
+
 .content .pointAnime .animeContainer .info_container #title:hover {
   border-bottom: 1.25px solid #888;
 }
+
 .content .pointAnime .animeContainer .info_container #latest, .content .pointAnime .animeContainer .info_container #follower {
   font-size: 1.1vw;
   color: #888;
   font-family: "QS_Book";
   padding: 0.5% 0;
 }
+
 .content .pointAnime .animeContainer .button_container {
   position: relative;
 }
+
 .content .pointAnime .animeContainer .button_container .button {
   font-size: 1.25vw;
   color: white;
@@ -70,22 +89,28 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
+
 .content .pointEpisode {
   margin-top: 1.5%;
 }
+
 .content .pointEpisode .episodeContainer {
-  grid-template-columns: 30% auto;
+  -ms-grid-columns: 30% auto;
+      grid-template-columns: 30% auto;
   margin: 1.5% 0 0 0;
   cursor: pointer;
 }
+
 .content .pointEpisode .episodeContainer .thumbnail_container {
   width: 80%;
   height: 10vw;
   background-position: center;
   background-size: cover;
 }
+
 .content .pointEpisode .episodeContainer .info_container #episode {
   font-size: 1.75vw;
   color: #42beff;
@@ -93,9 +118,11 @@
   display: inline-block;
   margin: 1.25% 0;
 }
+
 .content .pointEpisode .episodeContainer .info_container #episode:hover {
   border-bottom: 1.25px solid #42beff;
 }
+
 .content .pointEpisode .episodeContainer .info_container #anime, .content .pointEpisode .episodeContainer .info_container #views, .content .pointEpisode .episodeContainer .info_container #airDate {
   font-size: 1.1vw;
   color: #888;
@@ -113,5 +140,4 @@
   text-align: center;
   color: #777;
 }
-
 /*# sourceMappingURL=animesearch.css.map */

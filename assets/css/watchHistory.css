@@ -1,16 +1,22 @@
 .page {
-  grid-template-columns: 15vw auto;
-  grid-template-rows: 5vw auto;
-  grid-template-areas: "header widget" "header main-content";
+  -ms-grid-columns: 15vw auto;
+      grid-template-columns: 15vw auto;
+  -ms-grid-rows: 5vw auto;
+      grid-template-rows: 5vw auto;
+      grid-template-areas: "header widget" "header main-content";
 }
 
 .content {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
   grid-area: main-content;
   padding: 2.5% 5%;
 }
+
 .content .section_title {
   margin-bottom: 2.5%;
 }
+
 .content .redify {
   font-size: 1.5vw;
   color: #f1637e;
@@ -18,26 +24,35 @@
   color: #f1637e;
   cursor: pointer;
 }
+
 .content .redify .clearAll {
   padding-left: 0.5%;
 }
+
 .content .videoContainer {
-  grid-template-columns: 20% 65% 2.5%;
-  grid-template-rows: 10vw;
+  -ms-grid-columns: 20% 65% 2.5%;
+      grid-template-columns: 20% 65% 2.5%;
+  -ms-grid-rows: 10vw;
+      grid-template-rows: 10vw;
   margin: 2.5% 0;
 }
+
 .content .videoContainer .videoThumbnail {
   background-size: cover;
 }
+
 .content .videoContainer .dummyCenter {
   position: relative;
 }
+
 .content .videoContainer .dummyCenter .videoDetail {
   padding: 0 7.5%;
   position: relative;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
+
 .content .videoContainer .dummyCenter .videoDetail .videoEpisode {
   font-size: 1.5vw;
   color: #42beff;
@@ -46,30 +61,34 @@
   padding-bottom: 0.5%;
   margin-bottom: 0.5%;
 }
+
 .content .videoContainer .dummyCenter .videoDetail .videoEpisode:hover {
   /* border-bottom: 1.1px solid $cP; */
   text-decoration: underline;
 }
+
 .content .videoContainer .dummyCenter .videoDetail .videoAirDate {
   font-size: 1.1vw;
   color: #bbcbdb;
   font-family: "QS_Book";
   margin-left: 2%;
 }
+
 .content .videoContainer .dummyCenter .videoDetail .videoTitle {
   font-size: 1.75vw;
   color: #888;
   font-family: "QS_Book";
   padding: 0.25% 0;
 }
+
 .content .videoContainer .dummyCenter .videoDetail .videoAnime, .content .videoContainer .dummyCenter .videoDetail .videoViews {
   font-size: 1.1vw;
   color: #bbcbdb;
   font-family: "QS_Book";
   padding: 0.25% 0;
 }
+
 .content .videoContainer .dummyCenter .videoDetail .videoViews {
   padding: 0.5% 0;
 }
-
 /*# sourceMappingURL=watchHistory.css.map */

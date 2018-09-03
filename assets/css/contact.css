@@ -1,7 +1,9 @@
 .page {
-  grid-template-columns: 15vw auto;
-  grid-template-rows: 10vw auto;
-  grid-template-areas: "header head_title"  "header content";
+  -ms-grid-columns: 15vw auto;
+      grid-template-columns: 15vw auto;
+  -ms-grid-rows: 10vw auto;
+      grid-template-rows: 10vw auto;
+      grid-template-areas: "header head_title"  "header content";
 }
 
 pink {
@@ -9,20 +11,25 @@ pink {
 }
 
 .content {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
   grid-area: content;
   padding: 2.5% 5%;
   font-size: 1.5vw;
   color: #888;
   font-family: "QS_Book";
 }
+
 .content .heading {
   font-weight: bolder;
   margin-bottom: 1%;
 }
+
 .content .comment {
   font-size: 1vw;
   font-style: italic;
 }
+
 .content .line {
   overflow: visible;
   padding: 0;
@@ -34,6 +41,7 @@ pink {
   width: 40%;
   font-size: 0.75vw;
 }
+
 .content .line:after {
   content: "OR";
   display: inline-block;
@@ -43,11 +51,14 @@ pink {
   padding: 0 0.25em;
   background: white;
 }
+
 .content .form {
-  grid-template-rows: auto auto auto;
+  -ms-grid-rows: auto auto auto;
+      grid-template-rows: auto auto auto;
   margin-top: 2.5%;
   width: 80%;
 }
+
 .content .form input[type="text"], .content .form textarea {
   font-size: 1.25vw;
   color: #888;
@@ -57,9 +68,11 @@ pink {
   width: 100%;
   border: 1px solid #888;
 }
+
 .content .form textarea {
   height: 10vw;
 }
+
 .content .form .button {
   font-size: 1.25vw;
   color: white;
@@ -70,7 +83,7 @@ pink {
   border: none;
   cursor: pointer;
   float: right;
-  transform: translateX(5%);
+  -webkit-transform: translateX(5%);
+          transform: translateX(5%);
 }
-
 /*# sourceMappingURL=contact.css.map */

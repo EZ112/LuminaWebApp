@@ -1,17 +1,22 @@
 .page {
-  grid-template-columns: 15vw 85vw;
-  grid-template-rows: 10vw auto;
-  grid-template-areas: "header head_title" "header content";
+  -ms-grid-columns: 15vw 85vw;
+      grid-template-columns: 15vw 85vw;
+  -ms-grid-rows: 10vw auto;
+      grid-template-rows: 10vw auto;
+      grid-template-areas: "header head_title" "header content";
   overflow: hidden;
 }
 
 .content {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
   grid-area: content;
   padding: 3.5% 5% 5% 5%;
   font-size: 1.25vw;
   color: #888;
   font-family: "QS_Book";
 }
+
 .content .contentTitle {
   display: inline-block;
   font-size: 1.5vw;
@@ -19,13 +24,14 @@
   font-family: "QS_Book";
   padding: 1.5% 0 1.5% 0;
 }
+
 .content a {
   font-style: italic;
   color: #42beff;
   border: 1px solid transparent;
 }
+
 .content a:hover {
   border-bottom: 1.25px solid #42beff;
 }
-
 /*# sourceMappingURL=terms.css.map */

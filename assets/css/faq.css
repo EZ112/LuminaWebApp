@@ -1,33 +1,42 @@
 .page {
-  grid-template-columns: 15vw 85vw;
-  grid-template-rows: 10vw auto;
-  grid-template-areas: "header head_title" "header faq";
+  -ms-grid-columns: 15vw 85vw;
+      grid-template-columns: 15vw 85vw;
+  -ms-grid-rows: 10vw auto;
+      grid-template-rows: 10vw auto;
+      grid-template-areas: "header head_title" "header faq";
 }
 
 .faq_container {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
   grid-area: faq;
   width: 80%;
   margin-left: 5%;
   padding-top: 2%;
 }
+
 .faq_container hr {
   border: none;
   height: 1px;
   background: #888;
+  background-image: -webkit-gradient(linear, left top, right top, from(#ccc), color-stop(#888), to(#ccc));
   background-image: linear-gradient(to right, #ccc, #888, #ccc);
 }
+
 .faq_container .title {
   font-size: 2.5vw;
   color: #888;
   font-family: "QS_Book";
   margin: 2.5% 0;
 }
+
 .faq_container .subtitle {
   font-size: 2vw;
   color: #888;
   font-family: "QS_Book";
   margin: 1.5% 0;
 }
+
 .faq_container .sign {
   font-size: 2vw;
   color: #888;
@@ -37,6 +46,7 @@
   right: 2%;
   cursor: pointer;
 }
+
 .faq_container #answer {
   font-size: 1.25vw;
   color: #888;
@@ -44,5 +54,4 @@
   margin: 2% 0;
   display: none;
 }
-
 /*# sourceMappingURL=faq.css.map */
